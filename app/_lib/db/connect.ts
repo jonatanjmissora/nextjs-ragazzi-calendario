@@ -4,14 +4,14 @@ import { MongoClient } from "mongodb"
 let client: MongoClient
 let clientPromise: Promise<MongoClient>
 const URI = process.env.MONGODB_URI
-const DB = process.env.MONGO_DB
+const DB = process.env.MONGODB_DB
 const options = {}
 
 if (!URI) {
   throw new Error("Please add your MongoDB URI to the .env file")
 }
 
-let globalWithMongo = global as typeof globalThis & {
+const globalWithMongo = global as typeof globalThis & {
   _mongoClientPromise: Promise<MongoClient>
 }
 if (process.env.NODE_ENV === "development") {
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
   }
   clientPromise = globalWithMongo._mongoClientPromise
 
-  
+
 } else {
   // In production mode, it's best to not use a global variable.
   client = new MongoClient(URI, options)

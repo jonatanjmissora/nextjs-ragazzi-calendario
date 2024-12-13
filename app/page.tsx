@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Dashboard from "./_components/Dashboard/Dashboard";
 
 export default function Home() {
   return (
-    <div className="">
-      hola
-    </div>
+    <section className="w-full h-[95dvh] flex justify-center items-center">
+      <Dashboard />
+    </section>
   );
 }
