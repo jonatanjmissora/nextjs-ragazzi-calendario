@@ -28,7 +28,7 @@ const Rubro = ({rubro}: {rubro: SectoresType}) => {
       <h3>{rubro.rubro}</h3>
       <div className="flex gap-4 flex-wrap">
         {
-          rubro.sectores.map(sector => <span>{sector}</span>)
+          rubro.sectores.map((sector, index) => <span key={index}>{sector}</span>)
         }
       </div>
     </li>

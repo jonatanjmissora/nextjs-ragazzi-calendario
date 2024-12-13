@@ -1,10 +1,10 @@
 
 import { MongoClient } from "mongodb"
-import { unknown } from "zod"
 
 let client: MongoClient
 let clientPromise: Promise<MongoClient>
 const URI = process.env.MONGODB_URI
+const DB = process.env.MONGO_DB
 const options = {}
 
 if (!URI) {
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === "development") {
 
 async function getDatabase() {
   const client = await clientPromise
-  return client.db("Ragazzi")
+  return client.db(DB)
 }
 
 export async function getCollection(collectionName: string) {
