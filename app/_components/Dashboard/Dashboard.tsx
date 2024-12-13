@@ -1,11 +1,23 @@
 import { getCachedPagosPendientes } from "@/app/_lib/db/pendientes.db"
+import { revalidateTag } from "next/cache"
+import { Rubik_Burned } from "next/font/google"
+import RubroFilter from "./RubroFilter"
 
-export default async function Dashboard() {
+export default async function Dashboard({rubroFilter} : {rubroFilter: string}) {
 
   const pagosPendientes = await getCachedPagosPendientes()
+  const filteredPendientes = rubroFilter === "todo" 
+    ? pagosPendientes 
+    : pagosPendientes.filter(pago => pago.rubro === rubroFilter)
+    
+  const formAction = async () => {
+      "use server"
+      revalidateTag("sectores")
+    }
 
   return (
-    <div className="h-[80%] w-[60%] overflow-y-scroll">
+  <article className="h-full flex">
+    <div className="h-full overflow-y-scroll flex-1 px-40 py-12">
       <table className="table">
         {/* head */}
         <thead>
@@ -20,7 +32,7 @@ export default async function Dashboard() {
         <tbody>
 
           {
-            pagosPendientes.map(pago =>
+            filteredPendientes.map(pago =>
 
               <tr key={pago._id} className="hover">
                 <th>{pago.vencimiento}</th>
@@ -35,5 +47,9 @@ export default async function Dashboard() {
         </tbody>
       </table>
     </div>
+    
+    <RubroFilter />
+    
+    </article>
   )
 }

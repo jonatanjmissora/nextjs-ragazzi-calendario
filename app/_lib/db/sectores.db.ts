@@ -3,13 +3,13 @@ import { SectoresType } from "../types/sectores.type"
 import getDatabase from "./connect"
 
 
-export async function getSectoresActualesCollection(collectionName: string) {
+export async function getSectoresActuales() {
     const db = await getDatabase()
-    return await db.collection<SectoresType>(collectionName).find().toArray()
+    return await db.collection<SectoresType>("SectoresActuales").find().toArray()
 }
 
 export const getCachedSectoresActuales = unstable_cache(async () => {
-    return await getSectoresActualesCollection("SectoresActuales")
+    return await getSectoresActuales()
 },
     ["sectores"],
     {
