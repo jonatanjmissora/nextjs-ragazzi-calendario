@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache"
-import { SectoresType } from "../types/sectores.type"
+import { SectoresType } from "../schema/sectores.type"
 import getDatabase from "./connect"
 
 

@@ -1,10 +1,12 @@
 import { unstable_cache } from "next/cache"
-import { PendientesType } from "../types/pendientes.type"
 import getDatabase from "./connect"
+import { PendienteType } from "../schema/pendientes.type"
+
+
 
 export const getPagosPendientes = async () => {
   const db = await getDatabase()
-  return await db.collection<PendientesType>("PagosPendientes").find().sort({"vencimiento": 1}).toArray()
+  return await db.collection<PendienteType>("PagosPendientes").find().sort({ "vencimiento": 1 }).toArray()
 }
 
 export const getCachedPagosPendientes = unstable_cache(async () => {
@@ -17,11 +19,19 @@ export const getCachedPagosPendientes = unstable_cache(async () => {
   }
 )
 
-export const pagarPendiente = async () => {
+export const insertarPendienteDB = async (pendiente: PendienteType) => {
+  // const db = await getDatabase()
+  // return db.collection<PendienteType>("PagosPendientes").insertOne(pendiente)
+  console.log("INSERTADO")
+  return { success: true, error: "" }
 }
 
-export const eliminarPendiente = async () => {
+export const eliminarPendienteDB = async (id: string) => {
+  // const db = await getDatabase()
+  // return db.collection<PendienteType>("PagosPendientes").deleteOne({"_id": id})
+  console.log("ELIMINADO")
+  return { success: true, error: "" }
 }
 
-export const editarPendiente = async () => {
+export const editarPendienteDB = async () => {
 }

@@ -1,22 +1,31 @@
-
-import { editarPendiente, eliminarPendiente, pagarPendiente } from '@/app/_lib/db/pendientes.db'
+import { editarPendienteAction, eliminarPendienteAction, pagarPendienteAction } from '@/app/_lib/actions/pendientes.action'
+import { PendienteType } from '@/app/_lib/schema/pendientes.type'
 import React from 'react'
 
-export default function PagoAction() {
+export default function PagoAction({ pendiente }: { pendiente: PendienteType }) {
 
-    const pagarPendiente = async() => {
-        "use server"
-        console.log("pagando")
-    }
+  const formActionPagar = async () => {
+    "use server"
+    pagarPendienteAction(pendiente)
+  }
+
+  const formActionEliminar = async () => {
+    "use server"
+    eliminarPendienteAction(pendiente)
+  }
+
+  const formActionEditar = async () => {
+    "use server"
+    editarPendienteAction(pendiente)
+  }
 
   return (
     <div>
-        <form action="" 
-        className='flex gap-1'>
-            <button className='btn btn-accent' formAction={pagarPendiente}>pagar</button>
-            <button className='btn btn-info' >cancelar</button>
-            <button className='btn btn-primary' >editar</button>
-        </form>
+      <form className='flex gap-1'>
+        <button className='btn btn-accent' formAction={formActionPagar}>pagar</button>
+        <button className='btn btn-info' formAction={formActionEliminar}>cancelar</button>
+        <button className='btn btn-primary' formAction={formActionEditar}>editar</button>
+      </form>
     </div>
   )
 }

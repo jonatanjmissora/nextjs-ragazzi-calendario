@@ -1,6 +1,6 @@
 import { getCachedPagosPendientes } from "@/app/_lib/db/pendientes.db"
 import RubroFilter from "./RubroFilter"
-import PagoAction from "./PagoAction"
+import PendientesList from "./PendientesList"
 
 export default async function Dashboard({ rubroFilter }: { rubroFilter: string }) {
 
@@ -25,18 +25,7 @@ export default async function Dashboard({ rubroFilter }: { rubroFilter: string }
           </thead>
           <tbody>
 
-            {
-              filteredPendientes.map(pago =>
-
-                <tr key={pago._id} className="hover">
-                  <th>{pago.vencimiento}</th>
-                  <td>{pago.rubro}</td>
-                  <td>{pago.sector}</td>
-                  <td>{pago.monto}</td>
-                  <td><PagoAction /></td>
-                </tr>
-              )
-            }
+            <PendientesList pendientes={filteredPendientes} />
 
           </tbody>
         </table>
