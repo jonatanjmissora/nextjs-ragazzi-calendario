@@ -1,7 +1,6 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useState } from "react"
 
 export default function RubroFilter() {
 
@@ -11,9 +10,7 @@ export default function RubroFilter() {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()
-    const rubroFilter = searchParams.get("rubroFilter") || ""
-
-    console.log({rubroFilter})
+    const rubroFilter = searchParams.get("rubroFilter") || "todo"
 
     const handleClick = (filterName: string) => {
         const params = new URLSearchParams(searchParams);

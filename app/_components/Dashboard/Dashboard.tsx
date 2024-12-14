@@ -1,5 +1,6 @@
 import { getCachedPagosPendientes } from "@/app/_lib/db/pendientes.db"
 import RubroFilter from "./RubroFilter"
+import PagoAction from "./PagoAction"
 
 export default async function Dashboard({ rubroFilter }: { rubroFilter: string }) {
 
@@ -32,7 +33,7 @@ export default async function Dashboard({ rubroFilter }: { rubroFilter: string }
                   <td>{pago.rubro}</td>
                   <td>{pago.sector}</td>
                   <td>{pago.monto}</td>
-                  <td>menu</td>
+                  <td><PagoAction /></td>
                 </tr>
               )
             }
