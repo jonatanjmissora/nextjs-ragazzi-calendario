@@ -1,7 +1,10 @@
+import { PagosTable } from '@/app/_components/Dashboard/PagosTable';
 import PendientesList from '@/app/_components/Dashboard/PendientesList';
+import LeftAsidePendientes from '@/app/_components/LeftAside/LeftAsidePendientes';
 import { getCachedPendientes } from '@/app/_lib/db/pendientes.db';
 import getUserFromCookie from '@/app/_lib/utils/getUserFromCookies';
 import { redirect } from "next/navigation";
+import { Suspense } from 'react';
 
 export default async function PendientesPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -14,29 +17,22 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
     ? pagosPendientes
     : pagosPendientes.filter(pago => pago.rubro === rubroFilter)
 
+  const tableHeader = ["vencimiento", "rubro", "sector", "monto", "accion"]
+
   return (
     <section className="w-full main-height flex">
 
-      <div className="h-full overflow-y-scroll flex-1 px-40 py-12">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>vencimiento</th>
-              <th>rubro</th>
-              <th>sector</th>
-              <th>monto</th>
-              <th>accion</th>
-            </tr>
-          </thead>
-          <tbody>
+      <aside className='bg-slate-800 flex flex-col gap-4 justify-center items-center leftAside-width'>
+        <Suspense fallback={<p>Loading...Dashboard Skelton</p>} >
+          <LeftAsidePendientes />
+        </Suspense>
+      </aside>
 
-            <PendientesList pendientes={filteredPendientes} />
-
-          </tbody>
-        </table>
-      </div>
+      <PagosTable tableHeader={tableHeader}>
+        <PendientesList pendientes={filteredPendientes} />
+      </PagosTable>
 
     </section>
   );
 }
+

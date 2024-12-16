@@ -11,7 +11,7 @@ export default async function Aside() {
   }
 
   return (
-    <aside className="bg-slate-800 flex flex-col gap-4 justify-center items-center leftAside-width">
+    <>
       <h2>Sectores</h2>
       <ul>
         {
@@ -26,8 +26,7 @@ export default async function Aside() {
         }
       </ul>
       <form action={formAction}><button className="btn btn-primary">reload</button></form>
-
-    </aside>
+    </>
 
   )
 }

@@ -1,14 +1,14 @@
 import { unstable_cache } from "next/cache"
 import getDatabase from "./connect"
 import { PendienteType } from "../schema/pendientes.type"
-import { ObjectId } from "mongodb"
 
 export const getPendienteByIdDB = async (_id: string) => {
   const db = await getDatabase()
-  return await db.collection<PendienteType>("PagosPendientes").findOne({_id})
+  return await db.collection<PendienteType>("PagosPendientes").findOne({ _id })
 }
 
 export const getPendientes = async () => {
+  await new Promise(res => setTimeout(res, 5000))
   const db = await getDatabase()
   return await db.collection<PendienteType>("PagosPendientes").find().sort({ "vencimiento": 1 }).toArray()
 }
@@ -29,7 +29,7 @@ export const insertarPendienteDB = async (pendiente: PendienteType) => {
   // if (!res?.insertedId.toString()) {
   //   return { success: false, error: "Error al insertar en DB" }
   // } else  
-    return { success: true, error: "" }
+  return { success: true, error: "" }
 }
 
 export const eliminarPendienteDB = async (id: string) => {

@@ -1,1 +1,6 @@
-hacer el layout para el login / dashboard
+skeltons
+
+quitar los delays
+
+
+hacer middleware para el auth
