@@ -8,6 +8,11 @@ export async function getSectoresActuales() {
     return await db.collection<SectoresType>("SectoresActuales").find().toArray()
 }
 
+export async function getSectoresReset() {
+    const db = await getDatabase()
+    return await db.collection<SectoresType>("ConstantMenuSectores").find().toArray()
+}
+
 export const getCachedSectoresActuales = unstable_cache(async () => {
     return await getSectoresActuales()
 },

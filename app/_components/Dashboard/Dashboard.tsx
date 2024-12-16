@@ -1,10 +1,10 @@
-import { getCachedPagosPendientes } from "@/app/_lib/db/pendientes.db"
+import { getCachedPendientes } from "@/app/_lib/db/pendientes.db"
 import RubroFilter from "./RubroFilter"
 import PendientesList from "./PendientesList"
 
 export default async function Dashboard({ rubroFilter }: { rubroFilter: string }) {
 
-  const pagosPendientes = await getCachedPagosPendientes()
+  const pagosPendientes = await getCachedPendientes()
   const filteredPendientes = rubroFilter === "todo"
     ? pagosPendientes
     : pagosPendientes.filter(pago => pago.rubro === rubroFilter)

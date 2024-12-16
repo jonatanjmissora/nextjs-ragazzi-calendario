@@ -17,7 +17,7 @@ export default async function Aside() {
             <li key={rubro._id} className="collapse collapse-arrow join-item border-base-300 border rounded-none w-[20dvw]">
 
               <input type="radio" name="my-accordion-4" />
-              <div className="collapse-title text-xl font-medium">{rubro.rubro} ({rubro.sectores.length})</div>
+              <div className="collapse-title text-xl font-medium">{rubro._id} ({rubro.sectores.length})</div>
               <Sectores sectores={rubro.sectores} />
             </li>
           )
