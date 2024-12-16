@@ -1,7 +1,14 @@
-import React from 'react'
+import getUserFromCookie from '@/app/_lib/utils/getUserFromCookies'
+import { redirect } from 'next/navigation'
 
-export default function page() {
+export default async function page() {
+
+  const user = await getUserFromCookie()
+  if (!user) redirect("/")
+
   return (
-    <div>page</div>
+    <section className="w-full main-height flex">
+      admin
+    </section>
   )
 }

@@ -4,27 +4,29 @@ import { revalidateTag } from "next/cache"
 export default async function Aside() {
 
   const sectoresActuales = await getCachedSectoresActuales()
+
   const formAction = async () => {
     "use server"
     revalidateTag("sectores")
   }
+
   return (
-    <aside className="bg-slate-800 flex flex-col gap-4 justify-center items-center">
+    <aside className="bg-slate-800 flex flex-col gap-4 justify-center items-center leftAside-width">
       <h2>Sectores</h2>
       <ul>
         {
           sectoresActuales.map(rubro =>
-            <li key={rubro._id} className="collapse collapse-arrow join-item border-base-300 border rounded-none w-[20dvw]">
+            <li key={rubro._id} className="collapse collapse-arrow join-item border-base-300 border rounded-none">
 
               <input type="radio" name="my-accordion-4" />
               <div className="collapse-title text-xl font-medium">{rubro._id} ({rubro.sectores.length})</div>
               <Sectores sectores={rubro.sectores} />
             </li>
           )
-
         }
       </ul>
       <form action={formAction}><button className="btn btn-primary">reload</button></form>
+
     </aside>
 
   )

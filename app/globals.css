@@ -5,6 +5,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --main-height: 93dvh;
+  --leftAside-width: 20dvw;
+  --rightAside-width: 12dvw;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +21,19 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.leftAside-width {
+  width: var(--leftAside-width)
+}
+.rightAside-width {
+  width: var(--rightAside-width)
+}
+
+.main-height {
+  height: var(--main-height);
+}
+
+.footer-height {
+  height: calc(100dvh - var(--main-height));
 }

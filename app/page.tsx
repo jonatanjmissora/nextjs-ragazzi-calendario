@@ -1,13 +1,17 @@
-import Link from "next/link";
-import Dashboard from "./_components/Dashboard/Dashboard";
+import { redirect } from "next/navigation";
+import LoginForm from "./_components/Auth/LoginForm";
+import getUserFromCookie from "./_lib/utils/getUserFromCookies";
 
-export default async function Home({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
+export default async function Home() {
 
-  const rubroFilter = (await searchParams)?.rubroFilter || "todo"
+  const user = await getUserFromCookie()
+  if (user) redirect("/pendientes")
 
   return (
-    <section className="w-full h-[95dvh]">
-      <Link href={"/pendientes"}>Realiados</Link>
+    <section className="w-full main-height flex justify-center items-center">
+
+      <LoginForm />
+
     </section>
   );
 }

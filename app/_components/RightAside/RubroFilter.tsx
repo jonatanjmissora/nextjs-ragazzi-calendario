@@ -30,7 +30,7 @@ export default function RubroFilter() {
         filters.map(filter =>
           <li
             key={filter}
-            className={`badge badge-outline text-slate-600 ${filter === rubroFilter && "badge-primary"} px-5 py-3 text-base cursor-pointer`}
+            className={`w-full badge badge-outline text-slate-600 ${filter === rubroFilter && "badge-primary"} px-5 py-3 text-base cursor-pointer`}
             onClick={() => handleClick(filter)}
           >
             {filter}
