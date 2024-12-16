@@ -1,1 +1,1 @@
-estoy con editar pendientes
+hacer el layout para el login / dashboard

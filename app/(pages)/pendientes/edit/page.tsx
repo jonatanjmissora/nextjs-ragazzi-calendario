@@ -1,8 +1,7 @@
-import React from 'react'
-import PendienteEditForm from '../_components/Dashboard/PendienteEditForm'
-import { getPendienteByIdAction } from '../_lib/actions/pendientes.action'
-import { PendienteType } from '../_lib/schema/pendientes.type'
-import { getSectoresReset } from '../_lib/db/sectores.db'
+import PendienteEditForm from "@/app/_components/Dashboard/PendienteEditForm"
+import { getPendienteByIdAction } from "@/app/_lib/actions/pendientes.action"
+import { getSectoresReset } from "@/app/_lib/db/sectores.db"
+import { PendienteType } from "@/app/_lib/schema/pendientes.type"
 
 export default async function PendienteEditPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }>}) {
 

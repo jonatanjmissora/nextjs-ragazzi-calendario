@@ -25,7 +25,7 @@ export default function RubroFilter() {
   }
 
   return (
-    <ul className="flex flex-col gap-3 bg-slate-800 p-8">
+    <ul className="flex flex-col gap-3">
       {
         filters.map(filter =>
           <li

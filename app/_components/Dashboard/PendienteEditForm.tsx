@@ -66,12 +66,12 @@ export default function PendienteEditForm({pendiente, sectoresReset}: {pendiente
             return {...updateResponse, error: serverAction?.error}
         else {
             toast.success("Pago editado con exito")
-            router.push("/")
+            router.push("/realizados")
 
             toast.custom((t:any) => (
                 <div className="flex flex-col">
-                    <ToastWithConfirm t={t} title={"pendiente"} content={JSON.stringify(pendiente)}/>
-                    <ToastWithConfirm t={t} title={"new pendiente"} content={JSON.stringify(newPendiente)}/>
+                    <ToastWithConfirm t={t} title={"pendiente anterior"} content={JSON.stringify(pendiente)}/>
+                    <ToastWithConfirm t={t} title={"pendiente nuevo"} content={JSON.stringify(newPendiente)}/>
                 </div>
             ))
           

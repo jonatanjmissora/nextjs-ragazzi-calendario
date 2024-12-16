@@ -1,5 +1,4 @@
 import { getCachedPendientes } from "@/app/_lib/db/pendientes.db"
-import RubroFilter from "./RubroFilter"
 import PendientesList from "./PendientesList"
 
 export default async function Dashboard({ rubroFilter }: { rubroFilter: string }) {
@@ -11,6 +10,7 @@ export default async function Dashboard({ rubroFilter }: { rubroFilter: string }
 
   return (
     <article className="h-full flex">
+
       <div className="h-full overflow-y-scroll flex-1 px-40 py-12">
         <table className="table">
           {/* head */}
@@ -30,8 +30,6 @@ export default async function Dashboard({ rubroFilter }: { rubroFilter: string }
           </tbody>
         </table>
       </div>
-
-      <RubroFilter />
 
     </article>
   )

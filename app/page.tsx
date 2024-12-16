@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Dashboard from "./_components/Dashboard/Dashboard";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
@@ -6,7 +7,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ [
 
   return (
     <section className="w-full h-[95dvh]">
-      <Dashboard rubroFilter={rubroFilter} />
+      <Link href={"/pendientes"}>Realiados</Link>
     </section>
   );
 }
