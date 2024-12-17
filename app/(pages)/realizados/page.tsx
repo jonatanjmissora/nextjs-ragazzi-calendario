@@ -21,20 +21,20 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
   const pagosRealizados = await getCachedRealizados()
   const filteredRealizados = getFilteredRealizados(pagosRealizados, dateFilter, rubroFilter)
 
-  const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado"]
+  const tableHeader = ["histo", "vencimiento", "rubro", "sector", "monto", "pagado"]
 
   return (
     <section className="w-full main-height flex">
 
       <aside className='bg-slate-800 flex flex-col gap-4 justify-center items-center leftAside-width'>
-        <Suspense fallback={<p>Loading...Aside Skelton</p>} >
+        <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
           <LeftAsideRealizados dateFilter={dateFilter} />
         </Suspense>
       </aside>
 
       <Suspense fallback={<p>Loading...Table Skelton</p>} >
         <PagosTable tableHeader={tableHeader}>
-          <RealizadosList realizados={filteredRealizados} />
+          <RealizadosList realizados={filteredRealizados} allRealizados={pagosRealizados} />
         </PagosTable>
       </Suspense>
 

@@ -23,7 +23,7 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
     <section className="w-full main-height flex">
 
       <aside className='bg-slate-800 flex flex-col gap-4 justify-center items-center leftAside-width'>
-        <Suspense fallback={<p>Loading...Dashboard Skelton</p>} >
+        <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
           <LeftAsidePendientes />
         </Suspense>
       </aside>
