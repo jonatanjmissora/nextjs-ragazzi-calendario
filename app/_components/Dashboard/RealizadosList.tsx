@@ -1,10 +1,9 @@
-import { Suspense } from "react";
 import { RealizadoType } from "@/app/_lib/schema/realizado.type";
 
 export default function RealizadosList({ realizados }: { realizados: RealizadoType[] }) {
 
   return (
-    <Suspense fallback={<p>Loading...Pagos Skelton</p>}>
+    <>
       {
         realizados.map(realizado =>
 
@@ -17,6 +16,6 @@ export default function RealizadosList({ realizados }: { realizados: RealizadoTy
           </tr>
         )
       }
-    </Suspense>
+    </>
   )
 }

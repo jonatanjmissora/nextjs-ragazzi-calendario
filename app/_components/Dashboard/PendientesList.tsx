@@ -1,10 +1,9 @@
 import { PendienteType } from "@/app/_lib/schema/pendientes.type";
 import PagoAction from "./PagoAction";
-import { Suspense } from "react";
 
 export default function PendientesList({ pendientes }: { pendientes: PendienteType[] }) {
   return (
-    <Suspense fallback={<p>Loading...Pagos Skelton</p>}>
+    <>
       {
         pendientes.map(pendiente =>
 
@@ -17,6 +16,6 @@ export default function PendientesList({ pendientes }: { pendientes: PendienteTy
           </tr>
         )
       }
-    </Suspense>
+    </>
   )
 }

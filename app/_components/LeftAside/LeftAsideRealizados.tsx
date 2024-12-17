@@ -1,34 +1,85 @@
-import { getLocaleDate } from '@/app/_lib/utils/getActualDate'
-import React from 'react'
+"use client"
 
-export default function LeftAsideRealizados({yearFilter, monthFilter}:{yearFilter: number, monthFilter: number}) {
+import { usePathname, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
+
+export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string }) {
 
   const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
   const anios = [2023, 2024, 2025]
+  const [yearFilter, monthFilter] = dateFilter.split("-")
 
-  const handleMonthChange
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
-  const handleYearChange
-  
+  const handleMonthChange = (index: number) => {
+    const params = new URLSearchParams(searchParams);
+
+    const newMonthFilter = (index + 1) < 10 ? "0" + (index + 1) : (index + 1).toString()
+    console.log({ newMonthFilter })
+    console.log({ monthFilter })
+    if (newMonthFilter === monthFilter) return
+
+    const newDateFilter = yearFilter + "-" + newMonthFilter
+    params.set('dateFilter', newDateFilter);
+
+    router.replace(`${pathname}?${params.toString()}`);
+
+  }
+
+  const handleYearChange = (newYearFilter: string) => {
+    const params = new URLSearchParams(searchParams);
+    console.log({ newYearFilter })
+    if (newYearFilter === yearFilter) return
+
+    const newDateFilter = newYearFilter + "-" + monthFilter
+    params.set('dateFilter', newDateFilter);
+
+    router.replace(`${pathname}?${params.toString()}`);
+
+  }
 
   return (
     <aside className='p-4'>
-      <div>
-        <h2 className="label" >archivo</h2>
-        <div className='flex flex-wrap gap-2'>
+      <div className="flex flex-col gap-8">
+        <div>
 
-          {
-            meses.map(mes => <span className={`font-bold tracking-wider border border-slate-500 text-slate-500 p-1 rounded-lg hover:text-slate-300 hover:border-slate-300 ${mes === meses[monthFilter] && "bg-slate-400 text-slate-900"}`} key={mes}>{mes}</span>)
-          }
+          <h2 className="label" >archivo</h2>
+          <div className='flex flex-wrap gap-2'>
 
+            {
+              meses.map((mes, index) =>
+                <span
+                  className={`w-[45%] font-bold tracking-wider border border-slate-500 text-slate-500 p-1 rounded-lg hover:text-slate-300 hover:border-slate-300 ${mes === meses[+monthFilter - 1] && "bg-slate-400 text-slate-900"}`}
+                  key={mes}
+                  onClick={() => handleMonthChange(index)}
+                >
+                  {mes}
+                </span>)
+            }
+
+          </div>
         </div>
 
-        <label className='label' htmlFor='anio'>año</label>
-        <select className='text-slate-500 p-1 bg-transparent w-1/2 border-b border-slate-500' name="anio" id="anio" defaultValue={yearFilter.toString()}>
-          {
-           anios.map(anio => <option key={anio}>{anio}</option>) 
-          }
-        </select>
+        <div className="w-[45%]">
+          <label className='label' htmlFor='anio'>año</label>
+          <select
+            className='text-slate-500 p-1 bg-transparent w-full border-b border-slate-500'
+            onClick={(e) => handleYearChange(e.currentTarget.value)}
+            name="anio"
+            id="anio"
+            defaultValue={yearFilter.toString()}>
+            {
+              anios.map(anio =>
+                <option
+                  key={anio}
+                >
+                  {anio}
+                </option>)
+            }
+          </select>
+        </div>
       </div>
     </aside>
   )

@@ -3,7 +3,7 @@ import { RealizadoType } from "../schema/realizado.type"
 import getDatabase from "./connect"
 
 export const getRealizados = async () => {
-  await new Promise(res => setTimeout(res, 5000))
+  // await new Promise(res => setTimeout(res, 5000))
   const db = await getDatabase()
   return await db.collection<RealizadoType>("PagosRealizados").find().sort({ "vencimiento": 1 }).toArray()
 }
