@@ -8,8 +8,6 @@ export default function RegisterForm() {
 
   const [formState, formAction, isPending] = useActionState(register, null);
 
-  // console.log({formState})
-
   return (
     <form action={formAction} className='flex flex-col gap-4 w-[20rem]'>
 
