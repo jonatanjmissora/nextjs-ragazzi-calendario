@@ -14,19 +14,8 @@ export const getFilteredPagos = (realizados: RealizadoType[], rubroFilter: strin
         return filteredRubro.filter(pago => pago.vencimiento.includes(yearMonthFilter))
     }
 
-    else {
-
-        if (!desdeFilter && !hastaFilter) return filteredRubro
-
-        if (desdeFilter && hastaFilter)
-            return filteredRubro.filter(pago => pago.vencimiento >= desdeFilter && pago.vencimiento <= hastaFilter)
-
-        if (desdeFilter && !hastaFilter)
-            return filteredRubro.filter(pago => pago.vencimiento === desdeFilter)
-
-        if (!desdeFilter && hastaFilter)
-            return filteredRubro.filter(pago => pago.vencimiento === hastaFilter)
-
+    else if (desdeFilter && hastaFilter) {
+        return filteredRubro.filter(pago => pago.vencimiento >= desdeFilter && pago.vencimiento <= hastaFilter)
     }
 
 }

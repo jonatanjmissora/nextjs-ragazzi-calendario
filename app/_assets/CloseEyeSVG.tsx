@@ -1,4 +1,3 @@
-import React from 'react'
 
 export default function CloseEyeSVG({ className, currentColor }: { className?: string, currentColor?: string }) {
   return (

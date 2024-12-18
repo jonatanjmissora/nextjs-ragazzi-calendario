@@ -8,11 +8,11 @@ export default async function LeftAsideAdmin({ desdeFilter, hastaFilter, rubroFi
   const sectoresConstant = await getCachedSectoresConstant()
 
   return (
-    <>
+    <aside className="flex justify-center items-center flex-col gap-20 w-full">
       <FiltrosFecha desdeFilter={desdeFilter} hastaFilter={hastaFilter} />
 
       <FiltrosCategoria rubroFilter={rubroFilter} sectorFilter={sectorFilter} sectoresConstant={sectoresConstant[0].sectores} />
 
-    </>
+    </aside>
   )
 }

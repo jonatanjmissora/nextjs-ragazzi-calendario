@@ -44,7 +44,7 @@ export const pagarPendienteAction = async (pendiente: PendienteType) => {
     revalidateTag("pendientes")
     revalidateTag("realizados")
 
-    return { success: true, error: "" }
+    return { success: true, errors: "" }
   } catch (error) {
     failObject.errors = `server-error: ${JSON.stringify(error)}`
     return failObject

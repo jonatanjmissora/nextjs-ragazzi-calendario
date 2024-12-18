@@ -37,24 +37,24 @@ export default function FiltrosCategoria({ rubroFilter, sectorFilter, sectoresCo
 
 
   return (
-    <>
+    <div className="w-3/4 flex flex-col gap-4">
       <h2>Filtros categoria</h2>
 
-      <div className="w-3/4">
-        <h3>rubro</h3>
+      <div className="w-full">
+        <label className="label">rubro</label>
         <select name="rubro" className="select w-full" defaultValue={rubroFilter} onChange={(e) => handleRubroChange(e.currentTarget.value)}>
           {rubros.map(rubro => <option key={rubro} className="option" value={rubro}>{rubro}</option>)}
         </select>
       </div>
 
-      <div className="w-3/4">
-        <h3>sector</h3>
+      <div className="w-full">
+        <label className="label">sector</label>
         <select name="sector" className="select w-full" defaultValue={sectorFilter} onChange={(e) => handleSectorChange(e.currentTarget.value)}>
           {
             sectoresConstant.map(sector => <option key={sector} className="option">{sector}</option>)
           }
         </select>
       </div>
-    </>
+    </div>
   )
 }

@@ -12,7 +12,7 @@ export default function PendientesList({ pendientes }: { pendientes: PendienteTy
             <td>{pendiente.rubro}</td>
             <td>{pendiente.sector}</td>
             <td>{pendiente.monto}</td>
-            <td><PagoAction pendiente={pendiente} /></td>
+            <td className="px-0"><PagoAction pendiente={pendiente} /></td>
           </tr>
         )
       }
