@@ -34,7 +34,7 @@ type UpdateResponseType = {
 
 export default function PendienteEditForm({ pendiente, sectoresReset }: { pendiente: PendienteType, sectoresReset: SectoresType[] }) {
 
-    const { _id, vencimiento, rubro, sector, monto } = pendiente
+    const { vencimiento, rubro, sector, monto } = pendiente
     const router = useRouter()
     const [currentRubro, setCurrentRubro] = useState<string>(pendiente.rubro)
     const sectores = sectoresReset.find(r => r._id === currentRubro)?.sectores
@@ -42,6 +42,7 @@ export default function PendienteEditForm({ pendiente, sectoresReset }: { pendie
     const [formState, formAction, isPending] = useActionState(async (prevState: UpdateResponseType, formData: FormData) => {
 
         const newPendiente = Object.fromEntries(formData.entries()) as PendienteType
+        newPendiente._id = newPendiente.vencimiento + "-" + newPendiente.rubro + "-" + newPendiente.sector
         const updateResponse = {
             success: false,
             prevState: newPendiente,
@@ -52,12 +53,12 @@ export default function PendienteEditForm({ pendiente, sectoresReset }: { pendie
 
         //validacion cliente
         const { success, error } = pendienteSchema.safeParse(newPendiente)
+
         if (!success) {
             const errors = error.flatten().fieldErrors
             updateResponse.error = errors.monto ? errors.monto[0] : ""
             return updateResponse
         }
-
         const serverAction = sameId(pendiente, newPendiente)
             ? await editarPendienteAction(newPendiente)
             : await editarNewPendienteAction(pendiente._id, newPendiente)
@@ -89,7 +90,6 @@ export default function PendienteEditForm({ pendiente, sectoresReset }: { pendie
 
             <form action={formAction} className="w-max flex flex-col gap-4 min-w-80">
                 <Link className="btn btn-primary w-max" href={"/"}>Volver</Link>
-                <input className="hidden" type="text" name="_id" id="_id" defaultValue={_id} />
                 <input className="input" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
 
                 <select

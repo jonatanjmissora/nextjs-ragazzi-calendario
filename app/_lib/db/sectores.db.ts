@@ -23,3 +23,23 @@ export const getCachedSectoresActuales = unstable_cache(async () => {
         revalidate: 3600,
     }
 )
+
+export type SectoresConstantType = {
+    _id: string;
+    sectores: string[];
+}
+
+export async function getSectoresConstant() {
+    const db = await getDatabase()
+    return await db.collection<SectoresConstantType>("ConstantAdminSectores").find().toArray()
+}
+
+export const getCachedSectoresConstant = unstable_cache(async () => {
+    return await getSectoresConstant()
+},
+    ["sectoresConstant"],
+    {
+        tags: ["sectoresConstant"],
+        revalidate: 3600,
+    }
+)

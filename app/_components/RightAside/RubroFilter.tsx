@@ -4,13 +4,15 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 export default function RubroFilter() {
 
-  // const [actualFilter, setActualFilter] = useState<string>("todos")
-  const filters = ["todo", "ragazzi", "patricios", "palihue", "jmolina"]
-
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const rubroFilter = searchParams.get("rubroFilter") || "todo"
+  if (pathname.includes("/admin")) return
+
+  // const [actualFilter, setActualFilter] = useState<string>("todos")
+  const filters = ["todos", "ragazzi", "patricios", "palihue", "jmolina"]
+
+  const rubroFilter = searchParams.get("rubroFilter") || "todos"
 
   const handleClick = (filterName: string) => {
     const params = new URLSearchParams(searchParams);

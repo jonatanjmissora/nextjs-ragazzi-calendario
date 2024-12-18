@@ -50,13 +50,14 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
 
             {
               meses.map((mes, index) =>
-                <span
-                  className={`w-[45%] font-bold tracking-wider border border-slate-500 text-slate-500 p-1 rounded-lg hover:text-slate-300 hover:border-slate-300 ${mes === meses[+monthFilter - 1] && "bg-slate-400 text-slate-900"}`}
+                <div
+                  className={`flex justify-between w-[45%] font-bold tracking-wider border border-slate-500 text-slate-500 p-1 rounded-lg hover:text-slate-300 hover:border-slate-300 ${mes === meses[+monthFilter - 1] && "bg-slate-400 text-slate-900"}`}
                   key={mes}
                   onClick={() => handleMonthChange(index)}
                 >
-                  {mes}
-                </span>)
+                  <span>{mes}</span>
+                  <span>{index + 1}</span>
+                </div>)
             }
 
           </div>

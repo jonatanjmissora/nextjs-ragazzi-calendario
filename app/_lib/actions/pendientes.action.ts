@@ -7,7 +7,7 @@ import { pendienteSchema, PendienteType } from "../schema/pendientes.type"
 import { localeStringToDBDate } from "../utils/date.toLocaleString_to_dbDate"
 import { getErrorMessage } from "../utils/getErrorMessage"
 
-export const getPendienteByIdAction= async (id: string) => {
+export const getPendienteByIdAction = async (id: string) => {
   return await getPendienteByIdDB(id)
 }
 
@@ -23,10 +23,11 @@ export const pagarPendienteAction = async (pendiente: PendienteType) => {
   }
 
   //server-valiation
-  const { success, data, error } = pendienteSchema.safeParse(pendiente)
+  const { success, error } = pendienteSchema.safeParse(pendiente)
   if (!success) {
-   const errors = error.flatten().fieldErrors
-   return { success: false, error: `server-error: ${JSON.stringify(errors)}`}
+    const errors = error.flatten().fieldErrors
+    failObject.errors = `server-error: ${JSON.stringify(errors)}`
+    return failObject
   }
 
   try {
@@ -43,9 +44,10 @@ export const pagarPendienteAction = async (pendiente: PendienteType) => {
     revalidateTag("pendientes")
     revalidateTag("realizados")
 
-    return {success: true, error: ""}
+    return { success: true, error: "" }
   } catch (error) {
-    return {success: false, error: `server-error: ${getErrorMessage(error)}`}
+    failObject.errors = `server-error: ${JSON.stringify(error)}`
+    return failObject
   }
 
 }
@@ -54,39 +56,39 @@ export const pagarPendienteAction = async (pendiente: PendienteType) => {
 export const eliminarPendienteAction = async (id: string) => {
   try {
     const res = await eliminarPendienteDB(id)
-    if(!res.success) {
+    if (!res.success) {
       throw new Error(res.error)
     }
 
     revalidateTag("pendientes")
-    return {success: true, error: ""}
+    return { success: true, error: "" }
 
   } catch (error) {
-    return {success: false, error: `server-error: ${getErrorMessage(error)}`}
+    return { success: false, error: `server-error: ${getErrorMessage(error)}` }
   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarPendienteAction = async (newPendiente: PendienteType) => {
 
-   //server-valiation
-   const { success, data, error } = pendienteSchema.safeParse(newPendiente)
-   if (!success) {
+  //server-valiation
+  const { success, data, error } = pendienteSchema.safeParse(newPendiente)
+  if (!success) {
     const errors = error.flatten().fieldErrors
-    return { success: false, error: `server-error: ${JSON.stringify(errors)}`}
-   }
+    return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
+  }
 
   try {
     const res = await editarPendienteDB(data)
-    if(!res.success) {
+    if (!res.success) {
       throw new Error(res.error)
     }
 
     revalidateTag("pendientes")
-    return {success: true, error: ""}
+    return { success: true, error: "" }
 
   } catch (error) {
-    return {success: false, error: `server-error: ${getErrorMessage(error)}`}
+    return { success: false, error: `server-error: ${getErrorMessage(error)}` }
   }
 }
 
@@ -96,24 +98,24 @@ export const editarNewPendienteAction = async (id: string, newPendiente: Pendien
   //server-valiation
   const { success, data, error } = pendienteSchema.safeParse(newPendiente)
   if (!success) {
-   const errors = error.flatten().fieldErrors
-   return { success: false, error: `server-error: ${JSON.stringify(errors)}`}
+    const errors = error.flatten().fieldErrors
+    return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
   }
 
   try {
     const deleteResponse = await eliminarPendienteDB(id)
-    if(!deleteResponse.success) throw new Error(deleteResponse.error)
+    if (!deleteResponse.success) throw new Error(deleteResponse.error)
 
-  const insertResponse = await insertarPendienteDB(data)
-  if (!insertResponse.success) {
-    throw new Error(insertResponse.error)
-  }
+    const insertResponse = await insertarPendienteDB(data)
+    if (!insertResponse.success) {
+      throw new Error(insertResponse.error)
+    }
 
-  revalidateTag("pendientes")
-  return {success: true, error: ""}
+    revalidateTag("pendientes")
+    return { success: true, error: "" }
 
   } catch (error) {
-    return {success: false, error: `server-error: ${getErrorMessage(error)}`}
+    return { success: false, error: `server-error: ${getErrorMessage(error)}` }
   }
 
 }
