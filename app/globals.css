@@ -2,11 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --main-height: 93dvh;
   --leftAside-width: 20dvw;
+  --table-width: 68dvw;
   --rightAside-width: 12dvw;
 }
 
@@ -26,8 +33,13 @@ body {
 .leftAside-width {
   width: var(--leftAside-width)
 }
+
 .rightAside-width {
   width: var(--rightAside-width)
+}
+
+.table-width {
+  width: var(--table-width);
 }
 
 .main-height {
