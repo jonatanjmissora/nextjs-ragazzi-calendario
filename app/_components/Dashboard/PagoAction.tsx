@@ -44,12 +44,6 @@ const Modal = ({ pendiente }: { pendiente: PendienteType }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 
-  const handleClick = () => {
-    //eliminar sector de la base de datos
-    dialogRef.current?.showModal()
-
-  }
-
   const handleCloseYes = async (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault()
     dialogRef.current?.close()
@@ -68,7 +62,7 @@ const Modal = ({ pendiente }: { pendiente: PendienteType }) => {
 
   return (
     <>
-      <button className="" onClick={handleClick}>
+      <button className="" onClick={() => dialogRef.current?.showModal()}>
         <TrashSVG className='size-6' currentColor='#88000075' />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="modal bg-black/50 backdrop-blur-sm">
@@ -76,7 +70,7 @@ const Modal = ({ pendiente }: { pendiente: PendienteType }) => {
           <h3 className="font-bold text-lg">{`¿ Seguro desea elimiar ${pendiente._id} ?`}</h3>
           <div className="modal-action">
             <form onSubmit={handleCloseYes} method="dialog flex">
-              <button className="btn btn-primary w-[6rem] mx-6" type="submit" >Si</button>
+              <button className="btn btn-primary w-[6rem]" type="submit" >Si</button>
               <button onClick={() => dialogRef.current?.close()} type="button" className="btn btn-error w-[6rem] mx-6">No</button>
             </form>
           </div>

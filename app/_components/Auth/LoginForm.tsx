@@ -8,8 +8,13 @@ import { login } from '@/app/_lib/actions/user.action';
 
 export default function LoginForm() {
 
+  const [errors, setErrors] = useState({ username: "", userpassword: "" })
+  const [inputsValues, setInputsValues] = useState<>({ username: "", userpassword: "" })
   const [showPassword, setShowPassword] = useState<boolean>(false)
-  const [formState, formAction, isPending] = useActionState(login, null);
+
+  const [formState, formAction, isPending] = useActionState(async (prevState, formData: FormData) => {
+
+  }, null);
 
   return (
     <div className='w-[20rem] h-full flex justify-center items-center'>
@@ -23,8 +28,8 @@ export default function LoginForm() {
           name="username"
           type="text"
           placeholder="Usuario"
-          defaultValue={formState?.prevState?.username} />
-        <p className='text-orange-500 italic min-h-6'>{formState?.errors.username}</p>
+          defaultValue={inputsValues?.username} />
+        <p className='text-orange-500 italic min-h-6'>{errors.username}</p>
         <div className='relative flex items-center justify-end'>
 
           <input
@@ -33,13 +38,13 @@ export default function LoginForm() {
             name="userpassword"
             type={showPassword ? "text" : "password"}
             placeholder="Contraseña"
-            defaultValue={formState?.prevState?.userpassword} />
+            defaultValue={inputsValues?.userpassword} />
 
           <button className="p-2 absolute right-4" type="button" onClick={() => setShowPassword(prev => !prev)}>
             {showPassword ? <CloseEyeSVG className='size-6' currentColor='white' /> : <OpenEyeSVG className='size-6' currentColor='white' />}
           </button>
         </div>
-        <p className='text-orange-500 italic min-h-6'>{formState?.errors.userpassword}</p>
+        <p className='text-orange-500 italic min-h-6'>{errors.userpassword}</p>
         <button className='btn btn-primary tracking-wide font-semibold'>{isPending ? <span className="loading loading-spinner"></span> : "Ingresar"}</button>
 
         <div className="w-full flex justify-end">
