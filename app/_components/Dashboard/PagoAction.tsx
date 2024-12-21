@@ -3,7 +3,7 @@
 import { eliminarPendienteAction, pagarPendienteAction } from '@/app/_lib/actions/pendientes.action'
 import { PendienteType } from '@/app/_lib/schema/pendientes.type'
 import Link from 'next/link'
-import React from 'react'
+import React, { useRef } from 'react'
 import toast from 'react-hot-toast'
 import ToastWithConfirm from '../ToastWithConfirm'
 import EditSVG from '@/app/_assets/EditSVG'
@@ -25,7 +25,35 @@ export default function PagoAction({ pendiente }: { pendiente: PendienteType }) 
     else toast.error(res.errors)
   }
 
-  const handleEliminar = async () => {
+  return (
+    <div className='flex justify-between items-center gap-1'>
+      <button onClick={handlePagar}><DollarSVG className='size-6' currentColor='#00800075' /></button>
+      <Modal pendiente={pendiente} />
+      <Link href={{
+        pathname: '/pendientes/edit',
+        query: { id: pendiente._id },
+      }}
+      >
+        <EditSVG className='size-6' currentColor='#aaaaaa75' />
+      </Link>
+    </div>
+  )
+}
+
+const Modal = ({ pendiente }: { pendiente: PendienteType }) => {
+
+  const dialogRef = useRef<HTMLDialogElement>(null)
+
+  const handleClick = () => {
+    //eliminar sector de la base de datos
+    dialogRef.current?.showModal()
+
+  }
+
+  const handleCloseYes = async (event: React.FormEvent<HTMLFormElement>) => {
+    event?.preventDefault()
+    dialogRef.current?.close()
+
     const res = await eliminarPendienteAction(pendiente._id)
     if (res?.success) {
       toast.success("Pago borrado")
@@ -39,16 +67,21 @@ export default function PagoAction({ pendiente }: { pendiente: PendienteType }) 
   }
 
   return (
-    <div className='flex justify-between items-center gap-1'>
-      <button onClick={handlePagar}><DollarSVG className='size-6' currentColor='#00800075' /></button>
-      <button onClick={handleEliminar}><TrashSVG className='size-6' currentColor='#88000075' /></button>
-      <Link href={{
-        pathname: '/pendientes/edit',
-        query: { id: pendiente._id },
-      }}
-      >
-        <EditSVG className='size-6' currentColor='#aaaaaa75' />
-      </Link>
-    </div>
+    <>
+      <button className="" onClick={handleClick}>
+        <TrashSVG className='size-6' currentColor='#88000075' />
+      </button>
+      <dialog ref={dialogRef} id="my_modal_1" className="modal bg-black/50 backdrop-blur-sm">
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">{`¿ Seguro desea elimiar ${pendiente._id} ?`}</h3>
+          <div className="modal-action">
+            <form onSubmit={handleCloseYes} method="dialog flex">
+              <button className="btn btn-primary w-[6rem] mx-6" type="submit" >Si</button>
+              <button onClick={() => dialogRef.current?.close()} type="button" className="btn btn-error w-[6rem] mx-6">No</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </>
   )
 }
