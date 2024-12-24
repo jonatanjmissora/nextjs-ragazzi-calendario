@@ -83,10 +83,9 @@ export const register = async (prevState: ResponseType, formData: FormData) => {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const login = async function (prevState: ResponseType, formData: FormData) {
+export const login = async function (loginUser: UserType) {
 
-  const username = formData.get("username")?.toString() || ""
-  const userpassword = formData.get("userpassword")?.toString() || ""
+  const { username, userpassword } = loginUser
 
   const loginResponse = {
     success: false,
