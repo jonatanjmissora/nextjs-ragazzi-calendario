@@ -17,8 +17,6 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
     const params = new URLSearchParams(searchParams);
 
     const newMonthFilter = (index + 1) < 10 ? "0" + (index + 1) : (index + 1).toString()
-    console.log({ newMonthFilter })
-    console.log({ monthFilter })
     if (newMonthFilter === monthFilter) return
 
     const newDateFilter = yearFilter + "-" + newMonthFilter
@@ -30,7 +28,6 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
 
   const handleYearChange = (newYearFilter: string) => {
     const params = new URLSearchParams(searchParams);
-    console.log({ newYearFilter })
     if (newYearFilter === yearFilter) return
 
     const newDateFilter = newYearFilter + "-" + monthFilter
