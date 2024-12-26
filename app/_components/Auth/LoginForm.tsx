@@ -7,7 +7,6 @@ import OpenEyeSVG from '@/app/_assets/OpenEyeSVG';
 import { login } from '@/app/_lib/actions/user.action';
 import { userSchema, UserType } from '@/app/_lib/schema/user.type';
 import { useRouter } from 'next/navigation';
-import { string } from 'zod';
 
 type LoginRespType = {
   success: boolean;
@@ -24,38 +23,31 @@ export default function LoginForm() {
 
     const { username, userpassword } = Object.fromEntries(formData.entries()) as { username: string, userpassword: string }
 
-    if(!username || !userpassword) 
-      return { 
-        success: false, 
-        prevState: { username, userpassword }, 
-        errors: { username: "campo requerido", userpassword: "campo requerido" } 
-      }
-
     const user = { username, userpassword } as UserType
 
     //client validation
-    const {success, data, error} = userSchema.safeParse(user)
-    if(!success) {
-      const {username: usernameError, userpassword: userpasswordError} = error.flatten().fieldErrors
-      return { 
-        success: false, 
-        prevState: { username, userpassword }, 
-        errors: { 
-          username: usernameError ? usernameError[0] : "", 
-          userpassword: userpasswordError ? userpasswordError[0] : "" 
-        } 
+    const { success, data, error } = userSchema.safeParse(user)
+    if (!success) {
+      const { username: usernameError, userpassword: userpasswordError } = error.flatten().fieldErrors
+      return {
+        success: false,
+        prevState: { username, userpassword },
+        errors: {
+          username: usernameError ? usernameError[0] : "",
+          userpassword: userpasswordError ? userpasswordError[0] : ""
+        }
       }
     }
 
     const response = await login(data)
 
-    if(!response.success) {
+    if (!response.success) {
       return {
         success: false,
         prevState: { username, userpassword },
         errors: { ...response.errors }
       }
-    } 
+    }
 
     router.push('/pendientes')
     return { success: true, prevState: { username, userpassword }, errors: { username: "", userpassword: "" } }

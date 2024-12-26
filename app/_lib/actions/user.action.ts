@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs"
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getErrorMessage } from "../utils/getErrorMessage";
-import { userSchema, UserType } from "../schema/user.type";
+import { userSchema, UserType, UserWithIdType } from "../schema/user.type";
 import setUserToCookie from "../utils/setUserToCookie";
 import { getCollection } from "../db/connect";
 
@@ -17,7 +17,7 @@ export type ResponseType = {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const getUserByName = async (name: string) => {
   const usersCollection = await getCollection("users")
-  return await usersCollection.findOne({ username: name }) as UserType
+  return await usersCollection.findOne({ username: name }) as UserWithIdType
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

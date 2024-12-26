@@ -11,8 +11,6 @@ const passwordValidation = new RegExp(
 
 export const userSchema = z.object({
 
-  _id: z.instanceof(ObjectId).optional(),
-
   username: z
     .string()
     .trim()
@@ -29,3 +27,5 @@ export const userSchema = z.object({
 })
 
 export type UserType = z.infer<typeof userSchema>
+
+export type UserWithIdType = UserType & { _id: ObjectId }
