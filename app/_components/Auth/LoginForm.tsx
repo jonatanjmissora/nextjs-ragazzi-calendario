@@ -26,7 +26,7 @@ export default function LoginForm() {
     const user = { username, userpassword } as UserType
 
     //client validation
-    const { success, data, error } = userSchema.safeParse(user)
+    const { success, error } = userSchema.safeParse(user)
     if (!success) {
       const { username: usernameError, userpassword: userpasswordError } = error.flatten().fieldErrors
       return {
@@ -39,7 +39,7 @@ export default function LoginForm() {
       }
     }
 
-    const response = await login(data)
+    const response = await login(user)
 
     if (!response.success) {
       return {
