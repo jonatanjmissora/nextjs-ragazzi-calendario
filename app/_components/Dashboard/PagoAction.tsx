@@ -27,7 +27,7 @@ export default function PagoAction({ pendiente }: { pendiente: PendienteType }) 
 
   return (
     <div className='flex justify-between items-center gap-1'>
-      <button onClick={handlePagar}><DollarSVG className='size-6' currentColor='#00800075' /></button>
+      <button onClick={handlePagar}><DollarSVG className='size-6 text-[#00800075] hover:text-[#008000]' currentColor='currentColor' /></button>
       <Modal pendiente={pendiente} />
       <Link href={{
         pathname: '/pendientes/edit',

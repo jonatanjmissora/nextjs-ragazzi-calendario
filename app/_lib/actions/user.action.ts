@@ -34,10 +34,10 @@ export const logout = async function () {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const register = async (prevState: ResponseType, formData: FormData) => {
+export const register = async (registerUser: UserType) => {
 
-  const username = formData.get("username") as string
-  let userpassword = formData.get("userpassword") as string
+  const { username } = registerUser
+  let { userpassword } = registerUser
 
   const registerResponse = {
     success: false,
@@ -55,8 +55,8 @@ export const register = async (prevState: ResponseType, formData: FormData) => {
   }
 
   // verificacion de nombre registrado
-  const user = await getUserByName(username)
-  if (user) {
+  const actualUser = await getUserByName(username)
+  if (actualUser) {
     registerResponse.errors.username = "nombre ya registrado"
     registerResponse.errors.userpassword = ""
     return registerResponse
@@ -74,7 +74,8 @@ export const register = async (prevState: ResponseType, formData: FormData) => {
       return registerResponse
     }
     await setUserToCookie(username, res.insertedId.toString())
-    redirect("/")
+    registerResponse.success = true
+    redirect("/pendientes")
   } catch (error) {
     registerResponse.errors.userpassword = getErrorMessage(error)
     return registerResponse
@@ -103,21 +104,21 @@ export const login = async function (loginUser: UserType) {
   }
 
   // verificacion de usuario registrado
-  const user = await getUserByName(username)
-  if (!user) {
+  const actualUser = await getUserByName(username)
+  if (!actualUser) {
     loginResponse.errors.username = "usuario no registrado"
     loginResponse.errors.userpassword = ""
     return loginResponse
   }
 
   // verificacion de contraseña almacenada
-  const matchOrNot = bcrypt.compareSync(userpassword, user.userpassword)
+  const matchOrNot = bcrypt.compareSync(userpassword, actualUser.userpassword)
   if (!matchOrNot) {
     loginResponse.errors.userpassword = "La contraseña no corresponde al usuario"
     return loginResponse
   }
 
   // si todo esta bien
-  await setUserToCookie(username, user._id?.toString())
+  await setUserToCookie(username, actualUser._id?.toString())
   redirect("/pendientes")
 }
