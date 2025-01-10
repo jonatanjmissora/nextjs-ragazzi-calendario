@@ -14,16 +14,16 @@ export const userSchema = z.object({
   username: z
     .string()
     .trim()
-    .min(1, { message: "El nombre debe tener mas de 1 caracter" })
-    .max(20, { message: "El nombre no puede tener mas de 20 caracteres" })
-    .regex(nameValidation, { message: "El nombre no es valido" }),
+    .min(1, { message: "Complete el nombre" })
+    .max(11, { message: "11 caracteres máximo" })
+    .regex(nameValidation, { message: "Caracteres no permitidos" }),
 
   userpassword: z
     .string()
     .trim()
-    .min(1, { message: "La contraseña debe tener mas de 1 caracter" })
-    .max(10, { message: "La contraseña no puede tener mas de 10 caracteres" })
-    .regex(passwordValidation, { message: "La contraseña no es valida" })
+    .min(1, { message: "Complete la contraseña" })
+    .max(15, { message: "15 caracteres máximo" })
+    .regex(passwordValidation, { message: "Caracteres no permitidos" })
 })
 
 export type UserType = z.infer<typeof userSchema>

@@ -91,30 +91,27 @@ export const login = async function (loginUser: UserType) {
   const loginResponse = {
     success: false,
     prevState: { username, userpassword },
-    errors: { username: "", userpassword: "" }
+    message: ""
   }
 
   // server-validation
-  const { success, error } = userSchema.safeParse({ username, userpassword })
+  const { success } = userSchema.safeParse({ username, userpassword })
   if (!success) {
-    const { username: userError, userpassword: passwordError } = error.flatten().fieldErrors
-    if (userError) loginResponse.errors.username = userError[0]
-    if (passwordError) loginResponse.errors.userpassword = passwordError[0]
+    loginResponse.message = "Error validando servidor"
     return loginResponse
   }
 
   // verificacion de usuario registrado
   const actualUser = await getUserByName(username)
   if (!actualUser) {
-    loginResponse.errors.username = "usuario no registrado"
-    loginResponse.errors.userpassword = ""
+    loginResponse.message = "Usuario no registrado"
     return loginResponse
   }
 
   // verificacion de contraseña almacenada
   const matchOrNot = bcrypt.compareSync(userpassword, actualUser.userpassword)
   if (!matchOrNot) {
-    loginResponse.errors.userpassword = "La contraseña no corresponde al usuario"
+    loginResponse.message = "La contraseña no corresponde al usuario"
     return loginResponse
   }
 
