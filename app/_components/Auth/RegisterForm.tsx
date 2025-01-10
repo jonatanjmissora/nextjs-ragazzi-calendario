@@ -1,29 +1,85 @@
 "use client"
 
-import { useRegisterActionState } from '@/app/_lib/hooks/useRegisterActionState';
 import Link from 'next/link';
+import { useState, useRef, startTransition } from "react";
+import CloseEyeSVG from '@/app/_assets/CloseEyeSVG';
+import OpenEyeSVG from '@/app/_assets/OpenEyeSVG';
+import { useLoginActionState } from '@/app/_lib/hooks/useLoginActionState';
+import { InputRHF } from '../InputRHF';
+import { useForm } from 'react-hook-form';
+import { userSchema, UserType } from '@/app/_lib/schema/user.type';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useRegisterActionState } from '@/app/_lib/hooks/useRegisterActionState';
 
 export default function RegisterForm() {
 
+  const formRef = useRef<HTMLFormElement>(null);
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const { register, formState: { errors }, handleSubmit } = useForm<UserType>({ resolver: zodResolver(userSchema) })
   const [formState, formAction, isPending] = useRegisterActionState()
+  const onSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault()
+    handleSubmit(() => {
+      startTransition(() => formAction(new FormData(formRef.current!)))
+    })(evt);
+  }
+
 
   return (
-    <form action={formAction} className='flex flex-col gap-4 w-[20rem]'>
+    <div className='w-[20rem] h-full flex justify-center items-center'>
 
-      <h2 className='text-3xl font-semibold'>Datos del registro</h2>
-      <input autoComplete='off' name="username" type="text" placeholder="Usuario" className="input input-bordered w-full max-w-xs" defaultValue={formState?.prevState?.username} />
-      <p className='text-orange-500 italic min-h-6'>{formState?.errors?.username}</p>
-      <input autoComplete='off' name="userpassword" type="password" placeholder="Contraseña" className="input input-bordered w-full max-w-xs" defaultValue={formState?.prevState?.userpassword} />
-      <p className='text-orange-500 italic min-h-6'>{formState?.errors?.userpassword}</p>
-      <button className='btn btn-primary tracking-wide font-semibold'>{isPending ? <span className="loading loading-spinner"></span> : "Registrar"}</button>
+      <form
+        ref={formRef}
+        className='flex flex-col w-full gap-2'
+        action={formAction}
+        onSubmit={onSubmit}
+      >
 
-      <div className="w-full flex gap-3 justify-end">
-        <span>¿Ya tienes cuenta?</span>
-        <Link className='link link-primary' href="/">Ingresa</Link>
-      </div>
+        <h2 className='text-3xl font-semibold h-20 leading-[5rem]'>Registra tus datos</h2>
 
-    </form>
+        <div className='flex flex-col gap-1 h-20'>
+          <InputRHF
+            className=""
+            label="username"
+            defaultValue={formState?.prevState.username}
+            error={errors.username?.message}
+            register={register}
+          />
+        </div>
+
+        <div className='relative h-20'>
+
+          <div className='flex flex-col gap-1'>
+            <InputRHF
+              className="w-full"
+              label="userpassword"
+              type={showPassword ? "text" : "password"}
+              defaultValue={formState?.prevState.userpassword}
+              error={errors.userpassword?.message}
+              register={register}
+            />
+          </div>
+
+          <button className="p-2 absolute right-4 top-1" type="button" onClick={() => setShowPassword(prev => !prev)}>
+            {showPassword ? <CloseEyeSVG className='size-6' currentColor='#666' /> : <OpenEyeSVG className='size-6' currentColor='#666' />}
+          </button>
+        </div>
+
+        <div className='h-20'>
+          <button
+            type="submit"
+            className='btn btn-primary tracking-wide font-semibold w-full'>
+            {isPending ? <span className="loading loading-spinner"></span> : "Registrar"}
+          </button>
+          <p className='text-orange-700'>{formState?.message}</p>
+        </div>
+
+        <div className="w-full flex gap-2 justify-end">
+          <span>¿Tienes una cuenta?</span>
+          <Link className='link link-primary' href="/">Ingresa</Link>
+        </div>
+
+      </form>
+    </div>
   )
 }
-
-

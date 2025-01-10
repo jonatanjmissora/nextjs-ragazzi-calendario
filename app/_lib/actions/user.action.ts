@@ -42,23 +42,20 @@ export const register = async (registerUser: UserType) => {
   const registerResponse = {
     success: false,
     prevState: { username, userpassword },
-    errors: { username: "", userpassword: "" }
+    message: ""
   }
 
   // server-validation
-  const { success, error } = userSchema.safeParse({ username, userpassword })
+  const { success } = userSchema.safeParse({ username, userpassword })
   if (!success) {
-    const { username: userError, userpassword: passwordError } = error.flatten().fieldErrors
-    if (userError) registerResponse.errors.username = userError[0]
-    if (passwordError) registerResponse.errors.userpassword = passwordError[0]
+    registerResponse.message = "Error validando servidor"
     return registerResponse
   }
 
   // verificacion de nombre registrado
   const actualUser = await getUserByName(username)
   if (actualUser) {
-    registerResponse.errors.username = "nombre ya registrado"
-    registerResponse.errors.userpassword = ""
+    registerResponse.message = "Nombre ya registrado"
     return registerResponse
   }
 
@@ -70,14 +67,15 @@ export const register = async (registerUser: UserType) => {
     //insertar en DB
     const res = await insertUser({ username, userpassword })
     if (!res.insertedId.toString()) {
-      registerResponse.errors.userpassword = "Error en el servidor"
+      registerResponse.message = "Error en el servidor"
       return registerResponse
     }
     await setUserToCookie(username, res.insertedId.toString())
     registerResponse.success = true
-    redirect("/pendientes")
+    registerResponse.message = "Usuario registrado"
+    return registerResponse
   } catch (error) {
-    registerResponse.errors.userpassword = getErrorMessage(error)
+    registerResponse.message = getErrorMessage(error)
     return registerResponse
   }
 

@@ -1,4 +1,3 @@
-// import { useRouter } from "next/navigation";
 import { useActionState } from "react";
 import { UserType } from "../schema/user.type";
 import { login } from "../actions/user.action";
@@ -9,7 +8,6 @@ type LoginRespType = {
 } | null
 
 export const useLoginActionState = () => {
-  // const router = useRouter()
 
   const [formState, formAction, isPending] = useActionState(async (prevState: LoginRespType, formData: FormData) => {
 
