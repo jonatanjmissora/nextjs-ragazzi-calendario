@@ -67,7 +67,8 @@ const Modal = ({ pendiente }: { pendiente: PendienteType }) => {
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="modal bg-black/50 backdrop-blur-sm">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">{`¿ Seguro desea elimiar ${pendiente._id} ?`}</h3>
+          <h3 className="font-bold text-lg">¿ Seguro desea elimiar</h3>
+          <h3 className="font-bold text-lg">${pendiente._id} ?</h3>
           <div className="modal-action">
             <form onSubmit={handleCloseYes} method="dialog flex">
               <button className="btn btn-primary w-[6rem]" type="submit" >Si</button>

@@ -6,8 +6,6 @@ PENDIENTES:
 
 1 formulario de agregar pagos
 
-2 editar pago: un confirmar, y un boton de cancelar
-
 REALIZADOS:
 
 1 no anda el listado de pendientes

@@ -1,6 +1,6 @@
 import { PagosTable } from "@/app/_components/Dashboard/Pagos_Table"
 import RealizadosList from "@/app/_components/Dashboard/Realizados_List"
-import LeftAsideRealizados from "@/app/_components/LeftAside/LeftAsideRealizados"
+import LeftAsideRealizados from "@/app/_components/LeftAside/LeftAside_Realizados"
 import { getCachedRealizados } from "@/app/_lib/db/realizados.db"
 import { getFilteredPagos } from "@/app/_lib/utils/getFilteredPagos"
 import { getLocaleDate } from "@/app/_lib/utils/getActualDate"
