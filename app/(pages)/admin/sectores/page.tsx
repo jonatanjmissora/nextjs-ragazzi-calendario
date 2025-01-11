@@ -1,4 +1,4 @@
-import AdminSectoresList from "@/app/_components/Dashboard/AdminSectoresList";
+import AdminSectoresList from "@/app/_components/Dashboard/Admin_SectoresList";
 import { getCachedSectoresActuales, getCachedSectoresReset } from "@/app/_lib/db/sectores.db";
 import { SectoresType } from "@/app/_lib/schema/sectores.type";
 import Link from "next/link";

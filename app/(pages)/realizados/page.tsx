@@ -1,5 +1,5 @@
-import { PagosTable } from "@/app/_components/Dashboard/PagosTable"
-import RealizadosList from "@/app/_components/Dashboard/RealizadosList"
+import { PagosTable } from "@/app/_components/Dashboard/Pagos_Table"
+import RealizadosList from "@/app/_components/Dashboard/Realizados_List"
 import LeftAsideRealizados from "@/app/_components/LeftAside/LeftAsideRealizados"
 import { getCachedRealizados } from "@/app/_lib/db/realizados.db"
 import { getFilteredPagos } from "@/app/_lib/utils/getFilteredPagos"

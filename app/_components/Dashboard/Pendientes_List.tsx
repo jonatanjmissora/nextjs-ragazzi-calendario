@@ -1,5 +1,5 @@
 import { PendienteType } from "@/app/_lib/schema/pendientes.type";
-import PagoAction from "./PagoAction";
+import PagoAction from "./Pago_Action";
 
 export default function PendientesList({ pendientes }: { pendientes: PendienteType[] }) {
   return (

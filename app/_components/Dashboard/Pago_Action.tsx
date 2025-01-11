@@ -26,7 +26,7 @@ export default function PagoAction({ pendiente }: { pendiente: PendienteType }) 
   }
 
   return (
-    <div className='flex justify-between items-center gap-1'>
+    <div className='flex justify-around items-center gap-1'>
       <button onClick={handlePagar}><DollarSVG className='size-6 text-[#00800075] hover:text-[#008000]' currentColor='currentColor' /></button>
       <Modal pendiente={pendiente} />
       <Link href={{
@@ -34,7 +34,7 @@ export default function PagoAction({ pendiente }: { pendiente: PendienteType }) 
         query: { id: pendiente._id },
       }}
       >
-        <EditSVG className='size-6' currentColor='#aaaaaa75' />
+        <EditSVG className='size-6 text-[#aaaaaa75] hover:text-[#aaaaaa]' currentColor='currentColor' />
       </Link>
     </div>
   )
@@ -63,7 +63,7 @@ const Modal = ({ pendiente }: { pendiente: PendienteType }) => {
   return (
     <>
       <button className="" onClick={() => dialogRef.current?.showModal()}>
-        <TrashSVG className='size-6' currentColor='#88000075' />
+        <TrashSVG className='size-6 text-[#88000075] hover:text-[#880000]' currentColor='currentColor' />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="modal bg-black/50 backdrop-blur-sm">
         <div className="modal-box">

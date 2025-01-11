@@ -1,8 +1,32 @@
+GENERAL:
+
 hacer middleware para el auth
 
-falta corregir los links de admin, y darle funcionalidad a agregar y quitar sectores
+PENDIENTES:
 
-en admin, no tengo la logica para editar pago
+1 formulario de agregar pagos
 
-falta hacer las client-validation del registro
+2 editar pago: un confirmar, y un boton de cancelar
+
+REALIZADOS:
+
+1 no anda el listado de pendientes
+
+ADMIN:
+
+1 agregar icono de borrar
+
+2 funcionalidad de editar
+
+ADMIN/SECTORES
+
+1 cambiar icono de X por el de la basura
+
+2 funcionalidad de agregar sector
+
+ADMIN/WEBLINKS
+
+1 todo
+
+
 

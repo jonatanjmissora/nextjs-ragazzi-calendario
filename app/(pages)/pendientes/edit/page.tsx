@@ -1,4 +1,4 @@
-import PendienteEditForm from "@/app/_components/Dashboard/PendienteEditForm"
+import PendienteEditForm from "@/app/_components/Dashboard/Pendiente_EditForm"
 import { getPendienteByIdAction } from "@/app/_lib/actions/pendientes.action"
 import { getSectoresReset } from "@/app/_lib/db/sectores.db"
 import { PendienteType } from "@/app/_lib/schema/pendientes.type"

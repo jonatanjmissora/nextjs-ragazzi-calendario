@@ -1,5 +1,5 @@
-import AdminList from '@/app/_components/Dashboard/AdminList'
-import { PagosTable } from '@/app/_components/Dashboard/PagosTable'
+import AdminList from '@/app/_components/Dashboard/Admin_List'
+import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table'
 import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAsideAdmin'
 import { getCachedRealizados } from '@/app/_lib/db/realizados.db'
 import { RealizadoType } from '@/app/_lib/schema/realizado.type'

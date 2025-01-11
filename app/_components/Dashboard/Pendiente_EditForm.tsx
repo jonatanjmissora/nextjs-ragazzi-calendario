@@ -32,6 +32,8 @@ import { PendienteType } from "@/app/_lib/schema/pendientes.type";
 export default function PendienteEditForm({ pendiente, sectoresReset }: { pendiente: PendienteType, sectoresReset: SectoresType[] }) {
 
     const { vencimiento, rubro, sector, monto } = pendiente
+    const [showConfirm, setShowConfirm] = useState<boolean>(false)
+    const [inputValues, setInputValues] = useState({vencimiento: "", rubro: "", sector: "", monto: ""})
     const [currentRubro, setCurrentRubro] = useState<string>(pendiente.rubro)
     const sectores = sectoresReset.find(r => r._id === currentRubro)?.sectores
 
@@ -85,11 +87,34 @@ export default function PendienteEditForm({ pendiente, sectoresReset }: { pendie
         setCurrentRubro(e.currentTarget.value)
     }
 
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setShowConfirm(true)
+        const formData = new FormData(e.currentTarget)
+        const newPago = Object.fromEntries(formData.entries()) as PendienteType
+        setInputValues(newPago)
+    }
+
     return (
         <div className="container h-full flex justify-center items-center">
 
-            <form action={formAction} className="w-max flex flex-col gap-4 min-w-80">
-                <Link className="btn btn-primary w-max" href={"/"}>Volver</Link>
+            {
+                showConfirm
+
+                ? 
+                <form action="formAction">
+                    <h2>Editar pago pendiente</h2>
+                    <div className="flex gap-4 justify-center items-center">
+                        <span>vencimiento : </span>
+                        <input className="text-center bg-transparent focus:outline-none" type="text" defaultValue={pendiente.vencimiento} readOnly/>
+                        <input className="text-center bg-transparent focus:outline-none" type="text" defaultValue={inputValues.vencimiento} readOnly/>
+                    </div>
+                    <button>Confirma</button>
+                </form>
+
+                :
+                <form onSubmit={onSubmit}  className="w-max flex flex-col gap-4 min-w-80">
+                <Link className="link w-max" href={"/"}>Volver</Link>
                 <input className="input" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
 
                 <select
@@ -112,10 +137,13 @@ export default function PendienteEditForm({ pendiente, sectoresReset }: { pendie
 
                 {formState?.error ? <span className="text-red-700 italic">{formState.error}</span> : <span className="text-transparent">g</span>}
 
-                <button className="btn btn-primary w-max ml-auto" type="submit" disabled={isPending}>{isPending ? "..." : "Editar"}</button>
-
+                <div className="w-full flex gap-1">
+                    <button className="btn btn-primary flex-1" type="submit" >Editar</button>
+                    <Link href={"/"} className="btn btn-outline flex-1" type="button">Cancelar</Link>
+                </div>
 
             </form>
+            }
         </div>
     )
 }
