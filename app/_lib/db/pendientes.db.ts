@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache"
 import getDatabase from "./connect"
-import { PendienteType } from "../schema/pendientes.type"
+import { NewPendienteType, PendienteType } from "../schema/pendientes.type"
 
 export const getPendienteByIdDB = async (_id: string) => {
   const db = await getDatabase()
@@ -23,7 +23,7 @@ export const getCachedPendientes = unstable_cache(async () => {
   }
 )
 
-export const insertarPendienteDB = async (pendiente: PendienteType) => {
+export const insertarPendienteDB = async (pendiente: NewPendienteType) => {
   // const db = await getDatabase()
   // const res = await db.collection<PendienteType>("PagosPendientes").insertOne(pendiente)
   // if (!res?.insertedId.toString()) {

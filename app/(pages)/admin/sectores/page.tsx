@@ -1,5 +1,5 @@
 import AdminSectoresList from "@/app/_components/Dashboard/Admin_SectoresList";
-import { getCachedSectoresActuales, getCachedSectoresReset } from "@/app/_lib/db/sectores.db";
+import { getCachedSectoresActualesAction, getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action";
 import { SectoresType } from "@/app/_lib/schema/sectores.type";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -8,8 +8,8 @@ export default async function AdminSectoresPage({ searchParams }: { searchParams
 
   const type = (await searchParams)?.type || "actuales"
   const actualSectores = type === "actuales"
-    ? await getCachedSectoresActuales() as SectoresType[]
-    : await getCachedSectoresReset() as SectoresType[]
+    ? await getCachedSectoresActualesAction() as SectoresType[]
+    : await getCachedSectoresResetAction() as SectoresType[]
 
   return (
     <section className="w-full main-height flex">

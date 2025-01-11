@@ -3,7 +3,7 @@
 import { revalidateTag } from "next/cache"
 import { editarPendienteDB, eliminarPendienteDB, getPendienteByIdDB, insertarPendienteDB } from "../db/pendientes.db"
 import { insertarRealizadoDB } from "../db/realizados.db"
-import { pendienteSchema, PendienteType } from "../schema/pendientes.type"
+import { NewPendienteType, pendienteSchema, PendienteType } from "../schema/pendientes.type"
 import { localeStringToDBDate } from "../utils/date.toLocaleString_to_dbDate"
 import { getErrorMessage } from "../utils/getErrorMessage"
 
@@ -118,4 +118,20 @@ export const editarNewPendienteAction = async (id: string, newPendiente: Pendien
     return { success: false, error: `server-error: ${getErrorMessage(error)}` }
   }
 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export const insertarPendienteAction = async (newPendiente: NewPendienteType) => {
+  try {
+    const res = await insertarPendienteDB(newPendiente)
+    if (!res.success) {
+      throw new Error(res.error)
+    }
+
+    revalidateTag("pendientes")
+    return { success: true, error: "" }
+
+  } catch (error) {
+    return { success: false, error: `server-error: ${getErrorMessage(error)}` }
+  }
 }
