@@ -1,7 +1,7 @@
 import AdminList from '@/app/_components/Dashboard/Admin_List'
 import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table'
 import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAsideAdmin'
-import { getCachedRealizados } from '@/app/_lib/db/realizados.db'
+import { getCachedRealizadosAction } from '@/app/_lib/actions/realizados.action'
 import { RealizadoType } from '@/app/_lib/schema/realizado.type'
 import { getActualDateStr } from '@/app/_lib/utils/getActualDate'
 import { getFilteredPagos } from '@/app/_lib/utils/getFilteredPagos'
@@ -20,7 +20,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const hastaFilter = (await searchParams)?.hastaFilter || actualDate
   const desdeFilter = (await searchParams)?.desdeFilter || "2020-01-01"
 
-  const pagosRealizados = await getCachedRealizados()
+  const pagosRealizados = await getCachedRealizadosAction()
   const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, undefined, hastaFilter, desdeFilter) as RealizadoType[]
 
   const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado", "edit"]

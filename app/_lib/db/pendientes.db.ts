@@ -7,22 +7,14 @@ export const getPendienteByIdDB = async (_id: string) => {
   return await db.collection<PendienteType>("PagosPendientes").findOne({ _id })
 }
 
-export const getPendientes = async () => {
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const getPendientesDB = async () => {
   // await new Promise(res => setTimeout(res, 5000))
   const db = await getDatabase()
   return await db.collection<PendienteType>("PagosPendientes").find().sort({ "vencimiento": 1 }).toArray()
 }
 
-export const getCachedPendientes = unstable_cache(async () => {
-  return await getPendientes()
-},
-  ["pendientes"],
-  {
-    tags: ["pedientes"],
-    revalidate: 3600,
-  }
-)
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
 export const insertarPendienteDB = async (pendiente: NewPendienteType) => {
   // const db = await getDatabase()
   // const res = await db.collection<PendienteType>("PagosPendientes").insertOne(pendiente)
@@ -32,6 +24,7 @@ export const insertarPendienteDB = async (pendiente: NewPendienteType) => {
   return { success: true, error: "" }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 export const eliminarPendienteDB = async (id: string) => {
   // const db = await getDatabase()
   // const res = await db.collection<PendienteType>("PagosPendientes").deleteOne({ _id: id })
@@ -41,6 +34,7 @@ export const eliminarPendienteDB = async (id: string) => {
   return { success: true, error: "" }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarPendienteDB = async (newPendiente: PendienteType) => {
   // const db = await getDatabase()
   // const res = await db.collection<PendienteType>("PagosPendientes").updateOne(
@@ -55,6 +49,7 @@ export const editarPendienteDB = async (newPendiente: PendienteType) => {
   return { success: true, error: "" }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarNewPenidenteDB = (id: string, newPendiente: PendienteType) => {
   return { success: true, error: "" }
 }

@@ -4,17 +4,17 @@ hacer middleware para el auth
 
 PENDIENTES:
 
-1 formulario de agregar pagos
 
 REALIZADOS:
 
-1 no anda el listado de pendientes
 
 ADMIN:
 
-1 agregar icono de borrar
+2 funcionalidad de editar con formulario y confirmacion
 
-2 funcionalidad de editar
+3 funcionalidad de borrar, con confirmacion
+
+4 acomodar el filtro, de sectores, segun el rubro
 
 ADMIN/SECTORES
 

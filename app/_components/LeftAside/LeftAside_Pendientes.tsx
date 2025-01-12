@@ -20,7 +20,7 @@ export default async function Aside() {
 
               <input type="radio" name="my-accordion-4" />
               <div className="collapse-title text-xl font-medium">{rubro._id} ({rubro.sectores.length})</div>
-              <Sectores rubro={rubro._id} sectores={rubro.sectores} />
+              {<Sectores rubro={rubro._id} sectores={rubro.sectores} />}
             </li>
           )
         }

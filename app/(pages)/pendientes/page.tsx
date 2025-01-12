@@ -1,7 +1,7 @@
 import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table';
 import PendientesList from '@/app/_components/Dashboard/Pendientes_List';
 import LeftAsidePendientes from '@/app/_components/LeftAside/LeftAside_Pendientes';
-import { getCachedPendientes } from '@/app/_lib/db/pendientes.db';
+import { getCachedPendientesAction } from '@/app/_lib/actions/pendientes.action';
 import getUserFromCookie from '@/app/_lib/utils/getUserFromCookies';
 import { redirect } from "next/navigation";
 import { Suspense } from 'react';
@@ -12,7 +12,7 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
   if (!user) redirect("/")
 
   const rubroFilter = (await searchParams)?.rubroFilter || "todo"
-  const pagosPendientes = await getCachedPendientes()
+  const pagosPendientes = await getCachedPendientesAction()
   const filteredPendientes = rubroFilter === "todo"
     ? pagosPendientes
     : pagosPendientes.filter(pago => pago.rubro === rubroFilter)

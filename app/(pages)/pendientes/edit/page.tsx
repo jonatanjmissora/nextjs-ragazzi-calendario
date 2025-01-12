@@ -1,6 +1,6 @@
 import PendienteEditForm from "@/app/_components/Dashboard/Pendiente_EditForm"
 import { getPendienteByIdAction } from "@/app/_lib/actions/pendientes.action"
-import { getSectoresReset } from "@/app/_lib/db/sectores.db"
+import { getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action"
 import { PendienteType } from "@/app/_lib/schema/pendientes.type"
 import getUserFromCookie from "@/app/_lib/utils/getUserFromCookies"
 import { redirect } from "next/navigation"
@@ -12,7 +12,7 @@ export default async function PendienteEditPage({ searchParams }: { searchParams
 
   const id = (await searchParams)?.id || ""
   const pendiente = await getPendienteByIdAction(id) as PendienteType
-  const sectoresReset = await getSectoresReset()
+  const sectoresReset = await getCachedSectoresResetAction()
 
   return (
     <section className="w-full main-height flex justify-center items-center">

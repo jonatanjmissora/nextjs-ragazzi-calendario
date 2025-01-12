@@ -30,11 +30,11 @@ export const Sectores = ({ rubro, sectores }: { rubro: "ragazzi" | "patricios" |
     }
 
     // quitar el sector del menu
-    const respDelete = await deleteSectorAction(rubro, sectores, newPendiente.sector)
-    if (!respDelete.success) {
-      setError("Error en el server")
-      return
-    }
+    // const respDelete = await deleteSectorAction(rubro, sectores, newPendiente.sector)
+    // if (!respDelete.success) {
+    //   setError("Error en el server")
+    //   return
+    // }
 
     // cerrar el Dropdown menu
     toast.success("Pago creado exitosamete")

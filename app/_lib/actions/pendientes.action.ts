@@ -1,7 +1,7 @@
 "use server"
 
-import { revalidateTag } from "next/cache"
-import { editarPendienteDB, eliminarPendienteDB, getPendienteByIdDB, insertarPendienteDB } from "../db/pendientes.db"
+import { revalidateTag, unstable_cache } from "next/cache"
+import { editarPendienteDB, eliminarPendienteDB, getPendienteByIdDB, getPendientesDB, insertarPendienteDB } from "../db/pendientes.db"
 import { insertarRealizadoDB } from "../db/realizados.db"
 import { NewPendienteType, pendienteSchema, PendienteType } from "../schema/pendientes.type"
 import { localeStringToDBDate } from "../utils/date.toLocaleString_to_dbDate"
@@ -10,6 +10,17 @@ import { getErrorMessage } from "../utils/getErrorMessage"
 export const getPendienteByIdAction = async (id: string) => {
   return await getPendienteByIdDB(id)
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  export const getCachedPendientesAction = unstable_cache(async () => {
+    return await getPendientesDB()
+  },
+    ["pendientes"],
+    {
+      tags: ["pendientes"],
+      revalidate: 3600,
+    }
+  )
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const pagarPendienteAction = async (pendiente: PendienteType) => {
