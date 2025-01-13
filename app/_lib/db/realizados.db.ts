@@ -1,7 +1,12 @@
-import { unstable_cache } from "next/cache"
 import { RealizadoType } from "../schema/realizado.type"
 import getDatabase from "./connect"
 
+export const getRealizadoByIdDB = async (_id: string) => {
+  const db = await getDatabase()
+  return await db.collection<RealizadoType>("PagosRealizados").findOne({ _id })
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 export const getRealizadosDB = async () => {
   // await new Promise(res => setTimeout(res, 5000))
   const db = await getDatabase()
@@ -23,4 +28,15 @@ export const eliminarRealizadoDB = async (id: string) => {
   //   return { success: false, error: "No se pudo elimianr el pago" }
   // } else
   return { success: true, error: "" }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const editarRealizadoDb = () => {
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const insertarRealizadoDb = () => {
+
 }

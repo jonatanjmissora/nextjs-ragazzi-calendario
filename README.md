@@ -14,8 +14,6 @@ ADMIN:
 
 3 funcionalidad de borrar, con confirmacion
 
-4 acomodar el filtro, de sectores, segun el rubro
-
 ADMIN/SECTORES
 
 1 cambiar icono de X por el de la basura
@@ -24,7 +22,15 @@ ADMIN/SECTORES
 
 ADMIN/WEBLINKS
 
-1 todo
+
+
+
+
+hacer: editarRealizadoDB e insertarRealizadoDB en realizados.db.ts
+
+y linkearlos a useRealizadoActionState.ts
+
+luego comprobar en /admin/realizado-edit y probar el form
 
 
 

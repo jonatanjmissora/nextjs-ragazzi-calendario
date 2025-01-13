@@ -7,6 +7,7 @@ import React, { useRef } from 'react'
 import toast from 'react-hot-toast'
 import ToastWithConfirm from '../ToastWithConfirm'
 import { eliminarRealizadoAction } from '@/app/_lib/actions/realizados.action'
+import Link from 'next/link'
 
 export default function AdminList({ realizados }: { realizados: RealizadoType[] }) {
   return (
@@ -34,7 +35,14 @@ const Pago = ({ realizado }
       <td>{realizado.sector}</td>
       <td>{realizado.monto}</td>
       <td>{realizado.pagado}</td>
-      <td><button><EditSVG className='size-6 text-[#aaaaaa75] hover:text-[#aaa]' currentColor={"currentColor"} /></button></td>
+      <td><Link href={{
+        pathname: '/pendientes/edit',
+        query: { id: realizado._id },
+      }}
+      >
+        <EditSVG className='size-6 text-[#aaaaaa75] hover:text-[#aaa]' currentColor={"currentColor"} />
+      </Link>
+      </td>
       {/* <td><Modal realizado={realizado} /></td> */}
     </tr>
   )
