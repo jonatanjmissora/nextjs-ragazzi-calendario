@@ -1,7 +1,7 @@
 import FiltrosFecha from "./FiltrosFecha"
 import FiltrosCategoria from "./FiltrosCategoria"
 import { getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action"
-import { getUniqueSectors } from "@/app/_lib/utils/getUniqueSectors"
+import { getUniqueSectors } from "@/app/_lib/utils/getUniqueSectors";
 
 type Rubros = {
   _id: string;
