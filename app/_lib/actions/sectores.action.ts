@@ -1,6 +1,6 @@
 import { revalidateTag, unstable_cache } from "next/cache"
 import { getErrorMessage } from "../utils/getErrorMessage"
-import { getSectoresActualesDB, getSectoresConstantDB, getSectoresResetDB, insertSectorDB, updateSectorDB } from "../db/sectores.db"
+import { getSectoresActualesDB, getSectoresResetDB, insertSectorDB, updateSectorDB } from "../db/sectores.db"
 
 export const getCachedSectoresResetAction = unstable_cache(async () => {
   return await getSectoresResetDB()
@@ -19,17 +19,6 @@ export const getCachedSectoresActualesAction = unstable_cache(async () => {
   ["sectores"],
   {
     tags: ["sectores"],
-    revalidate: 3600,
-  }
-)
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-export const getCachedSectoresConstantAction = unstable_cache(async () => {
-  return await getSectoresConstantDB()
-},
-  ["sectoresConstant"],
-  {
-    tags: ["sectoresConstant"],
     revalidate: 3600,
   }
 )

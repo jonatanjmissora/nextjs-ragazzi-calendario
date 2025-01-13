@@ -35,7 +35,7 @@ const Pago = ({ realizado }
       <td>{realizado.monto}</td>
       <td>{realizado.pagado}</td>
       <td><button><EditSVG className='size-6 text-[#aaaaaa75] hover:text-[#aaa]' currentColor={"currentColor"} /></button></td>
-      <td><Modal realizado={realizado} /></td>
+      {/* <td><Modal realizado={realizado} /></td> */}
     </tr>
   )
 }

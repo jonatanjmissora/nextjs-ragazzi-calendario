@@ -3,8 +3,8 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 const rubros = ["todos", "ragazzi", "patricios", "palihue", "jmolina"]
 
-export default function FiltrosCategoria({ rubroFilter, sectorFilter, sectoresConstant }: {
-  rubroFilter: string, sectorFilter: string, sectoresConstant: string[]
+export default function FiltrosCategoria({ rubroFilter, sectorFilter, sectoresDelRubro }: {
+  rubroFilter: string, sectorFilter: string, sectoresDelRubro: string[]
 }) {
 
   const router = useRouter()
@@ -51,7 +51,7 @@ export default function FiltrosCategoria({ rubroFilter, sectorFilter, sectoresCo
         <label className="label">sector</label>
         <select name="sector" className="select w-full" defaultValue={sectorFilter} onChange={(e) => handleSectorChange(e.currentTarget.value)}>
           {
-            sectoresConstant.map(sector => <option key={sector} className="option">{sector}</option>)
+            sectoresDelRubro.map(sector => <option key={sector} className="option">{sector}</option>)
           }
         </select>
       </div>

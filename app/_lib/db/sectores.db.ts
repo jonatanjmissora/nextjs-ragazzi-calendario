@@ -16,12 +16,6 @@ export async function getSectoresActualesDB() {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export async function getSectoresConstantDB() {
-    const db = await getDatabase()
-    return await db.collection<SectoresType>("ConstantAdminSectores").find().toArray()
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
 export const insertSectorDB = async (sector: string) => {
     // const db = await getDatabase()
     // const res = await db.collection<PendienteType>("PagosPendientes").insertOne(pendiente)
