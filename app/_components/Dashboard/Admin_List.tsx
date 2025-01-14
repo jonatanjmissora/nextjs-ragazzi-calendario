@@ -36,7 +36,7 @@ const Pago = ({ realizado }
       <td>{realizado.monto}</td>
       <td>{realizado.pagado}</td>
       <td><Link href={{
-        pathname: '/pendientes/edit',
+        pathname: '/admin/realizado-edit',
         query: { id: realizado._id },
       }}
       >

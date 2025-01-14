@@ -17,7 +17,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
 
   const actualDate = getActualDateStr()
   const yearAgo = getActualDateStr(getOneYearAgo())
-  console.log(actualDate, yearAgo)
+
   const rubroFilter = (await searchParams)?.rubroFilter || "todos"
   const sectorFilter = (await searchParams)?.sectorFilter || "todos"
   const hastaFilter = (await searchParams)?.hastaFilter || actualDate

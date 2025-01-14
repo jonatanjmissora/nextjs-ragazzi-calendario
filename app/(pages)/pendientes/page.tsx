@@ -11,9 +11,9 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
   const user = await getUserFromCookie()
   if (!user) redirect("/")
 
-  const rubroFilter = (await searchParams)?.rubroFilter || "todo"
+  const rubroFilter = (await searchParams)?.rubroFilter || "todos"
   const pagosPendientes = await getCachedPendientesAction()
-  const filteredPendientes = rubroFilter === "todo"
+  const filteredPendientes = rubroFilter === "todos"
     ? pagosPendientes
     : pagosPendientes.filter(pago => pago.rubro === rubroFilter)
 

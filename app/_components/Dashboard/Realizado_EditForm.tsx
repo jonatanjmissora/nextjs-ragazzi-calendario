@@ -11,6 +11,7 @@ export default function RealizadoEditForm({ realizado, sectoresReset }: { realiz
 
   return (
     <EditForm
+      pagoType={"realizado"}
       pago={realizado}
       sectoresReset={sectoresReset}
       formState={formState}

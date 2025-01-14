@@ -31,12 +31,21 @@ export const eliminarRealizadoDB = async (id: string) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarRealizadoDb = () => {
-
+export const editarRealizadoDb = (newRealizados: RealizadoType) => {
+ // const db = await getDatabase()
+  // const res = await db.collection<RealizadoType>("PagosRealizados").updateOne(
+  //   { _id: newRealizado._id },
+  //   {
+  //     $set: { "monto": newRealizado.monto }
+  //   }
+  // )
+  // if (res.modifiedCount !== 1) {
+  //   return { success: false, error: "No se pudo editar el pago" }
+  // } else
+  return { success: true, error: "" }
 }
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const insertarRealizadoDb = () => {
-
+export const insertarRealizadoDb = (id: string, newRealizado: RealizadoType) => {
+  return { success: true, error: "" }
 }

@@ -21,7 +21,6 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
   const dateFilter = (await searchParams)?.dateFilter || year.toString() + "-" + monthStr
 
   const pagosRealizados = await getCachedRealizadosAction() as RealizadoType[]
-  console.log(pagosRealizados.length)
   const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, dateFilter) as RealizadoType[]
 
   const tableHeader = ["histo", "vencimiento", "rubro", "sector", "monto", "pagado"]

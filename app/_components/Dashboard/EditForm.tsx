@@ -32,7 +32,7 @@ const noNewData = (prevData: PagoType, newPendiente: PagoType) => {
   )
 }
 
-export default function EditForm({ pago, sectoresReset, formState, formAction, isPending }: { pago: PagoType, sectoresReset: SectoresType[], formState: FormStateType, formAction: FormActionType, isPending: boolean }) {
+export default function EditForm({ pagoType, pago, sectoresReset, formState, formAction, isPending }: { pagoType: string, pago: PagoType, sectoresReset: SectoresType[], formState: FormStateType, formAction: FormActionType, isPending: boolean }) {
 
   const { vencimiento, rubro, sector, monto } = pago
   const [showConfirm, setShowConfirm] = useState<boolean>(false)
@@ -80,7 +80,7 @@ export default function EditForm({ pago, sectoresReset, formState, formAction, i
 
           :
           <form onSubmit={onSubmit} className="w-max flex flex-col gap-4 min-w-80">
-            <h2 className="text-2xl tracking-wider font-bold">Editar pago pendiente</h2>
+            <h2 className="text-2xl tracking-wider font-bold">Editar pago {pagoType}:</h2>
             <input className="input" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
 
             <select

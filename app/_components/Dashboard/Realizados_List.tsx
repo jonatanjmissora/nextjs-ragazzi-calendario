@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function RealizadosList({ realizados, allRealizados }: { realizados: RealizadoType[], allRealizados: RealizadoType[] }) {
 
-  const [actualRealizado, setActualRealizado] = useState<RealizadoType>(realizados[0])
+  const [actualRealizado, setActualRealizado] = useState<RealizadoType>(allRealizados[0])
 
   return (
     <>

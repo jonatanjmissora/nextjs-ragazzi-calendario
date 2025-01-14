@@ -11,6 +11,7 @@ export default function PendienteEditForm({ pendiente, sectoresReset }: { pendie
 
     return (
         <EditForm
+            pagoType={"pendiente"}
             pago={pendiente}
             sectoresReset={sectoresReset}
             formState={formState}
