@@ -1,6 +1,8 @@
+"use server"
+
 import { revalidateTag, unstable_cache } from "next/cache"
 import { getErrorMessage } from "../utils/getErrorMessage"
-import { getSectoresActualesDB, getSectoresResetDB, insertSectorDB, updateSectorDB } from "../db/sectores.db"
+import { getSectoresActualesDB, getSectoresResetDB, updateSectorDB } from "../db/sectores.db"
 
 export const getCachedSectoresResetAction = unstable_cache(async () => {
   return await getSectoresResetDB()
@@ -24,14 +26,15 @@ export const getCachedSectoresActualesAction = unstable_cache(async () => {
 )
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const insertSectorAction = async (newSector: string) => {
+export const updateSectorAction = async (rubro: string, newSectores: string[]) => {
+
   try {
-    const res = await insertSectorDB(newSector)
+    const res = await updateSectorDB(rubro, newSectores)
     if (!res.success) {
       throw new Error(res.error)
     }
 
-    revalidateTag("pendientes")
+    revalidateTag("sectores")
     return { success: true, error: "" }
 
   } catch (error) {
@@ -40,14 +43,14 @@ export const insertSectorAction = async (newSector: string) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const deleteSectorAction = async (rubro: string, sectores: string[], sector: string) => {
+export const deleteSectorAction = async (rubro: string, sectores: string[]) => {
   try {
-    const res = await updateSectorDB(rubro, sectores, sector)
+    const res = await updateSectorDB(rubro, sectores)
     if (!res.success) {
       throw new Error(res.error)
     }
 
-    revalidateTag("pendientes")
+    revalidateTag("sectores")
     return { success: true, error: "" }
 
   } catch (error) {

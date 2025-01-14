@@ -45,3 +45,5 @@ export const pendienteSchema = z.object({
 export type PendienteType = z.infer<typeof pendienteSchema>
 
 export type NewPendienteType = Omit<PendienteType, "_id">
+
+export type RubroType = "ragazzi" | "patricios" | "palihue" | "jmolina"

@@ -5,7 +5,7 @@ import { PendienteType } from '@/app/_lib/schema/pendientes.type'
 import Link from 'next/link'
 import React, { useRef } from 'react'
 import toast from 'react-hot-toast'
-import ToastWithConfirm from '../ToastWithConfirm'
+// import ToastWithConfirm from '../ToastWithConfirm'
 import EditSVG from '@/app/_assets/EditSVG'
 import TrashSVG from '@/app/_assets/TrashSVG'
 import DollarSVG from '@/app/_assets/DollarSVG'
@@ -16,11 +16,11 @@ export default function PagoAction({ pendiente }: { pendiente: PendienteType }) 
     const res = await pagarPendienteAction(pendiente)
     if (res?.success) {
       toast.success("Pago exitoso")
-      toast.custom((t: string) => (
-        <div className="flex flex-col">
-          <ToastWithConfirm t={t} title={"pendiente pagado"} content={JSON.stringify(pendiente)} />
-        </div>
-      ))
+      // toast.custom((t: string) => (
+      //   <div className="flex flex-col">
+      //     <ToastWithConfirm t={t} title={"pendiente pagado"} content={JSON.stringify(pendiente)} />
+      //   </div>
+      // ))
     }
     else toast.error(res.errors)
   }
@@ -51,11 +51,11 @@ const Modal = ({ pendiente }: { pendiente: PendienteType }) => {
     const res = await eliminarPendienteAction(pendiente._id)
     if (res?.success) {
       toast.success("Pago borrado")
-      toast.custom((t: string) => (
-        <div className="flex flex-col">
-          <ToastWithConfirm t={t} title={"pendiente eliminado"} content={JSON.stringify(pendiente)} />
-        </div>
-      ))
+      // toast.custom((t: string) => (
+      //   <div className="flex flex-col">
+      //     <ToastWithConfirm t={t} title={"pendiente eliminado"} content={JSON.stringify(pendiente)} />
+      //   </div>
+      // ))
     }
     else toast.error(res.error)
   }

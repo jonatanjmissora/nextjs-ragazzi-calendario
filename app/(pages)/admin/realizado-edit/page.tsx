@@ -13,7 +13,6 @@ export default async function RealizadosEditPage({ searchParams }: { searchParam
 
   const id = (await searchParams)?.id || ""
   const realizado = await getRealizadoByIdAction(id) as RealizadoType
-  console.log({realizado})
   const sectoresReset = await getCachedSectoresResetAction()
 
   return (

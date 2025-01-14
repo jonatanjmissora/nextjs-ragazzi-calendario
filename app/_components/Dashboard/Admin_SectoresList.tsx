@@ -1,14 +1,31 @@
 "use client"
 
 import PlusSVG from "@/app/_assets/PlusSVG";
+import TrashSVG from "@/app/_assets/TrashSVG";
+import { updateSectorAction } from "@/app/_lib/actions/sectores.action";
 import { SectoresType } from "@/app/_lib/schema/sectores.type";
 import { useRef } from "react";
 import toast from "react-hot-toast";
 
 export default function AdminSectoresList({ sectoresList }: { sectoresList: SectoresType[] }) {
 
-  const clientAction = async () => {
+  const clientAction = async (formData: FormData) => {
+    const rubro = formData.get("rubro") as string
+    const newSector = formData.get("newSector")?.toString().trim()
+    if (!newSector) return
 
+    const sectoresActual = sectoresList.filter(r => r._id === rubro)[0].sectores
+
+    if (sectoresActual.includes(newSector)) return
+
+    const newSectores = [...sectoresActual, newSector]
+
+    const serverResp = await updateSectorAction(rubro, newSectores)
+    if (!serverResp.success) {
+      toast.error("No fue posible agregar sector")
+      return
+    }
+    toast.success(`${newSector} añadido satisfactoriamente`)
   }
 
   return (
@@ -21,7 +38,8 @@ export default function AdminSectoresList({ sectoresList }: { sectoresList: Sect
             <div className="w-full flex justify-between items-center">
               <span className="text-xl font-bold">{rubro._id}</span>
               <form action={clientAction} className="flex gap-2">
-                <input type="text" className="bg-slate-700 border-b border-slate-400 text-center" placeholder="nuevo..." />
+                <input type="hidden" name="rubro" defaultValue={rubro._id} />
+                <input type="text" className="bg-slate-700 border-b border-slate-400 text-center" name="newSector" placeholder="nuevo..." />
                 <button className="">
                   <PlusSVG className="size-5 text-slate-500 hover:text-slate-200" currentColor="currentColor" />
                 </button>
@@ -58,7 +76,7 @@ const Modal = ({ sector }: { sector: string }) => {
   return (
     <>
       <button className="" onClick={() => dialogRef.current?.showModal()}>
-        <PlusSVG className="size-5 rotate-45 text-slate-400 hover:text-slate-200" currentColor="currentColor" />
+        <TrashSVG className="size-4 text-slate-400 hover:text-slate-200" currentColor="currentColor" />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="modal bg-black/50 backdrop-blur-sm">
         <div className="modal-box">

@@ -2,13 +2,13 @@
 
 import PlaySVG from "@/app/_assets/PlaySVG"
 import { insertarPendienteAction } from "@/app/_lib/actions/pendientes.action"
-import { deleteSectorAction } from "@/app/_lib/actions/sectores.action"
-import { NewPendienteType } from "@/app/_lib/schema/pendientes.type"
+import { updateSectorAction } from "@/app/_lib/actions/sectores.action"
+import { PendienteType, RubroType } from "@/app/_lib/schema/pendientes.type"
 import { getActualDateStr } from "@/app/_lib/utils/getActualDate"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-export const Sectores = ({ rubro, sectores }: { rubro: "ragazzi" | "patricios" | "palihue" | "jmolina", sectores: string[] }) => {
+export const Sectores = ({ rubro, sectores }: { rubro: RubroType, sectores: string[] }) => {
 
   const [actualSector, setActualSector] = useState<string>("")
   const [error, setError] = useState<string>("")
@@ -21,7 +21,8 @@ export const Sectores = ({ rubro, sectores }: { rubro: "ragazzi" | "patricios" |
       return
     }
     const formData = new FormData(e.currentTarget)
-    const newPendiente = Object.fromEntries(formData.entries()) as NewPendienteType
+    const newPendiente = Object.fromEntries(formData.entries()) as PendienteType
+    newPendiente._id = newPendiente.vencimiento + "-" + newPendiente.rubro + "-" + newPendiente.sector
 
     const resp = await insertarPendienteAction(newPendiente)
     if (!resp.success) {
@@ -29,12 +30,13 @@ export const Sectores = ({ rubro, sectores }: { rubro: "ragazzi" | "patricios" |
       return
     }
 
-    // quitar el sector del menu
-    // const respDelete = await deleteSectorAction(rubro, sectores, newPendiente.sector)
-    // if (!respDelete.success) {
-    //   setError("Error en el server")
-    //   return
-    // }
+    // actualizar el sector del menu
+    const newSectores = sectores.filter(sector => sector !== newPendiente.sector)
+    const respDelete = await updateSectorAction(rubro, newSectores)
+    if (!respDelete.success) {
+      setError("Error en el server")
+      return
+    }
 
     // cerrar el Dropdown menu
     toast.success("Pago creado exitosamete")

@@ -3,6 +3,7 @@ GENERAL:
 hacer middleware para el auth
 
 PENDIENTES:
+cambiar el menu acordion
 
 
 REALIZADOS:
@@ -16,14 +17,10 @@ ADMIN:
 
 ADMIN/SECTORES
 
-1 cambiar icono de X por el de la basura
-
-2 funcionalidad de agregar sector
-
 ADMIN/WEBLINKS
 
 
-
+VER TEMA de si es Realizado o Pendiente, en el EditForm, no me toma el pagado como type, ver si tengo que hacer un schema generico o y type para pagos
 
 
 hacer: editarRealizadoDB e insertarRealizadoDB en realizados.db.ts

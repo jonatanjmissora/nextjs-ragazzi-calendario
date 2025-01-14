@@ -1,3 +1,5 @@
+"use server"
+
 import { revalidateTag, unstable_cache } from "next/cache"
 import { eliminarRealizadoDB, getRealizadoByIdDB, getRealizadosDB, insertarRealizadoDB, editarRealizadoDb } from "../db/realizados.db"
 import { getErrorMessage } from "../utils/getErrorMessage"
@@ -36,52 +38,51 @@ export const eliminarRealizadoAction = async (id: string) => {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarRealizadoAction = async (newRealizado: RealizadoType) => {
-
   //server-valiation
-  // const { success, data, error } = realizadoSchema.safeParse(newRealizado)
-  // if (!success) {
-  //   const errors = error.flatten().fieldErrors
-  //   return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
-  // }
+  const { success, data, error } = realizadoSchema.safeParse(newRealizado)
+  if (!success) {
+    const errors = error.flatten().fieldErrors
+    return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
+  }
 
-  // try {
-  //   const res = await editarRealizadoDb(data)
-  //   if (!res.success) {
-  //     throw new Error(res.error)
-  //   }
+  try {
+    const res = await editarRealizadoDb(data)
+    if (!res.success) {
+      throw new Error(res.error)
+    }
 
-  //   revalidateTag("pendientes")
-  //   return { success: true, error: "" }
+    revalidateTag("realizados")
+    return { success: true, error: "" }
 
-  // } catch (error) {
-    return { success: false, error: `server-error: ` }
-  // }
+  } catch (error) {
+    return { success: false, error: JSON.stringify(error) + `server-error: ` }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarNewRealizadoAction = async (id: string, newRealizado: RealizadoType) => {
-
+  console.log("Editar con nuevo id")
   //server-valiation
-  // const { success, data, error } = realizadoSchema.safeParse(newRealizado)
-  // if (!success) {
-  //   const errors = error.flatten().fieldErrors
-  //   return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
-  // }
+  const { success, data, error } = realizadoSchema.safeParse(newRealizado)
+  if (!success) {
+    const errors = error.flatten().fieldErrors
+    return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
+  }
 
-  // try {
-  //   const deleteResponse = await eliminarRealizadoDB(id)
-  //   if (!deleteResponse.success) throw new Error(deleteResponse.error)
+  try {
+    const deleteResponse = await eliminarRealizadoDB(id)
+    if (!deleteResponse.success) throw new Error(deleteResponse.error)
 
-  //   const insertResponse = await insertarRealizadoDB(data)
-  //   if (!insertResponse.success) {
-  //     throw new Error(insertResponse.error)
-  //   }
+    const insertResponse = await insertarRealizadoDB(data)
+    if (!insertResponse.success) {
+      throw new Error(insertResponse.error)
+    }
 
-  //   revalidateTag("pendientes")
-  //   return { success: true, error: "" }
+    revalidateTag("realizados")
+    return { success: true, error: "" }
 
-  // } catch (error) {
-    return { success: false, error: `server-error: ` }
-  // }
+  } catch (error) {
+    return { success: false, error: JSON.stringify(error) + `server-error: ` }
+  }
 
 }

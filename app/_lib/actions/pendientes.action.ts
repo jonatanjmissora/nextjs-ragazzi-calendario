@@ -3,7 +3,7 @@
 import { revalidateTag, unstable_cache } from "next/cache"
 import { editarPendienteDB, eliminarPendienteDB, getPendienteByIdDB, getPendientesDB, insertarPendienteDB } from "../db/pendientes.db"
 import { insertarRealizadoDB } from "../db/realizados.db"
-import { NewPendienteType, pendienteSchema, PendienteType } from "../schema/pendientes.type"
+import { pendienteSchema, PendienteType } from "../schema/pendientes.type"
 import { localeStringToDBDate } from "../utils/date.toLocaleString_to_dbDate"
 import { getErrorMessage } from "../utils/getErrorMessage"
 
@@ -12,15 +12,15 @@ export const getPendienteByIdAction = async (id: string) => {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  export const getCachedPendientesAction = unstable_cache(async () => {
-    return await getPendientesDB()
-  },
-    ["pendientes"],
-    {
-      tags: ["pendientes"],
-      revalidate: 3600,
-    }
-  )
+export const getCachedPendientesAction = unstable_cache(async () => {
+  return await getPendientesDB()
+},
+  ["pendientes"],
+  {
+    tags: ["pendientes"],
+    revalidate: 3600,
+  }
+)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const pagarPendienteAction = async (pendiente: PendienteType) => {
@@ -132,7 +132,7 @@ export const editarNewPendienteAction = async (id: string, newPendiente: Pendien
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const insertarPendienteAction = async (newPendiente: NewPendienteType) => {
+export const insertarPendienteAction = async (newPendiente: PendienteType) => {
   try {
     const res = await insertarPendienteDB(newPendiente)
     if (!res.success) {

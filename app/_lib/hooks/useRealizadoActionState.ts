@@ -31,21 +31,21 @@ export const useRealizadoActionState = (realizado: RealizadoType) => {
       error: ""
     }
 
-    // const serverAction = sameId(realizado, newRealizado)
-    //   ? await editarRealizadoAction(newRealizado)
-    //   : await editarNewRealizadoAction(realizado._id, newRealizado)
+    const serverAction = sameId(realizado, newRealizado)
+      ? await editarRealizadoAction(newRealizado)
+      : await editarNewRealizadoAction(realizado._id, newRealizado)
 
-    // if (!serverAction?.success) {
-    //   toast.error("No fue posible actualizar")
-    //   return { ...updateResponse, error: serverAction?.error }
-    // }
-    // else {
+    if (!serverAction?.success) {
+      toast.error("No fue posible actualizar")
+      return { ...updateResponse, error: serverAction?.error }
+    }
+    else {
 
       toast.success("Pago actualizado")
       router.push("/admin")
 
       return { ...updateResponse, success: true }
-    // }
+    }
 
   },
     null

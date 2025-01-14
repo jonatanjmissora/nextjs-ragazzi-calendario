@@ -1,11 +1,13 @@
 "use client"
 
 import RightArrowSVG from "@/app/_assets/RightArrowSVG"
-import { PendienteType } from "@/app/_lib/schema/pendientes.type"
+import { PendienteType, RubroType } from "@/app/_lib/schema/pendientes.type"
 import { RealizadoType } from "@/app/_lib/schema/realizado.type"
 import { SectoresType } from "@/app/_lib/schema/sectores.type"
 import Link from "next/link"
 import { useState } from "react"
+
+type PType = "pendiente" | "realizado"
 
 type PagoType = PendienteType | RealizadoType
 
@@ -14,10 +16,11 @@ type FormStateType = {
   success: boolean;
   prevState: {
     _id: string;
-    rubro: "ragazzi" | "patricios" | "palihue" | "jmolina";
+    rubro: RubroType;
     sector: string;
     monto: string;
     vencimiento: string;
+    pagado?: string;
   };
 } | null
 
@@ -32,19 +35,24 @@ const noNewData = (prevData: PagoType, newPendiente: PagoType) => {
   )
 }
 
-export default function EditForm({ pagoType, pago, sectoresReset, formState, formAction, isPending }: { pagoType: string, pago: PagoType, sectoresReset: SectoresType[], formState: FormStateType, formAction: FormActionType, isPending: boolean }) {
+export default function EditForm({ pagoType, pago, sectoresReset, formState, formAction, isPending }: { pagoType: PType, pago: PagoType, sectoresReset: SectoresType[], formState: FormStateType, formAction: FormActionType, isPending: boolean }) {
 
   const { vencimiento, rubro, sector, monto } = pago
+  let pagado = ""
+  if (pagoType === "realizado") pagado = pago.pagado
   const [showConfirm, setShowConfirm] = useState<boolean>(false)
-  const [inputValues, setInputValues] = useState({ vencimiento: "", rubro: "", sector: "", monto: "" })
+  const [inputValues, setInputValues] = useState<RealizadoType | PendienteType>({ _id: "", vencimiento: "", rubro: "ragazzi", sector: "", monto: "", pagado: "" })
   const [currentRubro, setCurrentRubro] = useState<string>(pago.rubro)
   const sectores = sectoresReset.find(r => r._id === currentRubro)?.sectores
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    const newPago = Object.fromEntries(formData.entries()) as PendienteType
+    const newPago = Object.fromEntries(formData.entries()) as PendienteType | RealizadoType
+    newPago._id = newPago.vencimiento + "-" + newPago.rubro + "-" + newPago.sector
 
+    console.log({ pago })
+    console.log({ newPago })
     if (noNewData(pago, newPago)) return
     setShowConfirm(true)
     setInputValues(newPago)
@@ -64,6 +72,10 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
             <EditRow label={"rubro"} oldValue={pago.rubro} newValue={inputValues.rubro} />
             <EditRow label={"sector"} oldValue={pago.sector} newValue={inputValues.sector} />
             <EditRow label={"monto"} oldValue={pago.monto} newValue={inputValues.monto} />
+            {
+              pagoType === "realizado" &&
+              <EditRow label={"pagado"} oldValue={pago.pagado} newValue={inputValues.pagado} />
+            }
 
             <div className="flex gap-1 mt-20">
               <button type="button" className="btn btn-outline flex-1" onClick={() => setShowConfirm(false)}>Cancelar</button>
@@ -101,7 +113,12 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
 
             <input className="input" type="number" name="monto" id="monto" defaultValue={monto} />
 
-            {formState?.error ? <span className="text-red-700 italic">{formState.error}</span> : <span className="text-transparent">g</span>}
+            {
+              pagoType === "realizado" &&
+              <input className="input" type="text" name="pagado" id="pagado" defaultValue={pagado} />
+            }
+
+            {formState?.error ? <span className="text-red-700 italic">{formState.error}</span> : <span className="text-transparent"></span>}
 
             <div className="w-full flex gap-1">
               <button className="btn btn-primary flex-1" type="submit" >Editar</button>
@@ -127,3 +144,5 @@ const EditRow = ({ label, oldValue, newValue }: { label: string, oldValue: strin
     </div>
   )
 }
+
+ver tema de type para cuando es Realizado o Pendiente
