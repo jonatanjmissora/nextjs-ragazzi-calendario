@@ -1,10 +1,10 @@
 import { z } from "zod"
 
 const text = new RegExp(
-  /^[a-z]*$/
+  /[^A-Za-z0-9-]/
 )
 const number = new RegExp(
-  /^[0-9.,]*$/
+  /^[0-9.,]+$/
 )
 //yyyy-mm-dd
 const date = new RegExp(
@@ -18,8 +18,8 @@ export const pagoSchema = z.object({
   _id: z
     .string()
     .trim()
-    .min(1, { message: "El contenido debe tener mas de 1 caracter" })
-    .regex(text, { message: "El contenido no es valido" })
+    .min(1, { message: "El id debe tener mas de 1 caracter" })
+    .regex(text, { message: "El id no es valido" })
     .optional(),
 
   rubro: z
@@ -28,8 +28,8 @@ export const pagoSchema = z.object({
   sector: z
     .string()
     .trim()
-    .min(1, { message: "El contenido debe tener mas de 1 caracter" })
-    .regex(text, { message: "El contenido no es valido" }),
+    .min(1, { message: "El sector debe tener mas de 1 caracter" })
+    .regex(text, { message: "El sector no es valido" }),
 
   monto: z
     .string()
@@ -40,14 +40,14 @@ export const pagoSchema = z.object({
   vencimiento: z
     .string()
     .trim()
-    .min(1, { message: "El monto debe tener mas de 1 caracter" })
+    .min(1, { message: "El vencimiento debe tener mas de 1 caracter" })
     .regex(date, { message: "El vencimiento no es valido" }),
 
   pagado: z
     .string()
     .trim()
-    .min(1, { message: "El monto debe tener mas de 1 caracter" })
-    .regex(date, { message: "El vencimiento no es valido" })
+    .min(1, { message: "El pagado debe tener mas de 1 caracter" })
+    .regex(date, { message: "El pagado no es valido" })
     .optional(),
 
 })

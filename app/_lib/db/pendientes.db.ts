@@ -15,6 +15,7 @@ export const getPendientesDB = async () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const insertarPendienteDB = async (pendiente: PagoType) => {
+  console.log("Insertamos nuevo pendiente:", pendiente)
   // const db = await getDatabase()
   // const res = await db.collection<PagoType>("PagosPendientes").insertOne(pendiente)
   // if (!res?.insertedId.toString()) {
@@ -25,6 +26,7 @@ export const insertarPendienteDB = async (pendiente: PagoType) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const eliminarPendienteDB = async (id: string) => {
+  console.log("Eliminamos pendiente:", id)
   // const db = await getDatabase()
   // const res = await db.collection<PagoType>("PagosPendientes").deleteOne({ _id: id })
   // if (res?.deletedCount !== 1) {
@@ -35,6 +37,7 @@ export const eliminarPendienteDB = async (id: string) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarPendienteDB = async (newPendiente: PagoType) => {
+  console.log("Editamos pendiente:", newPendiente)
   // const db = await getDatabase()
   // const res = await db.collection<PagoType>("PagosPendientes").updateOne(
   //   { _id: newPendiente._id },
@@ -45,10 +48,5 @@ export const editarPendienteDB = async (newPendiente: PagoType) => {
   // if (res.modifiedCount !== 1) {
   //   return { success: false, error: "No se pudo editar el pago" }
   // } else
-  return { success: true, error: "" }
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarNewPenidenteDB = (id: string, newPendiente: PagoType) => {
   return { success: true, error: "" }
 }

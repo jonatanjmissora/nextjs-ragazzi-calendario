@@ -67,7 +67,6 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
             }
 
             <div className="flex gap-1 mt-20">
-              <button type="button" className="btn btn-outline flex-1" onClick={() => setShowConfirm(false)}>Cancelar</button>
               <button className="btn btn-primary flex-1" type="submit">
                 {
                   isPending
@@ -75,6 +74,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
                     : "Confirma"
                 }
               </button>
+              <button type="button" className="btn btn-outline flex-1" onClick={() => setShowConfirm(false)}>Cancelar</button>
             </div>
 
           </form>

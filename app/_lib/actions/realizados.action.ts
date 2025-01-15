@@ -3,8 +3,7 @@
 import { revalidateTag, unstable_cache } from "next/cache"
 import { eliminarRealizadoDB, getRealizadoByIdDB, getRealizadosDB, editarRealizadoDb, insertarRealizadoDB } from "../db/realizados.db"
 import { getErrorMessage } from "../utils/getErrorMessage"
-import { realizadoSchema } from "../schema/realizado.type"
-import { PagoType } from "../schema/pago.type"
+import { pagoSchema, PagoType } from "../schema/pago.type"
 
 export const getRealizadoByIdAction = async (id: string) => {
   return await getRealizadoByIdDB(id)
@@ -40,7 +39,7 @@ export const eliminarRealizadoAction = async (id: string) => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarRealizadoAction = async (newRealizado: PagoType) => {
   //server-valiation
-  const { success, data, error } = realizadoSchema.safeParse(newRealizado)
+  const { success, data, error } = pagoSchema.safeParse(newRealizado)
   if (!success) {
     const errors = error.flatten().fieldErrors
     return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
@@ -63,7 +62,9 @@ export const editarRealizadoAction = async (newRealizado: PagoType) => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarNewRealizadoAction = async (id: string, newRealizado: PagoType) => {
   //server-valiation
-  const { success, data, error } = realizadoSchema.safeParse(newRealizado)
+  console.log(id, newRealizado)
+  const { success, data, error } = pagoSchema.safeParse(newRealizado)
+  console.log(success, data, error)
   if (!success) {
     const errors = error.flatten().fieldErrors
     return { success: false, error: `server-error: ${JSON.stringify(errors)}` }

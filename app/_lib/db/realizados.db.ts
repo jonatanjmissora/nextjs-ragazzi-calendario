@@ -15,6 +15,7 @@ export const getRealizadosDB = async () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const insertarRealizadoDB = async (newRealizado: PagoType) => {
+  console.log("Insertamos nuevo realizado:", newRealizado)
   // const db = await getDatabase()
   // return db.collection<PagoType>("PagosRealizados").insertOne(newRealizado)
   return { success: true, error: "" }
@@ -22,6 +23,7 @@ export const insertarRealizadoDB = async (newRealizado: PagoType) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const eliminarRealizadoDB = async (id: string) => {
+  console.log("Eliminamos realizado:", id)
   // const db = await getDatabase()
   // const res = await db.collection<PagoType>("PagosRealizados").deleteOne({ _id: id })
   // if (res?.deletedCount !== 1) {
@@ -31,7 +33,8 @@ export const eliminarRealizadoDB = async (id: string) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarRealizadoDb = async (newRealizados: PagoType) => {
+export const editarRealizadoDb = async (newRealizado: PagoType) => {
+  console.log("Editamos realizado:", newRealizado)
   // const db = await getDatabase()
   // const res = await db.collection<PagoType>("PagosRealizados").updateOne(
   //   { _id: newRealizado._id },

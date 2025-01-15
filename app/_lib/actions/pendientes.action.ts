@@ -3,10 +3,9 @@
 import { revalidateTag, unstable_cache } from "next/cache"
 import { editarPendienteDB, eliminarPendienteDB, getPendienteByIdDB, getPendientesDB, insertarPendienteDB } from "../db/pendientes.db"
 import { insertarRealizadoDB } from "../db/realizados.db"
-import { pendienteSchema } from "../schema/pendientes.type"
 import { localeStringToDBDate } from "../utils/date.toLocaleString_to_dbDate"
 import { getErrorMessage } from "../utils/getErrorMessage"
-import { PagoType } from "../schema/pago.type"
+import { pagoSchema, PagoType } from "../schema/pago.type"
 
 export const getPendienteByIdAction = async (id: string) => {
   return await getPendienteByIdDB(id)
@@ -35,7 +34,7 @@ export const pagarPendienteAction = async (pendiente: PagoType) => {
   }
 
   //server-valiation
-  const { success, error } = pendienteSchema.safeParse(pendiente)
+  const { success, error } = pagoSchema.safeParse(pendiente)
   if (!success) {
     const errors = error.flatten().fieldErrors
     failObject.errors = `server-error: ${JSON.stringify(errors)}`
@@ -48,7 +47,7 @@ export const pagarPendienteAction = async (pendiente: PagoType) => {
       throw new Error(resInsert.error)
     }
 
-    const resDelete = await eliminarPendienteDB(pendiente._id)
+    const resDelete = await eliminarPendienteDB(pendiente._id ?? "")
     if (!resDelete.success) {
       throw new Error(resDelete.error)
     }
@@ -84,7 +83,7 @@ export const eliminarPendienteAction = async (id: string) => {
 export const editarPendienteAction = async (newPendiente: PagoType) => {
 
   //server-valiation
-  const { success, data, error } = pendienteSchema.safeParse(newPendiente)
+  const { success, data, error } = pagoSchema.safeParse(newPendiente)
   if (!success) {
     const errors = error.flatten().fieldErrors
     return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
@@ -108,7 +107,7 @@ export const editarPendienteAction = async (newPendiente: PagoType) => {
 export const editarNewPendienteAction = async (id: string, newPendiente: PagoType) => {
 
   //server-valiation
-  const { success, data, error } = pendienteSchema.safeParse(newPendiente)
+  const { success, data, error } = pagoSchema.safeParse(newPendiente)
   if (!success) {
     const errors = error.flatten().fieldErrors
     return { success: false, error: `server-error: ${JSON.stringify(errors)}` }

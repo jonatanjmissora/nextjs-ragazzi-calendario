@@ -1,6 +1,5 @@
 "use client"
 
-import { } from "@/app/_lib/schema/realizado.type";
 import { SectoresType } from "@/app/_lib/schema/sectores.type";
 import EditForm from "./EditForm";
 import { useRealizadoActionState } from "@/app/_lib/hooks/useRealizadoActionState";
