@@ -14,14 +14,7 @@ type PagoType = PendienteType | RealizadoType
 type FormStateType = {
   error: string;
   success: boolean;
-  prevState: {
-    _id: string;
-    rubro: RubroType;
-    sector: string;
-    monto: string;
-    vencimiento: string;
-    pagado?: string;
-  };
+  prevState: RealizadoType;
 } | null
 
 type FormActionType = (payload: FormData) => void

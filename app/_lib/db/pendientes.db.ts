@@ -1,16 +1,17 @@
 import getDatabase from "./connect"
 import { PendienteType } from "../schema/pendientes.type"
+import { PagoType } from "../schema/pago.type"
 
 export const getPendienteByIdDB = async (_id: string) => {
   const db = await getDatabase()
-  return await db.collection<PendienteType>("PagosPendientes").findOne({ _id })
+  return await db.collection<PagoType>("PagosPendientes").findOne({ _id })
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const getPendientesDB = async () => {
   // await new Promise(res => setTimeout(res, 5000))
   const db = await getDatabase()
-  return await db.collection<PendienteType>("PagosPendientes").find().sort({ "vencimiento": 1 }).toArray()
+  return await db.collection<PagoType>("PagosPendientes").find().sort({ "vencimiento": 1 }).toArray()
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
