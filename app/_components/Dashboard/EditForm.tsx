@@ -1,20 +1,17 @@
 "use client"
 
 import RightArrowSVG from "@/app/_assets/RightArrowSVG"
-import { PendienteType, RubroType } from "@/app/_lib/schema/pendientes.type"
-import { RealizadoType } from "@/app/_lib/schema/realizado.type"
+import { PagoType } from "@/app/_lib/schema/pago.type"
 import { SectoresType } from "@/app/_lib/schema/sectores.type"
 import Link from "next/link"
 import { useState } from "react"
 
 type PType = "pendiente" | "realizado"
 
-type PagoType = PendienteType | RealizadoType
-
 type FormStateType = {
   error: string;
   success: boolean;
-  prevState: RealizadoType;
+  prevState: PagoType;
 } | null
 
 type FormActionType = (payload: FormData) => void
@@ -24,24 +21,23 @@ const noNewData = (prevData: PagoType, newPendiente: PagoType) => {
   return (newPendiente.rubro === prevData.rubro &&
     newPendiente.sector === prevData.sector &&
     newPendiente.monto === prevData.monto &&
-    newPendiente.vencimiento === prevData.vencimiento
+    newPendiente.vencimiento === prevData.vencimiento &&
+    newPendiente?.pagado === prevData?.vencimiento
   )
 }
 
 export default function EditForm({ pagoType, pago, sectoresReset, formState, formAction, isPending }: { pagoType: PType, pago: PagoType, sectoresReset: SectoresType[], formState: FormStateType, formAction: FormActionType, isPending: boolean }) {
 
   const { vencimiento, rubro, sector, monto } = pago
-  let pagado = ""
-  if (pagoType === "realizado") pagado = pago.pagado
   const [showConfirm, setShowConfirm] = useState<boolean>(false)
-  const [inputValues, setInputValues] = useState<RealizadoType | PendienteType>({ _id: "", vencimiento: "", rubro: "ragazzi", sector: "", monto: "", pagado: "" })
+  const [inputValues, setInputValues] = useState<PagoType>({ _id: "", vencimiento: "", rubro: "ragazzi", sector: "", monto: "", pagado: "" })
   const [currentRubro, setCurrentRubro] = useState<string>(pago.rubro)
   const sectores = sectoresReset.find(r => r._id === currentRubro)?.sectores
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    const newPago = Object.fromEntries(formData.entries()) as PendienteType | RealizadoType
+    const newPago = Object.fromEntries(formData.entries()) as PagoType
     newPago._id = newPago.vencimiento + "-" + newPago.rubro + "-" + newPago.sector
 
     console.log({ pago })
@@ -67,7 +63,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
             <EditRow label={"monto"} oldValue={pago.monto} newValue={inputValues.monto} />
             {
               pagoType === "realizado" &&
-              <EditRow label={"pagado"} oldValue={pago.pagado} newValue={inputValues.pagado} />
+              <EditRow label={"pagado"} oldValue={pago.pagado ?? ""} newValue={inputValues?.pagado ?? ""} />
             }
 
             <div className="flex gap-1 mt-20">
@@ -107,15 +103,15 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
             <input className="input" type="number" name="monto" id="monto" defaultValue={monto} />
 
             {
-              pagoType === "realizado" &&
-              <input className="input" type="text" name="pagado" id="pagado" defaultValue={pagado} />
+              pago.pagado !== "" &&
+              <input className="input" type="date" name="pagado" id="pagado" defaultValue={pago.pagado} />
             }
 
             {formState?.error ? <span className="text-red-700 italic">{formState.error}</span> : <span className="text-transparent"></span>}
 
             <div className="w-full flex gap-1">
               <button className="btn btn-primary flex-1" type="submit" >Editar</button>
-              <Link href={"/"} className="btn btn-outline flex-1" type="button">Cancelar</Link>
+              <Link href={pagoType === "pendiente" ? "/" : "/admin"} className="btn btn-outline flex-1" type="button">Cancelar</Link>
             </div>
 
           </form>
@@ -137,5 +133,3 @@ const EditRow = ({ label, oldValue, newValue }: { label: string, oldValue: strin
     </div>
   )
 }
-
-ver tema de type para cuando es Realizado o Pendiente

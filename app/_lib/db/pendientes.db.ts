@@ -1,5 +1,4 @@
 import getDatabase from "./connect"
-import { PendienteType } from "../schema/pendientes.type"
 import { PagoType } from "../schema/pago.type"
 
 export const getPendienteByIdDB = async (_id: string) => {
@@ -15,9 +14,9 @@ export const getPendientesDB = async () => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const insertarPendienteDB = async (pendiente: PendienteType) => {
+export const insertarPendienteDB = async (pendiente: PagoType) => {
   // const db = await getDatabase()
-  // const res = await db.collection<PendienteType>("PagosPendientes").insertOne(pendiente)
+  // const res = await db.collection<PagoType>("PagosPendientes").insertOne(pendiente)
   // if (!res?.insertedId.toString()) {
   //   return { success: false, error: "Error al insertar en DB" }
   // } else  
@@ -27,7 +26,7 @@ export const insertarPendienteDB = async (pendiente: PendienteType) => {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const eliminarPendienteDB = async (id: string) => {
   // const db = await getDatabase()
-  // const res = await db.collection<PendienteType>("PagosPendientes").deleteOne({ _id: id })
+  // const res = await db.collection<PagoType>("PagosPendientes").deleteOne({ _id: id })
   // if (res?.deletedCount !== 1) {
   //   return { success: false, error: "No se pudo elimianr el pago" }
   // } else
@@ -35,9 +34,9 @@ export const eliminarPendienteDB = async (id: string) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarPendienteDB = async (newPendiente: PendienteType) => {
+export const editarPendienteDB = async (newPendiente: PagoType) => {
   // const db = await getDatabase()
-  // const res = await db.collection<PendienteType>("PagosPendientes").updateOne(
+  // const res = await db.collection<PagoType>("PagosPendientes").updateOne(
   //   { _id: newPendiente._id },
   //   {
   //     $set: { "monto": newPendiente.monto }
@@ -50,6 +49,6 @@ export const editarPendienteDB = async (newPendiente: PendienteType) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarNewPenidenteDB = (id: string, newPendiente: PendienteType) => {
+export const editarNewPenidenteDB = (id: string, newPendiente: PagoType) => {
   return { success: true, error: "" }
 }

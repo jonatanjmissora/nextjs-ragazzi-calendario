@@ -3,7 +3,8 @@
 import PlaySVG from "@/app/_assets/PlaySVG"
 import { insertarPendienteAction } from "@/app/_lib/actions/pendientes.action"
 import { updateSectorAction } from "@/app/_lib/actions/sectores.action"
-import { PendienteType, RubroType } from "@/app/_lib/schema/pendientes.type"
+import { PagoType } from "@/app/_lib/schema/pago.type"
+import { RubroType } from "@/app/_lib/schema/pendientes.type"
 import { getActualDateStr } from "@/app/_lib/utils/getActualDate"
 import { useState } from "react"
 import toast from "react-hot-toast"
@@ -21,7 +22,7 @@ export const Sectores = ({ rubro, sectores }: { rubro: RubroType, sectores: stri
       return
     }
     const formData = new FormData(e.currentTarget)
-    const newPendiente = Object.fromEntries(formData.entries()) as PendienteType
+    const newPendiente = Object.fromEntries(formData.entries()) as PagoType
     newPendiente._id = newPendiente.vencimiento + "-" + newPendiente.rubro + "-" + newPendiente.sector
 
     const resp = await insertarPendienteAction(newPendiente)

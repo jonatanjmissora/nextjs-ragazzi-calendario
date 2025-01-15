@@ -1,9 +1,10 @@
 "use server"
 
 import { revalidateTag, unstable_cache } from "next/cache"
-import { eliminarRealizadoDB, getRealizadoByIdDB, getRealizadosDB, insertarRealizadoDB, editarRealizadoDb } from "../db/realizados.db"
+import { eliminarRealizadoDB, getRealizadoByIdDB, getRealizadosDB, editarRealizadoDb, insertarRealizadoDB } from "../db/realizados.db"
 import { getErrorMessage } from "../utils/getErrorMessage"
-import { realizadoSchema, RealizadoType } from "../schema/realizado.type"
+import { realizadoSchema } from "../schema/realizado.type"
+import { PagoType } from "../schema/pago.type"
 
 export const getRealizadoByIdAction = async (id: string) => {
   return await getRealizadoByIdDB(id)
@@ -37,7 +38,7 @@ export const eliminarRealizadoAction = async (id: string) => {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarRealizadoAction = async (newRealizado: RealizadoType) => {
+export const editarRealizadoAction = async (newRealizado: PagoType) => {
   //server-valiation
   const { success, data, error } = realizadoSchema.safeParse(newRealizado)
   if (!success) {
@@ -60,8 +61,7 @@ export const editarRealizadoAction = async (newRealizado: RealizadoType) => {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarNewRealizadoAction = async (id: string, newRealizado: RealizadoType) => {
-  console.log("Editar con nuevo id")
+export const editarNewRealizadoAction = async (id: string, newRealizado: PagoType) => {
   //server-valiation
   const { success, data, error } = realizadoSchema.safeParse(newRealizado)
   if (!success) {

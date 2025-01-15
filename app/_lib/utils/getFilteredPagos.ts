@@ -1,6 +1,6 @@
-import { RealizadoType } from "../schema/realizado.type";
+import { } from "../schema/realizado.type";
 
-export const getFilteredPagos = (realizados: RealizadoType[], rubroFilter: string, sectorFilter?: string, yearMonthFilter?: string, hastaFilter?: string, desdeFilter?: string) => {
+export const getFilteredPagos = (realizados: PagoType[], rubroFilter: string, sectorFilter?: string, yearMonthFilter?: string, hastaFilter?: string, desdeFilter?: string) => {
     const filteredRubroAux = rubroFilter === "todos"
         ? realizados
         : realizados.filter(pago => pago.rubro === rubroFilter)

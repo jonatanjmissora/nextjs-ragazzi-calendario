@@ -6,8 +6,8 @@ import { getLocaleDate } from "@/app/_lib/utils/getActualDate"
 import getUserFromCookie from "@/app/_lib/utils/getUserFromCookies"
 import { redirect } from "next/navigation"
 import { Suspense } from "react"
-import { RealizadoType } from "@/app/_lib/schema/realizado.type"
 import { getCachedRealizadosAction } from "@/app/_lib/actions/realizados.action"
+import { PagoType } from "@/app/_lib/schema/pago.type"
 
 export default async function RealizadosPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -20,8 +20,8 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
   const sectorFilter = (await searchParams)?.sectorFilter || "todos"
   const dateFilter = (await searchParams)?.dateFilter || year.toString() + "-" + monthStr
 
-  const pagosRealizados = await getCachedRealizadosAction() as RealizadoType[]
-  const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, dateFilter) as RealizadoType[]
+  const pagosRealizados = await getCachedRealizadosAction() as PagoType[]
+  const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, dateFilter) as PagoType[]
 
   const tableHeader = ["histo", "vencimiento", "rubro", "sector", "monto", "pagado"]
 

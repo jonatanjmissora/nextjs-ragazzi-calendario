@@ -2,14 +2,14 @@
 
 import EditSVG from '@/app/_assets/EditSVG'
 import TrashSVG from '@/app/_assets/TrashSVG'
-import { RealizadoType } from '@/app/_lib/schema/realizado.type'
 import React, { useRef } from 'react'
 import toast from 'react-hot-toast'
 import ToastWithConfirm from '../ToastWithConfirm'
 import { eliminarRealizadoAction } from '@/app/_lib/actions/realizados.action'
 import Link from 'next/link'
+import { PagoType } from '@/app/_lib/schema/pago.type'
 
-export default function AdminList({ realizados }: { realizados: RealizadoType[] }) {
+export default function AdminList({ realizados }: { realizados: PagoType[] }) {
   return (
     <>
       {
@@ -25,7 +25,7 @@ export default function AdminList({ realizados }: { realizados: RealizadoType[] 
 }
 
 const Pago = ({ realizado }
-  : { realizado: RealizadoType }
+  : { realizado: PagoType }
 ) => {
 
   return (
@@ -48,7 +48,7 @@ const Pago = ({ realizado }
   )
 }
 
-const Modal = ({ realizado }: { realizado: RealizadoType }) => {
+const Modal = ({ realizado }: { realizado: PagoType }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 

@@ -1,7 +1,6 @@
 "use client"
 
 import { eliminarPendienteAction, pagarPendienteAction } from '@/app/_lib/actions/pendientes.action'
-import { PendienteType } from '@/app/_lib/schema/pendientes.type'
 import Link from 'next/link'
 import React, { useRef } from 'react'
 import toast from 'react-hot-toast'
@@ -9,8 +8,9 @@ import toast from 'react-hot-toast'
 import EditSVG from '@/app/_assets/EditSVG'
 import TrashSVG from '@/app/_assets/TrashSVG'
 import DollarSVG from '@/app/_assets/DollarSVG'
+import { PagoType } from '@/app/_lib/schema/pago.type'
 
-export default function PagoAction({ pendiente }: { pendiente: PendienteType }) {
+export default function PagoAction({ pendiente }: { pendiente: PagoType }) {
 
   const handlePagar = async () => {
     const res = await pagarPendienteAction(pendiente)
@@ -40,7 +40,7 @@ export default function PagoAction({ pendiente }: { pendiente: PendienteType }) 
   )
 }
 
-const Modal = ({ pendiente }: { pendiente: PendienteType }) => {
+const Modal = ({ pendiente }: { pendiente: PagoType }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 

@@ -1,13 +1,13 @@
 "use client"
 
 import HistogramSVG from "@/app/_assets/HistogramSVG";
-import { RealizadoType } from "@/app/_lib/schema/realizado.type";
+import { PagoType } from "@/app/_lib/schema/pago.type";
 import montoFormat from "@/app/_lib/utils/montoFormat";
 import { useState } from "react";
 
-export default function RealizadosList({ realizados, allRealizados }: { realizados: RealizadoType[], allRealizados: RealizadoType[] }) {
+export default function RealizadosList({ realizados, allRealizados }: { realizados: PagoType[], allRealizados: PagoType[] }) {
 
-  const [actualRealizado, setActualRealizado] = useState<RealizadoType>(allRealizados[0])
+  const [actualRealizado, setActualRealizado] = useState<PagoType>(allRealizados[0])
 
   return (
     <>
@@ -26,7 +26,7 @@ export default function RealizadosList({ realizados, allRealizados }: { realizad
 }
 
 const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
-  : { realizado: RealizadoType, allRealizados: RealizadoType[], actualRealizado: RealizadoType, setActualRealizado: React.Dispatch<React.SetStateAction<RealizadoType>> }
+  : { realizado: PagoType, allRealizados: PagoType[], actualRealizado: PagoType, setActualRealizado: React.Dispatch<React.SetStateAction<PagoType>> }
 ) => {
 
   return (
@@ -48,7 +48,7 @@ const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
   )
 }
 
-const Modal = ({ allRealizados, realizado, actualRealizado, setActualRealizado }: { allRealizados: RealizadoType[], realizado: RealizadoType, actualRealizado: RealizadoType, setActualRealizado: React.Dispatch<React.SetStateAction<RealizadoType>> }) => {
+const Modal = ({ allRealizados, realizado, actualRealizado, setActualRealizado }: { allRealizados: PagoType[], realizado: PagoType, actualRealizado: PagoType, setActualRealizado: React.Dispatch<React.SetStateAction<PagoType>> }) => {
 
   const histogramArray = allRealizados
     .filter(pago => pago.rubro === actualRealizado.rubro && pago.sector === actualRealizado.sector)
@@ -59,7 +59,7 @@ const Modal = ({ allRealizados, realizado, actualRealizado, setActualRealizado }
     return (Number(monto) / maximoMonto * 7)
   }
 
-  const handleClick = (realizado: RealizadoType) => {
+  const handleClick = (realizado: PagoType) => {
     const dialog = document?.getElementById('my_modal_3') as HTMLDialogElement
     dialog?.showModal()
     setActualRealizado(realizado)

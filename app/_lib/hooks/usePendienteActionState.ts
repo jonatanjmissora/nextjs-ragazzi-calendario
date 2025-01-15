@@ -1,10 +1,10 @@
 import { useRouter } from "next/navigation";
 import { useActionState } from "react";
-import { PendienteType } from "../schema/pendientes.type";
 import { editarNewPendienteAction, editarPendienteAction } from "../actions/pendientes.action";
 import toast from "react-hot-toast";
+import { PagoType } from "../schema/pago.type";
 
-const sameId = (prevData: PendienteType, newPendiente: PendienteType) => {
+const sameId = (prevData: PagoType, newPendiente: PagoType) => {
 
   return (newPendiente.rubro === prevData.rubro &&
     newPendiente.sector === prevData.sector &&
@@ -14,16 +14,16 @@ const sameId = (prevData: PendienteType, newPendiente: PendienteType) => {
 
 type UpdateResponseType = {
   success: boolean;
-  prevState: PendienteType;
+  prevState: PagoType;
   error: string;
 } | null
 
-export const usePendienteActionState = (pendiente: PendienteType) => {
+export const usePendienteActionState = (pendiente: PagoType) => {
   const router = useRouter()
 
   const [formState, formAction, isPending] = useActionState(async (prevState: UpdateResponseType, formData: FormData) => {
 
-    const newPendiente = Object.fromEntries(formData.entries()) as PendienteType
+    const newPendiente = Object.fromEntries(formData.entries()) as PagoType
     newPendiente._id = newPendiente.vencimiento + "-" + newPendiente.rubro + "-" + newPendiente.sector
     const updateResponse = {
       success: false,
@@ -33,7 +33,7 @@ export const usePendienteActionState = (pendiente: PendienteType) => {
 
     const serverAction = sameId(pendiente, newPendiente)
       ? await editarPendienteAction(newPendiente)
-      : await editarNewPendienteAction(pendiente._id, newPendiente)
+      : await editarNewPendienteAction(pendiente._id ?? "", newPendiente)
 
     if (!serverAction?.success) {
       toast.error("No fue posible actualizar")

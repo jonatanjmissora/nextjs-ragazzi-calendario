@@ -3,9 +3,10 @@
 import { revalidateTag, unstable_cache } from "next/cache"
 import { editarPendienteDB, eliminarPendienteDB, getPendienteByIdDB, getPendientesDB, insertarPendienteDB } from "../db/pendientes.db"
 import { insertarRealizadoDB } from "../db/realizados.db"
-import { pendienteSchema, PendienteType } from "../schema/pendientes.type"
+import { pendienteSchema } from "../schema/pendientes.type"
 import { localeStringToDBDate } from "../utils/date.toLocaleString_to_dbDate"
 import { getErrorMessage } from "../utils/getErrorMessage"
+import { PagoType } from "../schema/pago.type"
 
 export const getPendienteByIdAction = async (id: string) => {
   return await getPendienteByIdDB(id)
@@ -23,7 +24,7 @@ export const getCachedPendientesAction = unstable_cache(async () => {
 )
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const pagarPendienteAction = async (pendiente: PendienteType) => {
+export const pagarPendienteAction = async (pendiente: PagoType) => {
   //agregar pago a pagosRealizados
   const actualDate = localeStringToDBDate(new Date().toLocaleDateString())
   const realizado = { ...pendiente, pagado: actualDate }
@@ -80,7 +81,7 @@ export const eliminarPendienteAction = async (id: string) => {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarPendienteAction = async (newPendiente: PendienteType) => {
+export const editarPendienteAction = async (newPendiente: PagoType) => {
 
   //server-valiation
   const { success, data, error } = pendienteSchema.safeParse(newPendiente)
@@ -104,7 +105,7 @@ export const editarPendienteAction = async (newPendiente: PendienteType) => {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarNewPendienteAction = async (id: string, newPendiente: PendienteType) => {
+export const editarNewPendienteAction = async (id: string, newPendiente: PagoType) => {
 
   //server-valiation
   const { success, data, error } = pendienteSchema.safeParse(newPendiente)
@@ -132,7 +133,7 @@ export const editarNewPendienteAction = async (id: string, newPendiente: Pendien
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const insertarPendienteAction = async (newPendiente: PendienteType) => {
+export const insertarPendienteAction = async (newPendiente: PagoType) => {
   try {
     const res = await insertarPendienteDB(newPendiente)
     if (!res.success) {

@@ -1,4 +1,3 @@
-import { PendienteType } from "../schema/pendientes.type"
 import { SectoresType } from "../schema/sectores.type"
 import getDatabase from "./connect"
 
