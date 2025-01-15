@@ -10,7 +10,7 @@ import TrashSVG from '@/app/_assets/TrashSVG'
 import DollarSVG from '@/app/_assets/DollarSVG'
 import { PagoType } from '@/app/_lib/schema/pago.type'
 
-export default function PagoAction({ pendiente }: { pendiente: PagoType }) {
+export default function PendienteAction({ pendiente }: { pendiente: PagoType }) {
 
   const handlePagar = async () => {
     const res = await pagarPendienteAction(pendiente)
@@ -48,7 +48,7 @@ const Modal = ({ pendiente }: { pendiente: PagoType }) => {
     event?.preventDefault()
     dialogRef.current?.close()
 
-    const res = await eliminarPendienteAction(pendiente._id)
+    const res = await eliminarPendienteAction(pendiente._id ?? "")
     if (res?.success) {
       toast.success("Pago borrado")
       // toast.custom((t: string) => (
@@ -68,7 +68,7 @@ const Modal = ({ pendiente }: { pendiente: PagoType }) => {
       <dialog ref={dialogRef} id="my_modal_1" className="modal bg-black/50 backdrop-blur-sm">
         <div className="modal-box">
           <h3 className="font-bold text-lg">¿ Seguro desea elimiar</h3>
-          <h3 className="font-bold text-lg">${pendiente._id} ?</h3>
+          <h3 className="font-bold text-lg">{pendiente._id} ?</h3>
           <div className="modal-action">
             <form onSubmit={handleCloseYes} method="dialog flex">
               <button className="btn btn-primary w-[6rem]" type="submit" >Si</button>
