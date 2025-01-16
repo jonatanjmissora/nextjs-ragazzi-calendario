@@ -40,8 +40,6 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
     const newPago = Object.fromEntries(formData.entries()) as PagoType
     newPago._id = newPago.vencimiento + "-" + newPago.rubro + "-" + newPago.sector
 
-    console.log({ pago })
-    console.log({ newPago })
     if (noNewData(pago, newPago)) return
     setShowConfirm(true)
     setInputValues(newPago)
