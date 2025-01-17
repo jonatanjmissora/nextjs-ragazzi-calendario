@@ -27,7 +27,7 @@ export const weblinkSchema = z.object({
     .min(1, { message: "Complete la contraseña" })
     .regex(path, { message: "Caracteres no permitidos" }),
 
-  img: z
+  imgData: z
     .string()
     .trim()
     .min(1, { message: "Complete la contraseña" })

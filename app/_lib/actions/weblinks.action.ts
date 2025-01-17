@@ -1,18 +1,29 @@
-import { unstable_cache } from "next/cache";
-import { WeblinkType } from "../schema/weblink.type";
-import { getWeblinksDB } from "../db/weblinks.db";
+"use server"
 
+import { revalidatePath, revalidateTag, unstable_cache } from "next/cache";
+import { WeblinkType } from "../schema/weblink.type";
+import { getWeblinkByIdDB, getWeblinksDB } from "../db/weblinks.db";
+import { redirect } from "next/navigation";
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const getCachedWeblinksAction = unstable_cache(async () => {
   return await getWeblinksDB()
 },
-  ["sectores"],
+  ["weblinks"],
   {
-    tags: ["sectores"],
+    tags: ["weblinks"],
     revalidate: 3600,
   }
 )
 
-export const addWeblink = async (newWeblink: WeblinkType) => {
-  await new Promise(res => setTimeout(res, 5000))
-  return { success: true, message: "Link agregado exitosamente" }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export const addWeblinkAction = async (newWeblink: WeblinkType) => {
+  await new Promise(res => setTimeout(res, 1000))
+  revalidateTag("weblinks")
+  return { success: true, prevState:{name: "", href: ""}, message: "Link agregado exitosamente" }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export const getWeblinkByIdAction = async (id: string) => {
+  return await getWeblinkByIdDB(id)
 }
