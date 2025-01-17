@@ -15,7 +15,6 @@ export const getPendientesDB = async () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const insertarPendienteDB = async (pendiente: PagoType) => {
-  console.log("Insertamos nuevo pendiente:", pendiente)
   // const db = await getDatabase()
   // const res = await db.collection<PagoType>("PagosPendientes").insertOne(pendiente)
   // if (!res?.insertedId.toString()) {
@@ -26,7 +25,6 @@ export const insertarPendienteDB = async (pendiente: PagoType) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const eliminarPendienteDB = async (id: string) => {
-  console.log("Eliminamos pendiente:", id)
   // const db = await getDatabase()
   // const res = await db.collection<PagoType>("PagosPendientes").deleteOne({ _id: id })
   // if (res?.deletedCount !== 1) {

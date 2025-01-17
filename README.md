@@ -6,6 +6,8 @@ PENDIENTES:
 
 cambiar el menu acordion
 
+no funciona el pagan pendiente
+
 REALIZADOS:
 
 
@@ -20,3 +22,4 @@ ADMIN/SECTORES
 
 ADMIN/WEBLINKS
 
+poner todas las respuestas de db y de actions iguales {success: ..., prevState: ...., message: ...}

@@ -1,11 +1,11 @@
 "use server"
 
-import { revalidatePath, revalidateTag, unstable_cache } from "next/cache";
+import { revalidateTag, unstable_cache } from "next/cache";
 import { WeblinkType } from "../schema/weblink.type";
-import { getWeblinkByIdDB, getWeblinksDB } from "../db/weblinks.db";
-import { redirect } from "next/navigation";
+import { eliminarWeblinkDB, getWeblinkByIdDB, getWeblinksDB, insertarWeblinkDB } from "../db/weblinks.db";
+import { getErrorMessage } from "../utils/getErrorMessage";
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const getCachedWeblinksAction = unstable_cache(async () => {
   return await getWeblinksDB()
 },
@@ -16,14 +16,37 @@ export const getCachedWeblinksAction = unstable_cache(async () => {
   }
 )
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const addWeblinkAction = async (newWeblink: WeblinkType) => {
-  await new Promise(res => setTimeout(res, 1000))
-  revalidateTag("weblinks")
-  return { success: true, prevState:{name: "", href: ""}, message: "Link agregado exitosamente" }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export const insertarWeblinkAction = async (newWeblink: WeblinkType) => {
+  try {
+    const res = await insertarWeblinkDB(newWeblink)
+    if (res.success) {
+      revalidateTag("weblinks")
+    }
+    return res
+
+  } catch (error) {
+    return { success: false, prevState: { name: "", href: "" }, message: `server-error: ${getErrorMessage(error)}` }
+  }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const getWeblinkByIdAction = async (id: string) => {
   return await getWeblinkByIdDB(id)
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export const eliminarWeblinkAction = async (id: string) => {
+  try {
+    const res = await eliminarWeblinkDB(id)
+    if (!res.success) {
+      throw new Error(res.error)
+    }
+
+    revalidateTag("realizados")
+    return { success: true, error: "" }
+
+  } catch (error) {
+    return { success: false, error: `server-error: ${getErrorMessage(error)}` }
+  }
 }

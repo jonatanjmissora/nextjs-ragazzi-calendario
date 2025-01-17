@@ -62,9 +62,7 @@ export const editarRealizadoAction = async (newRealizado: PagoType) => {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarNewRealizadoAction = async (id: string, newRealizado: PagoType) => {
   //server-valiation
-  console.log(id, newRealizado)
   const { success, data, error } = pagoSchema.safeParse(newRealizado)
-  console.log(success, data, error)
   if (!success) {
     const errors = error.flatten().fieldErrors
     return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
