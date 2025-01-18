@@ -25,7 +25,7 @@ export default function AdminSectoresList({ sectoresList }: { sectoresList: Sect
       toast.error("No fue posible agregar sector")
       return
     }
-    toast.success(`${newSector} añadido satisfactoriamente`)
+    toast.success(`${newSector} añadido con éxito`)
   }
 
   return (
@@ -70,7 +70,7 @@ const Modal = ({ sector }: { sector: string }) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
 
   const handleCloseYes = () => {
-    toast.success("Sector eliminado")
+    toast.success("Sector eliminado con éxito")
   }
 
   return (

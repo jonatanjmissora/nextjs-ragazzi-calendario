@@ -13,20 +13,20 @@ export default function PendienteAction({ pendiente }: { pendiente: PagoType }) 
   const handlePagar = async () => {
     const res = await pagarPendienteAction(pendiente)
     if (res?.success) {
-      toast.success("Pago exitoso")
-      // toast.custom((t: string) => (
-      //   <div className="flex flex-col">
-      //     <ToastWithConfirm t={t} title={"pendiente pagado"} content={JSON.stringify(pendiente)} />
-      //   </div>
-      // ))
+      toast.success(res.message)
     }
-    else toast.error(res.errors)
+    else toast.error(res.message)
   }
 
   return (
     <div className='flex justify-around items-center gap-1'>
-      <button onClick={handlePagar}><DollarSVG className='size-6 text-[#00800075] hover:text-[#008000]' currentColor='currentColor' /></button>
+
+      <button onClick={handlePagar}>
+        <DollarSVG className='size-6 text-[#00800075] hover:text-[#008000]' currentColor='currentColor' />
+      </button>
+
       <PendienteModal pendiente={pendiente} />
+
       <Link href={{
         pathname: '/pendientes/edit',
         query: { id: pendiente._id },
@@ -34,6 +34,7 @@ export default function PendienteAction({ pendiente }: { pendiente: PagoType }) 
       >
         <EditSVG className='size-6 text-[#aaaaaa75] hover:text-[#aaaaaa]' currentColor='currentColor' />
       </Link>
+
     </div>
   )
 }

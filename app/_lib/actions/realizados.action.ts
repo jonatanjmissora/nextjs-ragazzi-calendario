@@ -2,7 +2,6 @@
 
 import { revalidateTag, unstable_cache } from "next/cache"
 import { eliminarRealizadoDB, getRealizadoByIdDB, getRealizadosDB, editarRealizadoDb, insertarRealizadoDB } from "../db/realizados.db"
-import { getErrorMessage } from "../utils/getErrorMessage"
 import { pagoSchema, PagoType } from "../schema/pago.type"
 
 export const getRealizadoByIdAction = async (id: string) => {
@@ -21,19 +20,13 @@ export const getCachedRealizadosAction = unstable_cache(async () => {
 )
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const eliminarRealizadoAction = async (id: string) => {
-  try {
-    const res = await eliminarRealizadoDB(id)
-    if (!res.success) {
-      throw new Error(res.error)
-    }
-
+export const eliminarRealizadoAction = async (realizado: PagoType) => {
+  const res = await eliminarRealizadoDB(realizado)
+  if (res.success) {
     revalidateTag("realizados")
-    return { success: true, error: "" }
-
-  } catch (error) {
-    return { success: false, error: `server-error: ${getErrorMessage(error)}` }
   }
+
+  return res
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,46 +35,52 @@ export const editarRealizadoAction = async (newRealizado: PagoType) => {
   const { success, data, error } = pagoSchema.safeParse(newRealizado)
   if (!success) {
     const errors = error.flatten().fieldErrors
-    return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
-  }
-
-  try {
-    const res = await editarRealizadoDb(data)
-    if (!res.success) {
-      throw new Error(res.error)
+    return {
+      success: false,
+      prevState: newRealizado,
+      message: `server-error: ${JSON.stringify(errors)}`
     }
-
-    revalidateTag("realizados")
-    return { success: true, error: "" }
-
-  } catch (error) {
-    return { success: false, error: JSON.stringify(error) + `server-error: ` }
   }
+
+  const res = await editarRealizadoDb(data)
+  if (res.success) {
+    revalidateTag("realizados")
+  }
+
+  return res
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const editarNewRealizadoAction = async (id: string, newRealizado: PagoType) => {
+export const editarNewRealizadoAction = async (realizado: PagoType, newRealizado: PagoType) => {
   //server-valiation
   const { success, data, error } = pagoSchema.safeParse(newRealizado)
   if (!success) {
     const errors = error.flatten().fieldErrors
-    return { success: false, error: `server-error: ${JSON.stringify(errors)}` }
-  }
-
-  try {
-    const deleteResponse = await eliminarRealizadoDB(id)
-    if (!deleteResponse.success) throw new Error(deleteResponse.error)
-
-    const insertResponse = await insertarRealizadoDB(data)
-    if (!insertResponse.success) {
-      throw new Error(insertResponse.error)
+    return {
+      success: false,
+      prevState: newRealizado,
+      message: `server-error: ${JSON.stringify(errors)}`
     }
-
-    revalidateTag("realizados")
-    return { success: true, error: "" }
-
-  } catch (error) {
-    return { success: false, error: JSON.stringify(error) + `server-error: ` }
   }
 
+  const deleteResponse = await eliminarRealizadoDB(realizado)
+  if (!deleteResponse.success) {
+    return {
+      success: false,
+      prevState: newRealizado,
+      message: deleteResponse.message
+    }
+  }
+
+  const insertResponse = await insertarRealizadoDB(data)
+  if (!insertResponse.success) {
+    return {
+      success: false,
+      prevState: newRealizado,
+      message: insertResponse.message
+    }
+  }
+
+  revalidateTag("realizados")
+  return insertResponse
 }

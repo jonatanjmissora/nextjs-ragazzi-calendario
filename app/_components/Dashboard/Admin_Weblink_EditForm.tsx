@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 
 type FormStateType = {
   success: boolean;
-  prevState: { name: string, href: string };
+  prevState: { _id: string, href: string };
   message: string;
 } | null
 
@@ -46,21 +46,21 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
 
     if (isSame(weblink, newWeblink)) return {
       success: false,
-      prevState: { name: newWeblink._id, href: newWeblink.href },
+      prevState: { _id: newWeblink._id, href: newWeblink.href },
       message: "Los campos son iguales"
     }
 
     if (!imgData) {
       return {
         success: false,
-        prevState: { name: newWeblink._id, href: newWeblink.href },
+        prevState: { _id: newWeblink._id, href: newWeblink.href },
         message: "No hay imagen"
       }
     }
 
     const serverResponse = await insertarWeblinkAction(newWeblink)
     if (serverResponse.success) {
-      toast.success(`Link ${weblink._id ? "editado" : "creado"} exitosamente`)
+      toast.success(serverResponse.message)
       router.push("/admin/weblinks")
     }
     return serverResponse
@@ -91,7 +91,7 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
           </div>
 
           <div className="w-full flex flex-col justify-between text-center gap-2">
-            <input className="input text-right" type="text" name="_id" id="_id" defaultValue={formState?.prevState?.name ?? weblink._id} required />
+            <input className="input text-right" type="text" name="_id" id="_id" defaultValue={formState?.prevState?._id ?? weblink._id} required />
             <input className="input text-right" type="text" name="href" id="href" defaultValue={formState?.prevState?.href ?? weblink.href} required />
             <input className="hidden" type="text" name="imgData" id="imgData" defaultValue={imgData} />
           </div>

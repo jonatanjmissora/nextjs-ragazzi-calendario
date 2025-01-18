@@ -1,6 +1,7 @@
 "use server"
 
 import { WeblinkType } from "../schema/weblink.type"
+import { getErrorMessage } from "../utils/getErrorMessage"
 import getDatabase from "./connect"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,22 +18,31 @@ export const getWeblinkByIdDB = async (_id: string) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const eliminarWeblinkDB = async (id: string) => {
-  console.log("Eliminamos link:", id)
-  // const db = await getDatabase()
-  // const res = await db.collection<WeblinkType>("ConstantAdminLinks").deleteOne({ _id: id })
-  // if (res?.deletedCount !== 1) {
-  //   return { success: false, error: "No se pudo elimianr el link" }
-  // } else
-  return { success: true, error: "" }
+export const eliminarWeblinkDB = async (weblink: WeblinkType) => {
+  try {
+    // const db = await getDatabase()
+    // const res = await db.collection<WeblinkType>("ConstantAdminLinks").deleteOne({ _id: weblink._id })
+    // if (res?.deletedCount !== 1) {
+    //   return { success: false, error: "No se pudo elimianr el link" }
+    // } else
+    return { success: true, prevState: weblink, message: "Link eliminado con éxito" }
+
+  } catch (error) {
+    return { success: false, prevState: weblink, message: `server-error: ${getErrorMessage(error)}` }
+  }
 }
 
 export const insertarWeblinkDB = async (newWeblink: WeblinkType) => {
-  // const db = await getDatabase()
-  // const res = await db.collection<WeblinkType>("ConstantAdminLinks").insertOne(pendiente)
-  // if (!res?.insertedId.toString()) {
-  //   return { success: false, prevState: { name: "", href: "" }, message: "Error al insertar en DB" }
-  // } else  
-  return { success: true, prevState: { name: "", href: "" }, message: "Link agregado exitosamente" }
+  try {
+    // const db = await getDatabase()
+    // const res = await db.collection<WeblinkType>("ConstantAdminLinks").insertOne(pendiente)
+    // if (!res?.insertedId.toString()) {
+    //   return { success: false, prevState: newWeblink, message: "Error al insertar en DB" }
+    // } else  
+    return { success: true, prevState: newWeblink, message: "Link agregado con éxito" }
+
+  } catch (error) {
+    return { success: false, prevState: newWeblink, message: `server-error: ${getErrorMessage(error)}` }
+  }
 
 }

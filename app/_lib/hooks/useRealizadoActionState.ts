@@ -15,7 +15,7 @@ const sameId = (prevData: PagoType, newRealizado: PagoType) => {
 type UpdateResponseType = {
   success: boolean;
   prevState: PagoType;
-  error: string;
+  message: string;
 } | null
 
 export const useRealizadoActionState = (realizado: PagoType) => {
@@ -25,26 +25,20 @@ export const useRealizadoActionState = (realizado: PagoType) => {
 
     const newRealizado = Object.fromEntries(formData.entries()) as PagoType
     newRealizado._id = newRealizado.vencimiento + "-" + newRealizado.rubro + "-" + newRealizado.sector
-    const updateResponse = {
-      success: false,
-      prevState: newRealizado,
-      error: ""
-    }
 
     const serverAction = sameId(realizado, newRealizado)
       ? await editarRealizadoAction(newRealizado)
-      : await editarNewRealizadoAction(realizado._id ?? "", newRealizado)
+      : await editarNewRealizadoAction(realizado, newRealizado)
 
     if (!serverAction?.success) {
-      toast.error("No fue posible actualizar")
-      return { ...updateResponse, error: serverAction?.error }
+      toast.error(serverAction.message)
+      return serverAction
     }
     else {
-
-      toast.success("Pago actualizado")
+      toast.success(serverAction.message)
       router.push("/admin")
 
-      return { ...updateResponse, success: true }
+      return serverAction
     }
 
   },

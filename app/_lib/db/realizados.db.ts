@@ -1,4 +1,5 @@
 import { PagoType } from "../schema/pago.type"
+import { getErrorMessage } from "../utils/getErrorMessage"
 import getDatabase from "./connect"
 
 export const getRealizadoByIdDB = async (_id: string) => {
@@ -15,35 +16,47 @@ export const getRealizadosDB = async () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const insertarRealizadoDB = async (newRealizado: PagoType) => {
-  console.log("Insertamos nuevo realizado:", newRealizado)
-  // const db = await getDatabase()
-  // return db.collection<PagoType>("PagosRealizados").insertOne(newRealizado)
-  return { success: true, error: "" }
+  try {
+    // const db = await getDatabase()
+    // return db.collection<PagoType>("PagosRealizados").insertOne(newRealizado)
+    return { success: true, prevState: newRealizado, message: "Pago insertado con éxito" }
+
+  } catch (error) {
+    return { success: false, prevState: newRealizado, message: `server-error: ${getErrorMessage(error)}` }
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const eliminarRealizadoDB = async (id: string) => {
-  console.log("Eliminamos realizado:", id)
-  // const db = await getDatabase()
-  // const res = await db.collection<PagoType>("PagosRealizados").deleteOne({ _id: id })
-  // if (res?.deletedCount !== 1) {
-  //   return { success: false, error: "No se pudo elimianr el pago" }
-  // } else
-  return { success: true, error: "" }
+export const eliminarRealizadoDB = async (realizado: PagoType) => {
+  try {
+    // const db = await getDatabase()
+    // const res = await db.collection<PagoType>("PagosRealizados").deleteOne({ _id: realizado._id })
+    // if (res?.deletedCount !== 1) {
+    //   return { success: false, error: "No se pudo elimianr el pago" }
+    // } else
+    return { success: true, prevState: realizado, message: "Dato eliminado con éxito" }
+
+  } catch (error) {
+    return { success: false, prevState: realizado, message: `server-error: ${getErrorMessage(error)}` }
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarRealizadoDb = async (newRealizado: PagoType) => {
-  console.log("Editamos realizado:", newRealizado)
-  // const db = await getDatabase()
-  // const res = await db.collection<PagoType>("PagosRealizados").updateOne(
-  //   { _id: newRealizado._id },
-  //   {
-  //     $set: { "monto": newRealizado.monto }
-  //   }
-  // )
-  // if (res.modifiedCount !== 1) {
-  //   return { success: false, error: "No se pudo editar el pago" }
-  // } else
-  return { success: true, error: "" }
+  try {
+    // const db = await getDatabase()
+    // const res = await db.collection<PagoType>("PagosRealizados").updateOne(
+    //   { _id: newRealizado._id },
+    //   {
+    //     $set: { "monto": newRealizado.monto }
+    //   }
+    // )
+    // if (res.modifiedCount !== 1) {
+    //   return { success: false, error: "No se pudo editar el pago" }
+    // } else
+    return { success: true, prevState: newRealizado, message: "Dato editado con éxito" }
+
+  } catch (error) {
+    return { success: false, prevState: newRealizado, message: `server-error: ${getErrorMessage(error)}` }
+  }
 }

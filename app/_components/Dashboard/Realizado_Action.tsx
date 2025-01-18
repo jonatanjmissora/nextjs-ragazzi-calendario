@@ -1,13 +1,12 @@
 "use client"
 
-import { eliminarPendienteAction } from '@/app/_lib/actions/pendientes.action'
 import Link from 'next/link'
 import React, { useRef } from 'react'
 import toast from 'react-hot-toast'
-// import ToastWithConfirm from '../ToastWithConfirm'
 import EditSVG from '@/app/_assets/EditSVG'
 import TrashSVG from '@/app/_assets/TrashSVG'
 import { PagoType } from '@/app/_lib/schema/pago.type'
+import { eliminarRealizadoAction } from '@/app/_lib/actions/realizados.action'
 
 export default function RealizadoAction({ realizado }: { realizado: PagoType }) {
 
@@ -33,16 +32,11 @@ const Modal = ({ realizado }: { realizado: PagoType }) => {
     event?.preventDefault()
     dialogRef.current?.close()
 
-    const res = await eliminarPendienteAction(realizado._id ?? "")
+    const res = await eliminarRealizadoAction(realizado)
     if (res?.success) {
-      toast.success("Pago borrado")
-      // toast.custom((t: string) => (
-      //   <div className="flex flex-col">
-      //     <ToastWithConfirm t={t} title={"pendiente eliminado"} content={JSON.stringify(pendiente)} />
-      //   </div>
-      // ))
+      toast.success(res.message)
     }
-    else toast.error(res.error)
+    else toast.error(res.message)
   }
 
   return (

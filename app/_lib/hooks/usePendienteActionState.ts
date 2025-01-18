@@ -15,7 +15,7 @@ const sameId = (prevData: PagoType, newPendiente: PagoType) => {
 type UpdateResponseType = {
   success: boolean;
   prevState: PagoType;
-  error: string;
+  message: string;
 } | null
 
 export const usePendienteActionState = (pendiente: PagoType) => {
@@ -25,26 +25,21 @@ export const usePendienteActionState = (pendiente: PagoType) => {
 
     const newPendiente = Object.fromEntries(formData.entries()) as PagoType
     newPendiente._id = newPendiente.vencimiento + "-" + newPendiente.rubro + "-" + newPendiente.sector
-    const updateResponse = {
-      success: false,
-      prevState: newPendiente,
-      error: ""
-    }
 
     const serverAction = sameId(pendiente, newPendiente)
       ? await editarPendienteAction(newPendiente)
-      : await editarNewPendienteAction(pendiente._id ?? "", newPendiente)
+      : await editarNewPendienteAction(pendiente, newPendiente)
 
     if (!serverAction?.success) {
-      toast.error("No fue posible actualizar")
-      return { ...updateResponse, error: serverAction?.error }
+      toast.error(serverAction.message)
+      return serverAction
     }
     else {
 
-      toast.success("Pago actualizado")
+      toast.success(serverAction.message)
       router.push("/pendientes")
 
-      return { ...updateResponse, success: true }
+      return serverAction
     }
 
   },

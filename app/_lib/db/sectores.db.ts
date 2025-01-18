@@ -1,4 +1,6 @@
+import { RubroType } from "../schema/pago.type"
 import { SectoresType } from "../schema/sectores.type"
+import { getErrorMessage } from "../utils/getErrorMessage"
 import getDatabase from "./connect"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,15 +18,20 @@ export async function getSectoresActualesDB() {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const updateSectorDB = async (rubro: string, newSectores: string[]) => {
-    // const db = await getDatabase()
-    // const res = await db.collection<SectoresType>("ConstantMenuSectores").updateOne(
-    // { _id: rubro},
-    //      {
-    //          $set { "sectores": newSectores}
-    //      }
-    //  )
-    // if (res.modifiedCount !== 1) {
-    //   return { success: false, error: "No se pudo editar el sector" }
-    // } else
-    return { success: true, error: "" }
+    try {
+        // const db = await getDatabase()
+        // const res = await db.collection<SectoresType>("ConstantMenuSectores").updateOne(
+        // { _id: rubro},
+        //      {
+        //          $set { "sectores": newSectores}
+        //      }
+        //  )
+        // if (res.modifiedCount !== 1) {
+        //   return { success: false, error: "No se pudo editar el sector" }
+        // } else
+        return { success: true, message: "Sector editado con éxito" }
+
+    } catch (error) {
+        return { success: false, message: `server-error: ${getErrorMessage(error)}` }
+    }
 }

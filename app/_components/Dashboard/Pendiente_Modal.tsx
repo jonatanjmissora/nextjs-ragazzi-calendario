@@ -12,16 +12,11 @@ export const PendienteModal = ({ pendiente }: { pendiente: PagoType }) => {
     event?.preventDefault()
     dialogRef.current?.close()
 
-    const res = await eliminarPendienteAction(pendiente._id ?? "")
+    const res = await eliminarPendienteAction(pendiente)
     if (res?.success) {
-      toast.success("Pago borrado")
-      // toast.custom((t: string) => (
-      //   <div className="flex flex-col">
-      //     <ToastWithConfirm t={t} title={"pendiente eliminado"} content={JSON.stringify(pendiente)} />
-      //   </div>
-      // ))
+      toast.success(res.message)
     }
-    else toast.error(res.error)
+    else toast.error(res.message)
   }
 
   return (

@@ -3,8 +3,7 @@
 import PlaySVG from "@/app/_assets/PlaySVG"
 import { insertarPendienteAction } from "@/app/_lib/actions/pendientes.action"
 import { updateSectorAction } from "@/app/_lib/actions/sectores.action"
-import { PagoType } from "@/app/_lib/schema/pago.type"
-import { RubroType } from "@/app/_lib/schema/pendientes.type"
+import { PagoType, RubroType } from "@/app/_lib/schema/pago.type"
 import { getActualDateStr } from "@/app/_lib/utils/getActualDate"
 import { useState } from "react"
 import toast from "react-hot-toast"
@@ -25,9 +24,10 @@ export const Sectores = ({ rubro, sectores }: { rubro: RubroType, sectores: stri
     const newPendiente = Object.fromEntries(formData.entries()) as PagoType
     newPendiente._id = newPendiente.vencimiento + "-" + newPendiente.rubro + "-" + newPendiente.sector
 
+    // insertar en pagosPendientes
     const resp = await insertarPendienteAction(newPendiente)
     if (!resp.success) {
-      setError("Error en el server")
+      setError(resp.message)
       return
     }
 
@@ -35,12 +35,13 @@ export const Sectores = ({ rubro, sectores }: { rubro: RubroType, sectores: stri
     const newSectores = sectores.filter(sector => sector !== newPendiente.sector)
     const respDelete = await updateSectorAction(rubro, newSectores)
     if (!respDelete.success) {
-      setError("Error en el server")
+      setError(respDelete.message)
       return
     }
 
     // cerrar el Dropdown menu
-    toast.success("Pago creado exitosamete")
+    if (resp.success && respDelete.success)
+      toast.success(resp.message)
   }
 
 

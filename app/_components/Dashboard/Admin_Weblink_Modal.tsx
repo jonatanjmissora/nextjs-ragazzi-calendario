@@ -14,11 +14,11 @@ export const WeblinkModal = ({ weblink }: { weblink: WeblinkType }) => {
     event?.preventDefault()
     dialogRef.current?.close()
 
-    const res = await eliminarWeblinkAction(weblink._id ?? "")
+    const res = await eliminarWeblinkAction(weblink)
     if (res?.success) {
-      toast.success("Link borrado")
+      toast.success(res.message)
     }
-    else toast.error(res.error)
+    else toast.error(res.message)
   }
 
   return (

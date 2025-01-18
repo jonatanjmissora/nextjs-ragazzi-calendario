@@ -23,3 +23,9 @@ ADMIN/SECTORES
 ADMIN/WEBLINKS
 
 poner todas las respuestas de db y de actions iguales {success: ..., prevState: ...., message: ...}
+
+en el form del MenuPendiente, en el leftAside, no hice un useForm para usar el isPending
+
+en el Pendiente_Action, donde hago las acciones de pagar, eliminar o editar un pendiente, no hice un form para el isPending
+
+en WeblinkModal tampoco hice form para usar el isPending
