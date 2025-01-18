@@ -3,6 +3,7 @@ import { useActionState } from "react";
 import { editarNewPendienteAction, editarPendienteAction } from "../actions/pendientes.action";
 import toast from "react-hot-toast";
 import { PagoType } from "../schema/pago.type";
+import { ServerResponseType } from "../schema/serverResponse.type";
 
 const sameId = (prevData: PagoType, newPendiente: PagoType) => {
 
@@ -12,16 +13,10 @@ const sameId = (prevData: PagoType, newPendiente: PagoType) => {
   )
 }
 
-type UpdateResponseType = {
-  success: boolean;
-  prevState: PagoType;
-  message: string;
-} | null
-
 export const usePendienteActionState = (pendiente: PagoType) => {
   const router = useRouter()
 
-  const [formState, formAction, isPending] = useActionState(async (prevState: UpdateResponseType, formData: FormData) => {
+  const [formState, formAction, isPending] = useActionState(async (prevState: ServerResponseType, formData: FormData) => {
 
     const newPendiente = Object.fromEntries(formData.entries()) as PagoType
     newPendiente._id = newPendiente.vencimiento + "-" + newPendiente.rubro + "-" + newPendiente.sector

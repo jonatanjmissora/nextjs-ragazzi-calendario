@@ -3,30 +3,28 @@
 import RightArrowSVG from "@/app/_assets/RightArrowSVG"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import { SectoresType } from "@/app/_lib/schema/sectores.type"
+import { ServerResponseType } from "@/app/_lib/schema/serverResponse.type"
 import Link from "next/link"
 import { useState } from "react"
 
 type PType = "pendiente" | "realizado"
 
-type FormStateType = {
-  error: string;
-  success: boolean;
-  prevState: PagoType;
-} | null
-
 type FormActionType = (payload: FormData) => void
 
-const noNewData = (prevData: PagoType, newPendiente: PagoType) => {
+const isSame = (pagoType: string, oldPendiente: PagoType, newPendiente: PagoType) => {
 
-  return (newPendiente.rubro === prevData.rubro &&
-    newPendiente.sector === prevData.sector &&
-    newPendiente.monto === prevData.monto &&
-    newPendiente.vencimiento === prevData.vencimiento &&
-    newPendiente?.pagado === prevData?.vencimiento
+  if (pagoType === "realizado" && oldPendiente?.pagado !== newPendiente?.pagado) {
+    return false
+  }
+
+  return (newPendiente.rubro === oldPendiente.rubro &&
+    newPendiente.sector === oldPendiente.sector &&
+    newPendiente.monto === oldPendiente.monto &&
+    newPendiente.vencimiento === oldPendiente.vencimiento
   )
 }
 
-export default function EditForm({ pagoType, pago, sectoresReset, formState, formAction, isPending }: { pagoType: PType, pago: PagoType, sectoresReset: SectoresType[], formState: FormStateType, formAction: FormActionType, isPending: boolean }) {
+export default function EditForm({ pagoType, pago, sectoresReset, formState, formAction, isPending }: { pagoType: PType, pago: PagoType, sectoresReset: SectoresType[], formState: ServerResponseType, formAction: FormActionType, isPending: boolean }) {
 
   const { vencimiento, rubro, sector, monto } = pago
   const [showConfirm, setShowConfirm] = useState<boolean>(false)
@@ -40,7 +38,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
     const newPago = Object.fromEntries(formData.entries()) as PagoType
     newPago._id = newPago.vencimiento + "-" + newPago.rubro + "-" + newPago.sector
 
-    if (noNewData(pago, newPago)) return
+    if (isSame(pagoType, pago, newPago)) return
     setShowConfirm(true)
     setInputValues(newPago)
   }
@@ -105,7 +103,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
               <input className="input" type="date" name="pagado" id="pagado" defaultValue={pago.pagado} />
             }
 
-            {formState?.error ? <span className="text-red-700 italic">{formState.error}</span> : <span className="text-transparent"></span>}
+            {formState?.message ? <span className="text-red-700 italic">{formState.message}</span> : <span className="text-transparent"></span>}
 
             <div className="w-full flex gap-1">
               <button className="btn btn-primary flex-1" type="submit" >Editar</button>

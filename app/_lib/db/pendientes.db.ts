@@ -9,7 +9,7 @@ export const getPendienteByIdDB = async (_id: string) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const getPendientesDB = async () => {
-  // await new Promise(res => setTimeout(res, 5000))
+  // await new Promise(res => setTimeout(res, 1000))
   const db = await getDatabase()
   return await db.collection<PagoType>("PagosPendientes").find().sort({ "vencimiento": 1 }).toArray()
 }
@@ -31,6 +31,8 @@ export const insertarPendienteDB = async (newPendiente: PagoType) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const eliminarPendienteDB = async (pendiente: PagoType) => {
+  await new Promise(res => setTimeout(res, 1000))
+
   try {
     // const db = await getDatabase()
     // const res = await db.collection<PagoType>("PagosPendientes").deleteOne({ _id: pendiente._id })
@@ -46,6 +48,7 @@ export const eliminarPendienteDB = async (pendiente: PagoType) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarPendienteDB = async (newPendiente: PagoType) => {
+  await new Promise(res => setTimeout(res, 1000))
 
   try {
     // const db = await getDatabase()

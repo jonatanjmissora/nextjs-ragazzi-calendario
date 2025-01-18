@@ -2,18 +2,14 @@
 
 import UploadSVG from "@/app/_assets/UploadSVG";
 import { insertarWeblinkAction } from "@/app/_lib/actions/weblinks.action";
+import { ServerResponseType } from "@/app/_lib/schema/serverResponse.type";
 import { WeblinkType } from "@/app/_lib/schema/weblink.type";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActionState, useRef, useState } from "react"
 import toast from "react-hot-toast";
-
-type FormStateType = {
-  success: boolean;
-  prevState: { _id: string, href: string };
-  message: string;
-} | null
+import SubmitBtn from "../SubmitBtn";
 
 const isSame = (oldLink: WeblinkType, newLink: WeblinkType) => {
   return (oldLink._id === newLink._id &&
@@ -41,7 +37,7 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
     }
   }
 
-  const [formState, formAction, isPending] = useActionState(async (prevState: FormStateType, formData: FormData) => {
+  const [formState, formAction, isPending] = useActionState(async (prevState: ServerResponseType, formData: FormData) => {
     const newWeblink = Object.fromEntries(formData.entries()) as WeblinkType
 
     if (isSame(weblink, newWeblink)) return {
@@ -58,12 +54,21 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
       }
     }
 
-    const serverResponse = await insertarWeblinkAction(newWeblink)
-    if (serverResponse.success) {
-      toast.success(serverResponse.message)
-      router.push("/admin/weblinks")
+    // si es link nuevo
+    if (!weblink._id) {
+
+      const serverResponse = await insertarWeblinkAction(newWeblink)
+      if (serverResponse.success) {
+        toast.success(serverResponse.message)
+        router.push("/admin/weblinks")
+      }
+      return serverResponse
     }
-    return serverResponse
+    else {
+      const serverResponse2 = weblink._id === newWeblink._id
+        ? await dsds
+    }
+
 
   }, null)
 
@@ -100,11 +105,15 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
         </div>
 
         <div className="w-full flex flex-col justify-end items-end gap-2">
-          <div className="w-1/2 flex">
-            <button type="submit" className="btn btn-primary flex-1 mr-2" >{isPending ? <span className="loading loading-spinner"></span> : "Upload"}</button>
+          <div className="w-1/2 flex gap-2">
+            <SubmitBtn text={"Upload"} isPending={isPending} />
             <Link className="btn btn-outline flex-1" href={"/admin/weblinks"} >Cancelar</Link>
           </div>
-          <span className="text-yellow-700">{formState?.message}</span>
+          {
+            formState?.message
+              ? <span className="text-yellow-700">{formState?.message}</span>
+              : <span className="h-6"></span>
+          }
         </div>
 
       </form>

@@ -1,7 +1,7 @@
 "use server"
 
 import { revalidateTag, unstable_cache } from "next/cache";
-import { WeblinkType } from "../schema/weblink.type";
+import { weblinkSchema, WeblinkType } from "../schema/weblink.type";
 import { eliminarWeblinkDB, getWeblinkByIdDB, getWeblinksDB, insertarWeblinkDB } from "../db/weblinks.db";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,4 +37,58 @@ export const eliminarWeblinkAction = async (weblink: WeblinkType) => {
   }
 
   return res
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export const editarWeblinkAction = async (newWeblink: WeblinkType) => {
+
+  //server-valiation
+  const { success, data, error } = weblinkSchema.safeParse(newWeblink)
+  if (!success) {
+    const errors = error.flatten().fieldErrors
+    return {
+      success: false,
+      prevState: newWeblink,
+      message: `server-error: ${JSON.stringify(errors)}`
+    }
+  }
+
+  const res = await editarWeblinkDB(data)
+  if (res.success) {
+    revalidateTag("weblink")
+  }
+
+  return res
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export const editarNewWeblinkAction = async (oldWeblink: WeblinkType, newWeblink: WeblinkType) => {
+
+  //server-valiation
+  const { success, data, error } = weblinkSchema.safeParse(newWeblink)
+  if (!success) {
+    const errors = error.flatten().fieldErrors
+    return {
+      success: false,
+      prevState: newWeblink,
+      message: `server-error: ${JSON.stringify(errors)}`
+    }
+  }
+
+  const deleteResponse = await eliminarWeblinkDB(oldWeblink)
+  if (!deleteResponse.success) {
+    return deleteResponse
+  }
+
+  const insertResponse = await insertarWeblinkDB(data)
+  if (!insertResponse.success) {
+    return insertResponse
+  }
+
+  revalidateTag("weblink")
+  return {
+    success: true,
+    prevState: newWeblink,
+    message: `Link editado con éxito`
+  }
 }

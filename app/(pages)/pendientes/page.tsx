@@ -2,7 +2,6 @@ import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table';
 import PendientesList from '@/app/_components/Dashboard/Pendientes_List';
 import LeftAsidePendientes from '@/app/_components/LeftAside/LeftAside_Pendientes';
 import { getCachedPendientesAction } from '@/app/_lib/actions/pendientes.action';
-import { PagoType } from '@/app/_lib/schema/pago.type';
 import getUserFromCookie from '@/app/_lib/utils/getUserFromCookies';
 import { redirect } from "next/navigation";
 import { Suspense } from 'react';

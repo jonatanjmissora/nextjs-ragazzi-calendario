@@ -9,6 +9,7 @@ import { InputRHF } from '../InputRHF';
 import { useForm } from 'react-hook-form';
 import { userSchema, UserType } from '@/app/_lib/schema/user.type';
 import { zodResolver } from '@hookform/resolvers/zod';
+import SubmitBtn from '../SubmitBtn';
 
 export default function LoginForm() {
 
@@ -65,11 +66,7 @@ export default function LoginForm() {
         </div>
 
         <div className='h-20'>
-          <button
-            type="submit"
-            className='btn btn-primary tracking-wide font-semibold w-full'>
-            {isPending ? <span className="loading loading-spinner"></span> : "Ingresar"}
-          </button>
+          <SubmitBtn text={"Ingresar"} isPending={isPending} />
           <p className='text-orange-700'>{formState?.message}</p>
         </div>
 

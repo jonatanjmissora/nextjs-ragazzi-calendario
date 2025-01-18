@@ -1,7 +1,7 @@
 import { z } from "zod"
 
 const text = new RegExp(
-  /[^A-Za-z0-9-]/
+  /^[A-Za-z0-9 -]+$/
 )
 const number = new RegExp(
   /^[0-9.,]+$/

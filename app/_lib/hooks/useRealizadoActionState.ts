@@ -3,6 +3,7 @@ import { useActionState } from "react";
 import toast from "react-hot-toast";
 import { editarNewRealizadoAction, editarRealizadoAction } from "../actions/realizados.action";
 import { PagoType } from "../schema/pago.type";
+import { ServerResponseType } from "../schema/serverResponse.type";
 
 const sameId = (prevData: PagoType, newRealizado: PagoType) => {
 
@@ -12,16 +13,10 @@ const sameId = (prevData: PagoType, newRealizado: PagoType) => {
   )
 }
 
-type UpdateResponseType = {
-  success: boolean;
-  prevState: PagoType;
-  message: string;
-} | null
-
 export const useRealizadoActionState = (realizado: PagoType) => {
   const router = useRouter()
 
-  const [formState, formAction, isPending] = useActionState(async (prevState: UpdateResponseType, formData: FormData) => {
+  const [formState, formAction, isPending] = useActionState(async (prevState: ServerResponseType, formData: FormData) => {
 
     const newRealizado = Object.fromEntries(formData.entries()) as PagoType
     newRealizado._id = newRealizado.vencimiento + "-" + newRealizado.rubro + "-" + newRealizado.sector

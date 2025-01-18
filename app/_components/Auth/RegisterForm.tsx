@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { useState, useRef, startTransition } from "react";
 import CloseEyeSVG from '@/app/_assets/CloseEyeSVG';
 import OpenEyeSVG from '@/app/_assets/OpenEyeSVG';
-import { useLoginActionState } from '@/app/_lib/hooks/useLoginActionState';
 import { InputRHF } from '../InputRHF';
 import { useForm } from 'react-hook-form';
 import { userSchema, UserType } from '@/app/_lib/schema/user.type';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRegisterActionState } from '@/app/_lib/hooks/useRegisterActionState';
+import SubmitBtn from '../SubmitBtn';
 
 export default function RegisterForm() {
 
@@ -66,11 +66,7 @@ export default function RegisterForm() {
         </div>
 
         <div className='h-20'>
-          <button
-            type="submit"
-            className='btn btn-primary tracking-wide font-semibold w-full'>
-            {isPending ? <span className="loading loading-spinner"></span> : "Registrar"}
-          </button>
+          <SubmitBtn text={"Registrar"} isPending={isPending} />
           <p className='text-orange-700'>{formState?.message}</p>
         </div>
 

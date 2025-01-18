@@ -84,3 +84,31 @@ export const editarNewRealizadoAction = async (realizado: PagoType, newRealizado
   revalidateTag("realizados")
   return insertResponse
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+export const insertarRealizadoAction = async (newRealizado: PagoType) => {
+  //server-valiation
+  const { success, data, error } = pagoSchema.safeParse(newRealizado)
+  console.log({ newRealizado })
+  console.log(success, data, error)
+  if (!success) {
+    const errors = error.flatten().fieldErrors
+    return {
+      success: false,
+      prevState: newRealizado,
+      message: `server-error: ${JSON.stringify(errors)}`
+    }
+  }
+
+  const insertResponse = await insertarRealizadoDB(data)
+  if (!insertResponse.success) {
+    return {
+      success: false,
+      prevState: newRealizado,
+      message: insertResponse.message
+    }
+  }
+
+  revalidateTag("realizados")
+  return insertResponse
+}
