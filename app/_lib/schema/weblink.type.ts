@@ -1,15 +1,15 @@
 import { z } from "zod"
 
 const text = new RegExp(
-  /[^A-Za-z0-9-]/
+  /^[A-Za-z0-9 -]+$/
 )
 
 const path = new RegExp(
-  /[^A-Za-z0-9-.:_/]/
+  /^[A-Za-z0-9-.:_/!"#$%&()=?¡¿+*]+$/
 )
 
 const imgDataReg = new RegExp(
-  /[^A-Za-z0-9-/+=]/
+  /(?:[A-Za-z0-9]|[+/])/
 )
 
 export const weblinkSchema = z.object({
@@ -18,7 +18,7 @@ export const weblinkSchema = z.object({
     .string()
     .trim()
     .min(1, { message: "Complete el nombre" })
-    .max(20, { message: "20 caracteres máximo" })
+    .max(30, { message: "30 caracteres máximo" })
     .regex(text, { message: "Caracteres no permitidos" }),
 
   href: z

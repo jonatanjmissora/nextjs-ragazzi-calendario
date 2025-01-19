@@ -2,7 +2,7 @@
 
 import { revalidateTag, unstable_cache } from "next/cache";
 import { weblinkSchema, WeblinkType } from "../schema/weblink.type";
-import { eliminarWeblinkDB, getWeblinkByIdDB, getWeblinksDB, insertarWeblinkDB } from "../db/weblinks.db";
+import { editarWeblinkDB, eliminarWeblinkDB, getWeblinkByIdDB, getWeblinksDB, insertarWeblinkDB } from "../db/weblinks.db";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const getCachedWeblinksAction = unstable_cache(async () => {

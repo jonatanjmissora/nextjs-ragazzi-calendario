@@ -1,7 +1,7 @@
 "use client"
 
 import UploadSVG from "@/app/_assets/UploadSVG";
-import { insertarWeblinkAction } from "@/app/_lib/actions/weblinks.action";
+import { editarNewWeblinkAction, editarWeblinkAction, insertarWeblinkAction } from "@/app/_lib/actions/weblinks.action";
 import { ServerResponseType } from "@/app/_lib/schema/serverResponse.type";
 import { WeblinkType } from "@/app/_lib/schema/weblink.type";
 import Image from "next/image";
@@ -64,11 +64,18 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
       }
       return serverResponse
     }
+    // si hay que editar
     else {
       const serverResponse2 = weblink._id === newWeblink._id
-        ? await dsds
-    }
+        ? await editarWeblinkAction(newWeblink)
+        : await editarNewWeblinkAction(weblink, newWeblink)
 
+        if (serverResponse2.success) {
+          toast.success(serverResponse2.message)
+          router.push("/admin/weblinks")
+        }
+        return serverResponse2
+    }
 
   }, null)
 

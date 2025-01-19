@@ -6,10 +6,7 @@ PENDIENTES:
 
 cambiar el menu acordion
 
-no funciona el pagan pendiente
-
 REALIZADOS:
-
 
 ADMIN:
 
@@ -21,8 +18,6 @@ ADMIN/SECTORES
 
 
 ADMIN/WEBLINKS
-
-poner todas las respuestas de db y de actions iguales {success: ..., prevState: ...., message: ...}
 
 en el form del MenuPendiente, en el leftAside, no hice un useForm para usar el isPending
 

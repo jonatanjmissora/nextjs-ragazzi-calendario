@@ -23,7 +23,7 @@ export const eliminarWeblinkDB = async (weblink: WeblinkType) => {
     // const db = await getDatabase()
     // const res = await db.collection<WeblinkType>("ConstantAdminLinks").deleteOne({ _id: weblink._id })
     // if (res?.deletedCount !== 1) {
-    //   return { success: false, error: "No se pudo elimianr el link" }
+    //   return { success: false, prevState: weblink, message: "No se pudo eliminar el link"  }
     // } else
     return { success: true, prevState: weblink, message: "Link eliminado con éxito" }
 
@@ -32,6 +32,7 @@ export const eliminarWeblinkDB = async (weblink: WeblinkType) => {
   }
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 export const insertarWeblinkDB = async (newWeblink: WeblinkType) => {
   try {
     // const db = await getDatabase()
@@ -45,4 +46,26 @@ export const insertarWeblinkDB = async (newWeblink: WeblinkType) => {
     return { success: false, prevState: newWeblink, message: `server-error: ${getErrorMessage(error)}` }
   }
 
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const editarWeblinkDB = async (newWeblink: WeblinkType) => {
+  await new Promise(res => setTimeout(res, 1000))
+
+  try {
+    // const db = await getDatabase()
+    // const res = await db.collection<WeblinkType>("ConstantAdminLinks").updateOne(
+    //   { _id: newWeblink._id },
+    //   {
+    //     $set: { "monto": newWeblink.monto }
+    //   }
+    // )
+    // if (res.modifiedCount !== 1) {
+    //   return { success: false, prevState: newWeblink, message: "No se pudo editar el pago" }
+    // } else
+    return { success: true, prevState: newWeblink, message: "Pago editado con éxito" }
+
+  } catch (error) {
+    return { success: false, prevState: newWeblink, message: `server-error: ${getErrorMessage(error)}` }
+  }
 }

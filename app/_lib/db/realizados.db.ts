@@ -32,7 +32,7 @@ export const eliminarRealizadoDB = async (realizado: PagoType) => {
     // const db = await getDatabase()
     // const res = await db.collection<PagoType>("PagosRealizados").deleteOne({ _id: realizado._id })
     // if (res?.deletedCount !== 1) {
-    //   return { success: false, error: "No se pudo elimianr el pago" }
+    //   return { success: false, prevState: realizado, message: "No se pudo eliminar el pago" }
     // } else
     return { success: true, prevState: realizado, message: "Dato eliminado con éxito" }
 
@@ -48,11 +48,11 @@ export const editarRealizadoDb = async (newRealizado: PagoType) => {
     // const res = await db.collection<PagoType>("PagosRealizados").updateOne(
     //   { _id: newRealizado._id },
     //   {
-    //     $set: { "monto": newRealizado.monto }
+    //     $set: { "monto": newRealizado.monto, "pagado": newRealizado.pagado }
     //   }
     // )
     // if (res.modifiedCount !== 1) {
-    //   return { success: false, error: "No se pudo editar el pago" }
+    //   return { success: false, prevState: realizado, message: "No se pudo editar el pago"  }
     // } else
     return { success: true, prevState: newRealizado, message: "Dato editado con éxito" }
 
