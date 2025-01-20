@@ -1,4 +1,4 @@
-import AdminSectoresList from "@/app/_components/Dashboard/Admin_Sectores_List";
+import AdminSectoresList from "@/app/_components/Dashboard/Admin_Sectores/Admin_Sectores_List";
 import { getCachedSectoresActualesAction, getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action";
 import { SectoresType } from "@/app/_lib/schema/sectores.type";
 import Link from "next/link";
@@ -20,7 +20,7 @@ export default async function AdminSectoresPage({ searchParams }: { searchParams
       </aside>
 
       <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
-        <AdminSectoresList sectoresList={actualSectores} />
+        <AdminSectoresList sectoresType={type} sectoresList={actualSectores} />
       </Suspense>
 
     </section>

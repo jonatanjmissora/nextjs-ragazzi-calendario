@@ -2,13 +2,13 @@
 
 import PlaySVG from "@/app/_assets/PlaySVG"
 import { insertarPendienteAction } from "@/app/_lib/actions/pendientes.action"
-import { updateSectorAction } from "@/app/_lib/actions/sectores.action"
-import { PagoType, RubroType } from "@/app/_lib/schema/pago.type"
+import { updateSectoresActualesAction } from "@/app/_lib/actions/sectores.action"
+import { PagoType } from "@/app/_lib/schema/pago.type"
 import { getActualDateStr } from "@/app/_lib/utils/getActualDate"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-export const Sectores = ({ rubro, sectores }: { rubro: RubroType, sectores: string[] }) => {
+export const Sectores = ({ rubro, sectores }: { rubro: string, sectores: string[] }) => {
 
   const [actualSector, setActualSector] = useState<string>("")
   const [error, setError] = useState<string>("")
@@ -33,7 +33,7 @@ export const Sectores = ({ rubro, sectores }: { rubro: RubroType, sectores: stri
 
     // actualizar el sector del menu
     const newSectores = sectores.filter(sector => sector !== newPendiente.sector)
-    const respDelete = await updateSectorAction(rubro, newSectores)
+    const respDelete = await updateSectoresActualesAction(rubro, newSectores)
     if (!respDelete.success) {
       setError(respDelete.message)
       return

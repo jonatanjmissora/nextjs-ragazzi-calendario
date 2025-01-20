@@ -17,7 +17,7 @@ export async function getSectoresActualesDB() {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-export const updateSectorDB = async (rubro: string, newSectores: string[]) => {
+export const updateSectoresResetDB = async (rubro: string, newSectores: string[]) => {
     try {
         // const db = await getDatabase()
         // const res = await db.collection<SectoresType>("ConstantMenuSectores").updateOne(
@@ -29,7 +29,27 @@ export const updateSectorDB = async (rubro: string, newSectores: string[]) => {
         // if (res.modifiedCount !== 1) {
         //   return { success: false, error: "No se pudo editar el sector" }
         // } else
-        return { success: true, message: "Sector editado con éxito" }
+        return { success: true, message: "Sector eliminado con éxito" }
+
+    } catch (error) {
+        return { success: false, message: `server-error: ${getErrorMessage(error)}` }
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const updateSectoresActualesDB = async (rubro: string, newSectores: string[]) => {
+    try {
+        // const db = await getDatabase()
+        // const res = await db.collection<SectoresType>("SectoresActuales").updateOne(
+        // { _id: rubro},
+        //      {
+        //          $set { "sectores": newSectores}
+        //      }
+        //  )
+        // if (res.modifiedCount !== 1) {
+        //   return { success: false, error: "No se pudo editar el sector" }
+        // } else
+        return { success: true, message: "Sector eliminado con éxito" }
 
     } catch (error) {
         return { success: false, message: `server-error: ${getErrorMessage(error)}` }

@@ -1,6 +1,7 @@
 "use client"
 
 import HistogramSVG from "@/app/_assets/HistogramSVG";
+import PlusSVG from "@/app/_assets/PlusSVG";
 import { PagoType } from "@/app/_lib/schema/pago.type";
 import montoFormat from "@/app/_lib/utils/montoFormat";
 import { useState } from "react";
@@ -36,8 +37,9 @@ const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
           allRealizados={allRealizados}
           realizado={realizado}
           actualRealizado={actualRealizado}
-          setActualRealizado={setActualRealizado}>
-        </Modal></td>
+          setActualRealizado={setActualRealizado}
+        />
+      </td>
 
       <td>{realizado.vencimiento}</td>
       <td>{realizado.rubro}</td>
@@ -73,7 +75,9 @@ const Modal = ({ allRealizados, realizado, actualRealizado, setActualRealizado }
       <dialog id="my_modal_3" className="w-full h-full bg-transparent relative">
         <div className="w-3/4 py-20 p-10 bg-slate-900 rounded-lg absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              <PlusSVG className="size-7 rotate-45 text-slate-300" currentColor="currentColor" />
+            </button>
           </form>
           <h3 className="font-bold text-lg text-center">{actualRealizado.rubro} - {actualRealizado.sector}</h3>
           <div className="flex flex-row-reverse justify-center items-end overflow-hidden">

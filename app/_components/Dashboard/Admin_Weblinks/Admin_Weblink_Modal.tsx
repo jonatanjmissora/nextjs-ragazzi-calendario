@@ -3,23 +3,24 @@
 import TrashSVG from "@/app/_assets/TrashSVG"
 import { eliminarWeblinkAction } from "@/app/_lib/actions/weblinks.action"
 import { WeblinkType } from "@/app/_lib/schema/weblink.type"
-import { useRef } from "react"
+import { useActionState, useRef } from "react"
 import toast from "react-hot-toast"
+import SubmitBtn from "../../SubmitBtn"
 
 export const WeblinkModal = ({ weblink }: { weblink: WeblinkType }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 
-  const handleCloseYes = async (event: React.FormEvent<HTMLFormElement>) => {
-    event?.preventDefault()
-    dialogRef.current?.close()
+  const [, formAction, isPending] = useActionState(async () => {
 
     const res = await eliminarWeblinkAction(weblink)
-    if (res?.success) {
-      toast.success(res.message)
+    if (!res?.success) {
+      toast.error(res.message)
     }
-    else toast.error(res.message)
-  }
+    else toast.success(res.message)
+    dialogRef.current?.close()
+
+  }, null)
 
   return (
     <>
@@ -33,9 +34,9 @@ export const WeblinkModal = ({ weblink }: { weblink: WeblinkType }) => {
             <span className="font-bold text-xl text-center tracking-widest">{weblink._id} ?</span>
           </div>
           <div className="modal-action">
-            <form onSubmit={handleCloseYes}>
-              <button className="btn btn-primary w-[6rem]" type="submit" >Si</button>
-              <button onClick={() => dialogRef.current?.close()} type="button" className="btn btn-error w-[6rem] mx-6">No</button>
+            <form action={formAction} className="flex gap-1 w-1/2">
+              <SubmitBtn isPending={isPending} text="Si" className="flex-1" />
+              <button onClick={() => dialogRef.current?.close()} type="button" className="btn btn-error flex-1">No</button>
             </form>
           </div>
         </div>

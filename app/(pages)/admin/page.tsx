@@ -1,4 +1,4 @@
-import AdminList from '@/app/_components/Dashboard/Admin_List'
+import AdminList from '@/app/_components/Dashboard/Admin_Realizados/Admin_List'
 import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table'
 import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAside_Admin'
 import { getCachedRealizadosAction } from '@/app/_lib/actions/realizados.action'

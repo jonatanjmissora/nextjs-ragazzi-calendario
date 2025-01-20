@@ -10,7 +10,7 @@ import { eliminarPendienteAction } from '@/app/_lib/actions/pendientes.action'
 import { useActionState } from 'react'
 import { localeStringToDBDate } from '@/app/_lib/utils/date.toLocaleString_to_dbDate'
 import { insertarRealizadoAction } from '@/app/_lib/actions/realizados.action'
-import SubmitBtn from '../SubmitBtn'
+import SubmitBtn from '../../SubmitBtn'
 
 export default function PendienteAction({ pendiente }: { pendiente: PagoType }) {
 

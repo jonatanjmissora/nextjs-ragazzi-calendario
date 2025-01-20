@@ -5,7 +5,7 @@ import PlusSVG from "@/app/_assets/PlusSVG";
 import Link from "next/link";
 import getUserFromCookie from "@/app/_lib/utils/getUserFromCookies";
 import { redirect } from "next/navigation";
-import WeblinkAction from "@/app/_components/Dashboard/Admin_Weblink_Action";
+import WeblinkAction from "@/app/_components/Dashboard/Admin_Weblinks/Admin_Weblink_Action";
 
 export default async function AdminWeblinksPage() {
 

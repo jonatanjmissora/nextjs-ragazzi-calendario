@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActionState, useRef, useState } from "react"
 import toast from "react-hot-toast";
-import SubmitBtn from "../SubmitBtn";
+import SubmitBtn from "../../SubmitBtn";
 import AdminweblinkEditFormModal from "./Admin_weblink_EditForm_Modal";
 
 const isSame = (oldLink: WeblinkType, newLink: WeblinkType) => {

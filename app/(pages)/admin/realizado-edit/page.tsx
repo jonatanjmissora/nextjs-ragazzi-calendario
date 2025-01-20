@@ -1,4 +1,4 @@
-import RealizadoEditForm from '@/app/_components/Dashboard/Realizado_EditForm'
+import RealizadoEditForm from '@/app/_components/Dashboard/Admin_Realizados/Realizado_EditForm'
 import { getRealizadoByIdAction } from '@/app/_lib/actions/realizados.action'
 import { getCachedSectoresResetAction } from '@/app/_lib/actions/sectores.action'
 import { PagoType } from '@/app/_lib/schema/pago.type'
