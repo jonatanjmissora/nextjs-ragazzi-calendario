@@ -14,7 +14,7 @@ type RespType = {
   message: string;
 } | null
 
-export const Sectores = ({ rubro, sectores, setMainActualSector }: { rubro: string, sectores: string[], setMainActualSector: React.Dispatch<React.SetStateAction<string>> }) => {
+export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, sectores: string[], setActualRubro: React.Dispatch<React.SetStateAction<string>> }) => {
 
   const [actualSector, setActualSector] = useState<string>("")
 
@@ -52,7 +52,7 @@ export const Sectores = ({ rubro, sectores, setMainActualSector }: { rubro: stri
     // cerrar el Dropdown menu
     if (serverResp.success && respDelete.success) {
       toast.success(serverResp.message)
-      setMainActualSector("")
+      setActualRubro("")
     }
 
     return null
