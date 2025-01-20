@@ -1,6 +1,6 @@
 import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table';
-import PendientesList from '@/app/_components/Dashboard/Pendientes/Pendientes_List';
-import LeftAsidePendientes from '@/app/_components/LeftAside/LeftAside_Pendientes';
+import PendientesList from '@/app/_components/Dashboard/Pendientes/Pendiente_';
+import LeftAsidePendientes from '@/app/_components/LeftAside/LeftAside_Pendientes_';
 import RightAside from '@/app/_components/RightAside/RightAside';
 import { getCachedPendientesAction } from '@/app/_lib/actions/pendientes.action';
 import getUserFromCookie from '@/app/_lib/utils/getUserFromCookies';

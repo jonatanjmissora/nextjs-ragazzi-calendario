@@ -40,8 +40,10 @@ body {
   width: var(--rightAside-width)
 }
 
-.table-width {
+.table-container {
   width: var(--table-width);
+  overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 .navbar-height {

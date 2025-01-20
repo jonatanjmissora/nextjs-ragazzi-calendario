@@ -22,7 +22,7 @@ export default function LeftAsideSectoresForm({ sectoresActuales }: { sectoresAc
 const Input = ({ rubro, actualState, setActualSector }: { rubro: SectoresType, actualState: string, setActualSector: React.Dispatch<React.SetStateAction<string>> }) => {
 
   return (
-    <li key={rubro._id} className="collapse collapse-arrow join-item border-base-300 border rounded-none">
+    <li key={rubro._id} className="collapse collapse-arrow join-item border-base-300 border border-l-0 border-r-0 rounded-none">
 
       <input
         type="checkbox"

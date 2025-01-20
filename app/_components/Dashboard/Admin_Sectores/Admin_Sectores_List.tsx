@@ -42,23 +42,23 @@ export default function AdminSectoresList({ sectoresType, sectoresList }: { sect
   }, null)
 
   return (
-    <article className="table-width flex flex-col justify-center items-center">
+    <article className="table-width flex flex-col gap-2 justify-center items-center flex-1">
       {
         sectoresList.map((rubroActual, index) =>
 
-          <div key={index} className="w-[90%] flex flex-col gap-2 rounded-lg bg-slate-700 p-4 mx-auto my-4">
+          <div key={index} className="w-[90%] flex flex-col rounded-lg bg-slate-900 p-4 mx-auto my-2 ">
             <div className="w-full flex justify-between items-center">
               <span className="text-xl font-bold">{rubroActual._id}</span>
               <form action={formAction} className="flex gap-2">
                 <input type="hidden" name="rubro" defaultValue={rubroActual._id} />
-                <input type="text" className="bg-slate-700 border-b border-slate-400 text-center" name="newSector" placeholder="nuevo..." />
-                <SubmitBtn isPending={isPending}>
+                <input type="text" className="bg-transparent border-b border-slate-400 text-center" name="newSector" placeholder="nuevo..." />
+                <SubmitBtn isPending={isPending} className="px-5">
                   <PlusSVG className="size-5 text-slate-500 hover:text-slate-200" currentColor="currentColor" />
                 </SubmitBtn>
               </form>
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 my-4">
               {
                 rubroActual.sectores.map((sector, index) =>
                   <span key={index} className={`flex gap-2 badge badge-outline text-slate-400 text-sm font-bold`}>

@@ -61,7 +61,7 @@ export const Sectores = ({ rubro, sectores, setMainActualSector }: { rubro: stri
 
 
   return (
-    <ul className="collapse-content bg-slate-900 pt-2">
+    <ul className="collapse-content pt-2">
 
       <div className="flex flex-wrap gap-1">
         {

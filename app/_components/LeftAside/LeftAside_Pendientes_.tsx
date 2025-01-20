@@ -1,6 +1,6 @@
 import { revalidateTag } from "next/cache"
 import { getCachedSectoresActualesAction } from "@/app/_lib/actions/sectores.action"
-import LeftAsideSectoresForm from "./LeftAside_Sectores_Form"
+import LeftAsideSectoresForm from "./LeftAside_Pendientes_Sectores_List"
 
 export default async function Aside() {
 

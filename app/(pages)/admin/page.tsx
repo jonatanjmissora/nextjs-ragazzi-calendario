@@ -1,6 +1,6 @@
-import AdminList from '@/app/_components/Dashboard/Admin_Realizados/Admin_List'
+import AdminList from '@/app/_components/Dashboard/Admin_Realizados/Realizado_'
 import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table'
-import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAside_Admin'
+import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAside_Admin_'
 import { getCachedRealizadosAction } from '@/app/_lib/actions/realizados.action'
 import { PagoType } from '@/app/_lib/schema/pago.type'
 import { getActualDateStr } from '@/app/_lib/utils/getActualDate'
@@ -31,11 +31,9 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   return (
     <section className="w-full main-height flex justify-center item-center">
 
-      <aside className='bg-slate-800 flex flex-col gap-4 justify-center items-center leftAside-width'>
-        <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
-          <LeftAsideAdmin desdeFilter={desdeFilter} hastaFilter={hastaFilter} rubroFilter={rubroFilter} sectorFilter={sectorFilter} />
-        </Suspense>
-      </aside>
+      <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
+        <LeftAsideAdmin desdeFilter={desdeFilter} hastaFilter={hastaFilter} rubroFilter={rubroFilter} sectorFilter={sectorFilter} />
+      </Suspense>
 
       <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
         <PagosTable tableHeader={tableHeader}>

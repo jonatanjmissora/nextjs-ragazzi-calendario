@@ -1,5 +1,5 @@
-import FiltrosFecha from "./FiltrosFecha"
-import FiltrosCategoria from "./FiltrosCategoria"
+import FiltrosFecha from "./LeftAside_Admin_FiltrosFecha"
+import FiltrosCategoria from "./LeftAside_Admin_FiltrosCategoria"
 import { getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action"
 import { getUniqueSectors } from "@/app/_lib/utils/getUniqueSectors";
 
@@ -17,7 +17,7 @@ export default async function LeftAsideAdmin({ desdeFilter, hastaFilter, rubroFi
     sectoresDelRubro = sectoresConstant.filter(rubro => rubro._id === rubroFilter)[0].sectores
   
   return (
-    <aside className="flex justify-center items-center flex-col gap-20 w-full">
+    <aside className="flex justify-center items-center flex-col gap-20 leftAside-width">
       <FiltrosFecha desdeFilter={desdeFilter} hastaFilter={hastaFilter} />
 
       <FiltrosCategoria rubroFilter={rubroFilter} sectorFilter={sectorFilter} sectoresDelRubro={sectoresDelRubro} />
