@@ -4,12 +4,12 @@ import UploadSVG from "@/app/_assets/UploadSVG";
 import { editarNewWeblinkAction, editarWeblinkAction, insertarWeblinkAction } from "@/app/_lib/actions/weblinks.action";
 import { ServerResponseType } from "@/app/_lib/schema/serverResponse.type";
 import { WeblinkType } from "@/app/_lib/schema/weblink.type";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActionState, useRef, useState } from "react"
 import toast from "react-hot-toast";
 import SubmitBtn from "../SubmitBtn";
+import AdminweblinkEditFormModal from "./Admin_weblink_EditForm_Modal";
 
 const isSame = (oldLink: WeblinkType, newLink: WeblinkType) => {
   return (oldLink._id === newLink._id &&
@@ -70,11 +70,11 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
         ? await editarWeblinkAction(newWeblink)
         : await editarNewWeblinkAction(weblink, newWeblink)
 
-        if (serverResponse2.success) {
-          toast.success(serverResponse2.message)
-          router.push("/admin/weblinks")
-        }
-        return serverResponse2
+      if (serverResponse2.success) {
+        toast.success(serverResponse2.message)
+        router.push("/admin/weblinks")
+      }
+      return serverResponse2
     }
 
   }, null)
@@ -90,10 +90,11 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
           <div className="flex flex-col gap-2 w-1/4 h-max">
             {
               imgData
-                ? <div className="bg-slate-300 rounded-lg overflow-hidden w-[160px] h-[100px] relative">
-                  <Image src={imgData} alt={imgFile?.name ?? "image"} fill className="p-2 object-contain" />
+                ? <AdminweblinkEditFormModal imgData={imgData} imgFileName={imgFile?.name ?? "image"} />
+                // ? <div className="bg-slate-300 rounded-lg overflow-hidden w-[160px] h-[100px] relative">
+                //   <Image src={imgData} alt={imgFile?.name ?? "image"} fill className="p-2 object-contain" />
 
-                </div>
+                // </div>
                 : <div className="w-[160px] h-[100px] bg-slate-300 rounded-lg overflow-hidden p-2"></div>}
 
             <label className="input input-bordered p-4 py-2 cursor-pointer flex justify-center items-center gap-2 w-full" htmlFor="file"><UploadSVG className="size-5 text-slate-300" currentColor="currentColor" />imagen</label>
