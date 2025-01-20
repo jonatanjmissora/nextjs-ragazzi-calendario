@@ -11,7 +11,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --main-height: 93dvh;
+  --navbar-height: 5dvh;
+  --main-height: 90dvh;
+  --footer-height: 5dvh;
   --leftAside-width: 20dvw;
   --table-width: 68dvw;
   --rightAside-width: 12dvw;
@@ -42,12 +44,16 @@ body {
   width: var(--table-width);
 }
 
+.navbar-height {
+  height: var(--navbar-height);
+}
+
 .main-height {
   height: var(--main-height);
 }
 
 .footer-height {
-  height: calc(100dvh - var(--main-height));
+  height: var(--footer-height);
 }
 
 dialog::backdrop {

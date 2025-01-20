@@ -38,49 +38,47 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
   }
 
   return (
-    <aside className='p-4'>
-      <div className="flex flex-col gap-8">
+    <aside className='p-4 leftAside-width flex flex-col justify-center items-center gap-20'>
 
-      <div className="w-[45%]">
-          <label className='label' htmlFor='anio'>año</label>
-          <select
-            className='text-slate-500 p-1 bg-transparent w-full border-b border-slate-500'
-            onClick={(e) => handleYearChange(e.currentTarget.value)}
-            name="anio"
-            id="anio"
-            defaultValue={yearFilter.toString()}>
-            {
-              anios.map(anio =>
-                <option
-                  key={anio}
-                >
-                  {anio}
-                </option>)
-            }
-          </select>
-        </div>
-        
-        <div>
-
-          <h2 className="label" >mes</h2>
-          <div className='flex flex-wrap gap-2'>
-
-            {
-              meses.map((mes, index) =>
-                <div
-                  className={`flex justify-between w-[45%] font-bold tracking-wider border border-slate-500 text-slate-500 p-1 rounded-lg hover:text-slate-300 hover:border-slate-300 ${mes === meses[+monthFilter - 1] && "bg-slate-400 text-slate-900"}`}
-                  key={mes}
-                  onClick={() => handleMonthChange(index)}
-                >
-                  <span>{mes}</span>
-                  <span>{index + 1}</span>
-                </div>)
-            }
-
-          </div>
-        </div>
-
+      <div className="w-full">
+        <label className='label' htmlFor='anio'>año</label>
+        <select
+          className='text-slate-500 p-1 bg-transparent w-full border-b border-slate-500'
+          onClick={(e) => handleYearChange(e.currentTarget.value)}
+          name="anio"
+          id="anio"
+          defaultValue={yearFilter.toString()}>
+          {
+            anios.map(anio =>
+              <option
+                key={anio}
+              >
+                {anio}
+              </option>)
+          }
+        </select>
       </div>
+
+      <div className="">
+
+        <h2 className="label" >mes</h2>
+        <div className='flex flex-wrap gap-2 justify-center items-center'>
+
+          {
+            meses.map((mes, index) =>
+              <div
+                className={`flex justify-between w-[48%] font-bold tracking-wider border border-slate-500 text-slate-500 p-1 rounded-lg hover:text-slate-300 hover:border-slate-300 ${mes === meses[+monthFilter - 1] && "bg-slate-400 text-slate-900"}`}
+                key={mes}
+                onClick={() => handleMonthChange(index)}
+              >
+                <span>{mes}</span>
+                <span>{index + 1}</span>
+              </div>)
+          }
+
+        </div>
+      </div>
+
     </aside>
   )
 }

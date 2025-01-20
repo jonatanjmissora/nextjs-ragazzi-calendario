@@ -12,23 +12,10 @@ export default async function Aside() {
   }
 
   return (
-    <>
-      {/* <ul className="w-full">
-        {
-          sectoresActuales.map(rubro => 
-            // <li key={rubro._id} className="collapse collapse-arrow join-item border-base-300 border rounded-none">
-
-            //   <input type="checkbox" name="my-accordion-4" className="rubrocheckbox" />
-            //   <div className="collapse-title text-xl font-medium">{rubro._id} ({rubro.sectores.length})</div>
-            //   {<Sectores rubro={rubro._id} sectores={rubro.sectores} />}
-            // </li>
-            <LeftAsideSectoresForm key={rubro._id} rubro={rubro} />
-          )
-        }
-       </ul> */}
+    <article className="leftAside-width flex flex-col gap-4 justify-center items-center">
       <LeftAsideSectoresForm sectoresActuales={sectoresActuales} />
       <form action={formAction}><button className="btn btn-primary">reload</button></form>
-    </>
+    </article>
 
   )
 }

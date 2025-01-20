@@ -8,6 +8,7 @@ import { redirect } from "next/navigation"
 import { Suspense } from "react"
 import { getCachedRealizadosAction } from "@/app/_lib/actions/realizados.action"
 import { PagoType } from "@/app/_lib/schema/pago.type"
+import RightAside from "@/app/_components/RightAside/RightAside"
 
 export default async function RealizadosPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -28,15 +29,17 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
   return (
     <section className="w-full main-height flex justify-center item-center">
 
-      <aside className='bg-slate-800 flex flex-col gap-4 justify-center items-center leftAside-width'>
-        <LeftAsideRealizados dateFilter={dateFilter} />
-      </aside>
+
+      <LeftAsideRealizados dateFilter={dateFilter} />
+
 
       <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
         <PagosTable tableHeader={tableHeader}>
           <RealizadosList realizados={filteredRealizados} allRealizados={pagosRealizados} />
         </PagosTable>
       </Suspense>
+
+      <RightAside />
 
     </section>
   );

@@ -1,7 +1,10 @@
 import React from 'react'
 
 export default function Footer() {
+
+  const year = new Date().getFullYear()
+
   return (
-    <footer className='footer-height w-full bg-slate-800 flex justify-end items-center px-20'>K@to 2024</footer>
+    <footer className='text-slate-400 footer-height w-full flex justify-end items-center px-5'>K@to {year}</footer>
   )
 }
