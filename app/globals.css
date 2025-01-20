@@ -49,3 +49,8 @@ body {
 .footer-height {
   height: calc(100dvh - var(--main-height));
 }
+
+dialog::backdrop {
+  background-color: rgb(0, 0, 0, 0.75);
+  backdrop-filter: blur(2px);
+}

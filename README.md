@@ -22,7 +22,3 @@ ADMIN/WEBLINKS
 en el form del MenuPendiente, en el leftAside, no hice un useForm para usar el isPending
 
 en el Pendiente_Action, donde hago las acciones de pagar, eliminar o editar un pendiente, no hice un form para el isPending
-
-en WeblinkModal tampoco hice form para usar el isPending
-
-los modales me generan un overflow en la pagina

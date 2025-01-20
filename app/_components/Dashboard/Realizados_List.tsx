@@ -70,10 +70,9 @@ const Modal = ({ allRealizados, realizado, actualRealizado, setActualRealizado }
       <button className="" onClick={() => handleClick(realizado)}>
         <HistogramSVG className="size-5" currentColor="#ccc" />
       </button>
-      <dialog id="my_modal_3" className="modal bg-black/50 backdrop-blur-sm">
-        <div className="modal-box w-11/12 max-w-5xl">
+      <dialog id="my_modal_3" className="w-full h-full bg-transparent relative">
+        <div className="w-3/4 py-20 p-10 bg-slate-900 rounded-lg absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
           </form>
           <h3 className="font-bold text-lg text-center">{actualRealizado.rubro} - {actualRealizado.sector}</h3>

@@ -6,7 +6,6 @@ import { WeblinkModal } from "./Admin_Weblink_Modal";
 
 export default async function WeblinkAction({ id }: { id: string }) {
 
-  console.log({id})
   const weblink = await getWeblinkByIdAction(id) as WeblinkType
 
   return (

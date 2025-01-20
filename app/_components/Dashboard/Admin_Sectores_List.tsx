@@ -78,9 +78,12 @@ const Modal = ({ sector }: { sector: string }) => {
       <button className="" onClick={() => dialogRef.current?.showModal()}>
         <TrashSVG className="size-4 text-slate-400 hover:text-slate-200" currentColor="currentColor" />
       </button>
-      <dialog ref={dialogRef} id="my_modal_1" className="modal bg-black/50 backdrop-blur-sm">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">{`¿ Seguro desea elimiar ${sector} ?`}</h3>
+      <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
+        <div className="p-10 bg-slate-900 w-1/3 rounded-lg absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+        <div className="flex gap-2 flex-wrap">
+            <span className="font-bold text-xl text-center tracking-widest">¿ Seguro desea elimiar</span>
+            <span className="font-bold text-xl text-center tracking-widest">{sector} ?</span>
+          </div>
           <div className="modal-action">
             <form onSubmit={handleCloseYes} method="dialog">
               <button className="btn btn-primary w-[6rem]" type="submit" >Si</button>
