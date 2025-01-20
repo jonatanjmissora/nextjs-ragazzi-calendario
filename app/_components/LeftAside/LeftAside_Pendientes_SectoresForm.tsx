@@ -8,7 +8,7 @@ import { getActualDateStr } from "@/app/_lib/utils/getActualDate"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-export const Sectores = ({ rubro, sectores }: { rubro: string, sectores: string[] }) => {
+export const Sectores = ({ rubro, sectores, setMainActualSector }: { rubro: string, sectores: string[], setMainActualSector: React.Dispatch<React.SetStateAction<string>> }) => {
 
   const [actualSector, setActualSector] = useState<string>("")
   const [error, setError] = useState<string>("")
@@ -42,6 +42,7 @@ export const Sectores = ({ rubro, sectores }: { rubro: string, sectores: string[
     // cerrar el Dropdown menu
     if (resp.success && respDelete.success)
       toast.success(resp.message)
+    setMainActualSector("")
   }
 
 

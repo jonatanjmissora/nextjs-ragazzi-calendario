@@ -1,6 +1,6 @@
 import { revalidateTag } from "next/cache"
-import { Sectores } from "./LeftAside_Pendientes_SectoresForm"
 import { getCachedSectoresActualesAction } from "@/app/_lib/actions/sectores.action"
+import LeftAsideSectoresForm from "./LeftAside_Sectores_Form"
 
 export default async function Aside() {
 
@@ -13,18 +13,20 @@ export default async function Aside() {
 
   return (
     <>
-      <ul className="w-full">
+      {/* <ul className="w-full">
         {
-          sectoresActuales.map(rubro =>
-            <li key={rubro._id} className="collapse collapse-arrow join-item border-base-300 border rounded-none">
+          sectoresActuales.map(rubro => 
+            // <li key={rubro._id} className="collapse collapse-arrow join-item border-base-300 border rounded-none">
 
-              <input type="radio" name="my-accordion-4" />
-              <div className="collapse-title text-xl font-medium">{rubro._id} ({rubro.sectores.length})</div>
-              {<Sectores rubro={rubro._id} sectores={rubro.sectores} />}
-            </li>
+            //   <input type="checkbox" name="my-accordion-4" className="rubrocheckbox" />
+            //   <div className="collapse-title text-xl font-medium">{rubro._id} ({rubro.sectores.length})</div>
+            //   {<Sectores rubro={rubro._id} sectores={rubro.sectores} />}
+            // </li>
+            <LeftAsideSectoresForm key={rubro._id} rubro={rubro} />
           )
         }
-      </ul>
+       </ul> */}
+      <LeftAsideSectoresForm sectoresActuales={sectoresActuales} />
       <form action={formAction}><button className="btn btn-primary">reload</button></form>
     </>
 
