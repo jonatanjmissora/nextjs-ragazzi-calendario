@@ -1,5 +1,4 @@
 import AdminList from '@/app/_components/Dashboard/Admin_Realizados/Realizado_'
-import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table'
 import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAside_Admin_'
 import Skelton_LeftAside_Admin from '@/app/_components/Skeltons/Skelton_LeftAside_Admin'
 import Skelton_Main_Table from '@/app/_components/Skeltons/Skelton_Main_Table'
@@ -28,8 +27,6 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const pagosRealizados = await getCachedRealizadosAction()
   const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, undefined, hastaFilter, desdeFilter) as PagoType[]
 
-  const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado", "edit"]
-
   return (
     <section className="w-full main-height flex justify-center item-center">
 
@@ -38,9 +35,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       </Suspense>
 
       <Suspense fallback={<Skelton_Main_Table />} >
-        <PagosTable tableHeader={tableHeader}>
-          <AdminList realizados={filteredRealizados} />
-        </PagosTable>
+        <AdminList realizados={filteredRealizados} />
       </Suspense>
 
     </section>

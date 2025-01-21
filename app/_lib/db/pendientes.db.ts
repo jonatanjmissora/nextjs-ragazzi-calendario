@@ -31,7 +31,7 @@ export const insertarPendienteDB = async (newPendiente: PagoType) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const eliminarPendienteDB = async (pendiente: PagoType) => {
-  await new Promise(res => setTimeout(res, 1000))
+  //await new Promise(res => setTimeout(res, 1000))
 
   try {
     // const db = await getDatabase()
@@ -48,7 +48,7 @@ export const eliminarPendienteDB = async (pendiente: PagoType) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarPendienteDB = async (newPendiente: PagoType) => {
-  await new Promise(res => setTimeout(res, 1000))
+  //await new Promise(res => setTimeout(res, 1000))
 
   try {
     // const db = await getDatabase()

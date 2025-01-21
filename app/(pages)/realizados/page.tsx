@@ -1,4 +1,3 @@
-import { PagosTable } from "@/app/_components/Dashboard/Pagos_Table"
 import RealizadosList from "@/app/_components/Dashboard/Realizados/Realizados_List"
 import LeftAsideRealizados from "@/app/_components/LeftAside/LeftAside_Realizados"
 import { getFilteredPagos } from "@/app/_lib/utils/getFilteredPagos"
@@ -25,19 +24,15 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
   const pagosRealizados = await getCachedRealizadosAction() as PagoType[]
   const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, dateFilter) as PagoType[]
 
-  const tableHeader = ["histo", "vencimiento", "rubro", "sector", "monto", "pagado"]
+
 
   return (
     <section className="w-full main-height flex justify-center item-center">
 
-
       <LeftAsideRealizados dateFilter={dateFilter} />
 
-
       <Suspense fallback={<Skelton_Main_Table />} >
-        <PagosTable tableHeader={tableHeader}>
-          <RealizadosList realizados={filteredRealizados} allRealizados={pagosRealizados} />
-        </PagosTable>
+        <RealizadosList realizados={filteredRealizados} allRealizados={pagosRealizados} />
       </Suspense>
 
       <RightAside />

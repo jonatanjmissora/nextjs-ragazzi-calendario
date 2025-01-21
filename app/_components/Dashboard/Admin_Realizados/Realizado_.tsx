@@ -4,18 +4,33 @@ import { PagoType } from '@/app/_lib/schema/pago.type'
 import RealizadoAction from './Realizado_Action'
 import montoFormat from '@/app/_lib/utils/montoFormat'
 
+const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado", "edit"]
+
 export default function AdminList({ realizados }: { realizados: PagoType[] }) {
   return (
-    <>
-      {
-        realizados.map(realizado =>
-          <Pago
-            key={realizado._id}
-            realizado={realizado}
-          />
-        )
-      }
-    </>
+    <div className="h-full table-container px-40 py-12 flex-1">
+      <table className="table">
+        {/* head */}
+        <thead>
+          <tr>
+            {
+              tableHeader.map(thName => <th key={thName}>{thName}</th>)
+            }
+          </tr>
+        </thead>
+        <tbody>
+
+          {
+            realizados.map(realizado =>
+              <Pago
+                key={realizado._id}
+                realizado={realizado}
+              />
+            )
+          }
+        </tbody>
+      </table>
+    </div>
   )
 }
 

@@ -50,7 +50,7 @@ export const insertarWeblinkDB = async (newWeblink: WeblinkType) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const editarWeblinkDB = async (newWeblink: WeblinkType) => {
-  await new Promise(res => setTimeout(res, 1000))
+  //await new Promise(res => setTimeout(res, 1000))
 
   try {
     // const db = await getDatabase()

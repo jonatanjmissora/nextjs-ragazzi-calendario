@@ -9,7 +9,7 @@ export const getRealizadoByIdDB = async (_id: string) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const getRealizadosDB = async () => {
-   await new Promise(res => setTimeout(res, 5000))
+  //await new Promise(res => setTimeout(res, 5000))
   const db = await getDatabase()
   return await db.collection<PagoType>("PagosRealizados").find().sort({ "vencimiento": 1 }).toArray()
 }

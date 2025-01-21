@@ -1,4 +1,3 @@
-import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table';
 import PendientesList from '@/app/_components/Dashboard/Pendientes/Pendiente_';
 import LeftAsidePendientes from '@/app/_components/LeftAside/LeftAside_Pendientes_';
 import RightAside from '@/app/_components/RightAside/RightAside';
@@ -20,8 +19,6 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
     ? pagosPendientes
     : pagosPendientes.filter(pago => pago.rubro === rubroFilter)
 
-  const tableHeader = ["vencimiento", "rubro", "sector", "monto", "accion"]
-
   return (
     <section className="w-full main-height flex">
 
@@ -30,9 +27,7 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
       </Suspense>
 
       <Suspense fallback={<Skelton_Main_Table />} >
-        <PagosTable tableHeader={tableHeader}>
-          <PendientesList pendientes={filteredPendientes} />
-        </PagosTable>
+        <PendientesList pendientes={filteredPendientes} />
       </Suspense>
 
       <RightAside />
