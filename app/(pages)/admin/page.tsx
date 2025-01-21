@@ -1,6 +1,8 @@
 import AdminList from '@/app/_components/Dashboard/Admin_Realizados/Realizado_'
 import { PagosTable } from '@/app/_components/Dashboard/Pagos_Table'
 import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAside_Admin_'
+import Skelton_LeftAside_Admin from '@/app/_components/Skeltons/Skelton_LeftAside_Admin'
+import Skelton_Main_Table from '@/app/_components/Skeltons/Skelton_Main_Table'
 import { getCachedRealizadosAction } from '@/app/_lib/actions/realizados.action'
 import { PagoType } from '@/app/_lib/schema/pago.type'
 import { getActualDateStr } from '@/app/_lib/utils/getActualDate'
@@ -31,11 +33,11 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   return (
     <section className="w-full main-height flex justify-center item-center">
 
-      <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
+      <Suspense fallback={<Skelton_LeftAside_Admin />} >
         <LeftAsideAdmin desdeFilter={desdeFilter} hastaFilter={hastaFilter} rubroFilter={rubroFilter} sectorFilter={sectorFilter} />
       </Suspense>
 
-      <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
+      <Suspense fallback={<Skelton_Main_Table />} >
         <PagosTable tableHeader={tableHeader}>
           <AdminList realizados={filteredRealizados} />
         </PagosTable>

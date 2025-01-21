@@ -6,6 +6,8 @@ import { getCachedPendientesAction } from '@/app/_lib/actions/pendientes.action'
 import getUserFromCookie from '@/app/_lib/utils/getUserFromCookies';
 import { redirect } from "next/navigation";
 import { Suspense } from 'react';
+import Skelton_Main_Table from '@/app/_components/Skeltons/Skelton_Main_Table';
+import Skelton_LeftAside_Pend from '@/app/_components/Skeltons/Skelton_LeftAside_Pend';
 
 export default async function PendientesPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -23,13 +25,15 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
   return (
     <section className="w-full main-height flex">
 
-      <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
+      <Suspense fallback={<Skelton_LeftAside_Pend />} >
         <LeftAsidePendientes />
       </Suspense>
 
-      <PagosTable tableHeader={tableHeader}>
-        <PendientesList pendientes={filteredPendientes} />
-      </PagosTable>
+      <Suspense fallback={<Skelton_Main_Table />} >
+        <PagosTable tableHeader={tableHeader}>
+          <PendientesList pendientes={filteredPendientes} />
+        </PagosTable>
+      </Suspense>
 
       <RightAside />
 

@@ -9,6 +9,7 @@ import { Suspense } from "react"
 import { getCachedRealizadosAction } from "@/app/_lib/actions/realizados.action"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import RightAside from "@/app/_components/RightAside/RightAside"
+import Skelton_Main_Table from "@/app/_components/Skeltons/Skelton_Main_Table"
 
 export default async function RealizadosPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -33,7 +34,7 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
       <LeftAsideRealizados dateFilter={dateFilter} />
 
 
-      <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
+      <Suspense fallback={<Skelton_Main_Table />} >
         <PagosTable tableHeader={tableHeader}>
           <RealizadosList realizados={filteredRealizados} allRealizados={pagosRealizados} />
         </PagosTable>

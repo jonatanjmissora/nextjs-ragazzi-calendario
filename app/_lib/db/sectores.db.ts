@@ -5,13 +5,14 @@ import getDatabase from "./connect"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export async function getSectoresResetDB() {
+    await new Promise(res => setTimeout(res, 10000))
     const db = await getDatabase()
     return await db.collection<SectoresType>("ConstantMenuSectores").find().toArray()
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export async function getSectoresActualesDB() {
-    // await new Promise(res => setTimeout(res, 3000))
+     await new Promise(res => setTimeout(res, 10000))
     const db = await getDatabase()
     return await db.collection<SectoresType>("SectoresActuales").find().toArray()
 }

@@ -1,4 +1,5 @@
 import AdminSectoresList from "@/app/_components/Dashboard/Admin_Sectores/Admin_Sectores_List";
+import Loading from "@/app/_components/Skeltons/Loading";
 import { getCachedSectoresActualesAction, getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action";
 import { SectoresType } from "@/app/_lib/schema/sectores.type";
 import getUserFromCookie from "@/app/_lib/utils/getUserFromCookies";
@@ -24,7 +25,7 @@ export default async function AdminSectoresPage({ searchParams }: { searchParams
         <Link className={`w-3/4 ${type === "constantes" ? "btn btn-primary" : "btn btn-ghost"}`} href={"/admin/sectores?type=constantes"}>Sectores Constantes</Link>
       </aside>
 
-      <Suspense fallback={<span className="loading loading-spinner text-primary"></span>} >
+      <Suspense fallback={<Loading />} >
         <AdminSectoresList sectoresType={type} sectoresList={actualSectores} />
       </Suspense>
 
