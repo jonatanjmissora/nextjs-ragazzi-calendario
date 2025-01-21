@@ -1,14 +1,27 @@
+"use client"
+
 import { PagoType } from "@/app/_lib/schema/pago.type";
 import PendienteAction from "./Pendiente_Action";
 import montoFormat from "@/app/_lib/utils/montoFormat";
+import Calculadora from "./Calculadora";
+import { useState } from "react";
 
-const tableHeader = ["vencimiento", "rubro", "sector", "monto", "accion"]
+const tableHeader = ["", "vencimiento", "rubro", "sector", "monto", "accion"]
 
 export default function PendientesList({ pendientes }: { pendientes: PagoType[] }) {
 
+  const [calcPagos, setCalcPagos] = useState<string[]>([])
+
+  const handleChange = (id: string) => {
+    if (calcPagos.includes(id)) {
+      setCalcPagos(calcPagos.filter(p => p !== id))
+    } else {
+      setCalcPagos([...calcPagos, id])
+    }
+  }
 
   return (
-    <div className="h-full table-container px-40 py-12 flex-1">
+    <div className="h-full table-container px-40 py-12 flex-1 relative">
       <table className="table">
         {/* head */}
         <thead>
@@ -24,6 +37,14 @@ export default function PendientesList({ pendientes }: { pendientes: PagoType[] 
             pendientes.map(pendiente =>
 
               <tr key={pendiente._id} className="hover">
+                <td>
+                  <input
+                    type="checkbox"
+                    className={`checkbox-xs ${calcPagos.includes(pendiente._id) ? "opacity-100" : "opacity-10"}`}
+                    defaultChecked={calcPagos.includes(pendiente._id)}
+                    onChange={() => handleChange(pendiente._id)}
+                  />
+                </td>
                 <td>{pendiente.vencimiento}</td>
                 <td>{pendiente.rubro}</td>
                 <td>{pendiente.sector}</td>
@@ -35,6 +56,7 @@ export default function PendientesList({ pendientes }: { pendientes: PagoType[] 
 
         </tbody>
       </table>
+      <Calculadora calcPagos={calcPagos} pendientes={pendientes} />
     </div>
   )
 }

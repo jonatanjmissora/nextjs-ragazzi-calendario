@@ -19,8 +19,7 @@ export const pagoSchema = z.object({
     .string()
     .trim()
     .min(1, { message: "El id debe tener mas de 1 caracter" })
-    .regex(text, { message: "El id no es valido" })
-    .optional(),
+    .regex(text, { message: "El id no es valido" }),
 
   rubro: z
     .enum(RUBROS, { message: "El rubro no es valido" }),
