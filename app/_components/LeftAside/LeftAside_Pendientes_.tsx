@@ -12,7 +12,7 @@ export default async function Aside() {
   }
 
   return (
-    <article className="leftAside-width flex flex-col gap-4 justify-center items-center">
+    <article className="pendientes-Laside flex flex-col gap-4 justify-center items-center">
       <LeftAsideSectoresForm sectoresActuales={sectoresActuales} />
       <form action={formAction}><button className="btn btn-primary">reload</button></form>
     </article>
