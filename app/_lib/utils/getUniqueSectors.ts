@@ -4,5 +4,6 @@ type Rubro = {
 }
 
 export const getUniqueSectors = (rubros: Rubro[]) => {
-    return [...new Set(rubros.reduce((acc, rubro) => acc.concat(rubro.sectores) ,[]))]
+    const sectoresArry = rubros.map(rubro => rubro.sectores)
+    return [...new Set(sectoresArry.reduce((acc, sectores) => acc.concat(sectores), []))]
 }
