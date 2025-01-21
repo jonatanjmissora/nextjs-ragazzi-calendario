@@ -12,7 +12,6 @@ darkmode
 
 PENDIENTES:
 
-
 REALIZADOS:
 
 ADMIN:

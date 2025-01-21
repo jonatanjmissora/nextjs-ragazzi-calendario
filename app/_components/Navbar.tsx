@@ -7,10 +7,17 @@ export default async function Navbar() {
 
   const user = await getUserFromCookie() as JwtPayload
 
+  if(!user) return 
+
   return (
-    <nav className='main-width navbar-height flex justify-between items-center px-8 py-2'>
+    <nav className='w-full navbar-height flex justify-between items-center pl-8'>
+      {user &&
+      (<>
       <MenuLinks />
-      <UserLogout username={user?.username} />
+        <UserLogout username={user?.username} />
+      </>
+        )
+      }
     </nav>
   )
 }
