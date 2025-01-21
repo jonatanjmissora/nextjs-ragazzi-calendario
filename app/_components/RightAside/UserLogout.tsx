@@ -1,16 +1,11 @@
 "use client"
 
-import LogoutSVG from "@/app/_assets/LogoutSVG";
 import { logout } from "@/app/_lib/actions/user.action";
 import { useState } from "react";
 
 export default function UserLogout({ username }: { username: string }) {
 
   const [showMenu, setShowMenu] = useState<boolean>(false)
-
-  const handleClick = () => {
-
-  }
 
   const handleLogout = () => {
     logout()
