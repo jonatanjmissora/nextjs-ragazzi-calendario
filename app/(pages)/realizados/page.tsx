@@ -27,7 +27,7 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
 
 
   return (
-    <section className="w-full main-height flex justify-center item-center">
+    <section className="main-page w-full main-height flex">
 
       <LeftAsideRealizados dateFilter={dateFilter} />
 
