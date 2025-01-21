@@ -44,7 +44,7 @@ const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
       <td>{realizado.vencimiento}</td>
       <td>{realizado.rubro}</td>
       <td>{realizado.sector}</td>
-      <td>{realizado.monto}</td>
+      <td>{montoFormat(realizado.monto)}</td>
       <td>{realizado.pagado}</td>
     </tr>
   )
@@ -82,7 +82,7 @@ const Modal = ({ allRealizados, realizado, actualRealizado, setActualRealizado }
           <h3 className="font-bold text-lg text-center">{actualRealizado.rubro} - {actualRealizado.sector}</h3>
           <div className="flex flex-row-reverse justify-center items-end overflow-hidden">
             {
-              histogramArray.map(pago => <Bar key={pago.vencimiento} fecha={pago.vencimiento} monto={pago.monto} heightPercentage={getMontoHeight(pago.monto)} />)
+              histogramArray.map(pago => <Bar key={pago.vencimiento} fecha={pago.vencimiento} monto={montoFormat(pago.monto)} heightPercentage={getMontoHeight(pago.monto)} />)
             }
           </div>
         </div>

@@ -4,6 +4,7 @@ import RightArrowSVG from "@/app/_assets/RightArrowSVG"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import { SectoresType } from "@/app/_lib/schema/sectores.type"
 import { ServerResponseType } from "@/app/_lib/schema/serverResponse.type"
+import montoFormat from "@/app/_lib/utils/montoFormat"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -56,7 +57,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
             <EditRow label={"vencimiento"} oldValue={pago.vencimiento} newValue={inputValues.vencimiento} />
             <EditRow label={"rubro"} oldValue={pago.rubro} newValue={inputValues.rubro} />
             <EditRow label={"sector"} oldValue={pago.sector} newValue={inputValues.sector} />
-            <EditRow label={"monto"} oldValue={pago.monto} newValue={inputValues.monto} />
+            <EditRow label={"monto"} oldValue={montoFormat(pago.monto)} newValue={montoFormat(inputValues.monto)} />
             {
               pagoType === "realizado" &&
               <EditRow label={"pagado"} oldValue={pago.pagado ?? ""} newValue={inputValues?.pagado ?? ""} />
@@ -96,7 +97,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
               }
             </select>
 
-            <input className="input" type="number" name="monto" id="monto" defaultValue={monto} />
+            <input className="input" type="number" name="monto" id="monto" defaultValue={montoFormat(monto)} />
 
             {
               pago.pagado !== "" &&
