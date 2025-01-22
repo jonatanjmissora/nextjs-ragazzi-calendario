@@ -57,7 +57,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
             <EditRow label={"vencimiento"} oldValue={pago.vencimiento} newValue={inputValues.vencimiento} />
             <EditRow label={"rubro"} oldValue={pago.rubro} newValue={inputValues.rubro} />
             <EditRow label={"sector"} oldValue={pago.sector} newValue={inputValues.sector} />
-            <EditRow label={"monto"} oldValue={montoFormat(pago.monto)} newValue={montoFormat(inputValues.monto)} />
+            <EditRow label={"monto"} oldValue={montoFormat(Number(pago.monto))} newValue={montoFormat(Number(inputValues.monto))} />
             {
               pagoType === "realizado" &&
               <EditRow label={"pagado"} oldValue={pago.pagado ?? ""} newValue={inputValues?.pagado ?? ""} />
@@ -97,7 +97,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
               }
             </select>
 
-            <input className="input" type="number" name="monto" id="monto" defaultValue={montoFormat(monto)} />
+            <input className="input" type="number" name="monto" id="monto" defaultValue={monto} />
 
             {
               pago.pagado !== "" &&

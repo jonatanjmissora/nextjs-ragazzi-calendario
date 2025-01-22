@@ -35,7 +35,7 @@ export const RealizadosModal = ({ allRealizados, realizado, actualRealizado, set
           <h3 className="font-bold text-lg text-center">{actualRealizado.rubro} - {actualRealizado.sector}</h3>
           <div className="flex flex-row-reverse justify-center items-end overflow-hidden">
             {
-              histogramArray.map(pago => <Bar key={pago.vencimiento} fecha={pago.vencimiento} monto={montoFormat(pago.monto)} heightPercentage={getMontoHeight(pago.monto)} />)
+              histogramArray.map(pago => <Bar key={pago.vencimiento} fecha={pago.vencimiento} monto={montoFormat(Number(pago.monto))} heightPercentage={getMontoHeight(pago.monto)} />)
             }
           </div>
         </div>

@@ -57,7 +57,7 @@ export default function PendientesList({ pendientes }: { pendientes: PagoType[] 
                   <td>{pendiente.vencimiento}</td>
                   <td>{pendiente.rubro}</td>
                   <td>{pendiente.sector}</td>
-                  <td>{montoFormat(pendiente.monto)}</td>
+                  <td>{montoFormat(Number(pendiente.monto))}</td>
                   <td className="px-0"><PendienteAction pendiente={pendiente} /></td>
                 </tr>
               )

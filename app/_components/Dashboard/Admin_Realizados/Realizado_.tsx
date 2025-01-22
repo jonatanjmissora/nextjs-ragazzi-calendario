@@ -49,7 +49,7 @@ const Pago = ({ realizado }
       <td>{realizado.vencimiento}</td>
       <td>{realizado.rubro}</td>
       <td>{realizado.sector}</td>
-      <td>{montoFormat(realizado.monto)}</td>
+      <td>{montoFormat(Number(realizado.monto))}</td>
       <td>{realizado.pagado}</td>
       <td className="px-0"><RealizadoAction realizado={realizado} /></td>
     </tr>
