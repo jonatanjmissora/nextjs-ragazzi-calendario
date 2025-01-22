@@ -65,12 +65,14 @@ export default function LoginForm() {
           </button>
         </div>
 
-        <div className='h-20'>
-          <SubmitBtn text={"Ingresar"} isPending={isPending} />
+        <div className='h-20 w-full flex flex-col items-end'>
+          <div className='w-1/2 flex'>
+            <SubmitBtn text={"Ingresar"} isPending={isPending} className='' />
+          </div>
           <p className='text-orange-700'>{formState?.message}</p>
         </div>
 
-        <div className="w-full flex gap-2 justify-end">
+        <div className="w-full flex gap-2 opacity-50">
           <span>¿No tienes cuenta?</span>
           <Link className='link link-primary' href="/register">Registrate</Link>
         </div>

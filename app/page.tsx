@@ -8,7 +8,7 @@ export default async function Home() {
   if (user) redirect("/pendientes")
 
   return (
-    <section className="w-full main-height flex justify-center items-center">
+    <section className="w-full h-[95dvh] flex justify-center items-center">
 
       <LoginForm />
 

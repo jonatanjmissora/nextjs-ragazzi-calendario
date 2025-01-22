@@ -5,7 +5,7 @@ export default function SubmitBtn({ isPending, text, className, children }: { is
   return (
     <button
       type="submit"
-      className={`${text && "btn btn-primary tracking-wide font-semibold flex-1"} flex jsutify-center items-center ${className}`}
+      className={`${text && "btn btn-primary tracking-wide font-semibold flex-1"} flex justify-center items-center ${className}`}
       disabled={isPending}
     >
       {isPending ? <span className="loading loading-spinner"></span> : text ? text : children}
