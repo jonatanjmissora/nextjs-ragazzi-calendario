@@ -26,7 +26,7 @@ export const RealizadosModal = ({ allRealizados, realizado, actualRealizado, set
         <HistogramSVG className="size-5" currentColor="#ccc" />
       </button>
       <dialog id="my_modal_3" className="w-full h-full bg-transparent relative">
-        <div className="w-3/4 py-20 p-10 bg-slate-900 rounded-lg absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+        <div className="histo-modal-container py-20 p-10 bg-slate-900 rounded-lg fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               <PlusSVG className="size-7 rotate-45 text-slate-300" currentColor="currentColor" />

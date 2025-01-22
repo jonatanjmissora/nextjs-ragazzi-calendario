@@ -28,7 +28,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, undefined, hastaFilter, desdeFilter) as PagoType[]
 
   return (
-    <section className="w-full main-height flex justify-center item-center">
+    <section className="main-page w-full main-height flex">
 
       <Suspense fallback={<Skelton_LeftAside_Admin />} >
         <LeftAsideAdmin desdeFilter={desdeFilter} hastaFilter={hastaFilter} rubroFilter={rubroFilter} sectorFilter={sectorFilter} />

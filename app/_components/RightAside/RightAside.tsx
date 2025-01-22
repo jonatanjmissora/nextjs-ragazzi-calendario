@@ -27,7 +27,7 @@ export default function RightSide() {
   }
 
   return (
-    <div className='main-height rightAside-width flex justify-center items-center px-8 py-2'>
+    <div className='rightAside-width flex justify-center items-center px-8 py-2'>
       <ul className="flex gap-3">
         {
           filters.map(filter =>

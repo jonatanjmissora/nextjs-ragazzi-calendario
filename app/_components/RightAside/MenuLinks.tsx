@@ -16,8 +16,6 @@ export default function MenuLinks() {
 
 
       <div className={`${pathname.includes("/admin") ? "block" : "hidden"} text-xs w-full flex justify-center items-center gap-3`}>
-        {/* <Link className={`tracking-widest text-center font-bold ${pathname === "/admin/sectores" ? "border-b-2 border-slate-200" : "border-b-2 border-transparent"}`} href={"/admin/sectores?type=actuales"}>sectores</Link>
-        <Link className={`tracking-widest text-center font-bold ${pathname === "/admin/weblinks" ? "border-b-2 border-slate-200" : "border-b-2 border-transparent"}`} href={"/admin/weblinks"}>weblinks</Link> */}
         <ActualLink text={'sectores'} pathname={pathname} href={"/admin/sectores?type=actuales"} />
         <ActualLink text={'weblink'} pathname={pathname} href={"/admin/weblinks"} />
       </div>

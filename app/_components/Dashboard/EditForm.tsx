@@ -51,7 +51,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
         showConfirm
 
           ?
-          <form action={formAction} className=" flex flex-col gap-2">
+          <form action={formAction} className="flex flex-col gap-2">
             <h2 className="my-4 text-2xl tracking-wider font-bold">¿ Confirmar cambio ?</h2>
 
             <EditRow label={"vencimiento"} oldValue={pago.vencimiento} newValue={inputValues.vencimiento} />
@@ -77,7 +77,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
           </form>
 
           :
-          <form onSubmit={onSubmit} className="w-max flex flex-col gap-4 min-w-80">
+          <form onSubmit={onSubmit} className="edit-form-container flex flex-col gap-4 min-w-80">
             <h2 className="text-2xl tracking-wider font-bold">Editar pago {pagoType}:</h2>
             <input className="input" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
 

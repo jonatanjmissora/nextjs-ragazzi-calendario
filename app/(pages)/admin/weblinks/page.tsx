@@ -15,16 +15,18 @@ export default async function AdminWeblinksPage() {
   const weblinks = await getCachedWeblinksAction() as WeblinkType[]
 
   return (
-    <section className="w-full main-height flex flex-col items-center justify-center">
+    <section className="main-page w-full main-height flex justify-center items-center">
 
-      <div className="flex justify-between items-center w-1/2 text-3xl font-bold tracking-wide border-b py-4 my-4">
-        <span>Links</span>
-        <Link href={"/admin/weblinks/edit"} >
-          <PlusSVG className="size-7 text-slate-300" currentColor="currentColor" />
-        </Link>
+      <div>
+        <div className="flex justify-between items-center w-full text-3xl font-bold tracking-wide border-b py-4 my-12">
+          <span className="w-full">Links</span>
+          <Link href={"/admin/weblinks/edit"} >
+            <PlusSVG className="size-7 text-slate-300" currentColor="currentColor" />
+          </Link>
+        </div>
+
+        {weblinks.map(weblink => <WeblinkRow key={weblink._id} weblink={weblink} />)}
       </div>
-
-      {weblinks.map(weblink => <WeblinkRow key={weblink._id} weblink={weblink} />)}
 
     </section>
   )
@@ -33,7 +35,7 @@ export default async function AdminWeblinksPage() {
 const WeblinkRow = ({ weblink }: { weblink: WeblinkType }) => {
 
   return (
-    <article className="w-1/2 flex gap-2 justify-between items-center m-4">
+    <article className="flex gap-2 justify-between items-center my-4">
       <div className="w-[150px] h-[80px] bg-slate-300 rounded-lg overflow-hidden p-2 relative">
         <Image src={"data:image/jpeg;base64," + weblink.imgData} alt={weblink._id} fill className="p-3" />
       </div>

@@ -28,7 +28,7 @@ export const WeblinkModal = ({ weblink }: { weblink: WeblinkType }) => {
         <TrashSVG className='size-6 text-[#88000075] hover:text-[#880000]' currentColor='currentColor' />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
-        <div className="p-10 bg-slate-900 w-1/3 rounded-lg absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+        <div className="modal-container p-10 bg-slate-900 w-1/3 rounded-lg fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <div className="flex gap-2 flex-wrap">
             <span className="font-bold text-xl text-center tracking-widest">¿ Seguro desea elimiar</span>
             <span className="font-bold text-xl text-center tracking-widest">{weblink._id} ?</span>
