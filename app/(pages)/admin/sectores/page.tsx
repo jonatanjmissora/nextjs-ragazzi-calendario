@@ -2,15 +2,10 @@ import AdminSectoresList from "@/app/_components/Dashboard/Admin_Sectores/Admin_
 import Loading from "@/app/_components/Skeltons/Loading";
 import { getCachedSectoresActualesAction, getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action";
 import { SectoresType } from "@/app/_lib/schema/sectores.type";
-import getUserFromCookie from "@/app/_lib/utils/getUserFromCookies";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export default async function AdminSectoresPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
-
-  const user = await getUserFromCookie()
-  if (!user) redirect("/")
 
   const type = (await searchParams)?.type || "actuales"
   const actualSectores = type === "actuales"

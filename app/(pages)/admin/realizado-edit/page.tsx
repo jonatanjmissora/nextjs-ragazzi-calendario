@@ -2,14 +2,9 @@ import RealizadoEditForm from '@/app/_components/Dashboard/Admin_Realizados/Real
 import { getRealizadoByIdAction } from '@/app/_lib/actions/realizados.action'
 import { getCachedSectoresResetAction } from '@/app/_lib/actions/sectores.action'
 import { PagoType } from '@/app/_lib/schema/pago.type'
-import getUserFromCookie from '@/app/_lib/utils/getUserFromCookies'
-import { redirect } from 'next/navigation'
 import React from 'react'
 
 export default async function RealizadosEditPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
-
-  const user = await getUserFromCookie()
-  if (!user) redirect("/")
 
   const id = (await searchParams)?.id || ""
   const realizado = await getRealizadoByIdAction(id) as PagoType

@@ -7,14 +7,9 @@ import { PagoType } from '@/app/_lib/schema/pago.type'
 import { getActualDateStr } from '@/app/_lib/utils/getActualDate'
 import { getFilteredPagos } from '@/app/_lib/utils/getFilteredPagos'
 import { getOneYearAgo } from '@/app/_lib/utils/getOneYearAgo'
-import getUserFromCookie from '@/app/_lib/utils/getUserFromCookies'
-import { redirect } from 'next/navigation'
 import { Suspense } from 'react'
 
 export default async function AdminPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
-
-  const user = await getUserFromCookie()
-  if (!user) redirect("/")
 
   const actualDate = getActualDateStr()
   const yearAgo = getActualDateStr(getOneYearAgo())
