@@ -18,8 +18,6 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
   const pagosRealizados = await getCachedRealizadosAction() as PagoType[]
   const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, dateFilter) as PagoType[]
 
-
-
   return (
     <section className="main-page w-full main-height flex">
 

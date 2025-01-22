@@ -8,7 +8,6 @@ export default function UserMenu({ username }: { username: string }) {
 
   const [showMenu, setShowMenu] = useState<boolean>(false)
 
-
   return (
     <article className="tracking-widest text-sm text-slate-400 flex justify-between items-center relative h-full">
       <button className={`${showMenu && "bg-slate-900 text-white"} h-full px-8 z-10`} onClick={() => setShowMenu(prev => !prev)}>Hola, {username.toUpperCase()}</button>
@@ -38,7 +37,7 @@ const Modal = () => {
 
   return (
     <>
-      <button className="" onClick={() => dialogRef.current?.showModal()}>
+      <button className="px-5" onClick={() => dialogRef.current?.showModal()}>
         Cerrar Sesión
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">

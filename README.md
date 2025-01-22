@@ -1,7 +1,5 @@
 GENERAL:
 
-hacer middleware para el auth
-
 darkmode
 
 estilos, fondos y colores

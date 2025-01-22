@@ -7,6 +7,9 @@ import montoFormat from '@/app/_lib/utils/montoFormat'
 const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado", "edit"]
 
 export default function AdminList({ realizados }: { realizados: PagoType[] }) {
+
+  if(realizados.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center text-2xl">No hay pagos registrados...</h1></div>
+
   return (
     <article className="flex-1 flex items-center justify-center">
 

@@ -12,6 +12,8 @@ export default function RealizadosList({ realizados, allRealizados }: { realizad
 
   const [actualRealizado, setActualRealizado] = useState<PagoType>(allRealizados[0])
 
+  if(realizados.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center text-2xl">No hay pagos registrados...</h1></div>
+
   return (
 
     <article className="flex-1">
