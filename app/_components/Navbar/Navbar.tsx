@@ -1,7 +1,7 @@
 import { JwtPayload } from "jsonwebtoken"
 import getUserFromCookie from "../../_lib/utils/getUserFromCookies"
 import MenuLinks from "./MenuLinks"
-import UserLogout from "./UserLogout"
+import UserMenu from "./User_Menu"
 
 export default async function Navbar() {
 
@@ -14,7 +14,7 @@ export default async function Navbar() {
       {user &&
         (<>
           <MenuLinks />
-          <UserLogout username={user?.username} />
+          <UserMenu username={user?.username} />
         </>
         )
       }
