@@ -3,9 +3,9 @@ import Title from "./Title";
 
 export default function Skelton_LeftAside_Admin() {
   return (
-    <div className={`leftAside-width main-height flex flex-col gap-16 justify-center items-center`}>
+    <div className={`flex justify-center items-center flex-col gap-20 leftAside-width`}>
       <div className="flex flex-col gap-8">
-      <Title />
+        <Title />
         <div className="flex flex-col gap-3">
           <Title />
           <Input />
@@ -17,7 +17,7 @@ export default function Skelton_LeftAside_Admin() {
       </div>
 
       <div className="flex flex-col gap-8">
-      <Title />
+        <Title />
         <div className="flex flex-col gap-3">
           <Title />
           <Input />

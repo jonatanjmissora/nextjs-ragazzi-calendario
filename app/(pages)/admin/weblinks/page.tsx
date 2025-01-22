@@ -17,7 +17,7 @@ export default async function AdminWeblinksPage() {
   return (
     <section className="main-page w-full main-height flex justify-center items-center">
 
-      <div>
+      <div className="weblink-container">
         <div className="flex justify-between items-center w-full text-3xl font-bold tracking-wide border-b py-4 my-12">
           <span className="w-full">Links</span>
           <Link href={"/admin/weblinks/edit"} >

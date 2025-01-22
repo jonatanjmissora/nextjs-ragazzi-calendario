@@ -8,9 +8,9 @@ const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado", "edit"
 
 export default function AdminList({ realizados }: { realizados: PagoType[] }) {
   return (
-    <article className="flex-1">
+    <article className="flex-1 flex items-center justify-center">
 
-      <div className="table-container relative p-8">
+      <div className="table-container relative px-8 py-4">
         <table className="table">
           {/* head */}
           <thead>

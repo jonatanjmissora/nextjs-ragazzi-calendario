@@ -27,7 +27,7 @@ export default function RubroFilter() {
   }
 
   return (
-    <div className='flex justify-center items-center py-2'>
+    <div className='rubro-filter flex justify-center items-center py-2'>
       <ul className="flex gap-1">
         {
           filters.map(filter =>

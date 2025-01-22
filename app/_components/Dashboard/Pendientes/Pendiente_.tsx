@@ -47,7 +47,7 @@ export default function PendientesList({ pendientes }: { pendientes: PagoType[] 
                   <td>
                     <input
                       type="checkbox"
-                      className={`checkbox-xs ${calcPagos.includes(pendiente._id) ? "opacity-100" : "opacity-10"}`}
+                      className={`checkbox-xs ${calcPagos.includes(pendiente._id) ? "opacity-100" : "opacity-20"}`}
                       defaultChecked={calcPagos.includes(pendiente._id)}
                       onChange={() => handleChange(pendiente._id)}
                     />
