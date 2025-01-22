@@ -1,6 +1,6 @@
 import { JwtPayload } from "jsonwebtoken"
-import getUserFromCookie from "../_lib/utils/getUserFromCookies"
-import MenuLinks from "./RightAside/MenuLinks"
+import getUserFromCookie from "../../_lib/utils/getUserFromCookies"
+import MenuLinks from "./MenuLinks"
 import UserLogout from "./UserLogout"
 
 export default async function Navbar() {

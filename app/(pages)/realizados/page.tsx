@@ -7,7 +7,6 @@ import { redirect } from "next/navigation"
 import { Suspense } from "react"
 import { getCachedRealizadosAction } from "@/app/_lib/actions/realizados.action"
 import { PagoType } from "@/app/_lib/schema/pago.type"
-import RightAside from "@/app/_components/RightAside/RightAside"
 import Skelton_Main_Table from "@/app/_components/Skeltons/Skelton_Main_Table"
 
 export default async function RealizadosPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
@@ -34,8 +33,6 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
       <Suspense fallback={<Skelton_Main_Table />} >
         <RealizadosList realizados={filteredRealizados} allRealizados={pagosRealizados} />
       </Suspense>
-
-      <RightAside />
 
     </section>
   );

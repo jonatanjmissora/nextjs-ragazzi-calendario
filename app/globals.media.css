@@ -9,10 +9,6 @@
   width: var(--rightAside-width)
 }
 
-.rightAside-width ul {
-  flex-direction: column;
-}
-
 .navbar-container {
   height: var(--navbar-height);
 }
@@ -31,8 +27,8 @@
 
 .table-container {
   width: var(--table-width);
-  height: 100%;
-  padding: 10rem 3rem;
+  margin: auto;
+  height: 90%;
   overflow-y: auto;
   scrollbar-gutter: stable;
 }
@@ -91,10 +87,6 @@
   .rightAside-width {
     width: 70%;
     margin: 0 auto;
-  }
-
-  .rightAside-width ul {
-    flex-direction: row;
   }
 
   .navbar-container {

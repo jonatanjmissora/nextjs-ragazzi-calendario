@@ -4,6 +4,7 @@ import { PagoType } from "@/app/_lib/schema/pago.type";
 import montoFormat from "@/app/_lib/utils/montoFormat";
 import { useState } from "react";
 import { RealizadosModal } from "./Realizados_Modal";
+import PagosHeader from "../Pagos_Header";
 
 const tableHeader = ["histo", "vencimiento", "rubro", "sector", "monto", "pagado"]
 
@@ -13,32 +14,38 @@ export default function RealizadosList({ realizados, allRealizados }: { realizad
 
   return (
 
-    <div className="h-full table-container px-40 py-12 flex-1">
-      <table className="table">
-        {/* head */}
-        <thead>
-          <tr>
+    <article className="flex-1">
+
+      <PagosHeader />
+
+      <div className="table-container relative px-8">
+
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              {
+                tableHeader.map(thName => <th key={thName}>{thName}</th>)
+              }
+            </tr>
+          </thead>
+          <tbody>
+
             {
-              tableHeader.map(thName => <th key={thName}>{thName}</th>)
+              realizados.map(realizado =>
+                <Pago
+                  key={realizado._id}
+                  realizado={realizado}
+                  allRealizados={allRealizados}
+                  actualRealizado={actualRealizado}
+                  setActualRealizado={setActualRealizado} />
+              )
             }
-          </tr>
-        </thead>
-        <tbody>
 
-          {
-            realizados.map(realizado =>
-              <Pago
-                key={realizado._id}
-                realizado={realizado}
-                allRealizados={allRealizados}
-                actualRealizado={actualRealizado}
-                setActualRealizado={setActualRealizado} />
-            )
-          }
-
-        </tbody>
-      </table>
-    </div>
+          </tbody>
+        </table>
+      </div>
+    </article>
   )
 }
 

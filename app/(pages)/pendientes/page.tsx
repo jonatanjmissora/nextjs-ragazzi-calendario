@@ -1,6 +1,5 @@
 import PendientesList from '@/app/_components/Dashboard/Pendientes/Pendiente_';
 import LeftAsidePendientes from '@/app/_components/LeftAside/LeftAside_Pendientes_';
-import RightAside from '@/app/_components/RightAside/RightAside';
 import { getCachedPendientesAction } from '@/app/_lib/actions/pendientes.action';
 import getUserFromCookie from '@/app/_lib/utils/getUserFromCookies';
 import { redirect } from "next/navigation";
@@ -29,8 +28,6 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
       <Suspense fallback={<Skelton_Main_Table />} >
         <PendientesList pendientes={filteredPendientes} />
       </Suspense>
-
-      <RightAside />
 
     </section>
   );

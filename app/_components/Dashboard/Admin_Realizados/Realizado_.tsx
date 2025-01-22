@@ -8,29 +8,32 @@ const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado", "edit"
 
 export default function AdminList({ realizados }: { realizados: PagoType[] }) {
   return (
-    <div className="h-full table-container px-40 py-12 flex-1">
-      <table className="table">
-        {/* head */}
-        <thead>
-          <tr>
-            {
-              tableHeader.map(thName => <th key={thName}>{thName}</th>)
-            }
-          </tr>
-        </thead>
-        <tbody>
+    <article className="flex-1">
 
-          {
-            realizados.map(realizado =>
-              <Pago
-                key={realizado._id}
-                realizado={realizado}
-              />
-            )
-          }
-        </tbody>
-      </table>
-    </div>
+      <div className="table-container relative p-8">
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              {
+                tableHeader.map(thName => <th key={thName}>{thName}</th>)
+              }
+            </tr>
+          </thead>
+          <tbody>
+
+            {
+              realizados.map(realizado =>
+                <Pago
+                  key={realizado._id}
+                  realizado={realizado}
+                />
+              )
+            }
+          </tbody>
+        </table>
+      </div>
+    </article>
   )
 }
 

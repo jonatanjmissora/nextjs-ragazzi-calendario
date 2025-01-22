@@ -4,7 +4,7 @@ import "./globals.css";
 import "./globals.media.css";
 import Footer from "./_components/Footer";
 import { Toaster } from "react-hot-toast";
-import Navbar from "./_components/Navbar";
+import Navbar from "./_components/Navbar/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
-export default function RightSide() {
+export default function RubroFilter() {
 
   const router = useRouter()
   const pathname = usePathname()
@@ -27,13 +27,13 @@ export default function RightSide() {
   }
 
   return (
-    <div className='rightAside-width flex justify-center items-center px-8 py-2'>
-      <ul className="flex gap-3">
+    <div className='flex justify-center items-center py-2'>
+      <ul className="flex gap-1">
         {
           filters.map(filter =>
             <li
               key={filter}
-              className={`w-full badge badge-outline text-slate-600 ${filter === rubroFilter && "badge-primary"} px-5 py-3 text-base cursor-pointer`}
+              className={`w-full badge badge-outline text-slate-600 ${filter === rubroFilter && "badge-primary"} px-4 py-2 text-sm cursor-pointer`}
               onClick={() => handleClick(filter)}
             >
               {filter}
