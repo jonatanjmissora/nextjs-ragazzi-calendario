@@ -8,9 +8,8 @@
   box-sizing: border-box;
 }
 
+/*    measures     */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
   --navbar-height: 5dvh;
   --main-height: 90dvh;
   --footer-height: 5dvh;
@@ -18,30 +17,158 @@
   --table-width: 60dvw;
 }
 
-/* :root,
-[data-theme] {
-  background: var(--background);
+/*      colors       */
+:root {
+  --white: #cacaca;
+  --black: #404040;
+  --black80: #40404080;
+  --black25: #40404025;
+  --gray: #444;
+  --gray-light: #888;
+
+  --ragazzi: #ffff7d88;
+  --patricios: #7dfd7d88;
+  --palihue: #ffc8c888;
+  --jmolina: #9ed7ff88;
+
+  --background-light: linear-gradient(125deg, #eee, #999);
+  --background-dark: linear-gradient(125deg, #202020, #111);
+
+}
+
+/*      theme        */
+:root {
+  --background: var(--background-light);
+  --foreground: var(--black);
+  --foreground80: var(--black80);
+  --foreground25: var(--black25);
+}
+
+[data-theme='dark'] {
+  --background: var(--background-dark);
+  --foreground: var(--white);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  .main-page {
+    background-color: blue;
+  }
+} */
+
+
+
+dialog::backdrop {
+  background-color: linear-gradient(125deg, #2a2a2a, #111);
+  backdrop-filter: blur(2px);
+}
+
+/* 
+:root {
+
+  --primary-grad-red: linear-gradient(to bottom, rgb(177, 33, 33), rgb(104, 29, 29));
+  --primary-red: rgb(104, 29, 29);
+  --card-grad: radial-gradient(50% 50% at center center, #eee, #aaa), linear-gradient(180deg, #fff, #888);
+
+  --white: #cacaca;
+  --black: #222;
+  --gray: #444;
+  --gray-light: #888;
+
+  --ragazzi: #ffff7d88;
+  --patricios: #7dfd7d88;
+  --palihue: #ffc8c888;
+  --jmolina: #9ed7ff88;
+
+  --background-light: linear-gradient(125deg, #aaa, #777);
+  --background-dark: linear-gradient(125deg, #2a2a2a, #111);
+  --text-dark: var(--black);
+  --text-light: var(--white);
+
+  --menu-alpha: #262626ee;
+
+  --background: var(--background-light);
+  --text: var(--text-dark);
+
+  --primary-btn-bg: var(--gray);
+  --primary-btn-text: var(--text-light);
+  --primary-btn-bg-hover: var(--background-light);
+  --primary-btn-text-hover: var(--text-dark);
+
+  --link-bg: transparent;
+  --link-text: var(--text-dark);
+  --link-bg-hover: var(--gray-light);
+  --link-text-hover: var(--text-light);
+  --link-active-bg: var(--gray);
+  --link-active-text: var(--text-light);
+
+  --weblink-hover: var(--gray-light);
+  --dashboard-logo-bg-light: url("./_assets/dashboard-logo-light.svg");
+  --dashboard-logo-bg: var(--dashboard-logo-bg-light);
+  --logo-light: url("./_assets/logo-light.svg");
+  --logo-bg: var(--logo-light);
+  --logo-bg-inv: url("./_assets/logo-dark.svg");
+
+  --header-bg: var(--white);
+  --hamb-menu-color: var(--black);
+  --hamb-menu-bg: var(--white);
+  --pago-menu-bg: var(--gray-light);
+
+  --movil-menu-active: #666;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #fa0a0a;
-    --foreground: #ededed;
-  }
-} */
+    --background: var(--background-dark);
+    --text: var(--text-light);
+    --card-grad: radial-gradient(50% 50% at center center, rgba(4, 4, 4, .66), #2a2a2a), linear-gradient(180deg, #fff, #262626);
 
-[data-theme='dark'] {
-  --background: #202020;
-  --foreground: white;
+    --primary-btn-bg: var(--background-dark);
+    --primary-btn-text: var(--text-light);
+    --primary-btn-bg-hover: var(--background-light);
+    --primary-btn-text-hover: var(--text-dark);
+
+    --link-text: var(--text-light);
+    --link-bg-hover: var(--background-dark);
+    --link-text-hover: var(--text-light);
+    --link-active-bg: var(--background-dark);
+    --link-active-text: var(--text-light);
+
+    --weblink-hover: var(--gray);
+    --dashboard-logo-bg-dark: url("./_assets/dashboard-logo-dark.svg");
+    --dashboard-logo-bg: var(--dashboard-logo-bg-dark);
+    --logo-dark: url("./_assets/logo-dark.svg");
+    --logo-bg: var(--logo-dark);
+    --logo-bg-inv: url("./_assets/logo-light.svg");
+
+    --header-bg: var(--gray);
+    --hamb-menu-color: var(--white);
+    --hamb-menu-bg: var(--gray);
+    --pago-menu-bg: var(--gray);
+
+    --movil-menu-active: var(--gray);
+  }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--text);
+  background: var(--dashboard-logo-bg), var(--background);
+  background-size: 30px;
+  background-attachment: fixed;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-dialog::backdrop {
-  background-color: rgb(0, 0, 0, 0.75);
-  backdrop-filter: blur(2px);
+.logo-container {
+  background: var(--logo-bg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
+
+.logo-container-inv {
+  background: var(--logo-bg-inv);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+*/

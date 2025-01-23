@@ -11,8 +11,8 @@ export default function UserMenu({ username }: { username: string }) {
   const [showMenu, setShowMenu] = useState<boolean>(false)
 
   return (
-    <article className="tracking-widest text-sm text-slate-400 flex justify-between items-center relative h-full z-10">
-      <button className={`${showMenu && "bg-slate-900 text-white"} h-full px-8 z-10`} onClick={() => setShowMenu(prev => !prev)}>Hola, {username.toUpperCase()}</button>
+    <article className="tracking-widest text-sm text-foreground80 flex justify-between items-center relative h-full z-10">
+      <button className={`${showMenu && "bg-slate-900 text-slate-200"} h-full px-8 z-10`} onClick={() => setShowMenu(prev => !prev)}>Hola, {username.toUpperCase()}</button>
       {
         showMenu && (
           <>

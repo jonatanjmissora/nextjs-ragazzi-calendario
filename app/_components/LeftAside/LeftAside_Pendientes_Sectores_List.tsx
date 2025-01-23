@@ -30,7 +30,7 @@ const Input = ({ rubro, actualRubro, setActualRubro }: { rubro: SectoresType, ac
   }
 
   return (
-    <li key={rubro._id} className="collapse collapse-arrow join-item border-base-300 border border-l-0 border-r-0 rounded-none">
+    <li key={rubro._id} className="collapse collapse-arrow join-item border border-foreground25  border-l-0 border-r-0 rounded-none">
 
       <input
         type="checkbox"

@@ -3,6 +3,9 @@
 body {
   max-height: 100dvh;
   overflow: hidden;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .leftAside-width {

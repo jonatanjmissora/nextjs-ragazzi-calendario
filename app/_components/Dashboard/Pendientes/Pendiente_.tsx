@@ -34,7 +34,7 @@ export default function PendientesList({ pendientes }: { pendientes: PagoType[] 
         <table className="table">
           {/* head */}
           <thead>
-            <tr className='text-lg'>
+            <tr className='text-lg border-b border-foreground25'>
               {
                 tableHeader.map(thName => <th key={thName}>{thName}</th>)
               }
@@ -45,7 +45,7 @@ export default function PendientesList({ pendientes }: { pendientes: PagoType[] 
             {
               pendientes.map(pendiente =>
 
-                <tr key={pendiente._id} className="hover">
+                <tr key={pendiente._id} className="hover:bg-foreground25 border-b border-foreground25">
                   <td>
                     <input
                       type="checkbox"
