@@ -1,5 +1,10 @@
 /* 640 - 768 - 1024 - 1280 - 1536 */
 
+body {
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
 .leftAside-width {
   padding: 1rem;
   width: var(--leftAside-width);
@@ -60,6 +65,8 @@
 
   body {
     min-height: 100dvh;
+    max-height: max-content;
+    overflow: visible;
   }
 
   .main-page {

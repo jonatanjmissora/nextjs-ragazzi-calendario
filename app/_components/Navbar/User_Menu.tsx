@@ -1,34 +1,41 @@
 "use client"
 
 import { logout } from "@/app/_lib/actions/user.action";
-import { useRef, useState } from "react";
+import { lazy, useRef, useState } from "react";
 import SubmitBtn from "../SubmitBtn";
+
+const ThemeSwitcher = lazy(() => import("../Navbar/ThemeSwitcher"))
 
 export default function UserMenu({ username }: { username: string }) {
 
   const [showMenu, setShowMenu] = useState<boolean>(false)
 
   return (
-    <article className="tracking-widest text-sm text-slate-400 flex justify-between items-center relative h-full">
+    <article className="tracking-widest text-sm text-slate-400 flex justify-between items-center relative h-full z-10">
       <button className={`${showMenu && "bg-slate-900 text-white"} h-full px-8 z-10`} onClick={() => setShowMenu(prev => !prev)}>Hola, {username.toUpperCase()}</button>
       {
         showMenu && (
-          <div className="absolute top-9 right-0 left-0 -bottom-[7rem] bg-slate-900 text-slate-400 p-2 flex flex-col justify-center items-end gap-6">
-            <Modal />
-            <span className="px-5">Tema</span>
-          </div>
+          <>
+            <div className="z-100 absolute top-0 -left-[1000%] right-0 -bottom-[2000%]" onClick={() => setShowMenu(false)}></div>
+            <div className="absolute top-9 right-0 left-0 -bottom-[7rem] bg-slate-900 rounded-bl-lg text-slate-400 p-2 flex flex-col justify-center items-end gap-6">
+              <Modal setShowMenu={setShowMenu} />
+              <ThemeSwitcher />
+            </div>
+          </>
         )
       }
     </article>
-
-
-
   )
 }
 
-const Modal = () => {
+const Modal = ({ setShowMenu }: { setShowMenu: React.Dispatch<React.SetStateAction<boolean>> }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
+
+  const handleClick = async () => {
+    dialogRef.current?.close()
+    setShowMenu(false)
+  }
 
   const handleLogout = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -49,7 +56,7 @@ const Modal = () => {
           <div className="modal-action">
             <form onSubmit={handleLogout} className="flex gap-1 w-1/2">
               <SubmitBtn isPending={false} text="Si" className="flex-1" />
-              <button onClick={() => dialogRef.current?.close()} type="button" className="btn btn-error flex-1">No</button>
+              <button onClick={handleClick} type="button" className="btn btn-error flex-1">No</button>
             </form>
           </div>
         </div>

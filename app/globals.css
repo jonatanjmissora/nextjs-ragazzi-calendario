@@ -18,16 +18,21 @@
   --table-width: 60dvw;
 }
 
-:root,
+/* :root,
 [data-theme] {
   background: var(--background);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #fa0a0a;
     --foreground: #ededed;
   }
+} */
+
+[data-theme='dark'] {
+  --background: #202020;
+  --foreground: white;
 }
 
 body {

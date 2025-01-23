@@ -1,10 +1,6 @@
 GENERAL:
 
-darkmode
-
 estilos, fondos y colores
-
-corregir los valores, que los montos, me los toma con comas, cuando edito
 
 PENDIENTES:
 
