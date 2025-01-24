@@ -41,7 +41,7 @@ export default function PendienteAction({ pendiente }: { pendiente: PagoType }) 
 
       <form action={formAction}>
         <SubmitBtn isPending={isPending}>
-          <DollarSVG className='size-6 text-[#00800075] hover:text-[#008000]' currentColor='currentColor' />
+          <DollarSVG className='size-5 text-[#00800075] hover:text-[#008000]' currentColor='currentColor' />
         </SubmitBtn>
       </form>
 
@@ -52,7 +52,7 @@ export default function PendienteAction({ pendiente }: { pendiente: PagoType }) 
         query: { id: pendiente._id },
       }}
       >
-        <EditSVG className='size-6 text-foreground80 hover:text-foreground' currentColor='currentColor' />
+        <EditSVG className='size-6 text-black hover:text-black80' currentColor='currentColor' />
       </Link>
 
     </div>

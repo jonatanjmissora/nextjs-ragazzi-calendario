@@ -17,7 +17,7 @@ export default function AdminList({ realizados }: { realizados: PagoType[] }) {
         <table className="table">
           {/* head */}
           <thead>
-            <tr className='text-lg'>
+            <tr className='text-lg border-b border-foreground25'>
               {
                 tableHeader.map(thName => <th key={thName}>{thName}</th>)
               }
@@ -45,7 +45,7 @@ const Pago = ({ realizado }
 ) => {
 
   return (
-    <tr key={realizado._id} className="hover">
+    <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25`}>
       <td>{realizado.vencimiento}</td>
       <td>{realizado.rubro}</td>
       <td>{realizado.sector}</td>

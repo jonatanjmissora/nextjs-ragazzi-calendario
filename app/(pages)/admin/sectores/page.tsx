@@ -16,8 +16,8 @@ export default async function AdminSectoresPage({ searchParams }: { searchParams
     <section className="main-page w-full main-height flex">
 
       <aside className='flex aside-links gap-4 justify-center items-center leftAside-width'>
-        <Link className={`w-3/4 ${type === "actuales" ? "btn btn-primary" : "btn btn-ghost"}`} href={"/admin/sectores?type=actuales"}>Sectores Actuales</Link>
-        <Link className={`w-3/4 ${type === "constantes" ? "btn btn-primary" : "btn btn-ghost"}`} href={"/admin/sectores?type=constantes"}>Sectores Constantes</Link>
+        <Link className={`w-3/4 ${type === "actuales" ? "btn-main" : "btn-main-ghost"} grow-0 border border-black25`} href={"/admin/sectores?type=actuales"}>Sectores Actuales</Link>
+        <Link className={`w-3/4 ${type === "constantes" ? "btn-main" : "btn-main-ghost"} grow-0 border border-black25`} href={"/admin/sectores?type=constantes"}>Sectores Constantes</Link>
       </aside>
 
       <Suspense fallback={<Loading />} >

@@ -14,7 +14,7 @@ export default function RealizadoAction({ realizado }: { realizado: PagoType }) 
         query: { id: realizado._id },
       }}
       >
-        <EditSVG className='size-6 text-[#aaaaaa75] hover:text-[#aaaaaa]' currentColor='currentColor' />
+        <EditSVG className='size-6 text-black hover:text-black80' currentColor='currentColor' />
       </Link>
 
       <RealizadoModal realizado={realizado} />

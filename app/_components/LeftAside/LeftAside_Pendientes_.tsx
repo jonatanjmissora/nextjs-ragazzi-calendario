@@ -14,7 +14,7 @@ export default async function Aside() {
   return (
     <article className="leftAside-width flex flex-col gap-4 justify-center items-center">
       <LeftAsideSectoresForm sectoresActuales={sectoresActuales} />
-      <form action={formAction}><button className="px-4 py-2 rounded-lg bg-foreground80 hover:bg-foreground hover:text-white transition">reload</button></form>
+      <form action={formAction}><button className="text-xs btn-main">reload</button></form>
     </article>
 
   )

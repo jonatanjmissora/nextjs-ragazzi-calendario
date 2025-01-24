@@ -25,7 +25,7 @@ export default function RealizadosList({ realizados, allRealizados }: { realizad
         <table className="table">
           {/* head */}
           <thead>
-            <tr className='text-lg'>
+            <tr className='text-lg border-b border-foreground25'>
               {
                 tableHeader.map(thName => <th key={thName}>{thName}</th>)
               }
@@ -56,8 +56,8 @@ const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
 ) => {
 
   return (
-    <tr key={realizado._id} className="hover">
-      <td className="inline-flex">
+    <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25`}>
+      <td className="inline-flex mx-3">
         <RealizadosModal
           allRealizados={allRealizados}
           realizado={realizado}

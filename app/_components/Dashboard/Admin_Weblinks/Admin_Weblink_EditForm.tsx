@@ -81,7 +81,7 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
 
   return (
     <>
-      <form action={formAction} className="flex flex-col items-center justify-center gap-10 w-[40rem]">
+      <form action={formAction} className="flex flex-col items-center justify-center gap-10 card w-1/2">
 
         <p className="text-3xl font-bold tracking-wide py-4 my-4 border-b w-full">{weblink._id ? "Editar" : "Crear"} link :</p>
 
@@ -91,21 +91,17 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
             {
               imgData
                 ? <AdminweblinkEditFormModal imgData={imgData} imgFileName={imgFile?.name ?? "image"} />
-                // ? <div className="bg-slate-300 rounded-lg overflow-hidden w-[160px] h-[100px] relative">
-                //   <Image src={imgData} alt={imgFile?.name ?? "image"} fill className="p-2 object-contain" />
-
-                // </div>
                 : <div className="w-[160px] h-[100px] bg-slate-300 rounded-lg overflow-hidden p-2"></div>}
 
-            <label className="input input-bordered p-4 py-2 cursor-pointer flex justify-center items-center gap-2 w-full" htmlFor="file"><UploadSVG className="size-5 text-slate-300" currentColor="currentColor" />imagen</label>
+            <label className="btn-main flex justify-center items-center gap-2 w-full" htmlFor="file"><UploadSVG className="size-5 text-inherit" currentColor="currentColor" />imagen</label>
             <input ref={inputRef} className={"hidden"} type="file" name="image" id="file" accept=".jpeg, .png, .jpg, .webp"
               onChange={handleChange}
             />
           </div>
 
           <div className="w-full flex flex-col justify-between text-center gap-2">
-            <input className="input text-right" type="text" name="_id" id="_id" defaultValue={formState?.prevState?._id ?? weblink._id} required />
-            <input className="input text-right" type="text" name="href" id="href" defaultValue={formState?.prevState?.href ?? weblink.href} required />
+            <input className="input-main text-right" type="text" name="_id" id="_id" defaultValue={formState?.prevState?._id ?? weblink._id} required />
+            <input className="input-main text-right" type="text" name="href" id="href" defaultValue={formState?.prevState?.href ?? weblink.href} required />
             <input className="hidden" type="text" name="imgData" id="imgData" defaultValue={imgData} />
           </div>
 
@@ -115,7 +111,7 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
         <div className="w-full flex flex-col justify-end items-end gap-2">
           <div className="w-1/2 flex gap-2">
             <SubmitBtn text={"Upload"} isPending={isPending} />
-            <Link className="btn btn-outline flex-1" href={"/admin/weblinks"} >Cancelar</Link>
+            <Link className="btn-main-error" href={"/admin/weblinks"} >Cancelar</Link>
           </div>
           {
             formState?.message

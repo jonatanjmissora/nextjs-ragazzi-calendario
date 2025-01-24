@@ -38,12 +38,12 @@ export default function FiltrosFecha({ desdeFilter, hastaFilter }: { desdeFilter
 
       <div className="w-full">
         <label className="label" htmlFor="desde">desde</label>
-        <input className="input w-full" type="date" id="desde" defaultValue={desdeFilter} onChange={(e) => handleDesdeChange(e.currentTarget.value)} />
+        <input className="input-main w-full" type="date" id="desde" defaultValue={desdeFilter} onChange={(e) => handleDesdeChange(e.currentTarget.value)} />
       </div>
 
       <div className="w-full">
         <label className="label" htmlFor="desde">hasta</label>
-        <input className="input w-full" type="date" id="desde" defaultValue={hastaFilter} onChange={(e) => handleHastaChange(e.currentTarget.value)} />
+        <input className="input-main w-full" type="date" id="desde" defaultValue={hastaFilter} onChange={(e) => handleHastaChange(e.currentTarget.value)} />
       </div>
     </div>
   )

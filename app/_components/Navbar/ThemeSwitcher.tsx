@@ -14,11 +14,11 @@ const ThemeSwitcher = () => {
         theme === "light"
 
           ? <button onClick={() => setTheme('dark')}>
-            <SunSVG className="size-5 text-slate-200" currentColor="currentColor" />
+            <SunSVG className="size-5 text-white" currentColor="currentColor" />
           </button>
 
           : <button onClick={() => setTheme('light')}>
-            <MoonSVG className="size-5 text-slate-200" currentColor="currentColor" />
+            <MoonSVG className="size-5 text-white" currentColor="currentColor" />
           </button>
       }
     </div>

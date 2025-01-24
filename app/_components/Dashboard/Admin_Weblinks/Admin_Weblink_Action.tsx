@@ -14,7 +14,7 @@ export default async function WeblinkAction({ id }: { id: string }) {
         pathname: '/admin/weblinks/edit',
         query: { id },
       }} >
-        <EditSVG className="size-6 text-[#aaaaaa75] hover:text-[#aaaaaa]" currentColor="currentColor" />
+        <EditSVG className='size-6 text-black hover:text-black80' currentColor='currentColor' />
       </Link>
       <WeblinkModal weblink={weblink} />
     </div>

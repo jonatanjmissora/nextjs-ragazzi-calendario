@@ -51,7 +51,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
         showConfirm
 
           ?
-          <form action={formAction} className="flex flex-col gap-2">
+          <form action={formAction} className="flex flex-col gap-2 card">
             <h2 className="my-4 text-2xl tracking-wider font-bold">¿ Confirmar cambio ?</h2>
 
             <EditRow label={"vencimiento"} oldValue={pago.vencimiento} newValue={inputValues.vencimiento} />
@@ -63,26 +63,26 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
               <EditRow label={"pagado"} oldValue={pago.pagado ?? ""} newValue={inputValues?.pagado ?? ""} />
             }
 
-            <div className="flex gap-1 mt-20">
-              <button className="btn btn-primary flex-1" type="submit">
+            <div className="flex gap-1 mt-10">
+              <button className="btn-main-success" type="submit">
                 {
                   isPending
-                    ? <span className="loading loading-spinner"></span>
+                    ? <span className="size-4 loading loading-bars"></span>
                     : "Confirma"
                 }
               </button>
-              <button type="button" className="btn btn-outline flex-1" onClick={() => setShowConfirm(false)}>Cancelar</button>
+              <button type="button" className="btn-main-error" onClick={() => setShowConfirm(false)}>Cancelar</button>
             </div>
 
           </form>
 
           :
-          <form onSubmit={onSubmit} className="edit-form-container flex flex-col gap-4 min-w-80">
+          <form onSubmit={onSubmit} className="edit-form-container flex flex-col gap-4 min-w-80 card">
             <h2 className="text-2xl tracking-wider font-bold">Editar pago {pagoType}:</h2>
-            <input className="input" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
+            <input className="input-main text-sm" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
 
             <select
-              className="flex-1 select"
+              className="input-main"
               name="rubro" id="rubro" defaultValue={rubro}
               onChange={(e) => setCurrentRubro(e.currentTarget.value)}>
               <option className="option" value="ragazzi">ragazzi</option>
@@ -91,24 +91,24 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
               <option value="jmolina">jmolina</option>
             </select>
 
-            <select className="select" name="sector" id="sector" defaultValue={sector} >
+            <select className="input-main" name="sector" id="sector" defaultValue={sector} >
               {
                 sectores?.map(sector => <option key={sector} value={sector}>{sector}</option>)
               }
             </select>
 
-            <input className="input" type="number" name="monto" id="monto" defaultValue={monto} />
+            <input className="input-main text-sm" type="number" name="monto" id="monto" defaultValue={monto} />
 
             {
               pago.pagado !== "" &&
-              <input className="input" type="date" name="pagado" id="pagado" defaultValue={pago.pagado} />
+              <input className="input-main" type="date" name="pagado" id="pagado" defaultValue={pago.pagado} />
             }
 
             {formState?.message ? <span className="text-red-700 italic">{formState.message}</span> : <span className="text-transparent"></span>}
 
             <div className="w-full flex gap-1">
-              <button className="btn btn-primary flex-1" type="submit" >Editar</button>
-              <Link href={pagoType === "pendiente" ? "/" : "/admin"} className="btn btn-outline flex-1" type="button">Cancelar</Link>
+              <button className="btn-main-success" type="submit" >Editar</button>
+              <Link href={pagoType === "pendiente" ? "/" : "/admin"} className="btn-main-error" type="button">Cancelar</Link>
             </div>
 
           </form>
@@ -125,7 +125,7 @@ const EditRow = ({ label, oldValue, newValue }: { label: string, oldValue: strin
     <div className="grid grid-cols-[6rem_10rem_1.5rem_10rem] justify-center items-center">
       <span className="">{label} : </span>
       <input className=" text-center bg-transparent focus:outline-none" type="text" name={label} defaultValue={oldValue} readOnly />
-      {!isTheSame && <RightArrowSVG className="size-5 " currentColor={"white"} />}
+      {!isTheSame && <RightArrowSVG className="size-5 text-black" currentColor="currentColor" />}
       {!isTheSame && <input className=" text-center bg-transparent focus:outline-none" name={label} type="text" defaultValue={newValue} readOnly />}
     </div>
   )

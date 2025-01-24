@@ -61,7 +61,7 @@ export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, s
 
 
   return (
-    <ul className={`collapse-content pt-2 bg-foreground25 rounded`}>
+    <ul className={`collapse-content pt-2 ${rubro} rounded`}>
 
       <div className="flex flex-wrap gap-1">
         {
@@ -77,12 +77,12 @@ export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, s
         }
       </div>
 
-      <form action={formAction} className="flex gap-4 pt-2">
+      <form action={formAction} className="flex flex-wrap gap-2 pt-2">
         <input type="hidden" name="rubro" defaultValue={rubro} />
         <input type="hidden" name="sector" defaultValue={actualSector} />
-        <input className="w-5/12 bg-slate-500 p-1 bg-background border-b border-foreground text-sm" type="date" name="vencimiento" defaultValue={getActualDateStr()} />
-        <input className="w-5/12 bg-slate-500 text-center px-1 bg-background border-b border-foreground" placeholder="monto" defaultValue={0} type="number" name="monto" onFocus={(e) => e.currentTarget.select()} />
-        <SubmitBtn isPending={isPending} className="px-1 rounded bg-foreground25 hover:bg-foreground80 hover:text-slate-800 transition">
+        <input className="w-full input-main text-sm" type="date" name="vencimiento" defaultValue={getActualDateStr()} />
+        <input className="w-1/2 input-main text-sm text-right" placeholder="monto" defaultValue={0} type="number" name="monto" onFocus={(e) => e.currentTarget.select()} />
+        <SubmitBtn isPending={isPending} className="btn-main w-1/2">
           <PlaySVG className="size-5 text-inherit" currentColor="currentColor" />
         </SubmitBtn>
       </form>

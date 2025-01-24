@@ -26,9 +26,8 @@ const ActualLink = ({ text, pathname, href }: { text: string, pathname: string, 
 
   return (
     <Link
-      className={`tracking-widest text-center font-bold px-2 py-1 text-foreground hover:text-foreground80 transition ${pathname.includes(text)
-        ? "border-b-2 border-foreground80"
-        : "border-b-2 border-transparent"}`}
+      className={`badge-main ${pathname.includes(text)
+        && "bg-foreground25"}`}
       href={href}
     >
       {text}

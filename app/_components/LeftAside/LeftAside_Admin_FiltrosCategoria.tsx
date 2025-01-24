@@ -42,14 +42,14 @@ export default function FiltrosCategoria({ rubroFilter, sectorFilter, sectoresDe
 
       <div className="w-full">
         <label className="label">rubro</label>
-        <select name="rubro" className="select w-full" defaultValue={rubroFilter} onChange={(e) => handleRubroChange(e.currentTarget.value)}>
+        <select name="rubro" className="input-main w-full" defaultValue={rubroFilter} onChange={(e) => handleRubroChange(e.currentTarget.value)}>
           {rubros.map(rubro => <option key={rubro} className="option" value={rubro}>{rubro}</option>)}
         </select>
       </div>
 
       <div className="w-full">
         <label className="label">sector</label>
-        <select name="sector" className="select w-full" defaultValue={sectorFilter} onChange={(e) => handleSectorChange(e.currentTarget.value)}>
+        <select name="sector" className="input-main w-full" defaultValue={sectorFilter} onChange={(e) => handleSectorChange(e.currentTarget.value)}>
           {
             sectoresDelRubro.map(sector => <option key={sector} className="option">{sector}</option>)
           }

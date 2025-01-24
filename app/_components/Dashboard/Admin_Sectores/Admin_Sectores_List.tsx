@@ -46,22 +46,22 @@ export default function AdminSectoresList({ sectoresType, sectoresList }: { sect
       {
         sectoresList.map((rubroActual, index) =>
 
-          <div key={index} className="w-[90%] flex flex-col rounded-lg bg-slate-900 p-4 mx-auto my-2 ">
+          <div key={index} className="w-[90%] flex flex-col card p-5">
             <div className="w-full flex justify-between items-center">
               <span className="text-xl font-bold">{rubroActual._id}</span>
               <form action={formAction} className="flex gap-2">
                 <input type="hidden" name="rubro" defaultValue={rubroActual._id} />
-                <input type="text" className="bg-transparent border-b border-slate-400 text-center" name="newSector" placeholder="nuevo..." />
+                <input type="text" className="input-main py-1 text-center" name="newSector" placeholder="nuevo..." required />
                 <SubmitBtn isPending={isPending} className="px-5">
-                  <PlusSVG className="size-5 text-slate-500 hover:text-slate-200" currentColor="currentColor" />
+                  <PlusSVG className="size-5 text-foreground hover:text-foreground80" currentColor="currentColor" />
                 </SubmitBtn>
               </form>
             </div>
 
-            <div className="flex flex-wrap gap-2 gap-y-6 my-4">
+            <div className="flex flex-wrap my-4 sectores-gap">
               {
                 rubroActual.sectores.map((sector, index) =>
-                  <span key={index} className={`flex gap-2 badge badge-outline text-slate-400 text-sm font-bold`}>
+                  <span key={index} className={`flex gap-2 badge-main ${rubroActual._id} text-sm w-max`}>
                     {sector}
                     <Modal
                       sectoresType={sectoresType}
@@ -103,18 +103,18 @@ const Modal = ({ sectoresType, rubro, sector, sectores }: { sectoresType: string
   return (
     <>
       <button className="" onClick={() => dialogRef.current?.showModal()}>
-        <TrashSVG className="size-4 text-slate-400 hover:text-slate-200" currentColor="currentColor" />
+        <TrashSVG className="size-4 text-foreground hover:text-foreground80" currentColor="currentColor" />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
-        <div className="modal-container p-10 bg-slate-900 w-1/3 rounded-lg fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+        <div className="modal-container card fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <div className="flex gap-2 flex-wrap">
             <span className="font-bold text-xl text-center tracking-widest">¿ Seguro desea elimiar</span>
             <span className="font-bold text-xl text-center tracking-widest">{sector} ?</span>
           </div>
           <div className="modal-action">
             <form action={formAction} className="flex gap-1 w-1/2">
-              <SubmitBtn isPending={isPending} text="Si" className="flex-1" />
-              <button onClick={() => dialogRef.current?.close()} type="button" className="btn btn-error flex-1">No</button>
+              <SubmitBtn isPending={isPending} text="Si" />
+              <button onClick={() => dialogRef.current?.close()} type="button" className="btn-main-error">No</button>
             </form>
           </div>
         </div>

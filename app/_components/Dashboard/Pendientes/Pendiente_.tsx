@@ -23,7 +23,7 @@ export default function PendientesList({ pendientes }: { pendientes: PagoType[] 
   if (pendientes.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center text-2xl">No hay pagos registrados...</h1></div>
 
   return (
-    <article className="ml-[10rem]"> 
+    <article className="ml-[10rem]">
 
       <PagosHeader
         calcPagos={calcPagos}
@@ -49,7 +49,7 @@ export default function PendientesList({ pendientes }: { pendientes: PagoType[] 
                   <td>
                     <input
                       type="checkbox"
-                      className={`mx-3 checkbox-xs ${calcPagos.includes(pendiente._id) ? "opacity-100" : "opacity-20"}`}
+                      className={`mx-3 ${calcPagos.includes(pendiente._id) ? "opacity-100" : "opacity-20"}`}
                       defaultChecked={calcPagos.includes(pendiente._id)}
                       onChange={() => handleChange(pendiente._id)}
                     />
