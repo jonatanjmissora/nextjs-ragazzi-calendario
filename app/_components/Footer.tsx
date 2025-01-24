@@ -13,7 +13,7 @@ export default async function Footer() {
   const user = await getUserFromCookie()
 
   return (
-    <footer className='text-slate-400 footer-height w-full flex justify-end items-center px-5'>
+    <footer className='text-foreground footer-height w-full flex justify-end items-center px-5'>
 
       {
         user &&

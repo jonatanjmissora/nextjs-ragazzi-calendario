@@ -30,16 +30,20 @@ const Input = ({ rubro, actualRubro, setActualRubro }: { rubro: SectoresType, ac
   }
 
   return (
-    <li key={rubro._id} className="collapse collapse-arrow join-item border border-foreground25  border-l-0 border-r-0 rounded-none">
+    <li 
+      key={rubro._id} 
+      className={`collapse collapse-arrow hover:bg-${rubro._id} join-item border-t border-foreground25 rounded-none last:border-b`}
+      >
 
       <input
         type="checkbox"
         name="my-accordion-4"
-        className={rubro._id}
         checked={rubro._id === actualRubro}
         onChange={() => handleChange(rubro._id)}
       />
-      <div className="collapse-title text-xl font-medium">{rubro._id} ({rubro.sectores.length})</div>
+
+      <p className={`collapse-title text-xl font-medium text-foreground hover:text-foreground80 transition hover:${rubro}`}>{rubro._id} ({rubro.sectores.length})</p>
+      
       {<Sectores rubro={rubro._id} sectores={rubro.sectores} setActualRubro={setActualRubro} />}
     </li>
   )

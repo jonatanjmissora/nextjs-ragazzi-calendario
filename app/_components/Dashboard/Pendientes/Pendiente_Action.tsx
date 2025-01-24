@@ -52,7 +52,7 @@ export default function PendienteAction({ pendiente }: { pendiente: PagoType }) 
         query: { id: pendiente._id },
       }}
       >
-        <EditSVG className='size-6 text-[#aaaaaa75] hover:text-[#aaaaaa]' currentColor='currentColor' />
+        <EditSVG className='size-6 text-foreground80 hover:text-foreground' currentColor='currentColor' />
       </Link>
 
     </div>

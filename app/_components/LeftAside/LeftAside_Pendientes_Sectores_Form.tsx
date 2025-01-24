@@ -61,13 +61,13 @@ export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, s
 
 
   return (
-    <ul className="collapse-content pt-2">
+    <ul className={`collapse-content pt-2 bg-foreground25 rounded`}>
 
       <div className="flex flex-wrap gap-1">
         {
           sectores.map((sector, index) =>
             <li
-              className={`${actualSector === sector && "bg-slate-500"} border border-transparent hover:text-cyan-800 py-1 px-2 rounded`}
+              className={`${actualSector === sector && "bg-foreground80"} border border-transparent hover:text-foreground80 py-1 px-2 rounded`}
               key={index}
             >
               <button onClick={() => setActualSector(sector)}>
@@ -77,12 +77,12 @@ export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, s
         }
       </div>
 
-      <form action={formAction} className="flex gap-1 pt-2">
+      <form action={formAction} className="flex gap-4 pt-2">
         <input type="hidden" name="rubro" defaultValue={rubro} />
         <input type="hidden" name="sector" defaultValue={actualSector} />
-        <input className="w-6/12 bg-slate-500 py-1 rounded px-1" type="date" name="vencimiento" defaultValue={getActualDateStr()} />
-        <input className="w-5/12 bg-slate-500 rounded text-center px-1" placeholder="monto" defaultValue={0} type="number" name="monto" onFocus={(e) => e.currentTarget.select()} />
-        <SubmitBtn isPending={isPending} className="rounded-lg border border-slate-300 hover:bg-gray-300 hover:border-gray-300 hover:text-slate-800 transition">
+        <input className="w-5/12 bg-slate-500 p-1 bg-background border-b border-foreground text-sm" type="date" name="vencimiento" defaultValue={getActualDateStr()} />
+        <input className="w-5/12 bg-slate-500 text-center px-1 bg-background border-b border-foreground" placeholder="monto" defaultValue={0} type="number" name="monto" onFocus={(e) => e.currentTarget.select()} />
+        <SubmitBtn isPending={isPending} className="px-1 rounded bg-foreground25 hover:bg-foreground80 hover:text-slate-800 transition">
           <PlaySVG className="size-5 text-inherit" currentColor="currentColor" />
         </SubmitBtn>
       </form>

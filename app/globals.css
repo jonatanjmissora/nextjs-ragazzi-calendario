@@ -10,8 +10,8 @@
 
 /*    measures     */
 :root {
-  --navbar-height: 5dvh;
-  --main-height: 90dvh;
+  --navbar-height: 10dvh;
+  --main-height: 85dvh;
   --footer-height: 5dvh;
   --leftAside-width: 20dvw;
   --table-width: 60dvw;
@@ -26,10 +26,10 @@
   --gray: #444;
   --gray-light: #888;
 
-  --ragazzi: #ffff7d88;
-  --patricios: #7dfd7d88;
-  --palihue: #ffc8c888;
-  --jmolina: #9ed7ff88;
+  --ragazzi: #ffff7d50;
+  --patricios: #7dfd7d50;
+  --palihue: #ffc8c875;
+  --jmolina: #9ed7ff50;
 
   --background-light: linear-gradient(125deg, #eee, #999);
   --background-dark: linear-gradient(125deg, #202020, #111);
@@ -60,6 +60,22 @@
 dialog::backdrop {
   background-color: linear-gradient(125deg, #2a2a2a, #111);
   backdrop-filter: blur(2px);
+}
+
+.todos {
+  background: var(--foreground25)
+}
+.ragazzi {
+  background: var(--ragazzi)
+}
+.patricios {
+  background: var(--patricios)
+}
+.palihue {
+  background: var(--palihue)
+}
+.jmolina {
+  background: var(--jmolina)
 }
 
 /* 

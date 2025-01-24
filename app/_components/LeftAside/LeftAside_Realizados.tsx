@@ -43,7 +43,7 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
       <div className="w-full">
         <label className='label' htmlFor='anio'>año</label>
         <select
-          className='text-slate-500 p-1 bg-transparent w-full border-b border-slate-500'
+          className='p-1 bg-transparent w-full border-b border-foreground'
           onClick={(e) => handleYearChange(e.currentTarget.value)}
           name="anio"
           id="anio"
@@ -67,7 +67,7 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
           {
             meses.map((mes, index) =>
               <div
-                className={`flex justify-between w-[48%] font-bold tracking-wider border border-slate-500 text-slate-500 p-1 rounded-lg hover:text-slate-300 hover:border-slate-300 ${mes === meses[+monthFilter - 1] && "bg-slate-400 text-slate-900"}`}
+                className={`flex justify-between w-[48%] font-bold tracking-wider border border-foreground80 text-foreground80 p-1 rounded-lg hover:text-foreground hover:border-foreground ${mes === meses[+monthFilter - 1] && "bg-foreground80 text-white"}`}
                 key={mes}
                 onClick={() => handleMonthChange(index)}
               >
