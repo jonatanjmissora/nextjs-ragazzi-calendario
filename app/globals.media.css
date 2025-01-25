@@ -1,8 +1,8 @@
 /* 640 - 768 - 1024 - 1280 - 1536 */
 
 body {
-  max-height: 100dvh;
-  overflow: hidden;
+  /* max-height: 100dvh;
+  overflow: hidden; */
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
@@ -23,7 +23,8 @@ body {
 }
 
 .main-height {
-  height: var(--main-height);
+  /* height: var(--main-height); */
+  /* border: 1px solid yellow; */
 }
 
 .footer-height {
@@ -40,6 +41,7 @@ body {
   height: 90%;
   overflow-y: auto;
   scrollbar-gutter: stable;
+  padding-right: 2rem;
 }
 
 .modal-container {
@@ -71,7 +73,7 @@ body {
 }
 
 .sectores-gap {
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 
@@ -80,8 +82,8 @@ body {
 
   body {
     min-height: 100dvh;
-    max-height: max-content;
-    overflow: visible;
+    /*overflow: visible; */
+    /* border: 1px solid red; */
   }
 
   .main-page {
@@ -92,18 +94,18 @@ body {
   .table-container {
     width: 100%;
     overflow-y: visible;
-
+    padding-right: 0;
+    padding-bottom: 4rem;
+    /* border: 1px solid green; */
   }
 
-  .main-height {
-    height: max-content;
-    min-height: var(--main-height);
-  }
+  .main-height {}
 
   .leftAside-width {
     padding: 0;
     width: 70%;
-    margin: 8rem auto;
+    margin: 12rem auto;
+    margin-bottom: 4rem;
   }
 
   .rubro-filter {
@@ -116,8 +118,8 @@ body {
     z-index: 100;
     top: 0;
     left: 0;
-    background-color: #0a0a0add;
-    backdrop-filter: blur(2px);
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
   }
 
   .modal-container {
@@ -139,11 +141,17 @@ body {
   }
 
   .weblink-container {
-    width: 80%;
+    width: 90%;
   }
 
   .sectores-gap {
-    gap: 0.5rem 1.5rem;
+    gap: 2rem 1rem;
+  }
+
+  .admin-sectores {
+    margin-top: 8rem;
+    width: 75%;
+    margin-bottom: 4rem;
   }
 }
 

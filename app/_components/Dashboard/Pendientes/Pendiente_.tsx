@@ -23,13 +23,13 @@ export default function PendientesList({ pendientes }: { pendientes: PagoType[] 
   if (pendientes.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center text-2xl">No hay pagos registrados...</h1></div>
 
   return (
-    <article className="ml-[10rem]">
+    <article className="w-full flex flex-col justify-center items-center">
 
       <PagosHeader
         calcPagos={calcPagos}
         pendientes={pendientes}
       />
-      <div className="table-container relative pr-8">
+      <div className="table-container relative">
 
         <table className="table">
           {/* head */}

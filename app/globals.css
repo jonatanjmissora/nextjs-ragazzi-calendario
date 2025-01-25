@@ -35,11 +35,15 @@
 
   --background-light: linear-gradient(125deg, #eee, #999);
   --background-dark: linear-gradient(125deg, #202020, #111);
+  --nav-bg-light: linear-gradient(125deg, #eee, #ccc);
+  --nav-bg-dark: linear-gradient(125deg, #202020, #191919);
+
 }
 
 /*      theme        */
 :root {
   --background: var(--background-light);
+  --nav-bg: var(--nav-bg-light);
   --foreground: var(--black);
   --foreground80: var(--black80);
   --foreground25: var(--black25);
@@ -48,6 +52,7 @@
 
 [data-theme='dark'] {
   --background: var(--background-dark);
+  --nav-bg: var(--nav-bg-dark);
   --foreground: var(--white);
   --foreground80: var(--white80);
   --foreground25: var(--white25);

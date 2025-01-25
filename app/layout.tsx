@@ -31,11 +31,11 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`min-h-dvh flex flex-col ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
           <Navbar />
-          <main className="w-full">
+          <main>
             {children}
 
             <Toaster

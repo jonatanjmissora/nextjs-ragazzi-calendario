@@ -45,7 +45,7 @@ export default function AdminSectoresList({ sectoresType, sectoresList }: { sect
   return (
     <article className="table-width flex flex-col gap-2 items-center flex-1 mt-10">
 
-      <div className="w-1/2 flex gap-2 items-center jsutify-center">
+      <div className="w-1/2 admin-sectores flex gap-2 items-center jsutify-center">
         <Link
           className={`badge-main w-1/2 ${sectoresType === "actuales" && "bg-foreground25"}`}
           href={"/admin/sectores?type=actuales"}>Sectores Actuales
@@ -60,7 +60,7 @@ export default function AdminSectoresList({ sectoresType, sectoresList }: { sect
       {
         sectoresList.map((rubroActual, index) =>
 
-          <div key={index} className="w-[90%] flex flex-col border-t border-foreground25 last:border-b px-5 pt-2">
+          <div key={index} className="w-[90%] flex flex-col border-t border-foreground25 last:border-b py-8">
             <div className="w-full flex justify-between items-center">
               <span className="text-xl font-bold">{rubroActual._id}</span>
               <form action={formAction} className="flex gap-2">

@@ -11,9 +11,9 @@ export default function AdminList({ realizados }: { realizados: PagoType[] }) {
   if (realizados.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center text-2xl">No hay pagos registrados...</h1></div>
 
   return (
-    <article className="flex-1 flex items-center justify-center">
+    <article className="w-full flex flex-col justify-center items-center">
 
-      <div className="table-container relative px-8 py-4">
+      <div className="table-container relative">
         <table className="table">
           {/* head */}
           <thead>

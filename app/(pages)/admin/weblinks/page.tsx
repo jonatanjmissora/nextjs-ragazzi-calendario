@@ -10,7 +10,7 @@ export default async function AdminWeblinksPage() {
   const weblinks = await getCachedWeblinksAction() as WeblinkType[]
 
   return (
-    <section className="main-page w-full main-height flex justify-center items-center">
+    <section className="min-h-[95dvh] flex flex-col justify-center items-center">
 
       <div className="weblink-container px-6 py-0">
         <div className="flex justify-between items-center w-full text-xl font-semibold tracking-wide py-2">
@@ -30,7 +30,7 @@ export default async function AdminWeblinksPage() {
 const WeblinkRow = ({ weblink }: { weblink: WeblinkType }) => {
 
   return (
-    <article className="flex justify-between items-center border-t border-foreground25 last:border-b p-3">
+    <article className="flex justify-between items-center border-t border-foreground25 last:border-b py-8 ">
       <div className="w-[100px] h-[80px] bg-slate-300 rounded-lg shadow border border-black25 overflow-hidden p-2 relative">
         <Image src={"data:image/jpeg;base64," + weblink.imgData} alt={weblink._id} fill className="p-3" />
       </div>

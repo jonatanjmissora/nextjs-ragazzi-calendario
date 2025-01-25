@@ -16,11 +16,11 @@ export default function RealizadosList({ realizados, allRealizados }: { realizad
 
   return (
 
-    <article className="flex-1">
+    <article className="w-full flex flex-col justify-center items-center">
 
       <PagosHeader />
 
-      <div className="table-container relative px-8">
+      <div className="table-container relative">
 
         <table className="table">
           {/* head */}

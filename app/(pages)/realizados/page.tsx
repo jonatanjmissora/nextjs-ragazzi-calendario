@@ -19,7 +19,7 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
   const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, dateFilter) as PagoType[]
 
   return (
-    <section className="main-page w-full main-height flex">
+    <section className="min-h-[95dvh] flex flex-col">
 
       <LeftAsideRealizados dateFilter={dateFilter} />
 

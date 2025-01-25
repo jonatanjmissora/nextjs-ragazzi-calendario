@@ -11,7 +11,7 @@ export default async function WeblinkEdit({ searchParams }: { searchParams: Prom
   if (id) actualLink = { ...weblink }
 
   return (
-    <section className="w-full main-height flex flex-col items-center justify-center">
+    <section className="min-h-[95dvh] flex flex-col justify-center items-center">
       <WeblinkEditForm weblink={actualLink} />
     </section>
   )
