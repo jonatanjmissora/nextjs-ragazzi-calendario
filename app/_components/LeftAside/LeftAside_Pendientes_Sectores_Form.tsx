@@ -81,10 +81,12 @@ export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, s
         <input type="hidden" name="rubro" defaultValue={rubro} />
         <input type="hidden" name="sector" defaultValue={actualSector} />
         <input className="w-full input-main text-sm" type="date" name="vencimiento" defaultValue={getActualDateStr()} />
-        <input className="w-1/2 input-main text-sm text-right" placeholder="monto" defaultValue={0} type="number" name="monto" onFocus={(e) => e.currentTarget.select()} />
-        <SubmitBtn isPending={isPending} className="btn-main w-1/2">
-          <PlaySVG className="size-5 text-inherit" currentColor="currentColor" />
-        </SubmitBtn>
+        <div className="flex gap-1 w-full h-9">
+          <input className="w-2/3 input-main text-sm text-right" placeholder="monto" defaultValue={0} type="number" name="monto" onFocus={(e) => e.currentTarget.select()} />
+          <SubmitBtn isPending={isPending} className="btn-main w-1/3 h-full">
+            <PlaySVG className="size-5 text-inherit" currentColor="currentColor" />
+          </SubmitBtn>
+        </div>
       </form>
 
       <p className="text-orange-700">{formState?.message}</p>

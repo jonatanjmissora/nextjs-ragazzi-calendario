@@ -1,28 +1,27 @@
 "use client"
 
 import { resetSectoresAction } from "@/app/_lib/actions/sectores.action"
-import { revalidateTag } from "next/cache"
 import { useActionState } from "react"
 import SubmitBtn from "../SubmitBtn"
+import toast from "react-hot-toast"
 
 export default function LeftAsidePendientesResetSectores() {
 
-const [formState, formAction, isPending] = useActionState(async () => {
+  const [formState, formAction, isPending] = useActionState(async () => {
 
     const res = await resetSectoresAction()
-    if(!res.success) {
-        return res
+    if (res.success) {
+      toast.success("Sectores reseteados")
+      return { ...res, message: "" }
     }
-    
-    revalidateTag("sectores")
     return res
 
-    }, null)
+  }, null)
 
   return (
-    <form action={formAction}>
-        <SubmitBtn text="reload" isPending={false} className="text-xs px-4 py-3"/>
-        <p className="text-orange-700">{formState?.message}</p>
+    <form action={formAction} className="flex flex-col gap-2 items-center">
+      <SubmitBtn text="reload" isPending={isPending} className="text-xs px-4 py-0 h-8 w-16" classNameSVG="" />
+      <p className="text-orange-700 text-xs">{formState?.message}</p>
     </form>
   )
 }

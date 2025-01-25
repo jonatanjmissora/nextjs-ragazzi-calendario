@@ -89,8 +89,6 @@ export const editarNewRealizadoAction = async (realizado: PagoType, newRealizado
 export const insertarRealizadoAction = async (newRealizado: PagoType) => {
   //server-valiation
   const { success, data, error } = pagoSchema.safeParse(newRealizado)
-  console.log({ newRealizado })
-  console.log(success, data, error)
   if (!success) {
     const errors = error.flatten().fieldErrors
     return {

@@ -38,8 +38,8 @@ export default function PendienteAction({ pendiente }: { pendiente: PagoType }) 
 
   return (
     <div className='flex justify-around items-center gap-1 px-5'>
- 
-      <form action={formAction}>
+
+      <form action={formAction} className='flex justify-center items-center'>
         <SubmitBtn isPending={isPending} className='' classNameSVG="size-9">
           <DollarSVG className='size-9 p-[0.4rem] text-[#005300] hover:text-[#35da35e7]' currentColor='currentColor' />
         </SubmitBtn>

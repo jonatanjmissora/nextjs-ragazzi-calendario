@@ -8,7 +8,7 @@ export default function AdminweblinkEditFormModal({ imgData, imgFileName }: { im
 
   return (
     <>
-      <button className="bg-slate-300 rounded-lg overflow-hidden w-[160px] h-[100px] relative" type="button" onClick={() => dialogRef.current?.showModal()}>
+      <button className="bg-slate-300 rounded-lg shadow border border-black25 overflow-hidden w-[160px] h-[100px] relative" type="button" onClick={() => dialogRef.current?.showModal()}>
         <Image src={imgData} alt={imgFileName} fill className="p-2 object-contain" />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">

@@ -7,6 +7,7 @@ import { useActionState, useRef } from "react";
 import toast from "react-hot-toast";
 import SubmitBtn from "../../SubmitBtn";
 import { updateSectoresActualesAction, updateSectoresResetAction } from "@/app/_lib/actions/sectores.action";
+import Link from "next/link";
 
 type RespType = {
   success: boolean;
@@ -42,18 +43,31 @@ export default function AdminSectoresList({ sectoresType, sectoresList }: { sect
   }, null)
 
   return (
-    <article className="table-width flex flex-col gap-2 justify-center items-center flex-1">
+    <article className="table-width flex flex-col gap-2 items-center flex-1 mt-10">
+
+      <div className="w-1/2 flex gap-2 items-center jsutify-center">
+        <Link
+          className={`badge-main w-1/2 ${sectoresType === "actuales" && "bg-foreground25"}`}
+          href={"/admin/sectores?type=actuales"}>Sectores Actuales
+        </Link>
+
+        <Link
+          className={`badge-main w-1/2 ${sectoresType === "constantes" && "bg-foreground25"}`}
+          href={"/admin/sectores?type=constantes"}>Sectores Constantes
+        </Link>
+      </div>
+
       {
         sectoresList.map((rubroActual, index) =>
 
-          <div key={index} className="w-[90%] flex flex-col card p-5">
+          <div key={index} className="w-[90%] flex flex-col border-t border-foreground25 last:border-b px-5 pt-2">
             <div className="w-full flex justify-between items-center">
               <span className="text-xl font-bold">{rubroActual._id}</span>
               <form action={formAction} className="flex gap-2">
                 <input type="hidden" name="rubro" defaultValue={rubroActual._id} />
                 <input type="text" className="input-main py-1 text-center" name="newSector" placeholder="nuevo..." required />
-                <SubmitBtn isPending={isPending} className="px-5">
-                  <PlusSVG className="size-5 text-foreground hover:text-foreground80" currentColor="currentColor" />
+                <SubmitBtn isPending={isPending} className="h-9 w-9 flex justify-center items-center" classNameSVG="size-6">
+                  <PlusSVG className="size-6 p-0 text-foreground hover:text-foreground80" currentColor="currentColor" />
                 </SubmitBtn>
               </form>
             </div>
@@ -113,7 +127,7 @@ const Modal = ({ sectoresType, rubro, sector, sectores }: { sectoresType: string
           </div>
           <div className="modal-action">
             <form action={formAction} className="flex gap-1 w-1/2">
-              <SubmitBtn isPending={isPending} text="Si" />
+              <SubmitBtn isPending={isPending} text="Si" className="size-11" />
               <button onClick={() => dialogRef.current?.close()} type="button" className="btn-main-error">No</button>
             </form>
           </div>

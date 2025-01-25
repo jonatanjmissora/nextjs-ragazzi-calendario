@@ -48,6 +48,7 @@ body {
 
 .histo-modal-container {
   width: 70%;
+  min-height: 50dvh;
 }
 
 .edit-form-container {

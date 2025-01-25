@@ -28,7 +28,7 @@ export const PendienteModal = ({ pendiente }: { pendiente: PagoType }) => {
         <TrashSVG className='size-9 p-[0.4rem] text-[#880000aa] hover:text-[#f35252]' currentColor='currentColor' />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
-        <div className="modal-container p-10 text-[#222] fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] card">
+        <div className="modal-container card p-4 text-[#222] fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <div className="flex gap-2 flex-wrap">
             <h3 className="font-bold text-lg">¿ Seguro desea elimiar</h3>
             <h3 className="font-bold text-lg">{pendiente._id} ?</h3>

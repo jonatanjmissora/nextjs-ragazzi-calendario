@@ -64,9 +64,9 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
               <EditRow label={"pagado"} oldValue={pago.pagado ?? ""} newValue={inputValues?.pagado ?? ""} />
             }
 
-            <div className="flex gap-1 mt-10">
-              <SubmitBtn text="Confirma" isPending={true} classNameSVG="size-4 p-1"/>
-              <button type="button" className="btn-main-error" onClick={() => setShowConfirm(false)}>Cancelar</button>
+            <div className="flex gap-1 mt-10 w-full">
+              <SubmitBtn text="Confirma" isPending={isPending} className="size-11 p-0 w-1/2" classNameSVG="p-0" />
+              <button type="button" className="btn-main-error w-1/2" onClick={() => setShowConfirm(false)}>Cancelar</button>
             </div>
 
           </form>
@@ -102,8 +102,8 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
             {formState?.message ? <span className="text-red-700 italic">{formState.message}</span> : <span className="text-transparent"></span>}
 
             <div className="w-full flex gap-1">
-              <SubmitBtn text="Editar" isPending={isPending} className="size-11"/>
-              <Link href={pagoType === "pendiente" ? "/" : "/admin"} className="btn-main-error" type="button">Cancelar</Link>
+              <SubmitBtn text="Editar" isPending={isPending} className="size-11 w-1/2" />
+              <Link href={pagoType === "pendiente" ? "/" : "/admin"} className="btn-main-error w-1/2" type="button">Cancelar</Link>
             </div>
 
           </form>

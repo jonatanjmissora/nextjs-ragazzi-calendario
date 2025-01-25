@@ -5,16 +5,16 @@ export default function SubmitBtn({ isPending, text, className, classNameSVG, ch
   return (
     <button
       type="submit"
-      className={`${text && "btn-main"} border border-green-500 flex justify-center items-center ${className}`}
+      className={`${text && "btn-main"} ${className}`}
       disabled={isPending}
     >
       {
-        isPending 
-          ? <div className={`size-9 p-2 flex justify-center items-center ${classNameSVG} size-9 p-0 border border-blue-500`}>
-              <span className={`loading loading-bars border border-red-500`}></span> 
-            </div>
-          : text 
-            ? text 
+        isPending
+          ? <div className={`size-9 p-2 flex justify-center items-center ${classNameSVG}`}>
+            <span className={`loading loading-bars`}></span>
+          </div>
+          : text
+            ? text
             : children
       }
     </button>

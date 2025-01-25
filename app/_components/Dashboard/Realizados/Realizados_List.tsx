@@ -3,7 +3,7 @@
 import { PagoType } from "@/app/_lib/schema/pago.type";
 import montoFormat from "@/app/_lib/utils/montoFormat";
 import { useState } from "react";
-import { RealizadosModal } from "./Realizados_Modal";
+import { RealizadosHisto } from "./Realizados_Histo";
 import PagosHeader from "../Pagos_Header";
 
 const tableHeader = ["histo", "vencimiento", "rubro", "sector", "monto", "pagado"]
@@ -58,7 +58,7 @@ const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
   return (
     <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25`}>
       <td className="inline-flex mx-3">
-        <RealizadosModal
+        <RealizadosHisto
           allRealizados={allRealizados}
           realizado={realizado}
           actualRealizado={actualRealizado}

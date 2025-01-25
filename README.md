@@ -19,3 +19,6 @@ ADMIN:
 ADMIN/SECTORES
 
 ADMIN/WEBLINKS
+
+refactorizar forms, modales, etc
+

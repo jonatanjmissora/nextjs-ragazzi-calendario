@@ -1,4 +1,4 @@
-import { getCachedSectoresActualesAction, resetSectoresAction } from "@/app/_lib/actions/sectores.action"
+import { getCachedSectoresActualesAction } from "@/app/_lib/actions/sectores.action"
 import LeftAsideSectoresForm from "./LeftAside_Pendientes_Sectores_List"
 import LeftAsidePendientesResetSectores from "./LeftAside_Pendientes_Reset_Sectores"
 
