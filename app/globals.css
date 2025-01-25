@@ -94,11 +94,11 @@ input[type="checkbox"] {
 
 @layer components {
   .btn-main {
-    @apply px-4 py-2 bg-black80 text-[#222] border border-black rounded-lg transition shadow tracking-wide font-semibold flex-1 flex justify-center items-center
+    @apply px-6 py-4 bg-black text-white border border-[#222] rounded-lg transition shadow tracking-wide font-semibold flex-1 flex justify-center items-center
   }
 
   .btn-main:hover {
-    @apply hover:bg-black hover:text-white
+    @apply hover:bg-black80 hover:text-white
   }
 
 

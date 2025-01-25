@@ -7,6 +7,7 @@ import { ServerResponseType } from "@/app/_lib/schema/serverResponse.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
 import Link from "next/link"
 import { useState } from "react"
+import SubmitBtn from "../SubmitBtn"
 
 type PType = "pendiente" | "realizado"
 
@@ -64,13 +65,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
             }
 
             <div className="flex gap-1 mt-10">
-              <button className="btn-main-success" type="submit">
-                {
-                  isPending
-                    ? <span className="size-4 loading loading-bars"></span>
-                    : "Confirma"
-                }
-              </button>
+              <SubmitBtn text="Confirma" isPending={true} classNameSVG="size-4 p-1"/>
               <button type="button" className="btn-main-error" onClick={() => setShowConfirm(false)}>Cancelar</button>
             </div>
 
@@ -107,7 +102,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
             {formState?.message ? <span className="text-red-700 italic">{formState.message}</span> : <span className="text-transparent"></span>}
 
             <div className="w-full flex gap-1">
-              <button className="btn-main-success" type="submit" >Editar</button>
+              <SubmitBtn text="Editar" isPending={isPending} className="size-11"/>
               <Link href={pagoType === "pendiente" ? "/" : "/admin"} className="btn-main-error" type="button">Cancelar</Link>
             </div>
 

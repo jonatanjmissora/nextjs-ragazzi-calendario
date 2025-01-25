@@ -1,20 +1,17 @@
-import { revalidateTag } from "next/cache"
-import { getCachedSectoresActualesAction } from "@/app/_lib/actions/sectores.action"
+import { getCachedSectoresActualesAction, resetSectoresAction } from "@/app/_lib/actions/sectores.action"
 import LeftAsideSectoresForm from "./LeftAside_Pendientes_Sectores_List"
+import LeftAsidePendientesResetSectores from "./LeftAside_Pendientes_Reset_Sectores"
 
 export default async function Aside() {
 
   const sectoresActuales = await getCachedSectoresActualesAction()
 
-  const formAction = async () => {
-    "use server"
-    revalidateTag("sectores")
-  }
-
   return (
     <article className="leftAside-width flex flex-col gap-4 justify-center items-center">
+
       <LeftAsideSectoresForm sectoresActuales={sectoresActuales} />
-      <form action={formAction}><button className="text-xs btn-main">reload</button></form>
+
+      <LeftAsidePendientesResetSectores />
     </article>
 
   )

@@ -44,7 +44,7 @@ const Modal = ({ setShowMenu }: { setShowMenu: React.Dispatch<React.SetStateActi
 
   return (
     <>
-      <button className="px-5" onClick={() => dialogRef.current?.showModal()}>
+      <button className="px-5 text-white hover:text-white80" onClick={() => dialogRef.current?.showModal()}>
         Cerrar Sesión
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">

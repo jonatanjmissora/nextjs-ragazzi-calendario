@@ -37,11 +37,11 @@ export default function PendienteAction({ pendiente }: { pendiente: PagoType }) 
     , null)
 
   return (
-    <div className='flex justify-around items-center gap-1'>
-
+    <div className='flex justify-around items-center gap-1 px-5'>
+ 
       <form action={formAction}>
-        <SubmitBtn isPending={isPending}>
-          <DollarSVG className='size-5 text-[#00800075] hover:text-[#008000]' currentColor='currentColor' />
+        <SubmitBtn isPending={isPending} className='' classNameSVG="size-9">
+          <DollarSVG className='size-9 p-[0.4rem] text-[#005300] hover:text-[#35da35e7]' currentColor='currentColor' />
         </SubmitBtn>
       </form>
 
@@ -52,7 +52,7 @@ export default function PendienteAction({ pendiente }: { pendiente: PagoType }) 
         query: { id: pendiente._id },
       }}
       >
-        <EditSVG className='size-6 text-black hover:text-black80' currentColor='currentColor' />
+        <EditSVG className='size-9 p-[0.4rem] text-black hover:text-[#222]' currentColor='currentColor' />
       </Link>
 
     </div>

@@ -55,3 +55,18 @@ export const updateSectoresActualesDB = async (rubro: string, newSectores: strin
         return { success: false, message: `server-error: ${getErrorMessage(error)}` }
     }
 }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const resetSectoresActualesDB = async () => {
+    try {
+    //     const db = await getDatabase()
+    //     const sectoresConstant = await db.collection<SectoresType>("ConstantMenuSectores").find().toArray()
+
+
+    //     ----- resetear los sectores actuales
+    return { success: true, message: "Sectores reseteados con éxito" }
+
+    } catch (error) {
+        return { success: false, message: `server-error: ${getErrorMessage(error)}` }
+    }
+}

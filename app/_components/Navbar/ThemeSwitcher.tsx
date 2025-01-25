@@ -7,19 +7,18 @@ import { useTheme } from 'next-themes'
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme()
 
+  const handleClick = () => {
+    setTheme(theme === "light" ? "dark" : "light")
+  }
+
   return (
-    <div className='flex items-center gap-4 px-5'>
+    <div className='flex items-center gap-4 px-5 text-white hover:text-white80' onClick={handleClick}>
       <span>Tema</span>
       {
         theme === "light"
 
-          ? <button onClick={() => setTheme('dark')}>
-            <SunSVG className="size-5 text-white" currentColor="currentColor" />
-          </button>
-
-          : <button onClick={() => setTheme('light')}>
-            <MoonSVG className="size-5 text-white" currentColor="currentColor" />
-          </button>
+          ? <SunSVG className="size-5 text-inherit" currentColor="currentColor" />
+          : <MoonSVG className="size-5 text-inherit" currentColor="currentColor" />
       }
     </div>
   )

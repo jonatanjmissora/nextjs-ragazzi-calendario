@@ -25,7 +25,7 @@ export const PendienteModal = ({ pendiente }: { pendiente: PagoType }) => {
   return (
     <>
       <button className="" onClick={() => dialogRef.current?.showModal()}>
-        <TrashSVG className='size-5 text-[#88000075] hover:text-[#880000]' currentColor='currentColor' />
+        <TrashSVG className='size-9 p-[0.4rem] text-[#880000aa] hover:text-[#f35252]' currentColor='currentColor' />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
         <div className="modal-container p-10 text-[#222] fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] card">
@@ -35,7 +35,7 @@ export const PendienteModal = ({ pendiente }: { pendiente: PagoType }) => {
           </div>
           <div className="modal-action">
             <form action={formAction} className="flex gap-1 w-1/2">
-              <SubmitBtn isPending={isPending} text="Si" />
+              <SubmitBtn isPending={isPending} text="Si" className="size-11" />
               <button onClick={() => dialogRef.current?.close()} type="button" className="btn-main-error">No</button>
             </form>
           </div>
