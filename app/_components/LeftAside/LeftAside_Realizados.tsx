@@ -38,7 +38,7 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
   }
 
   return (
-    <aside className='leftAside-width flex flex-col justify-center items-center gap-20'>
+    <aside className='leftAside flex flex-col justify-center items-center gap-20'>
 
       <div className="w-full">
         <label className='label' htmlFor='anio'>año</label>

@@ -14,7 +14,7 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
     : pagosPendientes.filter(pago => pago.rubro === rubroFilter)
 
   return (
-    <section className="min-h-[95dvh] flex flex-col">
+    <section className="page">
 
       <Suspense fallback={<Skelton_LeftAside_Pend />} >
         <LeftAsidePendientes />

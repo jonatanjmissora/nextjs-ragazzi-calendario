@@ -8,7 +8,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.leftAside-width {
+.page {
+  height: var(--main-height);
+  display: flex;
+  flex-direction: row;
+  border: 1px solid green;
+}
+
+.leftAside {
   padding: 1rem;
   width: var(--leftAside-width);
 }
@@ -42,6 +49,7 @@ body {
   overflow-y: auto;
   scrollbar-gutter: stable;
   padding-right: 2rem;
+  border: 1px solid yellow;
 }
 
 .modal-container {
@@ -86,8 +94,10 @@ body {
     /* border: 1px solid red; */
   }
 
-  .main-page {
+  .page {
     flex-direction: column;
+    min-height: 95dvh;
+    height: max-content;
   }
 
 
@@ -101,11 +111,12 @@ body {
 
   .main-height {}
 
-  .leftAside-width {
+  .leftAside {
     padding: 0;
-    width: 70%;
+    width: 80%;
     margin: 12rem auto;
     margin-bottom: 4rem;
+    display: flex;
   }
 
   .rubro-filter {
