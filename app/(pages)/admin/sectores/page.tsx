@@ -12,7 +12,7 @@ export default async function AdminSectoresPage({ searchParams }: { searchParams
     : await getCachedSectoresResetAction() as SectoresType[]
 
   return (
-    <section className="min-h-[95dvh] flex flex-col">
+    <section className="page">
 
       <Suspense fallback={<Loading />} >
         <AdminSectoresList sectoresType={type} sectoresList={actualSectores} />

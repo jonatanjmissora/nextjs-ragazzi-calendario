@@ -30,10 +30,10 @@ const Input = ({ rubro, actualRubro, setActualRubro }: { rubro: SectoresType, ac
   }
 
   return (
-    <li 
-      key={rubro._id} 
+    <li
+      key={rubro._id}
       className={`collapse collapse-arrow hover:bg-${rubro._id} join-item border-t border-foreground25 rounded-none last:border-b`}
-      >
+    >
 
       <input
         type="checkbox"
@@ -42,8 +42,8 @@ const Input = ({ rubro, actualRubro, setActualRubro }: { rubro: SectoresType, ac
         onChange={() => handleChange(rubro._id)}
       />
 
-      <p className={`collapse-title text-xl font-medium text-foreground hover:text-foreground80 transition hover:${rubro}`}>{rubro._id} ({rubro.sectores.length})</p>
-      
+      <p className={`collapse-title font-medium text-foreground hover:text-foreground80 transition hover:${rubro}`}>{rubro._id} ({rubro.sectores.length})</p>
+
       {<Sectores rubro={rubro._id} sectores={rubro.sectores} setActualRubro={setActualRubro} />}
     </li>
   )

@@ -62,7 +62,7 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
       <div className="">
 
         <h2 className="label" >mes</h2>
-        <div className='flex flex-wrap gap-2 justify-center items-center'>
+        <div className='flex flex-wrap month-gap justify-center items-center'>
 
           {
             meses.map((mes, index) =>

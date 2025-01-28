@@ -7,7 +7,7 @@ export default async function Aside() {
   const sectoresActuales = await getCachedSectoresActualesAction()
 
   return (
-    <article className="leftAside border border-white flex flex-col gap-4 justify-center items-center">
+    <article className="leftAside flex flex-col gap-4 justify-center items-center overflow-hidden">
 
       <LeftAsideSectoresForm sectoresActuales={sectoresActuales} />
 

@@ -16,7 +16,7 @@ export default function UserMenu({ username }: { username: string }) {
       {
         showMenu && (
           <>
-            <div className="z-100 absolute top-0 -left-[1000%] right-0 -bottom-[2000%]" onClick={() => setShowMenu(false)}></div>
+            <div className="z-100 absolute top-0 -left-[1000%] right-0 -bottom-[1500%]" onClick={() => setShowMenu(false)}></div>
             <div className="user-menu-modal absolute bg-card rounded-bl-lg text-white p-2 flex flex-col justify-center items-end gap-6">
               <Modal setShowMenu={setShowMenu} />
               <ThemeSwitcher />

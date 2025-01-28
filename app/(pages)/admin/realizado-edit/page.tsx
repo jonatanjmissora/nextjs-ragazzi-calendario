@@ -11,7 +11,7 @@ export default async function RealizadosEditPage({ searchParams }: { searchParam
   const sectoresReset = await getCachedSectoresResetAction()
 
   return (
-    <section className="w-full main-height flex justify-center items-center">
+    <section className="page justify-center items-center">
       <RealizadoEditForm realizado={realizado} sectoresReset={sectoresReset} />
     </section>
   )
