@@ -81,7 +81,7 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
 
   return (
     <>
-      <form action={formAction} className="flex flex-col items-center justify-center gap-10 w-[90%]">
+      <form action={formAction} className="flex flex-col gap-10 weblink-edit">
 
         <p className="text-2xl font-bold tracking-wide py-4 my-4 border-b border-foreground25 w-full">{weblink._id ? "Editar" : "Crear"} link :</p>
 

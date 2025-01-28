@@ -62,8 +62,8 @@ export default function AdminSectoresList({ sectoresType, sectoresList }: { sect
 
           <div key={index} className="w-[90%] flex flex-col border-b border-foreground25 last:border-b-0 py-2">
             <div className="w-full flex justify-between items-center">
-              <span className="text-xl font-bold">{rubroActual._id}</span>
-              <form action={formAction} className="flex gap-2">
+              <span className="text-xl admin-sectores-rubro font-bold">{rubroActual._id}</span>
+              <form action={formAction} className="flex gap-2 admin-sectores-new">
                 <input type="hidden" name="rubro" defaultValue={rubroActual._id} />
                 <input type="text" className="input-main py-1 text-center" name="newSector" placeholder="nuevo..." required />
                 <SubmitBtn isPending={isPending} className="h-9 w-9 flex justify-center items-center" classNameSVG="size-6">
@@ -75,7 +75,7 @@ export default function AdminSectoresList({ sectoresType, sectoresList }: { sect
             <div className="flex flex-wrap my-4 sectores-gap">
               {
                 rubroActual.sectores.map((sector, index) =>
-                  <span key={index} className={`flex gap-2 badge-main ${rubroActual._id} text-sm w-max`}>
+                  <span key={index} className={`flex gap-2 badge-main ${rubroActual._id} text-sm admin-sectores-sector w-max`}>
                     {sector}
                     <Modal
                       sectoresType={sectoresType}

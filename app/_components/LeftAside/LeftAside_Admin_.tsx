@@ -17,7 +17,7 @@ export default async function LeftAsideAdmin({ desdeFilter, hastaFilter, rubroFi
     sectoresDelRubro = sectoresConstant.filter(rubro => rubro._id === rubroFilter)[0].sectores
 
   return (
-    <aside className="flex justify-center items-center flex-col gap-20 leftAside">
+    <aside className="flex justify-center items-center flex-col gap-10 leftAside leftAside-admin">
       <FiltrosFecha desdeFilter={desdeFilter} hastaFilter={hastaFilter} />
 
       <FiltrosCategoria rubroFilter={rubroFilter} sectorFilter={sectorFilter} sectoresDelRubro={sectoresDelRubro} />

@@ -20,3 +20,10 @@ ADMIN/WEBLINKS
 
 refactorizar forms, modales, etc
 
+quitar de los page, el listado de elementos, como por ejemplo en weblinks
+
+en realizados, cuando cambio el filtro, no me pone un loading
+
+ir a /admin, me demora mas que los otros, ver si le bajo el filtro para traer menos cantidad de datos
+
+

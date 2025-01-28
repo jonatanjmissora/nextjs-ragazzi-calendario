@@ -31,7 +31,7 @@ const WeblinkRow = ({ weblink }: { weblink: WeblinkType }) => {
 
   return (
     <article className="flex justify-between items-center border-b border-foreground25 last:border-b-0 py-4">
-      <div className="w-[100px] h-[80px] bg-slate-300 rounded-lg shadow border border-black25 overflow-hidden p-2 relative">
+      <div className="w-[100px] h-[80px] weblink-img bg-slate-300 rounded-lg shadow border border-black25 overflow-hidden p-2 relative">
         <Image src={"data:image/jpeg;base64," + weblink.imgData} alt={weblink._id} fill className="p-3" />
       </div>
       <span className="truncate w-1/2">{weblink.href}</span>

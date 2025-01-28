@@ -67,7 +67,7 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
           {
             meses.map((mes, index) =>
               <div
-                className={`flex justify-between w-[48%] font-bold tracking-wider border border-foreground80 text-foreground80 p-1 rounded-lg hover:text-foreground hover:border-foreground ${mes === meses[+monthFilter - 1] && "bg-foreground80 text-white"}`}
+                className={`font-leftAside-real-mes flex justify-between w-[48%] font-bold tracking-wider border border-foreground80 text-foreground80 p-1 rounded-lg hover:text-foreground hover:border-foreground ${mes === meses[+monthFilter - 1] && "bg-foreground80 text-white"}`}
                 key={mes}
                 onClick={() => handleMonthChange(index)}
               >

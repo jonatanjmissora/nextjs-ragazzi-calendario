@@ -81,7 +81,7 @@ body {
   flex-direction: column;
 }
 
-.weblink-container {
+.weblink-edit {
   width: 50%;
 }
 
@@ -169,7 +169,7 @@ body {
     width: 50%;
   }
 
-  .weblink-container {
+  .weblink-edit {
     width: 90%;
   }
 
@@ -193,18 +193,6 @@ body {
     font-size: 12px;
   }
 
-  .leftAside li li {
-    font-size: 11;
-  }
-
-  .leftAside li ul input {
-    font-size: 9px;
-  }
-
-  .table {
-    font-size: 12px;
-  }
-
   .navbar-container {
     height: 7dvh;
   }
@@ -218,5 +206,69 @@ body {
     bottom: -7rem;
     left: 0;
     right: 0;
+    font-size: 12px;
   }
+
+  nav button {
+    font-size: 12px;
+  }
+
+  .table tr {
+    font-size: 12px;
+  }
+
+  svg {
+    transform: scale(0.75);
+  }
+
+  input,
+  select {
+    font-size: 9px;
+  }
+
+  /*    pendientes       */
+
+  .font-leftAside-pend-sector {
+    font-size: 11px;
+  }
+
+  .font-leftAside-pend-inputs {
+    font-size: 9px;
+  }
+
+  .rubro-filter li {
+    font-size: 12px;
+  }
+
+  /*     realizados       */
+  .font-leftAside-real-mes {
+    font-size: 8px;
+  }
+
+  /*      admin           */
+  .leftAside-admin div {
+    gap: 0.5rem
+  }
+
+  /*      admin-sectores          */
+  .admin-sectores-rubro {
+    font-size: 11px;
+  }
+
+  .admin-sectores-sector {
+    font-size: 9px;
+    padding: 0 0.5rem;
+  }
+
+  .admin-sectores-new button {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /*      admin-weblinks          */
+  .weblink-img {
+    width: 70px;
+    height: 50px;
+  }
+
 }
