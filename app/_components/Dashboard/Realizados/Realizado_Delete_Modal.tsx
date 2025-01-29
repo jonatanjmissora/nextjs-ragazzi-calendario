@@ -1,19 +1,19 @@
 "use client"
 
 import TrashSVG from "@/app/_assets/TrashSVG"
-import { eliminarPendienteAction } from "@/app/_lib/actions/pendientes.action"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import { useActionState, useRef } from "react"
 import toast from "react-hot-toast"
 import SubmitBtn from "../../SubmitBtn"
+import { eliminarRealizadoAction } from "@/app/_lib/actions/realizados.action"
 
-export const PendienteModal = ({ pendiente }: { pendiente: PagoType }) => {
+export const RealizadoDeleteModal = ({ realizado }: { realizado: PagoType }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 
   const [, formAction, isPending] = useActionState(async () => {
 
-    const res = await eliminarPendienteAction(pendiente)
+    const res = await eliminarRealizadoAction(realizado)
     if (!res?.success) {
       toast.error(res.message)
     }
@@ -31,7 +31,7 @@ export const PendienteModal = ({ pendiente }: { pendiente: PagoType }) => {
         <div className="modal-container card p-4 text-[#222] fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <div className="flex gap-2 flex-wrap">
             <h3 className="font-bold text-lg">¿ Seguro desea elimiar</h3>
-            <h3 className="font-bold text-lg">{pendiente._id} ?</h3>
+            <h3 className="font-bold text-lg">{realizado._id} ?</h3>
           </div>
           <div className="modal-action">
             <form action={formAction} className="flex gap-1 w-1/2">

@@ -5,14 +5,14 @@ import toast from 'react-hot-toast'
 import EditSVG from '@/app/_assets/EditSVG'
 import DollarSVG from '@/app/_assets/DollarSVG'
 import { PagoType } from '@/app/_lib/schema/pago.type'
-import { PendienteModal } from './Pendiente_Modal'
 import { eliminarPendienteAction } from '@/app/_lib/actions/pendientes.action'
 import { useActionState } from 'react'
 import { localeStringToDBDate } from '@/app/_lib/utils/date.toLocaleString_to_dbDate'
 import { insertarRealizadoAction } from '@/app/_lib/actions/realizados.action'
 import SubmitBtn from '../../SubmitBtn'
+import { PendienteDeleteModal } from './Pendiente_Delete_Modal'
 
-export default function PendienteAction({ pendiente }: { pendiente: PagoType }) {
+export default function PendienteDesktopAction({ pendiente }: { pendiente: PagoType }) {
 
   const [, formAction, isPending] = useActionState(async () => {
     const actualDate = localeStringToDBDate(new Date().toLocaleDateString())
@@ -45,7 +45,7 @@ export default function PendienteAction({ pendiente }: { pendiente: PagoType }) 
         </SubmitBtn>
       </form>
 
-      <PendienteModal pendiente={pendiente} />
+      <PendienteDeleteModal pendiente={pendiente} />
 
       <Link href={{
         pathname: '/pendientes/edit',

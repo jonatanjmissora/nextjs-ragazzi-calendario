@@ -9,7 +9,7 @@ import getUserFromCookie from '../_lib/utils/getUserFromCookies'
 export default async function Footer() {
 
   const year = new Date().getFullYear()
-  const weblinks = await getCachedWeblinksAction() as WeblinkType[]
+  const weblinks = await getCachedWeblinksAction()
   const user = await getUserFromCookie()
 
   return (

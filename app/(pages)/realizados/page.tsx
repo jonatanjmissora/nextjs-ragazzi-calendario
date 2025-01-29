@@ -1,4 +1,3 @@
-import RealizadosList from "@/app/_components/Dashboard/Realizados/Realizados_List"
 import LeftAsideRealizados from "@/app/_components/LeftAside/LeftAside_Realizados"
 import { getFilteredPagos } from "@/app/_lib/utils/getFilteredPagos"
 import { getLocaleDate } from "@/app/_lib/utils/getActualDate"
@@ -6,6 +5,7 @@ import { Suspense } from "react"
 import { getCachedRealizadosAction } from "@/app/_lib/actions/realizados.action"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import Skelton_Main_Table from "@/app/_components/Skeltons/Skelton_Main_Table"
+import RealizadoList from "@/app/_components/Dashboard/Realizados/Realizado_"
 
 export default async function RealizadosPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -15,7 +15,7 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
   const sectorFilter = (await searchParams)?.sectorFilter || "todos"
   const dateFilter = (await searchParams)?.dateFilter || year.toString() + "-" + monthStr
 
-  const pagosRealizados = await getCachedRealizadosAction() as PagoType[]
+  const pagosRealizados = await getCachedRealizadosAction()
   const filteredRealizados = getFilteredPagos(pagosRealizados, rubroFilter, sectorFilter, dateFilter) as PagoType[]
 
   return (
@@ -24,7 +24,7 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
       <LeftAsideRealizados dateFilter={dateFilter} />
 
       <Suspense fallback={<Skelton_Main_Table />} >
-        <RealizadosList realizados={filteredRealizados} allRealizados={pagosRealizados} />
+        <RealizadoList realizados={filteredRealizados} allRealizados={pagosRealizados} />
       </Suspense>
 
     </section>

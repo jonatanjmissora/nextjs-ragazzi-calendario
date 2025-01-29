@@ -6,9 +6,9 @@ import { useState } from "react";
 import { RealizadosHisto } from "./Realizados_Histo";
 import PagosHeader from "../Pagos_Header";
 
-const tableHeader = ["histo", "vencimiento", "rubro", "sector", "monto", "pagado"]
+const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "pagado"]
 
-export default function RealizadosList({ realizados, allRealizados }: { realizados: PagoType[], allRealizados: PagoType[] }) {
+export default function RealizadoDesktopList({ realizados, allRealizados }: { realizados: PagoType[], allRealizados: PagoType[] }) {
 
   const [actualRealizado, setActualRealizado] = useState<PagoType>(allRealizados[0])
 
@@ -16,7 +16,7 @@ export default function RealizadosList({ realizados, allRealizados }: { realizad
 
   return (
 
-    <article className="w-full flex flex-col justify-center items-center">
+    <article className="hidden w-full sm:flex flex-col justify-center items-center">
 
       <PagosHeader />
 
@@ -27,7 +27,7 @@ export default function RealizadosList({ realizados, allRealizados }: { realizad
           <thead>
             <tr className='text-lg border-b border-foreground25'>
               {
-                tableHeader.map(thName => <th key={thName}>{thName}</th>)
+                desktopTableHeader.map(thName => <th key={thName}>{thName}</th>)
               }
             </tr>
           </thead>

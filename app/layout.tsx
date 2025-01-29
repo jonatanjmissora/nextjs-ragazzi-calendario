@@ -4,7 +4,7 @@ import "./globals.css";
 import "./globals.media.css";
 import Footer from "./_components/Footer";
 import { Toaster } from "react-hot-toast";
-import Navbar from "./_components/Navbar/Navbar";
+import Navbar from "./_components/Navbar/Navbar_";
 import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
@@ -31,7 +31,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         <ThemeProvider>
           <Navbar />

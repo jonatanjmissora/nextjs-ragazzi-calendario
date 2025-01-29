@@ -7,7 +7,7 @@ import WeblinkAction from "@/app/_components/Dashboard/Admin_Weblinks/Admin_Webl
 
 export default async function AdminWeblinksPage() {
 
-  const weblinks = await getCachedWeblinksAction() as WeblinkType[]
+  const weblinks = await getCachedWeblinksAction()
 
   return (
     <section className="page flex items-center page-top">

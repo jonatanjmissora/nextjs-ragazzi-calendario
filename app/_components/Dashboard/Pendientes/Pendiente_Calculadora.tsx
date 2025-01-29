@@ -7,7 +7,7 @@ export default function Calculadora({ calcPagos, pendientes }: { calcPagos: stri
   const total = montos.reduce((acc, monto) => acc + monto, 0)
 
   return (
-    <div className="absolute top-1 left-0">
+    <div className="calc-container absolute">
       {
         calcPagos.length > 0 &&
         <span className="font-bold tracking-widest text-xl text-foreground opacity-75">Total: {montoFormat(total)}</span>
