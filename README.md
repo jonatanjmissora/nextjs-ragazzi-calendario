@@ -27,3 +27,7 @@ en realizados, cuando cambio el filtro, no me pone un loading
 ir a /admin, me demora mas que los otros, ver si le bajo el filtro para traer menos cantidad de datos
 
 editForm en movil esta muy angosto
+
+corregir los skeltons
+
+mejorar el navbar

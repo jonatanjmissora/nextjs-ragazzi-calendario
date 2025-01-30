@@ -3,11 +3,11 @@ import PlusSVG from "@/app/_assets/PlusSVG"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
 
-export const RealizadosHisto = ({ allRealizados, realizado, actualRealizado, setActualRealizado }: { allRealizados: PagoType[], realizado: PagoType, actualRealizado: PagoType, setActualRealizado: React.Dispatch<React.SetStateAction<PagoType>> }) => {
+export const RealizadoMovilHisto = ({ allRealizados, realizado, actualRealizado, setActualRealizado }: { allRealizados: PagoType[], realizado: PagoType, actualRealizado: PagoType, setActualRealizado: React.Dispatch<React.SetStateAction<PagoType>> }) => {
 
   const histogramArray = allRealizados
     .filter(pago => pago.rubro === actualRealizado.rubro && pago.sector === actualRealizado.sector)
-    .slice(0, 13)
+    .slice(0, 3)
   const maximoMonto = Math.max(...histogramArray.map(pago => Number(pago.monto)))
 
   const getMontoHeight = (monto: string) => {
@@ -18,6 +18,7 @@ export const RealizadosHisto = ({ allRealizados, realizado, actualRealizado, set
     const dialog = document?.getElementById('my_modal_3') as HTMLDialogElement
     dialog?.showModal()
     setActualRealizado(realizado)
+    console.log({ realizado })
   }
 
   return (

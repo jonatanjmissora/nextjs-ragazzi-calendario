@@ -3,16 +3,14 @@
 import { PagoType } from "@/app/_lib/schema/pago.type";
 import montoFormat from "@/app/_lib/utils/montoFormat";
 import { useState } from "react";
-import { RealizadosHisto } from "./Realizados_Histo";
 import PagosHeader from "../Pagos_Header";
+import { RealizadoDesktopHisto } from "./Realizado_Desktop_Histo";
 
 const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "pagado"]
 
 export default function RealizadoDesktopList({ realizados, allRealizados }: { realizados: PagoType[], allRealizados: PagoType[] }) {
 
   const [actualRealizado, setActualRealizado] = useState<PagoType>(allRealizados[0])
-
-  if (realizados.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center text-2xl">No hay pagos registrados...</h1></div>
 
   return (
 
@@ -58,7 +56,7 @@ const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
   return (
     <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25`}>
       <td className="inline-flex mx-3">
-        <RealizadosHisto
+        <RealizadoDesktopHisto
           allRealizados={allRealizados}
           realizado={realizado}
           actualRealizado={actualRealizado}

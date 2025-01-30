@@ -52,17 +52,19 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
         showConfirm
 
           ?
-          <form action={formAction} className="flex flex-col gap-2 card">
+          <form action={formAction} className="flex flex-col gap-2 card w-full">
             <h2 className="my-4 text-2xl tracking-wider font-bold">¿ Confirmar cambio ?</h2>
 
-            <EditRow label={"vencimiento"} oldValue={pago.vencimiento} newValue={inputValues.vencimiento} />
+            {/* <EditRow label={"vencimiento"} oldValue={pago.vencimiento} newValue={inputValues.vencimiento} />
             <EditRow label={"rubro"} oldValue={pago.rubro} newValue={inputValues.rubro} />
             <EditRow label={"sector"} oldValue={pago.sector} newValue={inputValues.sector} />
             <EditRow label={"monto"} oldValue={montoFormat(Number(pago.monto))} newValue={montoFormat(Number(inputValues.monto))} />
             {
               pagoType === "realizado" &&
               <EditRow label={"pagado"} oldValue={pago.pagado ?? ""} newValue={inputValues?.pagado ?? ""} />
-            }
+            } */}
+
+            <Table oldValues={pago} newValues={inputValues} />
 
             <div className="flex gap-1 mt-10 w-full">
               <SubmitBtn text="Confirma" isPending={isPending} className="size-11 p-0 w-1/2" classNameSVG="p-0" />
@@ -74,7 +76,8 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
           :
           <form onSubmit={onSubmit} className="edit-form-container flex flex-col gap-4 min-w-80 card">
             <h2 className="text-2xl tracking-wider font-bold">Editar pago {pagoType}:</h2>
-            <input className="input-main text-sm" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
+
+            <input className="input-main" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
 
             <select
               className="input-main"
@@ -92,7 +95,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
               }
             </select>
 
-            <input className="input-main text-sm" type="number" name="monto" id="monto" defaultValue={monto} />
+            <input className="input-main" type="number" name="monto" id="monto" defaultValue={monto} />
 
             {
               pago.pagado !== "" &&
@@ -112,16 +115,30 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
   )
 }
 
-const EditRow = ({ label, oldValue, newValue }: { label: string, oldValue: string, newValue: string }) => {
-
-  const isTheSame = oldValue === newValue
-
+const Table = ({ oldValues, newValues }: { oldValues: PagoType, newValues: PagoType }) => {
   return (
-    <div className="grid grid-cols-[6rem_10rem_1.5rem_10rem] justify-center items-center">
-      <span className="">{label} : </span>
-      <input className=" text-center bg-transparent focus:outline-none" type="text" name={label} defaultValue={oldValue} readOnly />
-      {!isTheSame && <RightArrowSVG className="size-5 text-black" currentColor="currentColor" />}
-      {!isTheSame && <input className=" text-center bg-transparent focus:outline-none" name={label} type="text" defaultValue={newValue} readOnly />}
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td>vencimiento</td>
+          <td>{oldValues.vencimiento}</td>
+
+        </tr>
+      </tbody>
+    </table>
   )
 }
+
+// const EditRow = ({ label, oldValue, newValue }: { label: string, oldValue: string, newValue: string }) => {
+
+//   const isTheSame = oldValue === newValue
+
+//   return (
+//     <div className="grid grid-cols-[6rem_10rem_1.5rem_10rem] justify-center items-center w-full">
+//       <span className="">{label} : </span>
+//       <input className="border text-center bg-transparent focus:outline-none" type="text" name={label} defaultValue={oldValue} readOnly />
+//       {!isTheSame && <RightArrowSVG className="size-5 text-black" currentColor="currentColor" />}
+//       {!isTheSame && <input className="border text-center bg-transparent focus:outline-none" name={label} type="text" defaultValue={newValue} readOnly />}
+//     </div>
+//   )
+// }

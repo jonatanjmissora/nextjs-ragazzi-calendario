@@ -23,7 +23,7 @@ export default function NavbarMovil() {
       {
         showMenu && (
           <>
-            <div className="z-100 fixed bg-[#241e34] inset-0 flex flex-col items-center pt-20" onClick={() => setShowMenu(false)}>
+            <div className="z-100  bg-[#241e34] inset-0 flex flex-col items-center pt-20" onClick={() => setShowMenu(false)}>
 
               <nav className="flex flex-col gap-4 text-xl items-center">
                 <Link

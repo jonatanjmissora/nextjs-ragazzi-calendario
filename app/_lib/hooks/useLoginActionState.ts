@@ -11,7 +11,9 @@ export const useLoginActionState = () => {
 
   const [formState, formAction, isPending] = useActionState(async (prevState: LoginRespType, formData: FormData) => {
 
-    const { username, userpassword } = Object.fromEntries(formData.entries()) as { username: string, userpassword: string }
+    let { username, userpassword } = Object.fromEntries(formData.entries()) as { username: string, userpassword: string }
+    username = username.toLowerCase()
+    userpassword = userpassword.toLowerCase()
     const user = { username, userpassword } as UserType
 
     return await login(user)

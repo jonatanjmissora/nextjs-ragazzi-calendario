@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, userAgent } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
@@ -7,6 +7,13 @@ export function middleware(request: NextRequest) {
   const usertoken = request.cookies.get("usertoken")
 
   if (!usertoken) return NextResponse.rewrite(new URL("/", request.url))
+
+  const { device } = userAgent(request)
+
+  const viewport = device.type === 'mobile' ? 'mobile' : 'desktop'
+
+  // response.cookies.set("viewport", viewport)
+
 
   return response
 }

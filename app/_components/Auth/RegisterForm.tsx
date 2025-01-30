@@ -65,9 +65,9 @@ export default function RegisterForm() {
           </button>
         </div>
 
-        <div className='h-20 w-full flex flex-col items-end'>
+        <div className='h-20 w-full flex flex-col items-end gap-2'>
           <div className='w-1/2 flex'>
-            <SubmitBtn text={"Registrar"} isPending={isPending} className='' />
+            <SubmitBtn text={"Registrar"} isPending={isPending} className='size-11' />
           </div>
           <p className='text-orange-700'>{formState?.message}</p>
         </div>

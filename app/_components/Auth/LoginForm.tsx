@@ -65,9 +65,9 @@ export default function LoginForm() {
           </button>
         </div>
 
-        <div className='h-20 w-full flex flex-col items-end'>
+        <div className='h-20 w-full flex flex-col items-end gap-2'>
           <div className='w-1/2 flex'>
-            <SubmitBtn text={"Ingresar"} isPending={isPending} className='' />
+            <SubmitBtn text={"Ingresar"} isPending={isPending} className='size-11' classNameSVG='' />
           </div>
           <p className='text-orange-700'>{formState?.message}</p>
         </div>

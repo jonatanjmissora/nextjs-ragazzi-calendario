@@ -13,11 +13,13 @@ export const useRegisterActionState = () => {
   const router = useRouter()
   const [formState, formAction, isPending] = useActionState(async (prevState: RegisterRespType, formData: FormData) => {
 
-    const { username, userpassword } = Object.fromEntries(formData.entries()) as { username: string, userpassword: string }
+    let { username, userpassword } = Object.fromEntries(formData.entries()) as { username: string, userpassword: string }
+    username = username.toLowerCase()
+    userpassword = userpassword.toLowerCase()
     const user = { username, userpassword } as UserType
 
     const serverResponse = await register(user)
-    if(serverResponse.success) {
+    if (serverResponse.success) {
       router.push("/pendientes")
     }
     return serverResponse
