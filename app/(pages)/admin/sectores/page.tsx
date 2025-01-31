@@ -1,4 +1,4 @@
-import AdminSectoresList from "@/app/_components/Dashboard/04_Admin_Sectores/Admin_Sectores_List";
+import AdminSectoresList from "@/app/_components/Dashboard/04_Admin_Sectores/Admin_Sectores_";
 import Loading from "@/app/_components/Skeltons/Loading";
 import { getCachedSectoresActualesAction, getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action";
 import { SectoresType } from "@/app/_lib/schema/sectores.type";

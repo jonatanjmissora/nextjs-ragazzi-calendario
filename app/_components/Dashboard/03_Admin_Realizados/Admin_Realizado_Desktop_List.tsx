@@ -8,46 +8,46 @@ export default function AdminRealizadoDesktopList({ realizados }: { realizados: 
 
     return (
         <article className="w-full flex flex-col justify-center items-center">
-        
+
             <div className="table-container relative">
-            <table className="table">
-                {/* head */}
-                <thead>
-                <tr className='        border-b border-foreground25'>
-                    {
-                    tableHeader.map(thName => <th key={thName}>{thName}</th>)
-                    }
-                </tr>
-                </thead>
-                <tbody>
-    
-                {
-                    realizados.map(realizado =>
-                    <Pago
-                        key={realizado._id}
-                        realizado={realizado}
-                    />
-                    )
-                }
-                </tbody>
-            </table>
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr className='text-base border-b border-foreground25'>
+                            {
+                                tableHeader.map(thName => <th key={thName}>{thName}</th>)
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {
+                            realizados.map(realizado =>
+                                <Pago
+                                    key={realizado._id}
+                                    realizado={realizado}
+                                />
+                            )
+                        }
+                    </tbody>
+                </table>
             </div>
         </article>
     )
-  }
-  
+}
+
 const Pago = ({ realizado }
-: { realizado: PagoType }
+    : { realizado: PagoType }
 ) => {
 
-return (
-    <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25`}>
-    <td>{realizado.vencimiento}</td>
-    <td>{realizado.rubro}</td>
-    <td>{realizado.sector}</td>
-    <td>{montoFormat(Number(realizado.monto))}</td>
-    <td>{realizado.pagado}</td>
-    <td className="px-0"><AdminRealizadoAction realizado={realizado} /></td>
-    </tr>
-)
+    return (
+        <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25`}>
+            <td>{realizado.vencimiento}</td>
+            <td>{realizado.rubro}</td>
+            <td>{realizado.sector}</td>
+            <td>{montoFormat(Number(realizado.monto))}</td>
+            <td>{realizado.pagado}</td>
+            <td className="px-0"><AdminRealizadoAction realizado={realizado} /></td>
+        </tr>
+    )
 }

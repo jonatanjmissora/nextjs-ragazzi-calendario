@@ -22,7 +22,7 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
     const newDateFilter = yearFilter + "-" + newMonthFilter
     params.set('dateFilter', newDateFilter);
 
-    router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 
   }
 
@@ -33,12 +33,12 @@ export default function LeftAsideRealizados({ dateFilter }: { dateFilter: string
     const newDateFilter = newYearFilter + "-" + monthFilter
     params.set('dateFilter', newDateFilter);
 
-    router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 
   }
 
   return (
-    <aside className='leftAside flex flex-col justify-center items-center gap-20'>
+    <aside className='leftAside flex flex-col justify-center items-center gap-4'>
 
       <div className="w-full">
         <label className='label' htmlFor='anio'>año</label>

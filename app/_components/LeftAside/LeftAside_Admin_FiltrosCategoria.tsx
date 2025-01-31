@@ -19,7 +19,7 @@ export default function FiltrosCategoria({ rubroFilter, sectorFilter, sectoresDe
     } else {
       params.delete('rubroFilter');
     }
-    router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 
   }
 
@@ -31,7 +31,7 @@ export default function FiltrosCategoria({ rubroFilter, sectorFilter, sectoresDe
     } else {
       params.delete('sectorFilter');
     }
-    router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 
   }
 

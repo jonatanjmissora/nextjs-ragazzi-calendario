@@ -16,7 +16,7 @@ export default function FiltrosFecha({ desdeFilter, hastaFilter }: { desdeFilter
     } else {
       params.delete('desdeFilter');
     }
-    router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 
   }
 
@@ -28,7 +28,7 @@ export default function FiltrosFecha({ desdeFilter, hastaFilter }: { desdeFilter
     } else {
       params.delete('hastaFilter');
     }
-    router.replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 
   }
 

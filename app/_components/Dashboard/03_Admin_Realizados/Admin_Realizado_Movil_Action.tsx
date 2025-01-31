@@ -36,6 +36,7 @@ export default function AdminRealizadoMovilAction({ realizado }: { realizado: Pa
 
             <AdminRealizadoAction
               realizado={realizado}
+              dialogRef={dialogRef}
             />
 
           </div>
@@ -51,7 +52,7 @@ const Table = ({ realizado }: { realizado: PagoType }) => {
   return (
     <table className="table">
       <thead>
-        <tr className="        text-black font-bold tracking-wider border-b border-black80">
+        <tr className="text-sm text-[#222] font-bold tracking-wider border-b border-black80">
           <td>venc</td>
           <td>rubro</td>
           <td>sector</td>
