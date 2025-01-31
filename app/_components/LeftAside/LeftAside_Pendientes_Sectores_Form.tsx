@@ -89,7 +89,7 @@ export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, s
         </div>
       </form>
 
-      {formState?.message && <p className="text-right text-white pt-2 italic font-semibold tracking-wider">👉 {formState?.message}</p>}
+      {formState?.message && <p className="text-sm text-right text-white pt-2 italic font-semibold tracking-wider">👉 {formState?.message}</p>}
 
     </ul>
   )

@@ -5,8 +5,9 @@ import PagosHeader from "../Pagos_Header"
 import montoFormat from "@/app/_lib/utils/montoFormat"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import PendienteDesktopAction from "./Pendiente_Desktop_Action"
+import { shortVenc } from "@/app/_lib/utils/shortVenc"
 
-const desktopTableHeader = ["", "vencimiento", "rubro", "sector", "monto", "accion"]
+const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "accion"]
 
 export default function PendienteListDesktop({ pendientes }: { pendientes: PagoType[] }) {
 
@@ -30,9 +31,8 @@ export default function PendienteListDesktop({ pendientes }: { pendientes: PagoT
       <div className="table-container relative">
 
         <table className="table">
-          {/* head */}
           <thead>
-            <tr className='        border-b border-foreground25'>
+            <tr className='text-base border-b border-foreground25'>
               {
                 desktopTableHeader.map(thDesktopName => <th key={thDesktopName}>{thDesktopName}</th>)
               }
@@ -52,7 +52,7 @@ export default function PendienteListDesktop({ pendientes }: { pendientes: PagoT
                       onChange={() => handleChange(pendiente._id)}
                     />
                   </td>
-                  <td>{pendiente.vencimiento}</td>
+                  <td>{shortVenc(pendiente.vencimiento)}</td>
                   <td>{pendiente.rubro}</td>
                   <td>{pendiente.sector}</td>
                   <td>{montoFormat(Number(pendiente.monto))}</td>

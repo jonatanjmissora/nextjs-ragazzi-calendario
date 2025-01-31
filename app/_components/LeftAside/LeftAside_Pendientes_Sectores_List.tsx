@@ -42,7 +42,7 @@ const Input = ({ rubro, actualRubro, setActualRubro }: { rubro: SectoresType, ac
         onChange={() => handleChange(rubro._id)}
       />
 
-      <p className={`collapse-title font-medium text-foreground hover:text-foreground80 transition hover:${rubro}         `}>{rubro._id} ({rubro.sectores.length})</p>
+      <p className={`collapse-title font-medium text-foreground hover:text-foreground80 transition hover:${rubro} leftAside-sectores`}>{rubro._id} ({rubro.sectores.length})</p>
 
       {<Sectores rubro={rubro._id} sectores={rubro.sectores} setActualRubro={setActualRubro} />}
     </li>

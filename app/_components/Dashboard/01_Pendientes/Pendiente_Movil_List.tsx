@@ -29,14 +29,13 @@ export default function PendienteListMovil({ pendientes }: { pendientes: PagoTyp
         pendientes={pendientes}
       />
 
-      <div className="table-container relative">
+      <div className="table-container relative overflow-hidden">
 
         <table className="table">
-          {/* head */}
           <thead>
-            <tr className='    font-bold tracking-wider border-b border-foreground25'>
+            <tr className='font-bold tracking-wider border-b border-foreground25'>
               {
-                movilTableHeader.map(thMovilName => <th key={thMovilName}>{thMovilName}</th>)
+                movilTableHeader.map(thMovilName => <th className="px-1 text-base" key={thMovilName}>{thMovilName}</th>)
               }
             </tr>
           </thead>
@@ -45,7 +44,7 @@ export default function PendienteListMovil({ pendientes }: { pendientes: PagoTyp
             {
               pendientes.map(pendiente =>
                 <tr key={pendiente._id} className={`${pendiente.rubro} hover:brightness-75 border-b border-foreground25  `}>
-                  <td>
+                  <td className="px-2 flex justify-center items-center">
                     <input
                       type="checkbox"
                       className={`${calcPagos.includes(pendiente._id) ? "opacity-100" : "opacity-20"}`}
@@ -53,11 +52,11 @@ export default function PendienteListMovil({ pendientes }: { pendientes: PagoTyp
                       onChange={() => handleChange(pendiente._id)}
                     />
                   </td>
-                  <td>{shortVenc(pendiente.vencimiento)}</td>
-                  <td>{pendiente.rubro}</td>
-                  <td>{pendiente.sector}</td>
-                  <td>{montoFormat(Number(pendiente.monto))}</td>
-                  <td className="p-0 m-0"><PendienteMovilAction pendiente={pendiente} /></td>
+                  <td className="p-1">{shortVenc(pendiente.vencimiento)}</td>
+                  <td className="p-1">{pendiente.rubro}</td>
+                  <td className="p-1">{pendiente.sector}</td>
+                  <td className="p-1">{montoFormat(Number(pendiente.monto))}</td>
+                  <td className="p-1 m-0"><PendienteMovilAction pendiente={pendiente} /></td>
                 </tr>
               )
             }

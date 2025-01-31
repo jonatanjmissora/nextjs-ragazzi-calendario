@@ -3,12 +3,13 @@ import React from 'react'
 import RealizadoMovilList from './Realizado_Movil_List'
 import RealizadoDesktopList from './Realizado_Desktop_List'
 import { cookies } from 'next/headers'
+import NoPays from '../NoPays'
 
 export default async function RealizadoList({ realizados, allRealizados }: { realizados: PagoType[], allRealizados: PagoType[] }) {
 
   const viewport = (await cookies()).get("viewport")?.value
 
-  if (realizados.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center      ">No hay pagos registrados...</h1></div>
+  if (realizados.length === 0) return <NoPays />
 
   return (
     <>

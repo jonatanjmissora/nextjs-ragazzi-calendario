@@ -14,7 +14,7 @@ export default function NavbarMovil() {
 
   return (
     <>
-      <div className="z-100 fixed top-2 right-2">
+      <div className="border">
         <button onClick={() => setShowMenu(prev => !prev)}>
           <HambMenuSVG className="size-11 text-foreground" currentColor="currentColor" />
         </button>
@@ -23,7 +23,7 @@ export default function NavbarMovil() {
       {
         showMenu && (
           <>
-            <div className="z-100  bg-[#241e34] inset-0 flex flex-col items-center pt-20" onClick={() => setShowMenu(false)}>
+            <div className="z-100 bg-[#241e34] fixed inset-0 flex flex-col items-center pt-20" onClick={() => setShowMenu(false)}>
 
               <nav className="flex flex-col gap-4      items-center">
                 <Link

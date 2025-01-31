@@ -10,7 +10,7 @@ export default function Calculadora({ calcPagos, pendientes }: { calcPagos: stri
     <div className="calc-container absolute">
       {
         calcPagos.length > 0 &&
-        <span className="font-bold tracking-widest      text-foreground opacity-75">Total: {montoFormat(total)}</span>
+        <span className="font-bold tracking-widest text-xl text-foreground opacity-75">Total: {montoFormat(total)}</span>
       }
     </div>
   )

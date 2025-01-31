@@ -28,12 +28,12 @@ export default function RubroFilter() {
 
   return (
     <div className='rubro-filter flex justify-center items-center pb-3'>
-      <ul className="flex gap-1">
+      <ul className="flex justify-center items-center gap-2 flex-wrap">
         {
           filters.map(filter =>
             <li
               key={filter}
-              className={`badge-main     ${filter === rubroFilter && filter}`}
+              className={`badge-main ${filter === rubroFilter && filter}`}
               onClick={() => handleClick(filter)}
             >
               {filter}

@@ -43,7 +43,7 @@ const Table = ({ pendiente }: { pendiente: PagoType }) => {
   return (
     <table className="table">
       <thead>
-        <tr className="        text-[#222] font-bold tracking-wider border-b border-black80">
+        <tr className="text-sm text-[#222] font-bold tracking-wider border-b border-black80">
           <td>venc</td>
           <td>rubro</td>
           <td>sector</td>

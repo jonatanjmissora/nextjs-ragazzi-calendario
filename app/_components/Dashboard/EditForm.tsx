@@ -1,6 +1,5 @@
 "use client"
 
-import RightArrowSVG from "@/app/_assets/RightArrowSVG"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import { SectoresType } from "@/app/_lib/schema/sectores.type"
 import { ServerResponseType } from "@/app/_lib/schema/serverResponse.type"
@@ -46,14 +45,14 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
   }
 
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="h-full w-full flex justify-center items-center">
 
       {
         showConfirm
 
           ?
-          <form action={formAction} className="flex flex-col gap-2 card w-full">
-            <h2 className="my-4 tracking-wider font-bold">¿ Confirmar cambio ?</h2>
+          <form action={formAction} className="flex flex-col gap-2 edit-form-container card">
+            <h2 className="my-4 tracking-wider font-bold text-xl">¿ Confirmar cambio ?</h2>
 
             <Table pagoType={pagoType} oldValues={pago} newValues={inputValues} />
 
@@ -66,7 +65,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
 
           :
           <form onSubmit={onSubmit} className="edit-form-container flex flex-col gap-4 min-w-80 card">
-            <h2 className="tracking-wider font-bold">Editar pago {pagoType}:</h2>
+            <h2 className="text-xl tracking-wider font-bold">Editar pago {pagoType}:</h2>
 
             <input className="input-main" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
 
@@ -93,7 +92,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
               <input className="input-main" type="date" name="pagado" id="pagado" defaultValue={pago.pagado} />
             }
 
-            {formState?.message ? <span className="text-red-700 italic">{formState.message}</span> : <span className="text-transparent"></span>}
+            {formState?.message ? <span className="text-red-900 italic">{formState.message}</span> : <span className="text-transparent"></span>}
 
             <div className="w-full flex gap-1">
               <SubmitBtn text="Editar" isPending={isPending} className="size-11 w-1/2" />
@@ -117,7 +116,7 @@ const Table = ({ pagoType, oldValues, newValues }: { pagoType: string, oldValues
         {
           pagoType === "realizado" &&
           <EditRow label={"pagado"} oldValue={oldValues.pagado ?? ""} newValue={newValues?.pagado ?? ""} />
-        } 
+        }
       </tbody>
     </table>
   )
@@ -128,8 +127,8 @@ const EditRow = ({ label, oldValue, newValue }: { label: string, oldValue: strin
   const isTheSame = oldValue === newValue
 
   return (
-    <tr>
-      <td>{label} : </td>
+    <tr className="border-white25 border-b border-t">
+      <td className="py-2">{label} : </td>
       <td>{oldValue}</td>
       {!isTheSame && <td>▶</td>}
       {!isTheSame && <td>{newValue}</td>}

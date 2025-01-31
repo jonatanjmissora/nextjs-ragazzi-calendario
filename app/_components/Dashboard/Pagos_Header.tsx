@@ -4,7 +4,7 @@ import RubroFilter from "./Rubro_Filter";
 
 export default function PagosHeader({ calcPagos, pendientes }: { calcPagos?: string[], pendientes?: PagoType[] }) {
   return (
-    <article className="m-auto flex justify-end items-center relative pago-header">
+    <article className="m-auto flex flex-wrap justify-end items-center relative pago-header">
 
       {
         (calcPagos && pendientes) &&

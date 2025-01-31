@@ -2,22 +2,21 @@ import { PagoType } from '@/app/_lib/schema/pago.type'
 import { cookies } from 'next/headers'
 import AdminRealizadoDesktopList from './Admin_Realizado_Desktop_List'
 import AdminRealizadoMovilList from './Admin_Realizado_Movil_List'
-
-const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado", "accion"]
+import NoPays from '../NoPays'
 
 export default async function AdminRealizadoList({ realizados }: { realizados: PagoType[] }) {
 
   const viewport = (await cookies()).get("viewport")?.value
 
-  if (realizados.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center      ">No hay pagos registrados...</h1></div>
+  if (realizados.length === 0) return <NoPays />
 
   return (
-   <>
-    {
-      viewport === "desktop" 
-        ? <AdminRealizadoDesktopList realizados={realizados} />
-        : <AdminRealizadoMovilList realizados={realizados} />
-    }
-   </>
+    <>
+      {
+        viewport === "desktop"
+          ? <AdminRealizadoDesktopList realizados={realizados} />
+          : <AdminRealizadoMovilList realizados={realizados} />
+      }
+    </>
   )
 }

@@ -20,7 +20,7 @@ export default function LeftAsidePendientesResetSectores() {
 
   return (
     <form action={formAction} className="flex flex-col gap-2 items-center">
-      <SubmitBtn text="reload" isPending={isPending} className="  px-4 py-0 h-8 w-16" classNameSVG="" />
+      <SubmitBtn text="reload" isPending={isPending} className="px-4 py-0 h-8 w-16 font-light text-sm" classNameSVG="" />
       <p className="text-orange-700  ">{formState?.message}</p>
     </form>
   )
