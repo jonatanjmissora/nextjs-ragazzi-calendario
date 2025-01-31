@@ -7,7 +7,7 @@ export default async function PendientesList({ pendientes }: { pendientes: PagoT
 
   const viewport = (await cookies()).get("viewport")?.value
 
-  if (pendientes.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center text-2xl">No hay pagos registrados...</h1></div>
+  if (pendientes.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center      ">No hay pagos registrados...</h1></div>
 
   return (
 

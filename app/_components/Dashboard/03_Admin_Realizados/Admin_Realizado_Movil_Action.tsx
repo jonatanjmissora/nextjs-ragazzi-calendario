@@ -51,7 +51,7 @@ const Table = ({ realizado }: { realizado: PagoType }) => {
   return (
     <table className="table">
       <thead>
-        <tr className="text-lg text-black font-bold tracking-wider border-b border-black80">
+        <tr className="        text-black font-bold tracking-wider border-b border-black80">
           <td>venc</td>
           <td>rubro</td>
           <td>sector</td>

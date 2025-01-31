@@ -9,7 +9,7 @@ export default async function AdminRealizadoList({ realizados }: { realizados: P
 
   const viewport = (await cookies()).get("viewport")?.value
 
-  if (realizados.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center text-2xl">No hay pagos registrados...</h1></div>
+  if (realizados.length === 0) return <div className="flex-1 flex justify-center items-center"><h1 className="text-center      ">No hay pagos registrados...</h1></div>
 
   return (
    <>

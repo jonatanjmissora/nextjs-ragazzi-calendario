@@ -10,7 +10,7 @@ export default function UserMenu({ username }: { username: string }) {
   const [showMenu, setShowMenu] = useState<boolean>(false)
 
   return (
-    <article className="tracking-widest text-sm text-foreground flex justify-between items-center relative h-full z-10">
+    <article className="tracking-widest     text-foreground flex justify-between items-center relative h-full z-10">
       <button className={`${showMenu && "bg-card text-white"} h-full px-8 z-10 hover:text-foreground80`} onClick={() => setShowMenu(prev => !prev)}>Hola, {username.toUpperCase()}</button>
       {
         showMenu && (

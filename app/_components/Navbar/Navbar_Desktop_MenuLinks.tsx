@@ -14,7 +14,7 @@ export default function MenuLinks() {
       <ActualLink text={'realizados'} pathname={pathname} href={"/realizados"} />
       <ActualLink text={'admin'} pathname={pathname} href={"/admin"} />
 
-      <div className={`${pathname.includes("/admin") ? "block" : "hidden"} text-xs w-full flex justify-center items-center gap-3`}>
+      <div className={`${pathname.includes("/admin") ? "block" : "hidden"}   w-full flex justify-center items-center gap-3`}>
         <ActualLink text={'sectores'} pathname={pathname} href={"/admin/sectores?type=actuales"} />
         <ActualLink text={'weblink'} pathname={pathname} href={"/admin/weblinks"} />
       </div>

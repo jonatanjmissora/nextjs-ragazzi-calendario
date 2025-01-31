@@ -13,7 +13,7 @@ export default function AdminRealizadoDesktopList({ realizados }: { realizados: 
             <table className="table">
                 {/* head */}
                 <thead>
-                <tr className='text-lg border-b border-foreground25'>
+                <tr className='        border-b border-foreground25'>
                     {
                     tableHeader.map(thName => <th key={thName}>{thName}</th>)
                     }

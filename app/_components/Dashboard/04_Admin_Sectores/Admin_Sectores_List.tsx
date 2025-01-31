@@ -62,7 +62,7 @@ export default function AdminSectoresList({ sectoresType, sectoresList }: { sect
 
           <div key={index} className="w-[90%] flex flex-col border-b border-foreground25 last:border-b-0 py-2">
             <div className="w-full flex justify-between items-center">
-              <span className="text-xl admin-sectores-rubro font-bold">{rubroActual._id}</span>
+              <span className="     admin-sectores-rubro font-bold">{rubroActual._id}</span>
               <form action={formAction} className="flex gap-2 admin-sectores-new">
                 <input type="hidden" name="rubro" defaultValue={rubroActual._id} />
                 <input type="text" className="input-main py-1 text-center" name="newSector" placeholder="nuevo..." required />
@@ -75,7 +75,7 @@ export default function AdminSectoresList({ sectoresType, sectoresList }: { sect
             <div className="flex flex-wrap my-4 sectores-gap">
               {
                 rubroActual.sectores.map((sector, index) =>
-                  <span key={index} className={`flex gap-2 badge-main ${rubroActual._id} text-sm admin-sectores-sector w-max`}>
+                  <span key={index} className={`flex gap-2 badge-main ${rubroActual._id}     admin-sectores-sector w-max`}>
                     {sector}
                     <Modal
                       sectoresType={sectoresType}
@@ -122,8 +122,8 @@ const Modal = ({ sectoresType, rubro, sector, sectores }: { sectoresType: string
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
         <div className="modal-container card fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <div className="flex gap-2 flex-wrap">
-            <span className="font-bold text-xl text-center tracking-widest">¿ Seguro desea elimiar</span>
-            <span className="font-bold text-xl text-center tracking-widest">{sector} ?</span>
+            <span className="font-bold      text-center tracking-widest">¿ Seguro desea elimiar</span>
+            <span className="font-bold      text-center tracking-widest">{sector} ?</span>
           </div>
           <div className="modal-action">
             <form action={formAction} className="flex gap-1 w-1/2">

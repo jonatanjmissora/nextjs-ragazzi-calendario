@@ -112,7 +112,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 @layer components {
   .btn-main {
-    @apply px-6 py-4 bg-black text-white border border-[#222] rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center h-20 text-base
+    @apply px-6 py-4 bg-black text-white border border-[#222] rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center h-20         
   }
 
   .btn-main:hover {
@@ -121,7 +121,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
   .btn-main-error {
-    @apply px-4 py-2 bg-[#22222250] text-foreground border border-black rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center text-base
+    @apply px-4 py-2 bg-[#22222250] text-foreground border border-black rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center         
   }
 
   .btn-main-error:hover {
@@ -130,7 +130,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
   .btn-main-success {
-    @apply px-4 py-2 bg-black80 text-[#222] border border-black rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center text-base
+    @apply px-4 py-2 bg-black80 text-[#222] border border-black rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center         
   }
 
   .btn-main-success:hover {
@@ -139,7 +139,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
   .btn-main-ghost {
-    @apply px-4 py-2 text-[#222] rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center text-base
+    @apply px-4 py-2 text-[#222] rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center         
   }
 
   .btn-main-ghost:hover {
@@ -163,6 +163,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     @apply text-black80
   }
 
+  .input-main:focus {
+    @apply text-white
+  }
 
   .badge-main {
     @apply w-full rounded-xl py-1 px-4 text-foreground border border-black25 cursor-pointer shadow tracking-wider text-center

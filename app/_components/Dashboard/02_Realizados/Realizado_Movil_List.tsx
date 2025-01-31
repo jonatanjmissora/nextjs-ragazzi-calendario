@@ -24,7 +24,7 @@ export default function RealizadoMovilList({ realizados, allRealizados }: { real
         <table className="table">
           {/* head */}
           <thead>
-            <tr className='text-base border-b border-foreground25'>
+            <tr className='         border-b border-foreground25'>
               {
                 movilTableHeader.map(thName => <th key={thName}>{thName}</th>)
               }
@@ -55,7 +55,7 @@ const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
 ) => {
 
   return (
-    <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25 text-xs`}>
+    <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25  `}>
 
       <td>{shortVenc(realizado.vencimiento)}</td>
       <td>{realizado.rubro}</td>

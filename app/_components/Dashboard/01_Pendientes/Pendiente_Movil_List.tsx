@@ -34,7 +34,7 @@ export default function PendienteListMovil({ pendientes }: { pendientes: PagoTyp
         <table className="table">
           {/* head */}
           <thead>
-            <tr className='text-sm font-bold tracking-wider border-b border-foreground25'>
+            <tr className='    font-bold tracking-wider border-b border-foreground25'>
               {
                 movilTableHeader.map(thMovilName => <th key={thMovilName}>{thMovilName}</th>)
               }
@@ -44,7 +44,7 @@ export default function PendienteListMovil({ pendientes }: { pendientes: PagoTyp
 
             {
               pendientes.map(pendiente =>
-                <tr key={pendiente._id} className={`${pendiente.rubro} hover:brightness-75 border-b border-foreground25 text-xs`}>
+                <tr key={pendiente._id} className={`${pendiente.rubro} hover:brightness-75 border-b border-foreground25  `}>
                   <td>
                     <input
                       type="checkbox"

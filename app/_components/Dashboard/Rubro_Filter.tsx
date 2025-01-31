@@ -33,7 +33,7 @@ export default function RubroFilter() {
           filters.map(filter =>
             <li
               key={filter}
-              className={`badge-main text-sm ${filter === rubroFilter && filter}`}
+              className={`badge-main     ${filter === rubroFilter && filter}`}
               onClick={() => handleClick(filter)}
             >
               {filter}

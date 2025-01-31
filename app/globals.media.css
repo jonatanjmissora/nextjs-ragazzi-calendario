@@ -14,44 +14,63 @@ body {
   overflow-y: hidden;
 }
 
+.aside-links {
+  flex-direction: column;
+}
+.calc-container {
+  top: 0.25rem;
+  left: 0;
+}
+.edit-form-container {
+  gap: 1rem;
+}
+.edit-form-container input, 
+.edit-form-container select {
+  width: 100%;
+}
+.footer-height {
+  height: var(--footer-height);
+}
+.histo-modal-container {
+  width: 70%;
+  min-height: 50dvh;
+}
+.leftAside {
+  padding: 1rem;
+  width: var(--leftAside-width);
+  /* border: 1px solid white; */
+}
+.main-page {
+  flex-direction: row;
+}
+.modal-container {
+  width: 33%;
+}
+.month-gap {
+  gap: 0.5rem 0.5rem;
+}
+.navbar-container {
+  height: var(--navbar-height);
+}
 .page {
   height: var(--main-height);
   display: flex;
   flex-direction: row;
   /* border: 1px solid green; */
 }
-
 .page-top {
   justify-content: center;
 }
-
-.leftAside {
-  padding: 1rem;
-  width: var(--leftAside-width);
-  /* border: 1px solid white; */
+.pago-header {
+  width: 60dvw;
 }
-
 .rubro-filter {
   padding-right: 3.5rem;
   margin: 0;
 }
-
-.month-gap {
-  gap: 0.5rem 0.5rem;
+.sectores-gap {
+  gap: 0.75rem;
 }
-
-.navbar-container {
-  height: var(--navbar-height);
-}
-
-.footer-height {
-  height: var(--footer-height);
-}
-
-.main-page {
-  flex-direction: row;
-}
-
 .table-container {
   width: var(--table-width);
   margin: auto;
@@ -66,29 +85,16 @@ body {
   /* background: var(--table-bg); */
   /* border: 1px solid yellow; */
 }
-
-.modal-container {
-  width: 33%;
+.user-menu-modal {
+  top: 4.5rem;
+  bottom: -7rem;
+  left: 0;
+  right: 0;
 }
-
-.histo-modal-container {
-  width: 70%;
-  min-height: 50dvh;
-}
-
-.edit-form-container {
-  gap: 1rem;
-}
-
-.aside-links {
-  flex-direction: column;
-}
-
 .weblink-edit,
 .weblink-container {
   width: 50%;
 }
-
 .weblink-modal-img {
   width: 600px;
   height: 400px;
@@ -96,60 +102,79 @@ body {
   margin-top: 0;
 }
 
-.user-menu-modal {
-  top: 4.5rem;
-  bottom: -7rem;
-  left: 0;
-  right: 0;
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////         1366            ///////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+@media (max-width: 1536px) {
+
+  .admin-sectores-sector {
+    padding: 0 0.5rem;
+  }
+  .admin-sectores-new button {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .edit-form-container input, 
+  .edit-form-container select {
+    width: 100%;
+  }
+  .leftAside-admin div {
+    gap: 0.5rem
+  }
+  .main-height {
+    height: 88dvh;
+  }
+  .navbar-container {
+    height: 7dvh;
+  }
+  .user-menu-modal {
+    top: 1.5rem;
+    bottom: -7rem;
+    left: 0;
+    right: 0;
+  }
+  .weblink-img {
+    width: 70px;
+    height: 50px;
+  }
+
 }
 
-.sectores-gap {
-  gap: 0.75rem;
-}
-
-.calc-container {
-  top: 0.25rem;
-  left: 0;
-}
-
-.pago-header {
-  width: 60dvw;
-}
 
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////         720               ////////////////////////////////////////// */
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media (max-width: 720px) {
 
-  input {
-    font-size: 12px;
-  }
-
   body {
     min-height: 100dvh;
     overflow: visible;
     /* border: 1px solid red; */
   }
-
-  .page {
-    flex-direction: column;
-    min-height: 95dvh;
-    height: max-content;
+  .admin-sectores {
+    margin-top: 8rem;
+    width: 75%;
+    margin-bottom: 4rem;
   }
-
-  .page-top {
-    justify-content: start;
-    padding-top: 10rem;
+  .aside-links {
+    flex-direction: row;
+    width: 50%;
   }
-
-  .table-container {
+  .calc-container {
+    top: 2.5rem;
+    left: 1rem;
+  }
+  .edit-form-container {
+    width: 95%;
+    gap: 2rem
+  }
+  .edit-form-container input, 
+  .edit-form-container select {
     width: 100%;
-    overflow-y: visible;
-    padding-right: 0;
-    padding-bottom: 4rem;
-    /* border: 1px solid green; */
   }
-
+  .histo-modal-container {
+    width: 100%;
+  }
   .leftAside {
     padding: 0;
     width: 80%;
@@ -157,17 +182,12 @@ body {
     margin-bottom: 4rem;
     display: flex;
   }
-
-  .rubro-filter {
-    padding-right: 0rem;
-    padding-bottom: 2rem;
-    width: 100%;
-  }
-
   .month-gap {
     gap: 1.5rem 0.5rem;
   }
-
+  .modal-container {
+    width: 90%;
+  }
   .navbar-container {
     position: fixed;
     z-index: 100;
@@ -176,30 +196,38 @@ body {
     background: var(--nav-bg);
     backdrop-filter: blur(10px);
   }
-
-  .modal-container {
-    width: 90%;
+  .page {
+    flex-direction: column;
+    min-height: 95dvh;
+    height: max-content;
+  }
+  .page-top {
+    justify-content: start;
+    padding-top: 10rem;
+  }
+  .pago-header {
+    width: 100dvw;
   }
 
-  .histo-modal-container {
+  .rubro-filter {
+    padding-right: 0rem;
+    padding-bottom: 2rem;
     width: 100%;
   }
-
-  .edit-form-container {
-    width: 90%;
-    gap: 2rem
+  .sectores-gap {
+    gap: 2rem 1rem;
   }
-
-  .aside-links {
-    flex-direction: row;
-    width: 50%;
+  .table-container {
+    width: 100%;
+    overflow-y: visible;
+    padding-right: 0;
+    padding-bottom: 4rem;
+    /* border: 1px solid green; */
   }
-
   .weblink-edit,
   .weblink-container {
     width: 90%;
   }
-
   .weblink-edit>div {
     flex-direction: column;
   }
@@ -212,115 +240,4 @@ body {
     aspect-ratio: 3/2;
     margin: 0;
   }
-
-  .sectores-gap {
-    gap: 2rem 1rem;
-  }
-
-  .admin-sectores {
-    margin-top: 8rem;
-    width: 75%;
-    margin-bottom: 4rem;
-  }
-
-  .calc-container {
-    top: 2.5rem;
-    left: 1rem;
-  }
-
-  .pago-header {
-    width: 100dvw;
-  }
-
-  .pago-header ul li {
-    font-size: 10px;
-  }
-
 }
-
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////         1366            ///////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-@media (max-width: 1536px) {
-
-  body {
-    font-size: 12px;
-  }
-
-  .navbar-container {
-    height: 7dvh;
-  }
-
-  .main-height {
-    height: 88dvh;
-  }
-
-  .user-menu-modal {
-    top: 1.5rem;
-    bottom: -7rem;
-    left: 0;
-    right: 0;
-    font-size: 12px;
-  }
-
-  nav button {
-    font-size: 12px;
-  }
-
-  svg {
-    transform: scale(0.75);
-  }
-
-  input,
-  select {
-    font-size: 12px;
-  }
-
-  /*    pendientes       */
-
-  .font-leftAside-pend-sector {
-    font-size: 11px;
-  }
-
-  .font-leftAside-pend-inputs {
-    font-size: 9px;
-  }
-
-  .rubro-filter li {
-    font-size: 12px;
-  }
-
-  /*     realizados       */
-  .font-leftAside-real-mes {
-    font-size: 8px;
-  }
-
-  /*      admin           */
-  .leftAside-admin div {
-    gap: 0.5rem
-  }
-
-  /*      admin-sectores          */
-  .admin-sectores-rubro {
-    font-size: 11px;
-  }
-
-  .admin-sectores-sector {
-    font-size: 9px;
-    padding: 0 0.5rem;
-  }
-
-  .admin-sectores-new button {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  /*      admin-weblinks          */
-  .weblink-img {
-    width: 70px;
-    height: 50px;
-  }
-
-}
-
-

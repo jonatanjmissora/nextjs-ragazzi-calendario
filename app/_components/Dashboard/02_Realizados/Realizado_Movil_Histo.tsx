@@ -37,7 +37,7 @@ export const RealizadoMovilHisto = ({ allRealizados, realizado, actualRealizado,
           </form>
 
           <div className="flex-1 flex flex-col justify-evenly items-center">
-            <h3 className="font-semibold text-lg text-center text-foreground">{actualRealizado.rubro} - {actualRealizado.sector}</h3>
+            <h3 className="font-semibold         text-center text-foreground">{actualRealizado.rubro} - {actualRealizado.sector}</h3>
             <div className="w-full flex flex-row-reverse justify-center items-end">
               {
                 histogramArray.map(pago =>
@@ -60,10 +60,10 @@ const Bar = ({ rubro, fecha, monto, heightPercentage }: { rubro: string, fecha: 
     <div className="w-full text-center my-2 mx-1">
       <div
         style={{ height: `${heightPercentage}rem` }}
-        className={`relative w-full text-xs ${rubro} rounded-t-lg border border-black pt-1 flex justify-center shadow `}>
+        className={`relative w-full   ${rubro} rounded-t-lg border border-black pt-1 flex justify-center shadow `}>
         <span className={`absolute ${isLower ? "-top-5 text-foreground" : "top-2"}`}>$ {monto}</span>
       </div>
-      <p className="w-full text-xs text-center text-foreground mt-1">{fecha.substring(0, 7)}</p>
+      <p className="w-full   text-center text-foreground mt-1">{fecha.substring(0, 7)}</p>
     </div>
   )
 }

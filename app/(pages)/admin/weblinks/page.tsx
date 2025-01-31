@@ -13,7 +13,7 @@ export default async function AdminWeblinksPage() {
     <section className="page flex items-center page-top">
 
       <div className="weblink-container px-3">
-        <div className="flex justify-between items-center w-full text-xl font-semibold tracking-wide border-b border-foreground25 py-4">
+        <div className="flex justify-between items-center w-full      font-semibold tracking-wide border-b border-foreground25 py-4">
           <span className="w-full">Links</span>
           <Link href={"/admin/weblinks/edit"} >
             <PlusSVG className="size-5 text-foreground hover:text-foreground80" currentColor="currentColor" />

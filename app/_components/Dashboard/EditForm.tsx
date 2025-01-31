@@ -46,23 +46,14 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
   }
 
   return (
-    <div className="container h-full flex justify-center items-center">
+    <div className="h-full flex justify-center items-center">
 
       {
         showConfirm
 
           ?
           <form action={formAction} className="flex flex-col gap-2 card w-full">
-            <h2 className="my-4 text-2xl tracking-wider font-bold">¿ Confirmar cambio ?</h2>
-
-            {/* <EditRow label={"vencimiento"} oldValue={pago.vencimiento} newValue={inputValues.vencimiento} />
-            <EditRow label={"rubro"} oldValue={pago.rubro} newValue={inputValues.rubro} />
-            <EditRow label={"sector"} oldValue={pago.sector} newValue={inputValues.sector} />
-            <EditRow label={"monto"} oldValue={montoFormat(Number(pago.monto))} newValue={montoFormat(Number(inputValues.monto))} />
-            {
-              pagoType === "realizado" &&
-              <EditRow label={"pagado"} oldValue={pago.pagado ?? ""} newValue={inputValues?.pagado ?? ""} />
-            } */}
+            <h2 className="my-4 tracking-wider font-bold">¿ Confirmar cambio ?</h2>
 
             <Table pagoType={pagoType} oldValues={pago} newValues={inputValues} />
 
@@ -75,7 +66,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
 
           :
           <form onSubmit={onSubmit} className="edit-form-container flex flex-col gap-4 min-w-80 card">
-            <h2 className="text-2xl tracking-wider font-bold">Editar pago {pagoType}:</h2>
+            <h2 className="tracking-wider font-bold">Editar pago {pagoType}:</h2>
 
             <input className="input-main" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
 
@@ -118,8 +109,8 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
 const Table = ({ pagoType, oldValues, newValues }: { pagoType: string, oldValues: PagoType, newValues: PagoType }) => {
   return (
     <table>
-      <tbody className="text-lg">
-        <EditRow label={"vencimiento"} oldValue={oldValues.vencimiento} newValue={newValues.vencimiento} />
+      <tbody>
+        <EditRow label={"venc"} oldValue={oldValues.vencimiento} newValue={newValues.vencimiento} />
         <EditRow label={"rubro"} oldValue={oldValues.rubro} newValue={newValues.rubro} />
         <EditRow label={"sector"} oldValue={oldValues.sector} newValue={newValues.sector} />
         <EditRow label={"monto"} oldValue={montoFormat(Number(oldValues.monto))} newValue={montoFormat(Number(newValues.monto))} />
@@ -140,7 +131,7 @@ const EditRow = ({ label, oldValue, newValue }: { label: string, oldValue: strin
     <tr>
       <td>{label} : </td>
       <td>{oldValue}</td>
-      {!isTheSame && <RightArrowSVG className="size-5 text-foreground" currentColor="currentColor" />}
+      {!isTheSame && <td>▶</td>}
       {!isTheSame && <td>{newValue}</td>}
     </tr>
   )

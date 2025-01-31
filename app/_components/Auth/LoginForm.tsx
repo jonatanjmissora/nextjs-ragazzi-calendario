@@ -35,7 +35,7 @@ export default function LoginForm() {
         onSubmit={onSubmit}
       >
 
-        <h2 className='text-3xl font-semibold h-20 leading-[5rem]'>Ingresa tus datos</h2>
+        <h2 className='       font-semibold h-20 leading-[5rem]'>Ingresa tus datos</h2>
 
         <div className='flex flex-col gap-1 h-20'>
           <InputRHF
@@ -44,6 +44,7 @@ export default function LoginForm() {
             defaultValue={formState?.prevState.username}
             error={errors.username?.message}
             register={register}
+            placeholder='usuario'
           />
         </div>
 
@@ -57,6 +58,7 @@ export default function LoginForm() {
               defaultValue={formState?.prevState.userpassword}
               error={errors.userpassword?.message}
               register={register}
+              placeholder='contraseña'
             />
           </div>
 

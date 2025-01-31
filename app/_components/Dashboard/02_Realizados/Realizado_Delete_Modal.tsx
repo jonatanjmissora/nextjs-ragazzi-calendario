@@ -30,8 +30,8 @@ export const RealizadoDeleteModal = ({ realizado }: { realizado: PagoType }) => 
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
         <div className="modal-container card p-4 text-[#222] fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <div className="flex gap-2 flex-wrap">
-            <h3 className="font-bold text-lg">¿ Seguro desea elimiar</h3>
-            <h3 className="font-bold text-lg">{realizado._id} ?</h3>
+            <h3 className="font-bold        ">¿ Seguro desea elimiar</h3>
+            <h3 className="font-bold        ">{realizado._id} ?</h3>
           </div>
           <div className="modal-action">
             <form action={formAction} className="flex gap-1 w-1/2">

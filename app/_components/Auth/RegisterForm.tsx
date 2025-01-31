@@ -35,7 +35,7 @@ export default function RegisterForm() {
         onSubmit={onSubmit}
       >
 
-        <h2 className='text-3xl font-semibold h-20 leading-[5rem]'>Registra tus datos</h2>
+        <h2 className='       font-semibold h-20 leading-[5rem]'>Registra tus datos</h2>
 
         <div className='flex flex-col gap-1 h-20'>
           <InputRHF

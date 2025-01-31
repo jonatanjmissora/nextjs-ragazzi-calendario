@@ -23,7 +23,7 @@ export default function RealizadoDesktopList({ realizados, allRealizados }: { re
         <table className="table">
           {/* head */}
           <thead>
-            <tr className='text-lg border-b border-foreground25'>
+            <tr className='        border-b border-foreground25'>
               {
                 desktopTableHeader.map(thName => <th key={thName}>{thName}</th>)
               }

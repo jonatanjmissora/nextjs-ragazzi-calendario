@@ -25,7 +25,7 @@ export default function NavbarMovil() {
           <>
             <div className="z-100  bg-[#241e34] inset-0 flex flex-col items-center pt-20" onClick={() => setShowMenu(false)}>
 
-              <nav className="flex flex-col gap-4 text-xl items-center">
+              <nav className="flex flex-col gap-4      items-center">
                 <Link
                   className={`${pathname === "/pendientes" && "border-b-[2px] border-foreground"}`}
                   href="/pendientes" >
