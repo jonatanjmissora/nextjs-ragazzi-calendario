@@ -22,7 +22,7 @@ export default function PendienteListMovil({ pendientes }: { pendientes: PagoTyp
   }
 
   return (
-    <article className="sm:hidden flex flex-col justify-center items-center w-full">
+    <article className="flex flex-col justify-center items-center w-full">
 
       <PagosHeader
         calcPagos={calcPagos}
@@ -34,7 +34,7 @@ export default function PendienteListMovil({ pendientes }: { pendientes: PagoTyp
         <table className="table">
           {/* head */}
           <thead>
-            <tr className='text-xs border-b border-foreground25'>
+            <tr className='text-sm font-bold tracking-wider border-b border-foreground25'>
               {
                 movilTableHeader.map(thMovilName => <th key={thMovilName}>{thMovilName}</th>)
               }

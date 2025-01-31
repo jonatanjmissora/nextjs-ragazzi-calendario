@@ -13,7 +13,7 @@ export default function NavbarMovil() {
   const pathname = usePathname()
 
   return (
-    <div className="block sm:hidden">
+    <>
       <div className="z-100 fixed top-2 right-2">
         <button onClick={() => setShowMenu(prev => !prev)}>
           <HambMenuSVG className="size-11 text-foreground" currentColor="currentColor" />
@@ -64,6 +64,6 @@ export default function NavbarMovil() {
         )
       }
 
-    </div>
+    </>
   )
 }

@@ -1,8 +1,11 @@
 /* 640 - 768 - 1024 - 1280 - 1536 */
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////           1920            //////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////////////////////// */
 
 body {
-  /* max-height: 100dvh;
-  overflow: hidden; */
+  /* max-height: 100dvh; */
+  /* overflow: hidden; */
   color: var(--foreground);
   background: var(--logo-bg), var(--background);
   background-size: 30px;
@@ -86,6 +89,13 @@ body {
   width: 50%;
 }
 
+.weblink-modal-img {
+  width: 600px;
+  height: 400px;
+  margin: 2rem;
+  margin-top: 0;
+}
+
 .user-menu-modal {
   top: 4.5rem;
   bottom: -7rem;
@@ -106,94 +116,9 @@ body {
   width: 60dvw;
 }
 
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-@media (max-width: 1536px) {
-
-  body {
-    font-size: 12px;
-  }
-
-  .navbar-container {
-    height: 7dvh;
-  }
-
-  .main-height {
-    height: 88dvh;
-  }
-
-  .user-menu-modal {
-    top: 1.5rem;
-    bottom: -7rem;
-    left: 0;
-    right: 0;
-    font-size: 12px;
-  }
-
-  nav button {
-    font-size: 12px;
-  }
-
-  .table tr {
-    font-size: 12px;
-  }
-
-  svg {
-    transform: scale(0.75);
-  }
-
-  input,
-  select {
-    font-size: 12px;
-  }
-
-  /*    pendientes       */
-
-  .font-leftAside-pend-sector {
-    font-size: 11px;
-  }
-
-  .font-leftAside-pend-inputs {
-    font-size: 9px;
-  }
-
-  .rubro-filter li {
-    font-size: 12px;
-  }
-
-  /*     realizados       */
-  .font-leftAside-real-mes {
-    font-size: 8px;
-  }
-
-  /*      admin           */
-  .leftAside-admin div {
-    gap: 0.5rem
-  }
-
-  /*      admin-sectores          */
-  .admin-sectores-rubro {
-    font-size: 11px;
-  }
-
-  .admin-sectores-sector {
-    font-size: 9px;
-    padding: 0 0.5rem;
-  }
-
-  .admin-sectores-new button {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  /*      admin-weblinks          */
-  .weblink-img {
-    width: 70px;
-    height: 50px;
-  }
-
-}
-
-/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////         720               ////////////////////////////////////////// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 @media (max-width: 720px) {
 
   input {
@@ -278,6 +203,15 @@ body {
   .weblink-edit>div {
     flex-direction: column;
   }
+  .weblink-modal-container {
+    width: 100%;
+    padding: 4rem 0;
+  }
+  .weblink-modal-img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    margin: 0;
+  }
 
   .sectores-gap {
     gap: 2rem 1rem;
@@ -303,3 +237,90 @@ body {
   }
 
 }
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////         1366            ///////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+@media (max-width: 1536px) {
+
+  body {
+    font-size: 12px;
+  }
+
+  .navbar-container {
+    height: 7dvh;
+  }
+
+  .main-height {
+    height: 88dvh;
+  }
+
+  .user-menu-modal {
+    top: 1.5rem;
+    bottom: -7rem;
+    left: 0;
+    right: 0;
+    font-size: 12px;
+  }
+
+  nav button {
+    font-size: 12px;
+  }
+
+  svg {
+    transform: scale(0.75);
+  }
+
+  input,
+  select {
+    font-size: 12px;
+  }
+
+  /*    pendientes       */
+
+  .font-leftAside-pend-sector {
+    font-size: 11px;
+  }
+
+  .font-leftAside-pend-inputs {
+    font-size: 9px;
+  }
+
+  .rubro-filter li {
+    font-size: 12px;
+  }
+
+  /*     realizados       */
+  .font-leftAside-real-mes {
+    font-size: 8px;
+  }
+
+  /*      admin           */
+  .leftAside-admin div {
+    gap: 0.5rem
+  }
+
+  /*      admin-sectores          */
+  .admin-sectores-rubro {
+    font-size: 11px;
+  }
+
+  .admin-sectores-sector {
+    font-size: 9px;
+    padding: 0 0.5rem;
+  }
+
+  .admin-sectores-new button {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /*      admin-weblinks          */
+  .weblink-img {
+    width: 70px;
+    height: 50px;
+  }
+
+}
+
+

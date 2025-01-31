@@ -3,9 +3,9 @@
 import Link from 'next/link'
 import EditSVG from '@/app/_assets/EditSVG'
 import { PagoType } from '@/app/_lib/schema/pago.type'
-import { RealizadoModal } from './Realizado_Modal'
+import { AdminRealizadoDeleteModal } from './Admin_Realizado_Delete_Modal'
 
-export default function RealizadoAction({ realizado }: { realizado: PagoType }) {
+export default function AdminRealizadoAction({ realizado }: { realizado: PagoType }) {
 
   return (
     <div className='flex justify-around items-center gap-1'>
@@ -17,7 +17,7 @@ export default function RealizadoAction({ realizado }: { realizado: PagoType }) 
         <EditSVG className='size-6 text-black hover:text-black80' currentColor='currentColor' />
       </Link>
 
-      <RealizadoModal realizado={realizado} />
+      <AdminRealizadoDeleteModal realizado={realizado} />
     </div>
   )
 }

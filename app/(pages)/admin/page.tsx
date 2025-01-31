@@ -1,4 +1,4 @@
-import AdminList from '@/app/_components/Dashboard/Admin_Realizados/Realizado_'
+import AdminList from '@/app/_components/Dashboard/03_Admin_Realizados/Admin_Realizado_'
 import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAside_Admin_'
 import Skelton_LeftAside_Admin from '@/app/_components/Skeltons/Skelton_LeftAside_Admin'
 import Skelton_Main_Table from '@/app/_components/Skeltons/Skelton_Main_Table'

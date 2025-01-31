@@ -1,6 +1,6 @@
 import { WeblinkType } from "@/app/_lib/schema/weblink.type";
 import { getWeblinkByIdAction } from "@/app/_lib/actions/weblinks.action";
-import WeblinkEditForm from "@/app/_components/Dashboard/Admin_Weblinks/Admin_Weblink_EditForm";
+import WeblinkEditForm from "@/app/_components/Dashboard/05_Admin_Weblinks/Admin_Weblink_EditForm";
 
 export default async function WeblinkEdit({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 

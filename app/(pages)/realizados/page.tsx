@@ -5,7 +5,7 @@ import { Suspense } from "react"
 import { getCachedRealizadosAction } from "@/app/_lib/actions/realizados.action"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import Skelton_Main_Table from "@/app/_components/Skeltons/Skelton_Main_Table"
-import RealizadoList from "@/app/_components/Dashboard/Realizados/Realizado_"
+import RealizadoList from "@/app/_components/Dashboard/02_Realizados/Realizado_"
 
 export default async function RealizadosPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 

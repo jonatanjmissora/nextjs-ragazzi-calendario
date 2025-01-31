@@ -3,7 +3,7 @@ import { getCachedWeblinksAction } from "@/app/_lib/actions/weblinks.action";
 import Image from "next/image";
 import PlusSVG from "@/app/_assets/PlusSVG";
 import Link from "next/link";
-import WeblinkAction from "@/app/_components/Dashboard/Admin_Weblinks/Admin_Weblink_Action";
+import WeblinkAction from "@/app/_components/Dashboard/05_Admin_Weblinks/Admin_Weblink_Action";
 
 export default async function AdminWeblinksPage() {
 

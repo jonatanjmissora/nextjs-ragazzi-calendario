@@ -1,22 +1,10 @@
-GENERAL:
+FALTA:
 
-fondos y logos
+estetica y animaciones
 
 conectar DB
 
-animacion?
-
 cuando cancelo el EditForm, me refresca toda la pagina, probar si lo hace en produccion, porque en develop me lo hace, ver si tengo que cambiar a un router.push o push.replace o un history-1
-
-PENDIENTES:
-
-REALIZADOS:
-
-ADMIN:
-
-ADMIN/SECTORES
-
-ADMIN/WEBLINKS
 
 refactorizar forms, modales, etc
 
@@ -31,3 +19,9 @@ editForm en movil esta muy angosto
 corregir los skeltons
 
 mejorar el navbar
+
+el histograma en el movil, tiene que tener un scroll horizontal
+
+EN LO QUE ESTOY:
+
+empezando los componetes responsives, en /admin

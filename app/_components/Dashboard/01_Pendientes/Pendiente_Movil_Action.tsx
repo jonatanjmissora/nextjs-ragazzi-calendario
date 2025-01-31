@@ -43,7 +43,7 @@ const Table = ({ pendiente }: { pendiente: PagoType }) => {
   return (
     <table className="table">
       <thead>
-        <tr>
+        <tr className="text-lg text-black font-bold tracking-wider border-b border-black80">
           <td>venc</td>
           <td>rubro</td>
           <td>sector</td>
@@ -51,7 +51,7 @@ const Table = ({ pendiente }: { pendiente: PagoType }) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr className="border-b border-black80">
           <td>{shortVenc(pendiente.vencimiento)}</td>
           <td>{pendiente.rubro}</td>
           <td>{pendiente.sector}</td>

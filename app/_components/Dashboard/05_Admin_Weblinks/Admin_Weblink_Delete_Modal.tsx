@@ -7,7 +7,7 @@ import { useActionState, useRef } from "react"
 import toast from "react-hot-toast"
 import SubmitBtn from "../../SubmitBtn"
 
-export const WeblinkModal = ({ weblink }: { weblink: WeblinkType }) => {
+export const WeblinkDeleteModal = ({ weblink }: { weblink: WeblinkType }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 

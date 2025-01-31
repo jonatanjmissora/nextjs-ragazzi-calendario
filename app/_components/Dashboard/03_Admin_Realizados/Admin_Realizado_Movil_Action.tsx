@@ -1,15 +1,14 @@
+"use client"
+
 import DotsSVG from "@/app/_assets/DotsSVG copy"
 import PlusSVG from "@/app/_assets/PlusSVG"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
 import { shortVenc } from "@/app/_lib/utils/shortVenc"
 import { useRef } from "react"
-import { RealizadoDeleteModal } from "./Realizado_Delete_Modal"
-import Link from "next/link"
-import EditSVG from "@/app/_assets/EditSVG"
-import { RealizadoHisto } from "./Realizado_Desktop_Histo"
+import AdminRealizadoAction from "./Admin_Realizado_Action"
 
-export default function RealizadosMovilAction({ allRealizados, realizado, actualRealizado, setActualRealizado }: { allRealizados: PagoType[], realizado: PagoType, actualRealizado: PagoType, setActualRealizado: React.Dispatch<React.SetStateAction<PagoType>> }) {
+export default function AdminRealizadoMovilAction({ realizado }: { realizado: PagoType }) {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 
@@ -35,11 +34,8 @@ export default function RealizadosMovilAction({ allRealizados, realizado, actual
               <span>pagado: {realizado.pagado}</span>
             </div>
 
-            <RealizadoMovilAction
-              allRealizados={allRealizados}
+            <AdminRealizadoAction
               realizado={realizado}
-              actualRealizado={actualRealizado}
-              setActualRealizado={setActualRealizado}
             />
 
           </div>
@@ -55,7 +51,7 @@ const Table = ({ realizado }: { realizado: PagoType }) => {
   return (
     <table className="table">
       <thead>
-        <tr>
+        <tr className="text-lg text-black font-bold tracking-wider border-b border-black80">
           <td>venc</td>
           <td>rubro</td>
           <td>sector</td>
@@ -63,7 +59,7 @@ const Table = ({ realizado }: { realizado: PagoType }) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr className="border-b border-black80">
           <td>{shortVenc(realizado.vencimiento)}</td>
           <td>{realizado.rubro}</td>
           <td>{realizado.sector}</td>
@@ -71,31 +67,5 @@ const Table = ({ realizado }: { realizado: PagoType }) => {
         </tr>
       </tbody>
     </table>
-  )
-}
-
-function RealizadoMovilAction({ allRealizados, realizado, actualRealizado, setActualRealizado }: { allRealizados: PagoType[], realizado: PagoType, actualRealizado: PagoType, setActualRealizado: React.Dispatch<React.SetStateAction<PagoType>> }) {
-
-  return (
-    <div className='flex justify-around items-center gap-1 px-5'>
-
-      <RealizadoHisto
-        allRealizados={allRealizados}
-        realizado={realizado}
-        actualRealizado={actualRealizado}
-        setActualRealizado={setActualRealizado}
-      />
-
-      <RealizadoDeleteModal realizado={realizado} />
-
-      <Link href={{
-        pathname: '/realizados/edit',
-        query: { id: realizado._id },
-      }}
-      >
-        <EditSVG className='size-9 p-[0.4rem] text-black hover:text-[#222]' currentColor='currentColor' />
-      </Link>
-
-    </div>
   )
 }

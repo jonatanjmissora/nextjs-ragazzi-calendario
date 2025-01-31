@@ -21,7 +21,7 @@ export default function PendienteListDesktop({ pendientes }: { pendientes: PagoT
   }
 
   return (
-    <article className="hidden sm:flex w-full flex-col justify-center items-center">
+    <article className="flex w-full flex-col justify-center items-center">
 
       <PagosHeader
         calcPagos={calcPagos}

@@ -2,7 +2,7 @@ import EditSVG from "@/app/_assets/EditSVG";
 import { getWeblinkByIdAction } from "@/app/_lib/actions/weblinks.action";
 import { WeblinkType } from "@/app/_lib/schema/weblink.type";
 import Link from "next/link";
-import { WeblinkModal } from "./Admin_Weblink_Modal";
+import { WeblinkDeleteModal } from "./Admin_Weblink_Delete_Modal";
 
 export default async function WeblinkAction({ id }: { id: string }) {
 
@@ -16,7 +16,7 @@ export default async function WeblinkAction({ id }: { id: string }) {
       }} >
         <EditSVG className='size-6 text-black hover:text-black80' currentColor='currentColor' />
       </Link>
-      <WeblinkModal weblink={weblink} />
+      <WeblinkDeleteModal weblink={weblink} />
     </div>
   )
 }

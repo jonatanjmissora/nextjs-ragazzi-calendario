@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useActionState, useRef, useState } from "react"
 import toast from "react-hot-toast";
 import SubmitBtn from "../../SubmitBtn";
-import AdminweblinkEditFormModal from "./Admin_weblink_EditForm_Modal";
+import AdminWeblinkEditFormModal from "./Admin_Weblink_EditForm_Modal";
 
 const isSame = (oldLink: WeblinkType, newLink: WeblinkType) => {
   return (oldLink._id === newLink._id &&
@@ -90,7 +90,7 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
           <div className="flex flex-col gap-2 h-max">
             {
               imgData
-                ? <AdminweblinkEditFormModal imgData={imgData} imgFileName={imgFile?.name ?? "image"} />
+                ? <AdminWeblinkEditFormModal imgData={imgData} imgFileName={imgFile?.name ?? "image"} />
                 : <div className="w-[160px] h-[100px] bg-slate-300 rounded-lg shadow border border-black25 overflow-hidden p-2"></div>
             }
 

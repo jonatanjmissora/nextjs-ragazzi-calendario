@@ -1,4 +1,4 @@
-import PendientesList from '@/app/_components/Dashboard/Pendientes/Pendiente_';
+import PendientesList from '@/app/_components/Dashboard/01_Pendientes/Pendiente_';
 import LeftAsidePendientes from '@/app/_components/LeftAside/LeftAside_Pendientes_';
 import { getCachedPendientesAction } from '@/app/_lib/actions/pendientes.action';
 import { Suspense } from 'react';

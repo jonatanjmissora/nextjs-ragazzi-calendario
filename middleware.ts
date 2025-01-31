@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
 
   const viewport = device.type === 'mobile' ? 'mobile' : 'desktop'
 
-  // response.cookies.set("viewport", viewport)
+  response.cookies.set("viewport", viewport)
 
 
   return response

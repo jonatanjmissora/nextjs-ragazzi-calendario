@@ -5,7 +5,7 @@ export default function NavbarDesktop({ username }: { username: string }) {
 
   return (
 
-    <nav className='hidden sm:flex w-full navbar-container justify-between items-center pl-8'>
+    <nav className='flex w-full navbar-container justify-between items-center pl-8'>
       <MenuLinks />
       <UserMenu username={username} />
     </nav>

@@ -1,21 +1,20 @@
 "use client"
 
 import { PagoType } from "@/app/_lib/schema/pago.type";
+import montoFormat from "@/app/_lib/utils/montoFormat";
 import { useState } from "react";
 import PagosHeader from "../Pagos_Header";
-import montoFormat from "@/app/_lib/utils/montoFormat";
-import { shortVenc } from "@/app/_lib/utils/shortVenc";
-import { RealizadoMovilHisto } from "./Realizado_Movil_Histo";
+import { RealizadoDesktopHisto } from "./Realizado_Desktop_Histo";
 
-const movilTableHeader = ["venc", "rubro", "sector", "monto", "pagado"]
+const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "pagado"]
 
-export default function RealizadoMovilList({ realizados, allRealizados }: { realizados: PagoType[], allRealizados: PagoType[] }) {
+export default function RealizadoDesktopList({ realizados, allRealizados }: { realizados: PagoType[], allRealizados: PagoType[] }) {
 
   const [actualRealizado, setActualRealizado] = useState<PagoType>(allRealizados[0])
 
   return (
 
-    <article className="sm:hidden w-full flex flex-col justify-center items-center">
+    <article className="w-full sm:flex flex-col justify-center items-center">
 
       <PagosHeader />
 
@@ -24,9 +23,9 @@ export default function RealizadoMovilList({ realizados, allRealizados }: { real
         <table className="table">
           {/* head */}
           <thead>
-            <tr className='text-base border-b border-foreground25'>
+            <tr className='text-lg border-b border-foreground25'>
               {
-                movilTableHeader.map(thName => <th key={thName}>{thName}</th>)
+                desktopTableHeader.map(thName => <th key={thName}>{thName}</th>)
               }
             </tr>
           </thead>
@@ -55,14 +54,9 @@ const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
 ) => {
 
   return (
-    <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25 text-xs`}>
-
-      <td>{shortVenc(realizado.vencimiento)}</td>
-      <td>{realizado.rubro}</td>
-      <td>{realizado.sector}</td>
-      <td>{montoFormat(Number(realizado.monto))}</td>
-      <td>
-        <RealizadoMovilHisto
+    <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25`}>
+      <td className="inline-flex mx-3">
+        <RealizadoDesktopHisto
           allRealizados={allRealizados}
           realizado={realizado}
           actualRealizado={actualRealizado}
@@ -70,6 +64,12 @@ const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
         />
       </td>
 
+      <td>{realizado.vencimiento}</td>
+      <td>{realizado.rubro}</td>
+      <td>{realizado.sector}</td>
+      <td>{montoFormat(Number(realizado.monto))}</td>
+      <td>{realizado.pagado}</td>
     </tr>
   )
 }
+

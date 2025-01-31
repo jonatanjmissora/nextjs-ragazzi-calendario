@@ -1,5 +1,5 @@
 import { PagoType } from "@/app/_lib/schema/pago.type";
-import Calculadora from "./Pendientes/Pendiente_Calculadora";
+import Calculadora from "./01_Pendientes/Pendiente_Calculadora";
 import RubroFilter from "./Rubro_Filter";
 
 export default function PagosHeader({ calcPagos, pendientes }: { calcPagos?: string[], pendientes?: PagoType[] }) {

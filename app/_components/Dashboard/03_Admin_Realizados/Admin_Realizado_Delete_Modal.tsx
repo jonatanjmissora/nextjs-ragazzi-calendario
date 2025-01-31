@@ -7,7 +7,7 @@ import { useActionState, useRef } from "react"
 import toast from "react-hot-toast"
 import SubmitBtn from "../../SubmitBtn"
 
-export const RealizadoModal = ({ realizado }: { realizado: PagoType }) => {
+export const AdminRealizadoDeleteModal = ({ realizado }: { realizado: PagoType }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 
