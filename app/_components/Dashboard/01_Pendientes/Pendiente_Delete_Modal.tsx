@@ -7,7 +7,7 @@ import { useActionState, useRef } from "react"
 import toast from "react-hot-toast"
 import SubmitBtn from "../../SubmitBtn"
 
-export const PendienteDeleteModal = ({ pendiente }: { pendiente: PagoType }) => {
+export const PendienteDeleteModal = ({ pendiente, dialogRef2 }: { pendiente: PagoType, dialogRef2: React.RefObject<HTMLDialogElement | null> }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 
@@ -18,6 +18,7 @@ export const PendienteDeleteModal = ({ pendiente }: { pendiente: PagoType }) => 
       toast.error(res.message)
     }
     else toast.success(res.message)
+    dialogRef2.current?.close()
     dialogRef.current?.close()
 
   }, null)

@@ -12,7 +12,7 @@ import { insertarRealizadoAction } from '@/app/_lib/actions/realizados.action'
 import SubmitBtn from '../../SubmitBtn'
 import { PendienteDeleteModal } from './Pendiente_Delete_Modal'
 
-export default function PendienteDesktopAction({ pendiente }: { pendiente: PagoType }) {
+export default function PendienteDesktopAction({ pendiente, dialogRef }: { pendiente: PagoType, dialogRef: React.RefObject<HTMLDialogElement | null> }) {
 
   const [, formAction, isPending] = useActionState(async () => {
     const actualDate = localeStringToDBDate(new Date().toLocaleDateString())
@@ -32,6 +32,7 @@ export default function PendienteDesktopAction({ pendiente }: { pendiente: PagoT
 
     if (insertResp.success && deleteResp.success) {
       toast.success(insertResp.message)
+      if (dialogRef) dialogRef.current?.close()
     }
   }
     , null)
@@ -45,7 +46,7 @@ export default function PendienteDesktopAction({ pendiente }: { pendiente: PagoT
         </SubmitBtn>
       </form>
 
-      <PendienteDeleteModal pendiente={pendiente} />
+      <PendienteDeleteModal pendiente={pendiente} dialogRef2={dialogRef} />
 
       <Link href={{
         pathname: '/pendientes/edit',

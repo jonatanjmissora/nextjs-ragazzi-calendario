@@ -28,7 +28,7 @@ export default function PendienteMovilAction({ pendiente }: { pendiente: PagoTyp
 
             <Table pendiente={pendiente} />
 
-            <PendienteDesktopAction pendiente={pendiente} />
+            <PendienteDesktopAction pendiente={pendiente} dialogRef={dialogRef} />
 
           </div>
 
