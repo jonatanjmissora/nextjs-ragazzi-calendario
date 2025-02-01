@@ -121,11 +121,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
   .btn-main-error {
-    @apply px-4 py-2 bg-[#22222250] text-foreground border border-black rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center
+    @apply px-4 py-2 bg-[#ff000050] text-foreground border border-black rounded-lg transition shadow tracking-wide font-semibold grow flex justify-center items-center
   }
 
   .btn-main-error:hover {
-    @apply hover:bg-[#ff000025]
+    @apply hover:bg-[#ff000080]
   }
 
 

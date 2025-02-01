@@ -30,8 +30,8 @@ export const WeblinkDeleteModal = ({ weblink }: { weblink: WeblinkType }) => {
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
         <div className="modal-container card p-8 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <div className="flex gap-2 flex-wrap">
-            <span className="font-bold      text-center tracking-widest">¿ Seguro desea elimiar</span>
-            <span className="font-bold      text-center tracking-widest">{weblink._id} ?</span>
+            <span className="font-bold text-lg text-[#222] text-left tracking-widest">¿ Seguro desea elimiar</span>
+            <span className="font-bold text-lg text-[#222] text-left tracking-widest">{weblink._id} ?</span>
           </div>
           <div className="modal-action">
             <form action={formAction} className="flex gap-1 w-1/2">

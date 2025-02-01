@@ -29,10 +29,10 @@ export const PendienteDeleteModal = ({ pendiente, dialogRef2 }: { pendiente: Pag
         <TrashSVG className='size-9 p-[0.4rem] text-[#880000aa] hover:text-[#f35252]' currentColor='currentColor' />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
-        <div className="modal-container card p-4 text-[#222] fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+        <div className="modal-container card p-4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
           <div className="flex gap-2 flex-wrap">
-            <h3 className="font-bold        ">¿ Seguro desea elimiar</h3>
-            <h3 className="font-bold        ">{pendiente._id} ?</h3>
+            <h3 className="font-bold text-lg text-[#222]">¿ Seguro desea elimiar</h3>
+            <h3 className="font-bold text-lg text-[#222] ">{pendiente._id} ?</h3>
           </div>
           <div className="modal-action">
             <form action={formAction} className="flex gap-1 w-1/2">
