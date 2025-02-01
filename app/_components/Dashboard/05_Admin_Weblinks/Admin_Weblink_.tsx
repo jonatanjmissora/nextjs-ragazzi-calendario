@@ -3,8 +3,11 @@ import { WeblinkType } from "@/app/_lib/schema/weblink.type"
 import Link from "next/link"
 import WeblinkAction from "./Admin_Weblink_Action"
 import Image from "next/image";
+import { getCachedWeblinksAction } from "@/app/_lib/actions/weblinks.action";
 
-export default function AdminWeblinkList({ weblinks }: { weblinks: WeblinkType[] }) {
+export default async function AdminWeblinkList() {
+
+  const weblinks = await getCachedWeblinksAction()
 
   return (
     <section className="flex items-center justify-center weblink-container">

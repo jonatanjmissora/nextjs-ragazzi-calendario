@@ -2,8 +2,13 @@ import { SectoresType } from "@/app/_lib/schema/sectores.type";
 import Link from "next/link";
 import AdminSectoresDeleteModal from "./Admin_Sectores_Delete_Modal";
 import AdminSectoresNewForm from "./Admin_Sectores_NewForm";
+import { getCachedSectoresActualesAction, getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action";
 
-export default function AdminSectoresList({ sectoresType, sectoresList }: { sectoresType: string, sectoresList: SectoresType[] }) {
+export default async function AdminSectoresList({ sectoresType }: { sectoresType: string }) {
+
+  const sectoresList = sectoresType === "actuales"
+    ? await getCachedSectoresActualesAction() as SectoresType[]
+    : await getCachedSectoresResetAction() as SectoresType[]
 
   return (
     <article className="table-width flex flex-col gap-0 items-center flex-1 mt-10">
