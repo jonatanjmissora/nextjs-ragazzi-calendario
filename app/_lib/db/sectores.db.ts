@@ -11,7 +11,7 @@ export async function getSectoresResetDB() {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export async function getSectoresActualesDB() {
-    //await new Promise(res => setTimeout(res, 10000))
+    await new Promise(res => setTimeout(res, 7000))
     const db = await getDatabase()
     return await db.collection<SectoresType>("SectoresActuales").find().toArray()
 }
@@ -59,12 +59,12 @@ export const updateSectoresActualesDB = async (rubro: string, newSectores: strin
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const resetSectoresActualesDB = async () => {
     try {
-    //     const db = await getDatabase()
-    //     const sectoresConstant = await db.collection<SectoresType>("ConstantMenuSectores").find().toArray()
+        //     const db = await getDatabase()
+        //     const sectoresConstant = await db.collection<SectoresType>("ConstantMenuSectores").find().toArray()
 
 
-    //     ----- resetear los sectores actuales
-    return { success: true, message: "Sectores reseteados con éxito" }
+        //     ----- resetear los sectores actuales
+        return { success: true, message: "Sectores reseteados con éxito" }
 
     } catch (error) {
         return { success: false, message: `server-error: ${getErrorMessage(error)}` }

@@ -1,7 +1,7 @@
 "use server"
 
 import { revalidateTag, unstable_cache } from "next/cache"
-import { eliminarRealizadoDB, getRealizadoByIdDB, getRealizadosDB, editarRealizadoDb, insertarRealizadoDB } from "../db/realizados.db"
+import { eliminarRealizadoDB, getRealizadoByIdDB, getRealizadosDB, editarRealizadoDb, insertarRealizadoDB, getRealizadosFilterDB } from "../db/realizados.db"
 import { pagoSchema, PagoType } from "../schema/pago.type"
 
 export const getRealizadoByIdAction = async (id: string) => {
@@ -9,8 +9,29 @@ export const getRealizadoByIdAction = async (id: string) => {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
+export const getRealizadosAction = async () => {
+  return await getRealizadosDB()
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 export const getCachedRealizadosAction = unstable_cache(async () => {
   return await getRealizadosDB()
+},
+  ["realizados"],
+  {
+    tags: ["realizados"],
+    revalidate: 3600,
+  }
+)
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const getRealizadosFilterAction = async (fromDate: string, toDate: string) => {
+  return await getRealizadosFilterDB(fromDate, toDate)
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const getCachedRealizadosFilterAction = unstable_cache(async (fromDate: string, toDate: string) => {
+  return await getRealizadosFilterDB(fromDate, toDate)
 },
   ["realizados"],
   {

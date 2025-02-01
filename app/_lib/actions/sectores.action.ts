@@ -3,6 +3,12 @@
 import { revalidateTag, unstable_cache } from "next/cache"
 import { getSectoresActualesDB, getSectoresResetDB, resetSectoresActualesDB, updateSectoresActualesDB, updateSectoresResetDB } from "../db/sectores.db"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const getSectoresActualesAction = async () => {
+  return await getSectoresActualesDB()
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 export const getCachedSectoresResetAction = unstable_cache(async () => {
   return await getSectoresResetDB()
 },
