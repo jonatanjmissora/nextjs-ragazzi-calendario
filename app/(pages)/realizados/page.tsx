@@ -1,7 +1,7 @@
 import LeftAsideRealizados from "@/app/_components/LeftAside/LeftAside_Realizados"
 import { getLocaleDate } from "@/app/_lib/utils/getActualDate"
 import { Suspense } from "react"
-import Skelton_Main_Table from "@/app/_components/Skeltons/Skelton_Main_Table"
+import Skelton_Main_Table from "@/app/_components/Skeltons/Skelton_Main_Table_Desktop"
 import RealizadoList from "@/app/_components/Dashboard/02_Realizados/Realizado_"
 
 export default async function RealizadosPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {

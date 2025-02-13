@@ -1,7 +1,7 @@
 "use client"
 
 import { PagoType } from "@/app/_lib/schema/pago.type";
-import PagosHeader from "../Pagos_Header";
+import PagosHeader from "../../Pagos_Header";
 import { useState } from "react";
 import montoFormat from "@/app/_lib/utils/montoFormat";
 import { shortVenc } from "@/app/_lib/utils/shortVenc";
@@ -9,7 +9,7 @@ import PendienteMovilAction from "./Pendiente_Movil_Action";
 
 const movilTableHeader = ["", "venc", "rubro", "sector", "monto", "  "]
 
-export default function PendienteListMovil({ pendientes }: { pendientes: PagoType[] }) {
+export default function PendienteMovilList({ pendientes }: { pendientes: PagoType[] }) {
 
   const [calcPagos, setCalcPagos] = useState<string[]>([])
 

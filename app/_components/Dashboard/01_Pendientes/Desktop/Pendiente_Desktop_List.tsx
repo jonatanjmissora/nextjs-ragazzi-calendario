@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import PagosHeader from "../Pagos_Header"
+import PagosHeader from "../../Pagos_Header"
 import montoFormat from "@/app/_lib/utils/montoFormat"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import PendienteDesktopAction from "./Pendiente_Desktop_Action"
@@ -9,7 +9,7 @@ import { shortVenc } from "@/app/_lib/utils/shortVenc"
 
 const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "accion"]
 
-export default function PendienteListDesktop({ pendientes }: { pendientes: PagoType[] }) {
+export default function PendienteDesktopList({ pendientes }: { pendientes: PagoType[] }) {
 
   const [calcPagos, setCalcPagos] = useState<string[]>([])
 
@@ -22,7 +22,7 @@ export default function PendienteListDesktop({ pendientes }: { pendientes: PagoT
   }
 
   return (
-    <article className="flex w-full flex-col justify-center items-center">
+    <>
 
       <PagosHeader
         calcPagos={calcPagos}
@@ -56,7 +56,7 @@ export default function PendienteListDesktop({ pendientes }: { pendientes: PagoT
                   <td>{pendiente.rubro}</td>
                   <td>{pendiente.sector}</td>
                   <td>{montoFormat(Number(pendiente.monto))}</td>
-                  <td className="p-0 m-0"><PendienteDesktopAction pendiente={pendiente} /></td>
+                  <td className="p-0 m-0"> <PendienteDesktopAction pendiente={pendiente} /></td>
                 </tr>
               )
             }
@@ -65,6 +65,6 @@ export default function PendienteListDesktop({ pendientes }: { pendientes: PagoT
         </table>
 
       </div>
-    </article>
+    </>
   )
 }

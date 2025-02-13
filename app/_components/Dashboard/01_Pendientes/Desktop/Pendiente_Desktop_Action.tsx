@@ -9,10 +9,10 @@ import { eliminarPendienteAction } from '@/app/_lib/actions/pendientes.action'
 import { useActionState } from 'react'
 import { localeStringToDBDate } from '@/app/_lib/utils/date.toLocaleString_to_dbDate'
 import { insertarRealizadoAction } from '@/app/_lib/actions/realizados.action'
-import SubmitBtn from '../../SubmitBtn'
-import { PendienteDeleteModal } from './Pendiente_Delete_Modal'
+import SubmitBtn from '@/app/_components/SubmitBtn'
+import { PendienteDeleteModal } from '../Pendiente_Delete_Modal'
 
-export default function PendienteDesktopAction({ pendiente, dialogRef }: { pendiente: PagoType, dialogRef: React.RefObject<HTMLDialogElement | null> }) {
+export default function PendienteDesktopAction({ pendiente, dialogRef }: { pendiente: PagoType, dialogRef?: React.RefObject<HTMLDialogElement | null> }) {
 
   const [, formAction, isPending] = useActionState(async () => {
     const actualDate = localeStringToDBDate(new Date().toLocaleDateString())

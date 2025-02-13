@@ -11,7 +11,7 @@ export async function getSectoresResetDB() {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export async function getSectoresActualesDB() {
-    await new Promise(res => setTimeout(res, 7000))
+    await new Promise(res => setTimeout(res, 4000))
     const db = await getDatabase()
     return await db.collection<SectoresType>("SectoresActuales").find().toArray()
 }

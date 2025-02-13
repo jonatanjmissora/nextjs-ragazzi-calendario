@@ -1,20 +1,48 @@
-import Title from "./Title";
+import SubmitBtn from "../SubmitBtn";
+import Loading from "./Loading";
 
-export default function Skelton_LeftAside_Pend() {
-    return (
-        <div className={`leftAside-width flex flex-col gap-4 justify-center items-center`}>
-            <div className="border border-gray-600 border-l-0 border-r-0 h-16 w-full flex items-center animate-pulse" >
-                <Title className={"mx-4"} />
-            </div>
-            <div className="h-16 w-full flex items-center animate-pulse" >
-                <Title className={"mx-4"} />
-            </div>
-            <div className="border border-gray-600 border-l-0 border-r-0 h-16 w-full flex items-center animate-pulse" >
-                <Title className={"mx-4"} />
-            </div>
-            <div className="border-b border-gray-600 h-16 w-full flex items-center animate-pulse" >
-                <Title className={"mx-4"} />
-            </div>
-        </div>
-    )
+const RUBROS = ["ragazzi", "patricios", "palihue", "jmolina"]
+
+export default function SkeltonLeftAsidePend() {
+
+  return (
+    <>
+      <ul className="w-full">
+      {
+          RUBROS.map(RUBRO =>
+              <Rubro key={RUBRO} rubro={RUBRO} />
+          )
+      }
+      </ul>
+
+      <div>
+        <button className="btn-main grow-0 px-4 py-0 font-light text-sm h-8 w-16">reload</button>
+        <div className="w-full h-[8px]"></div>
+      </div>
+    </>
+  )
 }
+
+const Rubro = ({ rubro }: { rubro: string}) => {
+
+  return (
+    <li
+      className={`collapse collapse-arrow hover:bg-${rubro} join-item border-t border-foreground25 rounded-none last:border-b h-[71px]`}
+    >
+
+      <div 
+          className={`collapse-title font-medium text-foreground hover:text-foreground80 transition hover:${rubro} leftAside-sectores flex`}
+      >
+          <span>{rubro} {"("}</span> 
+          <Loading />
+          <span>{")"}</span> 
+      </div>
+      
+      <div className="h-[8px] w-full"></div>
+
+    </li>
+  )
+}
+
+
+

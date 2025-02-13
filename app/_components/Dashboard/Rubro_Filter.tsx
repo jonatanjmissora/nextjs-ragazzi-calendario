@@ -9,7 +9,6 @@ export default function RubroFilter() {
   const searchParams = useSearchParams()
   if (pathname.includes("/admin")) return
 
-  // const [actualFilter, setActualFilter] = useState<string>("todos")
   const filters = ["todos", "ragazzi", "patricios", "palihue", "jmolina"]
 
   const rubroFilter = searchParams.get("rubroFilter") || "todos"

@@ -4,7 +4,7 @@ import { PagoType } from "@/app/_lib/schema/pago.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
 import { shortVenc } from "@/app/_lib/utils/shortVenc"
 import { useRef } from "react"
-import PendienteDesktopAction from "./Pendiente_Desktop_Action"
+import PendienteDesktopAction from "../Desktop/Pendiente_Desktop_Action"
 
 export default function PendienteMovilAction({ pendiente }: { pendiente: PagoType }) {
 
