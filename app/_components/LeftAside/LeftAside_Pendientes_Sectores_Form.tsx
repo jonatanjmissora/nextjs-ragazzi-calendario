@@ -24,7 +24,7 @@ export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, s
     if (!newPendiente.sector) {
       return {
         success: false,
-        message: "No hay sector seleccionado"
+        message: "Seleccione un sector"
       }
     }
 
@@ -77,6 +77,8 @@ export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, s
         }
       </div>
 
+      {formState?.message && <div className="rounded-lg pb-1 bg-yellow-200/50 flex justify-center gap-2 items-center text-sm text-orange-800 pt-2 italic font-semibold tracking-wider"><span className="animate-bounce">👆</span> <span>{formState?.message}</span></div>}
+
       <form action={formAction} className="flex flex-wrap gap-2 pt-2">
         <input type="hidden" name="rubro" defaultValue={rubro} />
         <input type="hidden" name="sector" defaultValue={actualSector} />
@@ -88,8 +90,6 @@ export const Sectores = ({ rubro, sectores, setActualRubro }: { rubro: string, s
           </SubmitBtn>
         </div>
       </form>
-
-      {formState?.message && <p className="text-sm text-right text-white pt-2 italic font-semibold tracking-wider">👉 {formState?.message}</p>}
 
     </ul>
   )

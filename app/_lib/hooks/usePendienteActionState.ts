@@ -20,6 +20,7 @@ export const usePendienteActionState = (pendiente: PagoType) => {
 
     const newPendiente = Object.fromEntries(formData.entries()) as PagoType
     newPendiente._id = newPendiente.vencimiento + "-" + newPendiente.rubro + "-" + newPendiente.sector
+    console.log({newPendiente})
 
     const serverAction = sameId(pendiente, newPendiente)
       ? await editarPendienteAction(newPendiente)

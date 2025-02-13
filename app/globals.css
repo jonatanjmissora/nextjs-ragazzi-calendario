@@ -109,6 +109,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   scale: 1.35;
 }
 
+select option {
+  background: var(--black80);
+  color: white;
+}
+
 
 @layer components {
   .btn-main {
