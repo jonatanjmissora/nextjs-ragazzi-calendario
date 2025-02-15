@@ -3,8 +3,8 @@ import { Suspense } from 'react';
 import { cookies } from 'next/headers';
 import PendienteDesktopListContainer from '@/app/_components/Dashboard/01_Pendientes/Desktop/Pendiente_Desktop_List_Container';
 import PendienteMovilListContainer from '@/app/_components/Dashboard/01_Pendientes/Movil/Pendiente_Movil_List_Container';
-import SkeltonMainTableDesktop from '@/app/_components/Skeltons/Skelton_Main_Table_Desktop';
-import SkeltonMainTableMovil from '@/app/_components/Skeltons/Skelton_Main_Table_Movil';
+import SkeltonPendMainTableDesktop from '@/app/_components/Skeltons/Skelton_Pend_Desktop_Main_Table';
+import SkeltonPendMainTableMovil from '@/app/_components/Skeltons/Skelton_Pend_Movil_Main_Table';
 import SkeltonLeftAsidePend from '@/app/_components/Skeltons/Skelton_LeftAside_Pend';
 
 export default async function PendientesPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
@@ -25,13 +25,13 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
       {
         viewport === "desktop"
         ? (
-            <Suspense fallback={<SkeltonMainTableDesktop />} >
+            <Suspense fallback={<SkeltonPendMainTableDesktop />} >
               <PendienteDesktopListContainer rubroFilter={rubroFilter} />
             </Suspense>
           )
 
         : (
-            <Suspense fallback={<SkeltonMainTableMovil />} >
+            <Suspense fallback={<SkeltonPendMainTableMovil />} >
               <PendienteMovilListContainer rubroFilter={rubroFilter} />
             </Suspense>
           )

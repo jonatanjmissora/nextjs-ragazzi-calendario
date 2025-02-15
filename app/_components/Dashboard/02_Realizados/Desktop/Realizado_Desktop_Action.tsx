@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import EditSVG from '@/app/_assets/EditSVG'
 import { PagoType } from '@/app/_lib/schema/pago.type'
-import { RealizadoDeleteModal } from './Realizado_Delete_Modal'
+import { RealizadoDeleteModal } from '../Realizado_Delete_Modal'
 
 export default function RealizadoDesktopAction({ realizado }: { realizado: PagoType }) {
 

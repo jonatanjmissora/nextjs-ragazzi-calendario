@@ -15,3 +15,7 @@ el histograma en el movil, tiene que tener un scroll horizontal
 EN LO QUE ESTOY:
 
 por acomodar los skeltons
+
+verificar que los suspense tengan los key
+
+verificar que los getCached esten todos

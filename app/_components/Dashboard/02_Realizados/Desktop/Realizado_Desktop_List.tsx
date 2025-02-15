@@ -1,20 +1,18 @@
-"use client"
-
 import { PagoType } from "@/app/_lib/schema/pago.type";
 import montoFormat from "@/app/_lib/utils/montoFormat";
-import { useState } from "react";
-import PagosHeader from "../Pagos_Header";
+import PagosHeader from "../../Pagos_Header";
 import { RealizadoDesktopHisto } from "./Realizado_Desktop_Histo";
+import { Suspense } from "react";
+import Loading from "@/app/_components/Skeltons/Loading";
+import RealizadoDesktopHistoContainer from "./Realizado_Desktop_Histo_Container";
 
 const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "pagado"]
 
-export default function RealizadoDesktopList({ realizados, allRealizados }: { realizados: PagoType[], allRealizados: PagoType[] }) {
-
-  const [actualRealizado, setActualRealizado] = useState<PagoType>(allRealizados[0])
+export default function RealizadoDesktopList({ realizados }: { realizados: PagoType[] }) {
 
   return (
 
-    <article className="w-full sm:flex flex-col justify-center items-center">
+    <>
 
       <PagosHeader />
 
@@ -35,33 +33,30 @@ export default function RealizadoDesktopList({ realizados, allRealizados }: { re
               realizados.map(realizado =>
                 <Pago
                   key={realizado._id}
-                  realizado={realizado}
-                  allRealizados={allRealizados}
-                  actualRealizado={actualRealizado}
-                  setActualRealizado={setActualRealizado} />
+                  realizado={realizado}/>
               )
             }
 
           </tbody>
         </table>
       </div>
-    </article>
+    </>
   )
 }
 
-const Pago = ({ realizado, allRealizados, actualRealizado, setActualRealizado }
-  : { realizado: PagoType, allRealizados: PagoType[], actualRealizado: PagoType, setActualRealizado: React.Dispatch<React.SetStateAction<PagoType>> }
+const Pago = ({ realizado }: { realizado: PagoType }
 ) => {
 
   return (
     <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25`}>
       <td className="inline-flex mx-3">
-        <RealizadoDesktopHisto
-          allRealizados={allRealizados}
-          realizado={realizado}
-          actualRealizado={actualRealizado}
-          setActualRealizado={setActualRealizado}
-        />
+
+        <Suspense key={Math.random()} fallback={<Loading/>}>
+          <RealizadoDesktopHistoContainer
+            realizado={realizado}
+          />
+        </Suspense>
+
       </td>
 
       <td>{realizado.vencimiento}</td>

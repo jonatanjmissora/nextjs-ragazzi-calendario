@@ -1,4 +1,4 @@
-import { PagoType } from "../schema/pago.type"
+import { PagoType, RubroType } from "../schema/pago.type"
 import { getErrorMessage } from "../utils/getErrorMessage"
 import getDatabase from "./connect"
 
@@ -16,10 +16,21 @@ export const getRealizadosDB = async () => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const getRealizadosFilterDB = async (fromDate: string, toDate: string) => {
+  await new Promise(res => setTimeout(res, 2000))
   const db = await getDatabase()
   return await db
     .collection<PagoType>("PagosRealizados")
     .find({ "vencimiento": { $gte: fromDate, $lte: toDate } })
+    .sort({ "vencimiento": 1 })
+    .toArray()
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+export const getRealizadosYearBySectorDB = async (realizado: PagoType, fromDate: string, toDate: string) => {
+  const db = await getDatabase()
+  return await db
+    .collection<PagoType>("PagosRealizados")
+    .find({ "rubro": realizado.rubro, "sector": realizado.sector, "vencimiento": { $gte: fromDate, $lte: toDate } })
     .sort({ "vencimiento": 1 })
     .toArray()
 }

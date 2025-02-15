@@ -1,7 +1,7 @@
 import React from 'react'
 import Title from './Title'
 
-export default function SkeltonMainTableMovil() {
+export default function SkeltonPendMovilMainTable() {
   return (
     <div className="table-container relative px-8">
       <table className="table">

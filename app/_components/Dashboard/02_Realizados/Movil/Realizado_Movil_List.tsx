@@ -2,7 +2,7 @@
 
 import { PagoType } from "@/app/_lib/schema/pago.type";
 import { useState } from "react";
-import PagosHeader from "../Pagos_Header";
+import PagosHeader from "../../Pagos_Header";
 import montoFormat from "@/app/_lib/utils/montoFormat";
 import { shortVenc } from "@/app/_lib/utils/shortVenc";
 import { RealizadoMovilHisto } from "./Realizado_Movil_Histo";
