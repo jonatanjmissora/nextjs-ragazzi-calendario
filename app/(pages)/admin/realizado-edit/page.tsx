@@ -1,5 +1,6 @@
 import RealizadoEditFormContainer from '@/app/_components/Dashboard/03_Admin_Realizados/Admin_Realizado_EditForm_Container'
-import Loading from '@/app/loading'
+import SkeltonDesktopEditForm from '@/app/_components/Skeltons/Skelton_Desktop_Edit_Form'
+import Loading from '@/app/loadig'
 import { Suspense } from 'react'
 
 export default async function RealizadosEditPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
@@ -9,7 +10,7 @@ export default async function RealizadosEditPage({ searchParams }: { searchParam
   return (
     <section className="page justify-center items-center">
 
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<SkeltonDesktopEditForm pagoType={"realizado"} />}>
         <RealizadoEditFormContainer id={id} />
       </Suspense>
 

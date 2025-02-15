@@ -1,17 +1,16 @@
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
-import AdminRealizadoAction from "./Admin_Realizado_Action"
+import AdminRealizadoAction from "../Admin_Realizado_Action"
 
 const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado", "accion"]
 
 export default function AdminRealizadoDesktopList({ realizados }: { realizados: PagoType[] }) {
 
     return (
-        <article className="w-full flex flex-col justify-center items-center">
+        <>
 
             <div className="table-container relative">
                 <table className="table">
-                    {/* head */}
                     <thead>
                         <tr className='text-base border-b border-foreground25'>
                             {
@@ -32,7 +31,7 @@ export default function AdminRealizadoDesktopList({ realizados }: { realizados: 
                     </tbody>
                 </table>
             </div>
-        </article>
+        </>
     )
 }
 

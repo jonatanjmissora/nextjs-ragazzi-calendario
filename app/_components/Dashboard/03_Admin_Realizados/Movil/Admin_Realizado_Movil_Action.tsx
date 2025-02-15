@@ -6,7 +6,7 @@ import { PagoType } from "@/app/_lib/schema/pago.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
 import { shortVenc } from "@/app/_lib/utils/shortVenc"
 import { useRef } from "react"
-import AdminRealizadoAction from "./Admin_Realizado_Action"
+import AdminRealizadoAction from "../Admin_Realizado_Action"
 
 export default function AdminRealizadoMovilAction({ realizado }: { realizado: PagoType }) {
 

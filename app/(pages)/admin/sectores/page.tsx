@@ -9,7 +9,7 @@ export default async function AdminSectoresPage({ searchParams }: { searchParams
   return (
     <section className="page">
 
-      <Suspense key={Math.random()} fallback={<Loading />} >
+      <Suspense fallback={<Loading />} >
         <AdminSectoresList sectoresType={type} />
       </Suspense>
 

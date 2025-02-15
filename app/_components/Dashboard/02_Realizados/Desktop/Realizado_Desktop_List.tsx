@@ -19,7 +19,6 @@ export default function RealizadoDesktopList({ realizados }: { realizados: PagoT
       <div className="table-container relative">
 
         <table className="table">
-          {/* head */}
           <thead>
             <tr className='text-base border-b border-foreground25'>
               {

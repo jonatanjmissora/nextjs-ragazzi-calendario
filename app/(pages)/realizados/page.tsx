@@ -38,7 +38,6 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
         }
       </article>
       
-
     </section>
   );
 }

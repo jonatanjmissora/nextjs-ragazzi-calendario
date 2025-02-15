@@ -1,12 +1,16 @@
-import AdminList from '@/app/_components/Dashboard/03_Admin_Realizados/Admin_Realizado_'
+import AdminRealizadoDesktopListContainer from '@/app/_components/Dashboard/03_Admin_Realizados/Desktop/Admin_Realizado_Desktop_List_Container'
+import AdminRealizadoMovilListContainer from '@/app/_components/Dashboard/03_Admin_Realizados/Movil/Admin_Realizado_Movil_List_Container'
 import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAside_Admin_'
-import Skelton_Main_Table from '@/app/_components/Skeltons/Skelton_Pend_Desktop_Main_Table'
+import SkeltonAdminDesktopMainTable from '@/app/_components/Skeltons/Skelton_Admin_Desktop_Main_Table'
+import SkeltonAdminMovilMainTable from '@/app/_components/Skeltons/Skelton_Admin_Movil_Main_Table'
 import { getActualDateStr } from '@/app/_lib/utils/getActualDate'
 import { getOneYearAgo } from '@/app/_lib/utils/getOneYearAgo'
+import { cookies } from 'next/headers'
 import { Suspense } from 'react'
 
 export default async function AdminPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
+  const viewport = (await cookies()).get("viewport")?.value
   const actualDate = getActualDateStr()
   const yearAgo = getActualDateStr(getOneYearAgo())
 
@@ -18,11 +22,35 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   return (
     <section className="page">
 
-      <LeftAsideAdmin desdeFilter={desdeFilter} hastaFilter={hastaFilter} rubroFilter={rubroFilter} sectorFilter={sectorFilter} />
+      <aside className='leftAside flex flex-col justify-center items-center gap-4'> 
+        <LeftAsideAdmin desdeFilter={desdeFilter} hastaFilter={hastaFilter} rubroFilter={rubroFilter} sectorFilter={sectorFilter} />
+      </aside>
 
-      <Suspense fallback={<Skelton_Main_Table />} >
-        <AdminList rubroFilter={rubroFilter} sectorFilter={sectorFilter} hastaFilter={hastaFilter} desdeFilter={desdeFilter} />
-      </Suspense>
+      <article className="w-full sm:flex flex-col justify-center items-center">
+        {
+          viewport === "desktop"
+          ? (
+              <Suspense key={Math.random()} fallback={<SkeltonAdminDesktopMainTable />} >
+                <AdminRealizadoDesktopListContainer
+                  rubroFilter={rubroFilter} 
+                  sectorFilter={sectorFilter} 
+                  hastaFilter={hastaFilter} 
+                  desdeFilter={desdeFilter} 
+                />
+              </Suspense>
+            )
+          : (
+              <Suspense key={Math.random()} fallback={<SkeltonAdminMovilMainTable />} >
+                <AdminRealizadoMovilListContainer 
+                  rubroFilter={rubroFilter} 
+                  sectorFilter={sectorFilter} 
+                  hastaFilter={hastaFilter} 
+                  desdeFilter={desdeFilter} 
+                />
+              </Suspense>
+            )
+        }
+      </article>
 
     </section>
   )
