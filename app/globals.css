@@ -114,6 +114,21 @@ select option {
   color: white;
 }
 
+table tbody td:first-of-type,
+table thead th:first-of-type {
+  padding-left: 1.25rem;
+}
+table tbody td:last-of-type {
+  padding-right: 1.25rem;
+}
+table {
+  table-layout: fixed;
+}
+
+.table-pendiente th:first-of-type,
+.table-realizado th:first-of-type {
+  width: 10%;
+}
 
 @layer components {
   .btn-main {

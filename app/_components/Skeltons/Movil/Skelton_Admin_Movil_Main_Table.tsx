@@ -2,12 +2,13 @@ import React from 'react'
 import DollarSVG from '@/app/_assets/DollarSVG'
 import EditSVG from '@/app/_assets/EditSVG'
 import TrashSVG from '@/app/_assets/TrashSVG'
+import HistogramSVG from '@/app/_assets/HistogramSVG'
 
 const filters = ["todos", "ragazzi", "patricios", "palihue", "jmolina"]
-const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "accion"]
+const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "pagado"]
 const ROWS = [1, 1, 2, 4, 2, 3, 3, 4, 1, 1, 2, 4, 2, 3, 3, 4, 1, 1, 2, 4, 2, 3, 3, 4]
 
-export default function SkeltonRealMovilMainTable() {
+export default function SkeltonAdminMovilMainTable() {
   return (
     <>
       <div className="m-auto flex flex-wrap justify-end items-center relative pago-header">
@@ -43,17 +44,12 @@ export default function SkeltonRealMovilMainTable() {
               ROWS.map((row, index) =>
 
                 <tr key={index} className={`${filters[row]} hover:brightness-75 border-b border-foreground25 w-[1100px]`}>
-                  <td className='w-[125px]'>
-                    <input
-                      type="checkbox"
-                      className={"mx-3 opacity-20"}
-                    />
-                  </td>
-                  <td className='w-[125]'><span className="size-4 loading loading-bars text-primary"></span></td>
-                  <td className='w-[165px]'><span className="size-4 loading loading-bars text-primary"></span></td>
-                  <td className='w-[180px]'><span className="size-4 loading loading-bars text-primary"></span></td>
-                  <td className='w-[180px]'><span className="size-4 loading loading-bars text-primary"></span></td>
-                  <td className="p-0 m-0 w-[290px]"> <PendienteDesktopAction /></td>
+                  <td className='w-[130px]'><HistogramSVG className="size-5 text-foreground mx-3" currentColor="currentColor" /></td>
+                  <td ><span className="size-4 loading loading-bars"></span></td>
+                  <td ><span className="size-4 loading loading-bars"></span></td>
+                  <td ><span className="size-4 loading loading-bars"></span></td>
+                  <td ><span className="size-4 loading loading-bars"></span></td>
+                  <td ><span className="size-4 loading loading-bars"></span></td>
                 </tr>
               )
             }

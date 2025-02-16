@@ -4,8 +4,10 @@ import { Suspense } from "react"
 import { cookies } from "next/headers"
 import RealizadoDesktopListContainer from "@/app/_components/Dashboard/02_Realizados/Desktop/Realizado_Desktop_List_Container"
 import RealizadoMovilListContainer from "@/app/_components/Dashboard/02_Realizados/Movil/Realizado_Movil_List_Container"
-import SkeltonRealDesktopMainTable from "@/app/_components/Skeltons/Skelton_Real_Desktop_Main_Table"
-import SkeltonRealMovilMainTable from "@/app/_components/Skeltons/Skelton_Real_Movil_Main_Table"
+import SkeltonDesktopMainTable from "@/app/_components/Skeltons/Desktop/Skelton_Desktop_Main_Table"
+import SkeltonMovilMainTable from "@/app/_components/Skeltons/Movil/Skelton_Movil_Main_Table"
+
+const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "accion"]
 
 export default async function RealizadosPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -26,12 +28,12 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
         {
           viewport === "desktop"
           ? (
-              <Suspense key={dateFilter} fallback={<SkeltonRealDesktopMainTable />} >
+              <Suspense key={dateFilter} fallback={<SkeltonDesktopMainTable desktopTableHeader={desktopTableHeader} />} >
                 <RealizadoDesktopListContainer rubroFilter={rubroFilter} dateFilter={dateFilter} />
               </Suspense>
             )
           : (
-              <Suspense key={dateFilter} fallback={<SkeltonRealMovilMainTable />} >
+              <Suspense key={dateFilter} fallback={<SkeltonMovilMainTable />} >
                 <RealizadoMovilListContainer rubroFilter={rubroFilter} dateFilter={dateFilter} />
               </Suspense>
             )

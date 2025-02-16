@@ -4,7 +4,7 @@ import PendienteDesktopList from "./Pendiente_Desktop_List"
 
 export default async function PendienteDesktopListContainer({ rubroFilter }: { rubroFilter: string }) {
 
-const pagosPendientes = await getCachedPendientesAction()
+const pagosPendientes = await getPendientesAction()
     
 const filteredPendientes = rubroFilter === "todos"
 ? pagosPendientes

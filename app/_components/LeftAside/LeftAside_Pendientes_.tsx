@@ -4,7 +4,7 @@ import LeftAsidePendientesResetSectores from "./LeftAside_Pendientes_Reset_Secto
 
 export default async function Aside() {
 
-  const sectoresActuales = await getCachedSectoresResetAction()
+  const sectoresActuales = await getSectoresActualesAction()
 
   return (
     

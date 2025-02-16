@@ -1,7 +1,6 @@
 import { PagoType } from "@/app/_lib/schema/pago.type";
 import montoFormat from "@/app/_lib/utils/montoFormat";
 import PagosHeader from "../../Pagos_Header";
-import { RealizadoDesktopHisto } from "./Realizado_Desktop_Histo";
 import { Suspense } from "react";
 import Loading from "@/app/_components/Skeltons/Loading";
 import RealizadoDesktopHistoContainer from "./Realizado_Desktop_Histo_Container";
@@ -18,7 +17,7 @@ export default function RealizadoDesktopList({ realizados }: { realizados: PagoT
 
       <div className="table-container relative">
 
-        <table className="table">
+        <table className="table table-realizado">
           <thead>
             <tr className='text-base border-b border-foreground25'>
               {
@@ -48,9 +47,9 @@ const Pago = ({ realizado }: { realizado: PagoType }
 
   return (
     <tr key={realizado._id} className={`${realizado.rubro} hover:brightness-75 border-b border-foreground25`}>
-      <td className="inline-flex mx-3">
+      <td>
 
-        <Suspense key={Math.random()} fallback={<Loading/>}>
+        <Suspense key={Math.random()} fallback={<span className="size-4 loading loading-bars"></span>}>
           <RealizadoDesktopHistoContainer
             realizado={realizado}
           />

@@ -1,4 +1,4 @@
-import Input from "./Input";
+import Input from "./Skelton_Input";
 import Title from "./Title";
 
 export default function Skelton_LeftAside_Admin() {

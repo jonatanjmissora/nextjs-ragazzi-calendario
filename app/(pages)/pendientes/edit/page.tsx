@@ -1,5 +1,5 @@
 import PendienteEditFormContainer from "@/app/_components/Dashboard/01_Pendientes/Pendiente_EditForm_Container"
-import SkeltonDesktopEditForm from "@/app/_components/Skeltons/Skelton_Desktop_Edit_Form"
+import SkeltonDesktopEditForm from "@/app/_components/Skeltons/Desktop/Skelton_Desktop_Edit_Form"
 import { Suspense } from "react"
 
 export default async function PendienteEditPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {

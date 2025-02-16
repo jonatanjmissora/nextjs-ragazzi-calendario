@@ -30,7 +30,7 @@ export default function PendienteDesktopList({ pendientes }: { pendientes: PagoT
       />
       <div className="table-container relative">
 
-        <table className="table">
+        <table className="table table-pendiente">
           <thead>
             <tr className='text-base border-b border-foreground25'>
               {
@@ -56,7 +56,7 @@ export default function PendienteDesktopList({ pendientes }: { pendientes: PagoT
                   <td>{pendiente.rubro}</td>
                   <td>{pendiente.sector}</td>
                   <td>{montoFormat(Number(pendiente.monto))}</td>
-                  <td className="p-0 m-0"> <PendienteDesktopAction pendiente={pendiente} /></td>
+                  <td className="p-0"> <PendienteDesktopAction pendiente={pendiente} /></td>
                 </tr>
               )
             }

@@ -2,7 +2,7 @@ import { PagoType } from "@/app/_lib/schema/pago.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
 import AdminRealizadoAction from "../Admin_Realizado_Action"
 
-const tableHeader = ["vencimiento", "rubro", "sector", "monto", "pagado", "accion"]
+const tableHeader = ["venc", "rubro", "sector", "monto", "pagado", "accion"]
 
 export default function AdminRealizadoDesktopList({ realizados }: { realizados: PagoType[] }) {
 

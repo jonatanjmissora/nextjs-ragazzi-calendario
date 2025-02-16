@@ -3,9 +3,11 @@ import { Suspense } from 'react';
 import { cookies } from 'next/headers';
 import PendienteDesktopListContainer from '@/app/_components/Dashboard/01_Pendientes/Desktop/Pendiente_Desktop_List_Container';
 import PendienteMovilListContainer from '@/app/_components/Dashboard/01_Pendientes/Movil/Pendiente_Movil_List_Container';
-import SkeltonPendMainTableDesktop from '@/app/_components/Skeltons/Skelton_Pend_Desktop_Main_Table';
-import SkeltonPendMainTableMovil from '@/app/_components/Skeltons/Skelton_Pend_Movil_Main_Table';
+import SkeltonPendMainTableDesktop from '@/app/_components/Skeltons/Desktop/Skelton_Desktop_Main_Table';
+import SkeltonPendMainTableMovil from '@/app/_components/Skeltons/Movil/Skelton_Movil_Main_Table';
 import SkeltonLeftAsidePend from '@/app/_components/Skeltons/Skelton_LeftAside_Pend';
+
+const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "accion"]
 
 export default async function PendientesPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -25,7 +27,7 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
       {
         viewport === "desktop"
         ? (
-            <Suspense fallback={<SkeltonPendMainTableDesktop />} >
+            <Suspense fallback={<SkeltonPendMainTableDesktop desktopTableHeader={desktopTableHeader}/>} >
               <PendienteDesktopListContainer rubroFilter={rubroFilter} />
             </Suspense>
           )

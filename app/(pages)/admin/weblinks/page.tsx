@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import AdminWeblinkList from "@/app/_components/Dashboard/05_Admin_Weblinks/Admin_Weblink_";
-import Skelton_Main_Table from "@/app/_components/Skeltons/Skelton_Pend_Desktop_Main_Table";
+import Skelton_Main_Table from "@/app/_components/Skeltons/Desktop/Skelton_Desktop_Main_Table";
 
 export default async function AdminWeblinksPage() {
 

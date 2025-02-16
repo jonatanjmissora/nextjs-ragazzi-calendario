@@ -2,13 +2,12 @@ import React from 'react'
 import DollarSVG from '@/app/_assets/DollarSVG'
 import EditSVG from '@/app/_assets/EditSVG'
 import TrashSVG from '@/app/_assets/TrashSVG'
-import HistogramSVG from '@/app/_assets/HistogramSVG'
+import SkeltonInput from '../Skelton_Input'
 
 const filters = ["todos", "ragazzi", "patricios", "palihue", "jmolina"]
-const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "pagado"]
 const ROWS = [1, 1, 2, 4, 2, 3, 3, 4, 1, 1, 2, 4, 2, 3, 3, 4, 1, 1, 2, 4, 2, 3, 3, 4]
 
-export default function SkeltonRealDesktopMainTable() {
+export default function SkeltonDesktopMainTable({desktopTableHeader}: {desktopTableHeader: string[]}) {
   return (
     <>
       <div className="m-auto flex flex-wrap justify-end items-center relative pago-header">
@@ -30,7 +29,7 @@ export default function SkeltonRealDesktopMainTable() {
       </div>
 
       <div className="table-container">
-        <table className="table">
+        <table className="table table-pendiente">
         <thead>
             <tr className='text-base border-b border-foreground25'>
               {
@@ -44,12 +43,12 @@ export default function SkeltonRealDesktopMainTable() {
               ROWS.map((row, index) =>
 
                 <tr key={index} className={`${filters[row]} hover:brightness-75 border-b border-foreground25 w-[1100px]`}>
-                  <td className='w-[130px]'><HistogramSVG className="size-5 text-foreground mx-3" currentColor="currentColor" /></td>
-                  <td ><span className="size-4 loading loading-bars text-primary"></span></td>
-                  <td ><span className="size-4 loading loading-bars text-primary"></span></td>
-                  <td ><span className="size-4 loading loading-bars text-primary"></span></td>
-                  <td ><span className="size-4 loading loading-bars text-primary"></span></td>
-                  <td ><span className="size-4 loading loading-bars text-primary"></span></td>
+                  <td><SkeltonInput className='w-8'/></td>
+                  <td><SkeltonInput /></td>
+                  <td><SkeltonInput /></td>
+                  <td><SkeltonInput /></td>
+                  <td><SkeltonInput /></td>
+                  <td><SkeltonInput className='w-32'/></td>
                 </tr>
               )
             }
@@ -58,17 +57,5 @@ export default function SkeltonRealDesktopMainTable() {
         </table>
       </div>
     </>
-  )
-}
-
-const PendienteDesktopAction = () => {
-  return (
-    <div className='flex justify-around items-center gap-1 px-5'>
-      <DollarSVG className='size-9 p-[0.4rem] text-[#005300] hover:text-[#35da35e7]' currentColor='currentColor' />
-
-      <TrashSVG className='size-9 p-[0.4rem] text-[#880000aa] hover:text-[#f35252]' currentColor='currentColor' />
-
-      <EditSVG className='size-9 p-[0.4rem] text-black hover:text-[#222]' currentColor='currentColor' />
-    </div>
   )
 }

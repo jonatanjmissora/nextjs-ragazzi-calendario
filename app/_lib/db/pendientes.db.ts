@@ -10,7 +10,7 @@ export const getPendienteByIdDB = async (_id: string) => {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const getPendientesDB = async () => {
-  // await new Promise(res => setTimeout(res, 2000))
+   await new Promise(res => setTimeout(res, 2000))
   const db = await getDatabase()
   return await db.collection<PagoType>("PagosPendientes").find().sort({ "vencimiento": 1 }).toArray()
 }

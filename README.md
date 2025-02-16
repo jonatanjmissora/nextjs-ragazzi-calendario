@@ -19,3 +19,5 @@ por acomodar los skeltons
 verificar que los suspense tengan los key
 
 verificar que los getCached esten todos
+
+quitar los delay en las llamadas a DB

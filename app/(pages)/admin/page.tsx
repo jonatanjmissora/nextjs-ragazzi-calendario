@@ -1,12 +1,15 @@
 import AdminRealizadoDesktopListContainer from '@/app/_components/Dashboard/03_Admin_Realizados/Desktop/Admin_Realizado_Desktop_List_Container'
 import AdminRealizadoMovilListContainer from '@/app/_components/Dashboard/03_Admin_Realizados/Movil/Admin_Realizado_Movil_List_Container'
 import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAside_Admin_'
-import SkeltonAdminDesktopMainTable from '@/app/_components/Skeltons/Skelton_Admin_Desktop_Main_Table'
-import SkeltonAdminMovilMainTable from '@/app/_components/Skeltons/Skelton_Admin_Movil_Main_Table'
+import SkeltonAdminDesktopMainTable from '@/app/_components/Skeltons/Desktop/Skelton_Admin_Desktop_Main_Table'
+import SkeltonAdminMovilMainTable from '@/app/_components/Skeltons/Movil/Skelton_Admin_Movil_Main_Table'
+import SkeltonPendDesktopMainTable from '@/app/_components/Skeltons/Desktop/Skelton_Desktop_Main_Table'
 import { getActualDateStr } from '@/app/_lib/utils/getActualDate'
 import { getOneYearAgo } from '@/app/_lib/utils/getOneYearAgo'
 import { cookies } from 'next/headers'
 import { Suspense } from 'react'
+
+const desktopTableHeader = ["venc", "rubro", "sector", "monto", "pagado", "accion"]
 
 export default async function AdminPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -30,7 +33,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
         {
           viewport === "desktop"
           ? (
-              <Suspense key={Math.random()} fallback={<SkeltonAdminDesktopMainTable />} >
+              <Suspense key={Math.random()} fallback={<SkeltonAdminDesktopMainTable desktopTableHeader={desktopTableHeader} />} >
                 <AdminRealizadoDesktopListContainer
                   rubroFilter={rubroFilter} 
                   sectorFilter={sectorFilter} 
