@@ -2,12 +2,12 @@ import { SectoresType } from "@/app/_lib/schema/sectores.type";
 import Link from "next/link";
 import AdminSectoresDeleteModal from "./Admin_Sectores_Delete_Modal";
 import AdminSectoresNewForm from "./Admin_Sectores_NewForm";
-import { getCachedSectoresActualesAction, getCachedSectoresResetAction } from "@/app/_lib/actions/sectores.action";
+import { getCachedSectoresActualesAction, getCachedSectoresResetAction, getSectoresActualesAction } from "@/app/_lib/actions/sectores.action";
 
 export default async function AdminSectoresList({ sectoresType }: { sectoresType: string }) {
 
   const sectoresList = sectoresType === "actuales"
-    ? await getCachedSectoresActualesAction() as SectoresType[]
+    ? await getSectoresActualesAction() as SectoresType[]
     : await getCachedSectoresResetAction() as SectoresType[]
 
   return (

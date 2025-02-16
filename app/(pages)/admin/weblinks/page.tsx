@@ -1,13 +1,13 @@
 import { Suspense } from "react";
 import AdminWeblinkList from "@/app/_components/Dashboard/05_Admin_Weblinks/Admin_Weblink_";
-import Skelton_Main_Table from "@/app/_components/Skeltons/Desktop/Skelton_Desktop_Main_Table";
+import SkeltonAdminDesctopWeblinks from "@/app/_components/Skeltons/Desktop/Skelton_Admin_Desctop_Weblinks";
 
 export default async function AdminWeblinksPage() {
 
   return (
     <section className="page justify-center items-center">
 
-      <Suspense fallback={<Skelton_Main_Table />} >
+      <Suspense fallback={<SkeltonAdminDesctopWeblinks />} >
         <AdminWeblinkList />
       </Suspense>
 
