@@ -31,7 +31,7 @@ export default function PendienteMovilList({ pendientes }: { pendientes: PagoTyp
 
       <div className="table-container relative overflow-hidden">
 
-        <table className="table">
+        <table className="table table-pendiente">
           <thead>
             <tr className='font-bold tracking-wider border-b border-foreground25'>
               {
@@ -44,7 +44,7 @@ export default function PendienteMovilList({ pendientes }: { pendientes: PagoTyp
             {
               pendientes.map(pendiente =>
                 <tr key={pendiente._id} className={`${pendiente.rubro} hover:brightness-75 border-b border-foreground25  `}>
-                  <td className="px-2 flex justify-center items-center">
+                  <td className="p-1 text-center">
                     <input
                       type="checkbox"
                       className={`${calcPagos.includes(pendiente._id) ? "opacity-100" : "opacity-20"}`}
@@ -56,7 +56,7 @@ export default function PendienteMovilList({ pendientes }: { pendientes: PagoTyp
                   <td className="p-1">{pendiente.rubro}</td>
                   <td className="p-1">{pendiente.sector}</td>
                   <td className="p-1">{montoFormat(Number(pendiente.monto))}</td>
-                  <td className="p-1 m-0"><PendienteMovilAction pendiente={pendiente} /></td>
+                  <td className="p-1 m-0 text-center"><PendienteMovilAction pendiente={pendiente} /></td>
                 </tr>
               )
             }

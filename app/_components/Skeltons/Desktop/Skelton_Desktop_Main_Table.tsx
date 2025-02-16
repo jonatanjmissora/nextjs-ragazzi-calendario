@@ -1,7 +1,4 @@
 import React from 'react'
-import DollarSVG from '@/app/_assets/DollarSVG'
-import EditSVG from '@/app/_assets/EditSVG'
-import TrashSVG from '@/app/_assets/TrashSVG'
 import SkeltonInput from '../Skelton_Input'
 
 const filters = ["todos", "ragazzi", "patricios", "palihue", "jmolina"]
@@ -12,12 +9,12 @@ export default function SkeltonDesktopMainTable({desktopTableHeader}: {desktopTa
     <>
       <div className="m-auto flex flex-wrap justify-end items-center relative pago-header">
         <div className='rubro-filter flex justify-center items-center pb-3'>
-            <ul className="flex justify-center items-center gap-2 flex-wrap">
+            <ul className="flex justify-center items-center gap-1 flex-wrap">
               {
                 filters.map(filter =>
                   <li
                   key={filter}
-                    className={`badge-main ${filter === "todos" && filter}`}
+                    className={`text-sm badge-main ${filter === "todos" && filter}`}
                   >
                     {filter}
                   </li>

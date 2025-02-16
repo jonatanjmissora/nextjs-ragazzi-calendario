@@ -1,34 +1,59 @@
 import React from 'react'
 import Title from '../Title'
+import SkeltonInput from '../Skelton_Input'
 
-export default function SkeltonMovilMainTable() {
+const filters = ["todos", "ragazzi", "patricios", "palihue", "jmolina"]
+const ROWS = [1, 1, 2, 4, 2, 3, 3]
+
+export default function SkeltonMovilMainTable({movilTableHeader}: {movilTableHeader: string[]}) {
   return (
-    <div className="table-container relative px-8">
-      <table className="table">
-        {/* head */}
-        <thead>
-          <tr>
-            {
-              [0, 1, 2, 3, 4, 5].map(index => <th key={index}><Title /></th>)
-            }
-          </tr>
-        </thead>
-        <tbody>
-
-          {
-            [0, 1, 2, 3, 4, 5, 6, 7, 8].map(index =>
-              <tr key={index} className='border-b border-gray-400 animate-pulse'>
-                <td><Title /></td>
-                <td><Title /></td>
-                <td><Title /></td>
-                <td><Title /></td>
-                <td><Title /></td>
-                <td><Title /></td>
-              </tr>)
-          }
-
-        </tbody>
-      </table>
-    </div>
-  )
+      <>
+        <div className="m-auto flex flex-wrap justify-end items-center relative pago-header">
+          <div className='rubro-filter flex justify-center items-center pb-3'>
+              <ul className="flex justify-center items-center gap-1 flex-wrap">
+                {
+                  filters.map(filter =>
+                    <li
+                    key={filter}
+                      className={`text-sm badge-main ${filter === "todos" && filter}`}
+                    >
+                      {filter}
+                    </li>
+                  )
+                }
+  
+              </ul>
+          </div>
+        </div>
+  
+        <div className="table-container">
+          <table className="table table-pendiente">
+          <thead>
+              <tr className='text-base border-b border-foreground25'>
+                {
+                  movilTableHeader.map((thMovilName, index) => <th key={index}>{thMovilName}</th>)
+                }
+              </tr>
+            </thead>
+            <tbody>
+            
+              {
+                ROWS.map((row, index) =>
+  
+                  <tr key={index} className={`${filters[row]} hover:brightness-75 border-b border-foreground25 w-[1100px]`}>
+                    <td><SkeltonInput className='w-4'/></td>
+                    <td><SkeltonInput className='w-12'/></td>
+                    <td><SkeltonInput className='w-12'/></td>
+                    <td><SkeltonInput className='w-12'/></td>
+                    <td><SkeltonInput className='w-12'/></td>
+                    <td><SkeltonInput className='w-4'/></td>
+                  </tr>
+                )
+              }
+  
+            </tbody>
+          </table>
+        </div>
+      </>
+    )
 }

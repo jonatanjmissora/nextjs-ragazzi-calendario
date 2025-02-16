@@ -38,7 +38,7 @@ export default function PendienteDesktopAction({ pendiente, dialogRef }: { pendi
     , null)
 
   return (
-    <div className='flex justify-between items-center'>
+    <div className='flex justify-evenly lg:justify-around items-center'>
 
       <form action={formAction} className='flex justify-center items-center'>
         <SubmitBtn isPending={isPending} className='' classNameSVG="size-9">

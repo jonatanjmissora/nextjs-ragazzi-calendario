@@ -12,7 +12,7 @@ export default function PendienteMovilAction({ pendiente }: { pendiente: PagoTyp
 
   return (
     <>
-      <button className="" onClick={() => dialogRef.current?.showModal()}>
+      <button onClick={() => dialogRef.current?.showModal()}>
         <DotsSVG className="size-5 text-foreground" currentColor="currentColor" />
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
@@ -41,7 +41,7 @@ export default function PendienteMovilAction({ pendiente }: { pendiente: PagoTyp
 
 const Table = ({ pendiente }: { pendiente: PagoType }) => {
   return (
-    <table className="table">
+    <table className="table table-movil-confirm">
       <thead>
         <tr className="text-sm text-[#222] font-bold tracking-wider border-b border-black80">
           <td>venc</td>
@@ -55,7 +55,7 @@ const Table = ({ pendiente }: { pendiente: PagoType }) => {
           <td>{shortVenc(pendiente.vencimiento)}</td>
           <td>{pendiente.rubro}</td>
           <td>{pendiente.sector}</td>
-          <td>$ {montoFormat(Number(pendiente.monto))}</td>
+          <td>{montoFormat(Number(pendiente.monto))}</td>
         </tr>
       </tbody>
     </table>

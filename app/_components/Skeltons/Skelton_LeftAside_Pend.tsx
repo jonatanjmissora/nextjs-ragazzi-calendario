@@ -31,10 +31,12 @@ const Rubro = ({ rubro }: { rubro: string}) => {
     >
 
       <div 
-          className={`collapse-title font-medium text-foreground hover:text-foreground80 transition hover:${rubro} leftAside-sectores flex`}
+          className={`collapse-title font-medium text-foreground hover:text-foreground80 transition hover:${rubro} leftAside-sectores flex items-center`}
       >
           <span>{rubro} {"("}</span> 
-          <Loading />
+          
+            <span className="size-4 loading loading-bars text-foreground80"></span>
+          
           <span>{")"}</span> 
       </div>
       

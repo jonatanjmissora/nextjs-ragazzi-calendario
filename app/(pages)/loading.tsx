@@ -1,9 +1,7 @@
 function Loading() {
   return (
     <div className="page justify-center items-center">
-      <span className='text-3xl font-bold tracking-widest'>
-        ...loading....
-      </span>
+      <span className="size-32 loading loading-dots text-foreground80"></span>
     </div>
   )
 }
