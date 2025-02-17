@@ -21,3 +21,7 @@ verificar que los suspense tengan los key
 verificar que los getCached esten todos
 
 quitar los delay en las llamadas a DB
+
+arreglar el EditForm de ponerle los labels
+
+arreglar en admin/sectores, el orden en que aparecen, ragazzi primero

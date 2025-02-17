@@ -7,8 +7,8 @@ export default async function WeblinkEdit({ searchParams }: { searchParams: Prom
   const id = (await searchParams)?.id || ""
 
   return (
-    <section className="min-h-[95dvh] flex flex-col items-center pt-40">
-      <Suspense fallback={<SkeltonAdminWeblinksEditForm/>}>
+    <section className="page flex flex-col items-center">
+      <Suspense fallback={<SkeltonAdminWeblinksEditForm />}>
         <WeblinkEditFormContainer id={id} />
       </Suspense>
     </section>

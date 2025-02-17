@@ -7,7 +7,7 @@ export default async function AdminSectoresPage({ searchParams }: { searchParams
   const type = (await searchParams)?.type || "actuales"
 
   return (
-    <section className="page">
+    <section className="sm:min-h-[80dvh] h-max">
 
       <Suspense key={Math.random()} fallback={<SkeltonAdminDesktopSectores />} >
         <AdminSectoresList sectoresType={type} />

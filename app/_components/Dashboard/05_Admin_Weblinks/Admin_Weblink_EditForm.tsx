@@ -115,9 +115,9 @@ export default function WeblinkEditForm({ weblink }: { weblink: WeblinkType }) {
         </div>
 
         <div className="w-full flex flex-col justify-end items-end gap-2">
-          <div className="w-1/2 flex gap-2">
-            <SubmitBtn text={"Upload"} isPending={isPending} className="size-11" />
-            <Link className="btn-main-error" href={"/admin/weblinks"} >Cancelar</Link>
+          <div className="w-full sm:w-1/2 flex gap-2">
+            <SubmitBtn text={"Upload"} isPending={isPending} className="size-11 flex-1" />
+            <Link className="btn-main-error flex-1" href={"/admin/weblinks"} >Cancelar</Link>
           </div>
           {
             formState?.message
