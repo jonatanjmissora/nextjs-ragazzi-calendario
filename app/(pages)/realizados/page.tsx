@@ -8,6 +8,7 @@ import SkeltonDesktopMainTable from "@/app/_components/Skeltons/Desktop/Skelton_
 import SkeltonMovilMainTable from "@/app/_components/Skeltons/Movil/Skelton_Movil_Main_Table"
 
 const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "accion"]
+const movilTableHeader = ["venc", "rubro", "sector", "monto", "pag", ""]
 
 export default async function RealizadosPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
@@ -33,7 +34,7 @@ export default async function RealizadosPage({ searchParams }: { searchParams: P
               </Suspense>
             )
           : (
-              <Suspense key={dateFilter} fallback={<SkeltonMovilMainTable />} >
+              <Suspense key={dateFilter} fallback={<SkeltonMovilMainTable movilTableHeader={movilTableHeader}/>} >
                 <RealizadoMovilListContainer rubroFilter={rubroFilter} dateFilter={dateFilter} />
               </Suspense>
             )

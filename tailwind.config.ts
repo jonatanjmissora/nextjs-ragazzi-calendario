@@ -11,6 +11,7 @@ export default {
     extend: {
       colors: {
         background: "var(--background)",
+        navbg: "var(--nav-bg)",
 
         foreground: "var(--foreground)",
         foreground80: "var(--foreground80)",
@@ -29,6 +30,9 @@ export default {
         white80: "var(--white80)",
         white25: "var(--white25)",
         gray: "var(--gray)",
+      },
+      height: {
+        navbar: "var(--navbar-height)"
       },
     },
   },

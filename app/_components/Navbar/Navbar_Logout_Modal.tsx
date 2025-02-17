@@ -3,6 +3,7 @@
 import { logout } from "@/app/_lib/actions/user.action"
 import { useRef } from "react"
 import SubmitBtn from "../SubmitBtn"
+import LogoutSVG from "@/app/_assets/LogoutSVG"
 
 export default function NavbarLogoutModal({ setShowMenu }: { setShowMenu: React.Dispatch<React.SetStateAction<boolean>> }) {
 
@@ -21,7 +22,8 @@ export default function NavbarLogoutModal({ setShowMenu }: { setShowMenu: React.
 
   return (
     <>
-      <button className="px-5 text-white hover:text-white80" onClick={() => dialogRef.current?.showModal()}>
+      <button className="text-base w-60 border-t border-foreground25 text-white flex justify-end items-center gap-2 pt-4 hover:text-white80" onClick={() => dialogRef.current?.showModal()}>
+        <LogoutSVG className="size-5 text-inherit" currentColor="currentColor" />
         Cerrar Sesión
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">

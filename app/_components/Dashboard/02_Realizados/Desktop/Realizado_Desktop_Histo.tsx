@@ -58,10 +58,10 @@ const Bar = ({ rubro, fecha, monto, heightPercentage }: { rubro: string, fecha: 
     <div className="w-full text-center my-2 mx-1">
       <div
         style={{ height: `${heightPercentage}rem` }}
-        className={`relative w-full   ${rubro} rounded-t-lg border border-black pt-1 flex justify-center shadow `}>
+        className={`relative w-full ${rubro} rounded-t-lg border border-black pt-1 flex justify-center shadow `}>
         <span className={`absolute ${isLower ? "-top-5 text-foreground" : "top-2"}`}>$ {monto}</span>
       </div>
-      <p className="w-full   text-center text-foreground mt-1">{fecha.substring(0, 7)}</p>
+      <p className="w-full text-center text-foreground mt-1">{fecha.substring(0, 7)}</p>
     </div>
   )
 }

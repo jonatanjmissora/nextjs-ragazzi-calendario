@@ -2,7 +2,7 @@ import PlusSVG from '@/app/_assets/PlusSVG'
 import React from 'react'
 import SkeltonInput from '../Skelton_Input'
 
-export default function SkeltonAdminDesctopWeblinks() {
+export default function SkeltonAdminDesktopWeblinks() {
   return (
     <section className="flex items-center justify-center weblink-container">
 
@@ -27,7 +27,7 @@ const WeblinkRow = () => {
     <article className="flex justify-between items-center border-b border-foreground25 last:border-b-0 py-4">
       <div className="w-[100px] h-[80px] weblink-img bg-foreground80 animate-pulse rounded-lg shadow border border-black25 overflow-hidden p-2 relative">
       </div>
-      <SkeltonInput className='w-80' />
+      <SkeltonInput className='w-80 bg-blue-500 sm:bg-red-500' />
       <SkeltonInput className='w-20'/>
     </article>
   )

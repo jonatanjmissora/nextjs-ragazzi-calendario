@@ -10,7 +10,7 @@ export default async function AdminWeblinkList() {
   const weblinks = await getCachedWeblinksAction()
 
   return (
-    <section className="flex items-center justify-center weblink-container">
+    <>
 
       <div className="w-full px-3">
         <div className="flex justify-between items-center w-full font-semibold tracking-wide border-b border-foreground25 py-4">
@@ -23,7 +23,7 @@ export default async function AdminWeblinkList() {
         {weblinks.map(weblink => <WeblinkRow key={weblink._id} weblink={weblink} />)}
       </div>
 
-    </section>
+    </>
   )
 }
 

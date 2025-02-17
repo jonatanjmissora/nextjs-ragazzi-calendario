@@ -117,7 +117,9 @@ select option {
 table {
   table-layout: fixed;
 }
-
+td, input {
+  vertical-align: middle;
+}
 
 @layer components {
   .btn-main {

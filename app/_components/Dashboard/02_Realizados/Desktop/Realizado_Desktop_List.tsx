@@ -2,7 +2,6 @@ import { PagoType } from "@/app/_lib/schema/pago.type";
 import montoFormat from "@/app/_lib/utils/montoFormat";
 import PagosHeader from "../../Pagos_Header";
 import { Suspense } from "react";
-import Loading from "@/app/_components/Skeltons/Loading";
 import RealizadoDesktopHistoContainer from "./Realizado_Desktop_Histo_Container";
 
 const desktopTableHeader = ["", "venc", "rubro", "sector", "monto", "pagado"]
@@ -21,7 +20,7 @@ export default function RealizadoDesktopList({ realizados }: { realizados: PagoT
           <thead>
             <tr className='text-base border-b border-foreground25'>
               {
-                desktopTableHeader.map(thName => <th key={thName}>{thName}</th>)
+                desktopTableHeader.map(thName => <th className="px-1 text-base" key={thName}>{thName}</th>)
               }
             </tr>
           </thead>

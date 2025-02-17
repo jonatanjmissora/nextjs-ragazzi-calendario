@@ -26,12 +26,12 @@ export default function SkeltonMovilMainTable({movilTableHeader}: {movilTableHea
           </div>
         </div>
   
-        <div className="table-container">
-          <table className="table table-pendiente">
+        <div className="table-container relative overflow-hidden">
+          <table className="table table-realizado">
           <thead>
-              <tr className='text-base border-b border-foreground25'>
+              <tr className='font-bold tracking-wider border-b border-foreground25'>
                 {
-                  movilTableHeader.map((thMovilName, index) => <th key={index}>{thMovilName}</th>)
+                  movilTableHeader.map((thMovilName, index) => <th className='px-1 text-base' key={index}>{thMovilName}</th>)
                 }
               </tr>
             </thead>
@@ -40,8 +40,8 @@ export default function SkeltonMovilMainTable({movilTableHeader}: {movilTableHea
               {
                 ROWS.map((row, index) =>
   
-                  <tr key={index} className={`${filters[row]} hover:brightness-75 border-b border-foreground25 w-[1100px]`}>
-                    <td><SkeltonInput className='w-4'/></td>
+                  <tr key={index} className={`${filters[row]} hover:brightness-75 border-b border-foreground25`}>
+                    <td><SkeltonInput className='w-12'/></td>
                     <td><SkeltonInput className='w-12'/></td>
                     <td><SkeltonInput className='w-12'/></td>
                     <td><SkeltonInput className='w-12'/></td>

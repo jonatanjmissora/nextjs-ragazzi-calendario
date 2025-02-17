@@ -1,13 +1,15 @@
+"use client"
+
 import HistogramSVG from "@/app/_assets/HistogramSVG"
 import PlusSVG from "@/app/_assets/PlusSVG"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
 
-export const RealizadoMovilHisto = ({ allRealizados, realizado, actualRealizado, setActualRealizado }: { allRealizados: PagoType[], realizado: PagoType, actualRealizado: PagoType, setActualRealizado: React.Dispatch<React.SetStateAction<PagoType>> }) => {
+export const RealizadoMovilHisto = ({ realizado, allRealizados }: { realizado: PagoType, allRealizados: PagoType[] }) => {
 
   const histogramArray = allRealizados
-    .filter(pago => pago.rubro === actualRealizado.rubro && pago.sector === actualRealizado.sector)
-    .slice(0, 6)
+    .filter(pago => pago.rubro === realizado.rubro && pago.sector === realizado.sector)
+    .slice(0, 13)
   const maximoMonto = Math.max(...histogramArray.map(pago => Number(pago.monto)))
 
   const getMontoHeight = (monto: string) => {
@@ -17,12 +19,11 @@ export const RealizadoMovilHisto = ({ allRealizados, realizado, actualRealizado,
   const handleClick = (realizado: PagoType) => {
     const dialog = document?.getElementById('my_modal_3') as HTMLDialogElement
     dialog?.showModal()
-    setActualRealizado(realizado)
   }
 
   return (
     <>
-      <button className="" onClick={() => handleClick(realizado)}>
+      <button onClick={() => handleClick(realizado)}>
         <HistogramSVG className="size-5 text-foreground" currentColor="currentColor" />
       </button>
       <dialog id="my_modal_3" className="w-full h-full bg-transparent relative">
@@ -36,11 +37,11 @@ export const RealizadoMovilHisto = ({ allRealizados, realizado, actualRealizado,
           </form>
 
           <div className="flex-1 flex flex-col justify-evenly items-center">
-            <h3 className="font-semibold text-center text-foreground">{actualRealizado.rubro} - {actualRealizado.sector}</h3>
-            <div className="w-full flex flex-row-reverse justify-center items-end border overflow-x-auto">
+            <h3 className="font-semibold text-center text-foreground">{realizado.rubro} - {realizado.sector}</h3>
+            <div className="w-full flex flex-row-reverse justify-center items-end overflow-x-scroll">
               {
                 histogramArray.map(pago =>
-                  <Bar key={pago.vencimiento} rubro={actualRealizado.rubro} fecha={pago.vencimiento} monto={montoFormat(Number(pago.monto))} heightPercentage={getMontoHeight(pago.monto)} />)
+                  <Bar key={pago.vencimiento} rubro={realizado.rubro} fecha={pago.vencimiento} monto={montoFormat(Number(pago.monto))} heightPercentage={getMontoHeight(pago.monto)} />)
               }
             </div>
 

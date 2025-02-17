@@ -47,7 +47,7 @@ export default function PendienteDesktopList({ pendientes }: { pendientes: PagoT
                   <td>
                     <input
                       type="checkbox"
-                      className={`mx-3 ${calcPagos.includes(pendiente._id) ? "opacity-100" : "opacity-20"}`}
+                      className={`${calcPagos.includes(pendiente._id) ? "opacity-100" : "opacity-50"}`}
                       defaultChecked={calcPagos.includes(pendiente._id)}
                       onChange={() => handleChange(pendiente._id)}
                     />

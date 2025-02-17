@@ -3,14 +3,14 @@ import { PagoType } from '@/app/_lib/schema/pago.type'
 import { getActualDateStr } from '@/app/_lib/utils/getActualDate'
 import { getFullYearOf } from '@/app/_lib/utils/getFullYearOf'
 import React from 'react'
-import { RealizadoDesktopHisto } from './Realizado_Desktop_Histo'
+import { RealizadoMovilHisto } from './Realizado_Movil_Histo'
 
-export default async function RealizadoDesktopHistoContainer({ realizado }: { realizado: PagoType }) {
+export default async function RealizadoMovilHistoContainer({ realizado }: { realizado: PagoType }) {
 
     const [ fromDate, toDate ] = getFullYearOf(getActualDateStr())
     const realizadosYearBySector = await getRealizadosYearBySectorAction(realizado, fromDate, toDate) 
 
   return (
-    <RealizadoDesktopHisto realizado={realizado} allRealizados={realizadosYearBySector}/>
+    <RealizadoMovilHisto realizado={realizado} allRealizados={realizadosYearBySector}/>
   )
 }

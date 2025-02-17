@@ -93,6 +93,7 @@ body {
 .table-realizado thead th:first-of-type {
   padding-left: 1.25rem;
   width: 10%;
+  text-align: center;
 }
 .table-pendiente tbody td:last-of-type,
 .table-pendiente thead th:last-of-type,
@@ -124,6 +125,7 @@ body {
 .weblink-edit,
 .weblink-container {
   width: 50%;
+  margin: 0 auto;
 }
 
 .weblink-modal-img {
@@ -230,7 +232,7 @@ body {
   .leftAside {
     padding: 0;
     width: 80%;
-    margin: 6rem auto;
+    margin: 2rem auto;
     margin-bottom: 4rem;
     display: flex;
   }
@@ -254,8 +256,7 @@ body {
 
   .page {
     flex-direction: column;
-    min-height: 95dvh;
-    height: max-content;
+    min-height: 85dvh;
   }
 
   .page-top {
@@ -284,18 +285,33 @@ body {
     padding-bottom: 4rem;
     /* border: 1px solid green; */
   }
+
+  .table th, .table td {
+    /* border: 1px solid white; */
+    text-align: left;
+    padding-left: 0;
+  }
+
   .table-pendiente thead th:first-of-type,
-  .table-pendiente tbody td:first-of-type,
-  .table-realizado thead th:first-of-type, 
-  .table-realizado tbody td:first-of-type {
+  .table-pendiente tbody td:first-of-type {
     padding-left: 0.25rem;
   }
   .table-pendiente thead th:last-of-type,
-  .table-pendiente tbody td:last-of-type,
-  .table-realizado thead th:last-of-type, 
+  .table-pendiente tbody td:last-of-type {
+    padding-right: 0.25rem;
+    width: 10%;
+  }
+
+  .table-realizado thead th:first-of-type, 
+  .table-realizado tbody td:first-of-type {
+    padding-left: 0.25rem;
+    width: max-content;
+  }
+  .table-realizado thead th:last-of-type,
   .table-realizado tbody td:last-of-type {
     padding-right: 0.25rem;
     width: 10%;
+    text-align: center;
   }
 
   .table-movil-confirm {
@@ -305,6 +321,7 @@ body {
   .weblink-edit,
   .weblink-container {
     width: 90%;
+    margin: 0 auto;
   }
 
   .weblink-edit>div {
