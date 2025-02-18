@@ -3,7 +3,6 @@ import AdminRealizadoMovilListContainer from '@/app/_components/Dashboard/03_Adm
 import LeftAsideAdmin from '@/app/_components/LeftAside/LeftAside_Admin_'
 import SkeltonAdminDesktopMainTable from '@/app/_components/Skeltons/Desktop/Skelton_Admin_Desktop_Main_Table'
 import SkeltonAdminMovilMainTable from '@/app/_components/Skeltons/Movil/Skelton_Admin_Movil_Main_Table'
-import SkeltonPendDesktopMainTable from '@/app/_components/Skeltons/Desktop/Skelton_Desktop_Main_Table'
 import { getActualDateStr } from '@/app/_lib/utils/getActualDate'
 import { getOneYearAgo } from '@/app/_lib/utils/getOneYearAgo'
 import { cookies } from 'next/headers'
@@ -25,30 +24,30 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   return (
     <section className="page">
 
-      <aside className='leftAside flex flex-col justify-center items-center gap-4'> 
+      <aside className='leftAside flex flex-col justify-center items-center gap-4'>
         <LeftAsideAdmin desdeFilter={desdeFilter} hastaFilter={hastaFilter} rubroFilter={rubroFilter} sectorFilter={sectorFilter} />
       </aside>
 
       <article className="w-full sm:flex flex-col justify-center items-center">
         {
           viewport === "desktop"
-          ? (
+            ? (
               <Suspense key={Math.random()} fallback={<SkeltonAdminDesktopMainTable desktopTableHeader={desktopTableHeader} />} >
                 <AdminRealizadoDesktopListContainer
-                  rubroFilter={rubroFilter} 
-                  sectorFilter={sectorFilter} 
-                  hastaFilter={hastaFilter} 
-                  desdeFilter={desdeFilter} 
+                  rubroFilter={rubroFilter}
+                  sectorFilter={sectorFilter}
+                  hastaFilter={hastaFilter}
+                  desdeFilter={desdeFilter}
                 />
               </Suspense>
             )
-          : (
+            : (
               <Suspense key={Math.random()} fallback={<SkeltonAdminMovilMainTable />} >
-                <AdminRealizadoMovilListContainer 
-                  rubroFilter={rubroFilter} 
-                  sectorFilter={sectorFilter} 
-                  hastaFilter={hastaFilter} 
-                  desdeFilter={desdeFilter} 
+                <AdminRealizadoMovilListContainer
+                  rubroFilter={rubroFilter}
+                  sectorFilter={sectorFilter}
+                  hastaFilter={hastaFilter}
+                  desdeFilter={desdeFilter}
                 />
               </Suspense>
             )

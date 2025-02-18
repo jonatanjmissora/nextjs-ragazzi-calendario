@@ -2,9 +2,9 @@
 
 import HistogramSVG from "@/app/_assets/HistogramSVG"
 import PlusSVG from "@/app/_assets/PlusSVG"
-import { PagoType, RubroType } from "@/app/_lib/schema/pago.type"
+import { PagoType } from "@/app/_lib/schema/pago.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
-import { useRef } from "react" 
+import { useRef } from "react"
 
 export const RealizadoDesktopHisto = ({ realizado, allRealizados }: { realizado: PagoType, allRealizados: PagoType[] }) => {
 
@@ -21,9 +21,9 @@ export const RealizadoDesktopHisto = ({ realizado, allRealizados }: { realizado:
 
   return (
     <>
-        <button onClick={() => dialogRef.current?.showModal()}>
-          <HistogramSVG className="size-5 text-foreground" currentColor="currentColor" />
-        </button>
+      <button onClick={() => dialogRef.current?.showModal()}>
+        <HistogramSVG className="size-4 text-foreground" currentColor="currentColor" />
+      </button>
       <dialog ref={dialogRef} id="my_modal_3" className="w-full h-full bg-transparent relative">
 
         <div className="histo-modal-container card px-4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">

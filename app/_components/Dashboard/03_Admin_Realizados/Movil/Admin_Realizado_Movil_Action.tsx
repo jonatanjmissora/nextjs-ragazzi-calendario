@@ -64,7 +64,7 @@ const Table = ({ realizado }: { realizado: PagoType }) => {
           <td>{shortVenc(realizado.vencimiento)}</td>
           <td>{realizado.rubro}</td>
           <td>{realizado.sector}</td>
-          <td>$ {montoFormat(Number(realizado.monto))}</td>
+          <td>{montoFormat(Number(realizado.monto))}</td>
         </tr>
       </tbody>
     </table>

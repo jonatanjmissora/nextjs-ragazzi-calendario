@@ -3,7 +3,7 @@ import montoFormat from "@/app/_lib/utils/montoFormat"
 import AdminRealizadoMovilAction from "./Admin_Realizado_Movil_Action"
 import { shortVenc } from "@/app/_lib/utils/shortVenc"
 
-const tableHeader = ["venc", "rubro", "sector", "monto", "pag", ""]
+const tableHeader = ["venc", "rubro", "sector", "monto", "pag", "acc"]
 
 export default function AdminRealizadoMovilList({ realizados }: { realizados: PagoType[] }) {
 
@@ -11,7 +11,7 @@ export default function AdminRealizadoMovilList({ realizados }: { realizados: Pa
         <article className="w-full flex flex-col justify-center items-center">
 
             <div className="table-container relative overflow-hidden">
-                <table className="table">
+                <table className="table table-admin">
                     <thead>
                         <tr className='font-bold tracking-wider border-b border-foreground25'>
                             {

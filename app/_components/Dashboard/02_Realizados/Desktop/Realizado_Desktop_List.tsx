@@ -20,7 +20,7 @@ export default function RealizadoDesktopList({ realizados }: { realizados: PagoT
           <thead>
             <tr className='text-base border-b border-foreground25'>
               {
-                desktopTableHeader.map(thName => <th className="px-1 text-base" key={thName}>{thName}</th>)
+                desktopTableHeader.map(thName => <th key={thName}>{thName}</th>)
               }
             </tr>
           </thead>
@@ -30,7 +30,7 @@ export default function RealizadoDesktopList({ realizados }: { realizados: PagoT
               realizados.map(realizado =>
                 <Pago
                   key={realizado._id}
-                  realizado={realizado}/>
+                  realizado={realizado} />
               )
             }
 
