@@ -3,14 +3,14 @@ import { PagoType } from "../schema/pago.type"
 import { getErrorMessage } from "../utils/getErrorMessage"
 
 export const getPendienteByIdDB = async (_id: string) => {
-  // await new Promise(res => setTimeout(res, 4000))
+  await new Promise(res => setTimeout(res, 4000))
   const db = await getDatabase()
   return await db.collection<PagoType>("PagosPendientes").findOne({ _id })
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const getPendientesDB = async () => {
-   await new Promise(res => setTimeout(res, 2000))
+  await new Promise(res => setTimeout(res, 2000))
   const db = await getDatabase()
   return await db.collection<PagoType>("PagosPendientes").find().sort({ "vencimiento": 1 }).toArray()
 }

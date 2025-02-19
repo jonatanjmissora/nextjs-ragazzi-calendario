@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { userSchema, UserType } from '@/app/_lib/schema/user.type';
 import { zodResolver } from '@hookform/resolvers/zod';
 import SubmitBtn from '../SubmitBtn';
+import LogoSVG from '@/app/_assets/LogoSVG';
 
 export default function LoginForm() {
 
@@ -26,16 +27,20 @@ export default function LoginForm() {
 
 
   return (
-    <div className='w-[20rem] h-full flex justify-center items-center'>
+    <div className='w-[90%] sm:w-[20rem] h-full flex flex-col justify-center items-center'>
+
+      <picture className="h-full scale-150 sm:scale-100 flex items-center justify-center fixed top-0 z-5 translate-x-[55%] sm:translate-x-[120%]">
+        <LogoSVG className="w-full h-full text-[#0f0404]" currentColor="currentColor" />
+      </picture>
 
       <form
         ref={formRef}
-        className='flex flex-col w-full gap-2'
+        className='flex flex-col w-full gap-2 relative z-100'
         action={formAction}
         onSubmit={onSubmit}
       >
 
-        <h2 className='       font-semibold h-20 leading-[5rem]'>Ingresa tus datos</h2>
+        <h2 className='font-bold text-2xl tracking-wider italic pb-4'>Ingresa tus datos</h2>
 
         <div className='flex flex-col gap-1 h-20'>
           <InputRHF

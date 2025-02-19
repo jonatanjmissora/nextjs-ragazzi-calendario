@@ -117,7 +117,9 @@ select option {
 table {
   table-layout: fixed;
 }
-td, input {
+
+td,
+input {
   vertical-align: middle;
 }
 

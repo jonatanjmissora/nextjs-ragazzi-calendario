@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { useState } from "react"
 import ThemeSwitcher from "./Navbar_ThemeSwitcher"
 import NavbarLogoutModal from "./Navbar_Logout_Modal"
+import LogoSVG from "@/app/_assets/LogoSVG"
 
 export default function NavbarMovil() {
 
@@ -16,7 +17,14 @@ export default function NavbarMovil() {
 
   return (
     <>
-      <div className="flex justify-end p-4 py-2 h-navbar">
+      <div className="flex justify-between items-center p-4 py-2 h-navbar">
+
+        <picture className="size-12">
+          <LogoSVG className="w-full h-full text-foreground80" currentColor="currentColor" />
+        </picture>
+
+        <span className="text-lg">{pathname}</span>
+
         <button onClick={() => setShowMenu(prev => !prev)}>
           <HambMenuSVG className="size-11 text-foreground rounded-lg" currentColor="currentColor" />
         </button>

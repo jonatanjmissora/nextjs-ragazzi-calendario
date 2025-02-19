@@ -32,7 +32,7 @@ export default function PendienteDesktopList({ pendientes }: { pendientes: PagoT
 
         <table className="table table-pendiente">
           <thead>
-            <tr className='text-base border-b border-foreground25'>
+            <tr className='text-base border-b border-foreground25 bg-navbg'>
               {
                 desktopTableHeader.map(thDesktopName => <th key={thDesktopName}>{thDesktopName}</th>)
               }

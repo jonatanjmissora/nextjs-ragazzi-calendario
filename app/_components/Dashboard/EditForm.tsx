@@ -54,12 +54,12 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
           <form action={formAction} className="flex flex-col gap-2 edit-form-container card">
             <h2 className="my-4 tracking-wider font-bold text-xl">¿ Confirmar cambio ?</h2>
 
-            <input type="hidden" name="_id" defaultValue={inputValues._id}/>
-            <input type="hidden" name="vencimiento" defaultValue={inputValues.vencimiento}/>
-            <input type="hidden" name="rubro" defaultValue={inputValues.rubro}/>
-            <input type="hidden" name="sector" defaultValue={inputValues.sector}/>
-            <input type="hidden" name="monto" defaultValue={inputValues.monto}/>
-            {pagoType === "realizado" && <input type="hidden" name="pagado" defaultValue={inputValues?.pagado ?? ""}/>}
+            <input type="hidden" name="_id" defaultValue={inputValues._id} />
+            <input type="hidden" name="vencimiento" defaultValue={inputValues.vencimiento} />
+            <input type="hidden" name="rubro" defaultValue={inputValues.rubro} />
+            <input type="hidden" name="sector" defaultValue={inputValues.sector} />
+            <input type="hidden" name="monto" defaultValue={inputValues.monto} />
+            {pagoType === "realizado" && <input type="hidden" name="pagado" defaultValue={inputValues?.pagado ?? ""} />}
 
             <Table pagoType={pagoType} oldValues={pago} newValues={inputValues} />
 
@@ -74,29 +74,44 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
           <form onSubmit={onSubmit} className="edit-form-container flex flex-col gap-4 min-w-80 card">
             <h2 className="text-xl tracking-wider font-bold">Editar pago {pagoType}:</h2>
 
-            <input className="input-main" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
+            <div className="flex flex-col gap-1">
+              <label className="text-xs" htmlFor="vencimiento">vencimiento</label>
+              <input className="input-main" type="date" name="vencimiento" id="vencimiento" defaultValue={vencimiento} />
+            </div>
 
-            <select
-              className="input-main"
-              name="rubro" id="rubro" defaultValue={rubro}
-              onChange={(e) => setCurrentRubro(e.currentTarget.value)}>
-              <option value="ragazzi">ragazzi</option>
-              <option value="patricios">patricios</option>
-              <option value="palihue">palihue</option>
-              <option value="jmolina">jmolina</option>
-            </select>
+            <div className="flex flex-col gap-1">
+              <label className="text-xs" htmlFor="rubro">rubro</label>
+              <select
+                className="input-main h-11"
+                name="rubro" id="rubro" defaultValue={rubro}
+                onChange={(e) => setCurrentRubro(e.currentTarget.value)}>
+                <option value="ragazzi">ragazzi</option>
+                <option value="patricios">patricios</option>
+                <option value="palihue">palihue</option>
+                <option value="jmolina">jmolina</option>
+              </select>
+            </div>
 
-            <select className="input-main" name="sector" id="sector" defaultValue={sector} >
-              {
-                sectores?.map(sector => <option key={sector} value={sector}>{sector}</option>)
-              }
-            </select>
+            <div className="flex flex-col gap-1">
+              <label className="text-xs" htmlFor="sector">sector</label>
+              <select className="input-main h-11" name="sector" id="sector" defaultValue={sector} >
+                {
+                  sectores?.map(sector => <option key={sector} value={sector}>{sector}</option>)
+                }
+              </select>
+            </div>
 
-            <input className="input-main" type="number" name="monto" id="monto" defaultValue={monto} />
+            <div className="flex flex-col gap-1">
+              <label className="text-xs" htmlFor="monto">monto</label>
+              <input className="input-main" type="number" name="monto" id="monto" defaultValue={monto} />
+            </div>
 
             {
               pago.pagado !== "" &&
-              <input className="input-main" type="date" name="pagado" id="pagado" defaultValue={pago.pagado} />
+              <div className="flex flex-col gap-1">
+                <label className="text-xs" htmlFor="pagado">pagado</label>
+                <input className="input-main" type="date" name="pagado" id="pagado" defaultValue={pago.pagado} />
+              </div>
             }
 
             {formState?.message ? <span className="text-red-900 italic">{formState.message}</span> : <span className="text-transparent"></span>}
