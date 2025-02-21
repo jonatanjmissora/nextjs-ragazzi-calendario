@@ -9,7 +9,6 @@
 }
 
 :root {
-
   /*    measures     */
   --navbar-height: 10dvh;
   --main-height: 85dvh;
@@ -121,6 +120,47 @@ table {
 td,
 input {
   vertical-align: middle;
+}
+
+.table-container {
+  scrollbar-color: var(--black80) transparent;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.movil-navbar li {
+  opacity: 0;
+  animation: reveal 0.25s ease-in-out forwards;
+}
+
+.modal-container,
+.histo-modal-container {
+  opacity: 0;
+  animation: modalReveal 0.5s ease-in-out forwards;
+}
+
+@keyframes reveal {
+  from {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes modalReveal {
+  from {
+    transform: translate(-45%, -45%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
 }
 
 @layer components {

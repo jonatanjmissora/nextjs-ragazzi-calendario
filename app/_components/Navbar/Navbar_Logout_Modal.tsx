@@ -27,7 +27,7 @@ export default function NavbarLogoutModal({ setShowMenu }: { setShowMenu: React.
         Cerrar Sesión
       </button>
       <dialog ref={dialogRef} id="my_modal_1" className="w-full h-full bg-transparent relative">
-        <div className="modal-container card p-10 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+        <div className="modal-container card p-10 fixed top-[50%] left-[50%]">
           <span className="font-bold text-lg text-[#222] tracking-widest text-left">¿ Seguro desea cerrar sesión ?</span>
           <div className="modal-action">
             <form onSubmit={handleLogout} className="flex gap-1 w-1/2">

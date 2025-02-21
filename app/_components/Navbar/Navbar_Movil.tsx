@@ -8,6 +8,14 @@ import ThemeSwitcher from "./Navbar_ThemeSwitcher"
 import NavbarLogoutModal from "./Navbar_Logout_Modal"
 import LogoSVG from "@/app/_assets/LogoSVG"
 
+const LINKS = [
+  { href: "/pendientes", text: "pendientes" },
+  { href: "/realizados", text: "realizados" },
+  { href: "/admin", text: "admin" },
+  { href: "/admin/sectores", text: "sectores" },
+  { href: "/admin/weblinks", text: "weblinks" },
+]
+
 export default function NavbarMovil() {
 
   const [showMenu, setShowMenu] = useState<boolean>(false)
@@ -35,35 +43,35 @@ export default function NavbarMovil() {
           <>
             <div className="text-xl tracking-widest flex flex-col items-end justify-center p-6 bg-navbg" onClick={() => setShowMenu(false)}>
 
-              <nav className="flex flex-col gap-4 items-end w-full">
-                <Link
-                  className={`${pathname === "/pendientes" && activeClass}`}
-                  href="/pendientes" >
-                  pendientes
-                </Link>
-                <Link
-                  className={`${pathname === "/realizados" && activeClass}`}
-                  href="/realizados" >
-                  realizados
-                </Link>
-                <Link
-                  className={`${pathname === "/admin" && activeClass}`}
-                  href="/admin" >
-                  admin
-                </Link>
-                <Link
-                  className={`${pathname === "/admin/sectores" && activeClass}`}
-                  href="/admin/sectores" >
-                  sectores
-                </Link>
-                <Link
-                  className={`${pathname === "/admin/weblinks" && activeClass}`}
-                  href="/admin/weblinks" >
-                  weblinks
-                </Link>
+              <nav>
+                <ul className="flex flex-col gap-4 items-end w-full movil-navbar">
 
-                <NavbarLogoutModal setShowMenu={setShowMenu} />
-                <ThemeSwitcher />
+                  {
+                    LINKS.map((link, index) => (
+                      <li
+                        key={index}
+                        style={{ '--i': index, animationDelay: `${index * 0.1}s` }}
+                      >
+                        <Link
+                          className={`${pathname === link.href && activeClass}`}
+                          href={link.href} >
+                          {link.text}
+                        </Link>
+                      </li>
+                    ))
+                  }
+
+                  <li
+                    style={{ '--i': 5, animationDelay: `${5 * 0.1}s` }}
+                  >
+                    <NavbarLogoutModal setShowMenu={setShowMenu} />
+                  </li>
+                  <li
+                    style={{ '--i': 6, animationDelay: `${6 * 0.1}s` }}
+                  >
+                    <ThemeSwitcher />
+                  </li>
+                </ul>
 
               </nav>
 
