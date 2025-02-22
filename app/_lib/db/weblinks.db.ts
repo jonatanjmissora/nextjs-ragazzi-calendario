@@ -13,7 +13,7 @@ export async function getWeblinksDB() {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 export const getWeblinkByIdDB = async (_id: string) => {
-  await new Promise(res => setTimeout(res, 2000))
+  // await new Promise(res => setTimeout(res, 2000))
   const db = await getDatabase()
   return await db.collection<WeblinkType>("ConstantAdminLinks").findOne({ _id })
 }

@@ -2,7 +2,7 @@
 
 import { revalidateTag, unstable_cache } from "next/cache"
 import { eliminarRealizadoDB, getRealizadoByIdDB, getRealizadosDB, editarRealizadoDb, insertarRealizadoDB, getRealizadosFilterDB, getRealizadosYearBySectorDB } from "../db/realizados.db"
-import { pagoSchema, PagoType, RubroType } from "../schema/pago.type"
+import { pagoSchema, PagoType } from "../schema/pago.type"
 
 export const getRealizadoByIdAction = async (id: string) => {
   return await getRealizadoByIdDB(id)

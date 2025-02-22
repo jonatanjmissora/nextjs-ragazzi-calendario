@@ -9,7 +9,7 @@ export default async function RealizadosEditPage({ searchParams }: { searchParam
   return (
     <section className="page justify-center items-center">
 
-      <Suspense fallback={<SkeltonDesktopEditForm pagoType={"realizado"} />}>
+      <Suspense key={Math.random()} fallback={<SkeltonDesktopEditForm pagoType={"realizado"} />}>
         <RealizadoEditFormContainer id={id} />
       </Suspense>
 

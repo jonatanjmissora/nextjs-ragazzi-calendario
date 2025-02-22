@@ -32,7 +32,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
         {
           viewport === "desktop"
             ? (
-              <Suspense key={Math.random()} fallback={<SkeltonAdminDesktopMainTable desktopTableHeader={desktopTableHeader} />} >
+              <Suspense fallback={<SkeltonAdminDesktopMainTable desktopTableHeader={desktopTableHeader} />} >
                 <AdminRealizadoDesktopListContainer
                   rubroFilter={rubroFilter}
                   sectorFilter={sectorFilter}

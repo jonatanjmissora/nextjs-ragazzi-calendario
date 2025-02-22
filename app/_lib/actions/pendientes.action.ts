@@ -2,8 +2,6 @@
 
 import { revalidateTag, unstable_cache } from "next/cache"
 import { editarPendienteDB, eliminarPendienteDB, getPendienteByIdDB, getPendientesDB, insertarPendienteDB } from "../db/pendientes.db"
-// import { insertarRealizadoDB } from "../db/realizados.db"
-// import { localeStringToDBDate } from "../utils/date.toLocaleString_to_dbDate"
 import { pagoSchema, PagoType } from "../schema/pago.type"
 
 export const getPendienteByIdAction = async (id: string) => {
@@ -26,46 +24,6 @@ export const getCachedPendientesAction = unstable_cache(async () => {
     revalidate: 3600,
   }
 )
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// export const pagarPendienteAction = async (pendiente: PagoType) => {
-// console.log("por que no llego ?")
-//agregar pago a pagosRealizados
-// const actualDate = localeStringToDBDate(new Date().toLocaleDateString())
-// console.log("actualDate:", actualDate)
-// const realizado = { ...pendiente, pagado: actualDate }
-
-//server-valiation
-// const { success, error } = pagoSchema.safeParse(pendiente)
-// if (!success) {
-//   const errors = error.flatten().fieldErrors
-//   return {
-//     success: false,
-//     prevState: pendiente,
-//     message: `server-error: ${JSON.stringify(errors)}`
-//   }
-// }
-
-// const resInsert = await insertarRealizadoDB(realizado)
-// if (!resInsert.success) {
-//   return resInsert
-//}
-
-//eliminar de pagosPendientes
-//   const resDelete = await eliminarPendienteDB(pendiente)
-//   if (!resDelete.success) {
-//     return resDelete
-//   }
-
-//   revalidateTag("pendientes")
-//   revalidateTag("realizados")
-
-//   return {
-//     success: true,
-//     prevState: pendiente,
-//     message: "Dato pagado con éxito"
-//   }
-// }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const eliminarPendienteAction = async (pendiente: PagoType) => {
