@@ -7,7 +7,7 @@ import { useActionState, useRef } from "react"
 import toast from "react-hot-toast"
 import SubmitBtn from "../../SubmitBtn"
 
-export const AdminRealizadoDeleteModal = ({ realizado, dialogRef2 }: { realizado: PagoType, dialogRef2: React.RefObject<HTMLDialogElement | null> }) => {
+export const AdminRealizadoDeleteModal = ({ realizado }: { realizado: PagoType }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 
@@ -19,7 +19,6 @@ export const AdminRealizadoDeleteModal = ({ realizado, dialogRef2 }: { realizado
     }
     else toast.success(res.message)
     dialogRef.current?.close()
-    dialogRef2.current?.close()
 
   }, null)
 

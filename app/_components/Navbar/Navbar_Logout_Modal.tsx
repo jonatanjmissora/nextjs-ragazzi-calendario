@@ -22,7 +22,7 @@ export default function NavbarLogoutModal({ setShowMenu }: { setShowMenu: React.
 
   return (
     <>
-      <button className="text-base w-60 border-t border-foreground25 flex justify-end items-center gap-2 pt-4 hover:text-foreground80" onClick={() => dialogRef.current?.showModal()}>
+      <button className="text-base text-foreground w-60 border-t border-foreground25 flex justify-end items-center gap-2 pt-4 hover:text-foreground80" onClick={() => dialogRef.current?.showModal()}>
         <LogoutSVG className="size-5" currentColor="currentColor" />
         Cerrar Sesión
       </button>

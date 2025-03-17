@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import LoginForm from "./_components/Auth/LoginForm";
-import getUserFromCookie from "./_lib/utils/getUserFromCookies";
+import getUserFromCookie from "../_lib/utils/getUserFromCookies";
+import LoginForm from "../_components/Auth/LoginForm";
 
 export default async function Home() {
 

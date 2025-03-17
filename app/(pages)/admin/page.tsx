@@ -5,14 +5,12 @@ import SkeltonAdminDesktopMainTable from '@/app/_components/Skeltons/Desktop/Ske
 import SkeltonAdminMovilMainTable from '@/app/_components/Skeltons/Movil/Skelton_Admin_Movil_Main_Table'
 import { getActualDateStr } from '@/app/_lib/utils/getActualDate'
 import { getOneYearAgo } from '@/app/_lib/utils/getOneYearAgo'
-import { cookies } from 'next/headers'
 import { Suspense } from 'react'
 
 const desktopTableHeader = ["venc", "rubro", "sector", "monto", "pagado", "accion"]
 
 export default async function AdminPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
-  const viewport = (await cookies()).get("viewport")?.value
   const actualDate = getActualDateStr()
   const yearAgo = getActualDateStr(getOneYearAgo())
 
@@ -29,29 +27,28 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       </aside>
 
       <article className="w-full sm:flex flex-col justify-center items-center">
-        {
-          viewport === "desktop"
-            ? (
-              <Suspense fallback={<SkeltonAdminDesktopMainTable desktopTableHeader={desktopTableHeader} />} >
-                <AdminRealizadoDesktopListContainer
-                  rubroFilter={rubroFilter}
-                  sectorFilter={sectorFilter}
-                  hastaFilter={hastaFilter}
-                  desdeFilter={desdeFilter}
-                />
-              </Suspense>
-            )
-            : (
-              <Suspense key={Math.random()} fallback={<SkeltonAdminMovilMainTable />} >
-                <AdminRealizadoMovilListContainer
-                  rubroFilter={rubroFilter}
-                  sectorFilter={sectorFilter}
-                  hastaFilter={hastaFilter}
-                  desdeFilter={desdeFilter}
-                />
-              </Suspense>
-            )
-        }
+
+        <div className='h-full hidden sm:block overflow-hidden'>
+          <Suspense fallback={<SkeltonAdminDesktopMainTable desktopTableHeader={desktopTableHeader} />} >
+            <AdminRealizadoDesktopListContainer
+              rubroFilter={rubroFilter}
+              sectorFilter={sectorFilter}
+              hastaFilter={hastaFilter}
+              desdeFilter={desdeFilter}
+            />
+          </Suspense>
+        </div>
+        <div className='block sm:hidden'>
+          <Suspense key={Math.random()} fallback={<SkeltonAdminMovilMainTable />} >
+            <AdminRealizadoMovilListContainer
+              rubroFilter={rubroFilter}
+              sectorFilter={sectorFilter}
+              hastaFilter={hastaFilter}
+              desdeFilter={desdeFilter}
+            />
+          </Suspense>
+        </div>
+
       </article>
 
     </section>

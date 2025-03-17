@@ -14,9 +14,9 @@ export default function RealizadoDesktopList({ realizados }: { realizados: PagoT
 
       <PagosHeader />
 
-      <div className="table-container relative">
+      <div className="table-container h-full relative">
 
-        <table className="table table-realizado">
+        <table className="table overflow-y-scroll">
           <thead>
             <tr className='text-base border-b border-foreground25'>
               {

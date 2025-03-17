@@ -28,9 +28,9 @@ export default function PendienteDesktopList({ pendientes }: { pendientes: PagoT
         calcPagos={calcPagos}
         pendientes={pendientes}
       />
-      <div className="table-container relative">
+      <div className="table-container h-full relative">
 
-        <table className="table table-pendiente">
+        <table className="table overflow-y-scroll">
           <thead>
             <tr className='text-base border-b border-foreground25 bg-navbg'>
               {

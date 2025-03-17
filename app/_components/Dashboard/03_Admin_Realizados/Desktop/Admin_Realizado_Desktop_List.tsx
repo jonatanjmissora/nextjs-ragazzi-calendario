@@ -9,8 +9,8 @@ export default function AdminRealizadoDesktopList({ realizados }: { realizados: 
     return (
         <>
 
-            <div className="table-container relative">
-                <table className="table">
+            <div className="table-container h-full relative">
+                <table className="table overflow-y-scroll">
                     <thead>
                         <tr className='text-base border-b border-foreground25'>
                             {

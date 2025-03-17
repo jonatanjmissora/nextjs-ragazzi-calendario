@@ -39,9 +39,9 @@
   --table-bg-dark: linear-gradient(125deg, #20202050, #11111150);
 
   /*      logo         */
-  --logo-light: url("./_assets/logo-light.svg");
+  --logo-light: url("../_assets/logo-light.svg");
   --logo-bg: var(--logo-light);
-  --logo-bg-inv: url("./_assets/logo-dark.svg");
+  --logo-bg-inv: url("../_assets/logo-dark.svg");
 
   /*      theme        */
   --background: var(--background-light);
@@ -62,9 +62,9 @@
   --foreground25: var(--white25);
   --bg-card: var(--gray-dark);
 
-  --logo-dark: url("./_assets/logo-dark.svg");
+  --logo-dark: url("../_assets/logo-dark.svg");
   --logo-bg: var(--logo-dark);
-  --logo-bg-inv: url("./_assets/logo-light.svg");
+  --logo-bg-inv: url("../_assets/logo-light.svg");
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -104,7 +104,7 @@ input[type="checkbox"] {
 
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(0.25);
-  background-image: url('./_assets/calendar.svg');
+  background-image: url('../_assets/calendar.svg');
   scale: 1.35;
 }
 

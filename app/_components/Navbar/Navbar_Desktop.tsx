@@ -6,7 +6,7 @@ export default function NavbarDesktop({ username }: { username: string }) {
 
   return (
 
-    <nav className='flex w-full navbar-container justify-between items-center pl-8'>
+    <nav className='hidden sm:flex w-full navbar-container justify-between items-center pl-8'>
       <div className="flex items-center gap-12">
         <picture className="size-12">
           <LogoSVG className="w-full h-full text-foreground80" currentColor="currentColor" />

@@ -4,8 +4,11 @@ import HistogramSVG from "@/app/_assets/HistogramSVG"
 import PlusSVG from "@/app/_assets/PlusSVG"
 import { PagoType } from "@/app/_lib/schema/pago.type"
 import montoFormat from "@/app/_lib/utils/montoFormat"
+import { useRef } from "react"
 
 export const RealizadoMovilHisto = ({ realizado, allRealizados }: { realizado: PagoType, allRealizados: PagoType[] }) => {
+
+  const dialogRef = useRef<HTMLDialogElement>(null)
 
   const histogramArray = allRealizados
     .filter(pago => pago.rubro === realizado.rubro && pago.sector === realizado.sector)
@@ -16,17 +19,12 @@ export const RealizadoMovilHisto = ({ realizado, allRealizados }: { realizado: P
     return (Number(monto) / maximoMonto * 10)
   }
 
-  const handleClick = (realizado: PagoType) => {
-    const dialog = document?.getElementById('my_modal_3') as HTMLDialogElement
-    dialog?.showModal()
-  }
-
   return (
     <>
-      <button onClick={() => handleClick(realizado)}>
+      <button onClick={() => dialogRef.current?.showModal()}>
         <HistogramSVG className="size-5 text-foreground" currentColor="currentColor" />
       </button>
-      <dialog id="my_modal_3" className="w-full h-full bg-transparent relative">
+      <dialog ref={dialogRef} id="my_modal_3" className="w-full h-full bg-transparent relative">
 
         <div className="histo-modal-container card px-4 fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
 

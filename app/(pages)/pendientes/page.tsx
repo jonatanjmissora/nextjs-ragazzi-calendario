@@ -1,6 +1,5 @@
 import LeftAsidePendientes from '@/app/_components/LeftAside/LeftAside_Pendientes_';
 import { Suspense } from 'react';
-import { cookies } from 'next/headers';
 import PendienteDesktopListContainer from '@/app/_components/Dashboard/01_Pendientes/Desktop/Pendiente_Desktop_List_Container';
 import PendienteMovilListContainer from '@/app/_components/Dashboard/01_Pendientes/Movil/Pendiente_Movil_List_Container';
 import SkeltonDesktopMainTable from '@/app/_components/Skeltons/Desktop/Skelton_Desktop_Main_Table';
@@ -13,7 +12,6 @@ const movilTableHeader = ["", "venc", "rubro", "sector", "monto", ""]
 export default async function PendientesPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | undefined }> }) {
 
   const rubroFilter = (await searchParams)?.rubroFilter || "todos"
-  const viewport = (await cookies()).get("viewport")?.value
 
   return (
     <section className="page">
@@ -25,22 +23,21 @@ export default async function PendientesPage({ searchParams }: { searchParams: P
       </article>
 
       <article className="flex w-full flex-col justify-center items-center">
-      {
-        viewport === "desktop"
-        ? (
-            <Suspense key={Math.random()} fallback={<SkeltonDesktopMainTable desktopTableHeader={desktopTableHeader}/>} >
-              <PendienteDesktopListContainer rubroFilter={rubroFilter} />
-            </Suspense>
-          )
 
-        : (
-            <Suspense key={Math.random()} fallback={<SkeltonMovilMainTable movilTableHeader={movilTableHeader}/>} >
-              <PendienteMovilListContainer rubroFilter={rubroFilter} />
-            </Suspense>
-          )
-      }
+        <div className='h-full hidden sm:block overflow-hidden'>
+          <Suspense key={Math.random()} fallback={<SkeltonDesktopMainTable desktopTableHeader={desktopTableHeader} />} >
+            <PendienteDesktopListContainer rubroFilter={rubroFilter} />
+          </Suspense>
+        </div>
+
+        <div className='block sm:hidden'>
+          <Suspense key={Math.random()} fallback={<SkeltonMovilMainTable movilTableHeader={movilTableHeader} />} >
+            <PendienteMovilListContainer rubroFilter={rubroFilter} />
+          </Suspense>
+        </div>
+
       </article>
-      
+
     </section>
   );
 }

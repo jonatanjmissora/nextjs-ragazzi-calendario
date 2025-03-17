@@ -25,7 +25,7 @@ export default function NavbarMovil() {
 
   return (
     <>
-      <div className="flex justify-between items-center p-4 py-2 h-navbar">
+      <div className="flex justify-between items-center p-4 py-2 h-navbar sm:hidden">
 
         <picture className="size-12">
           <LogoSVG className="w-full h-full text-foreground80" currentColor="currentColor" />
@@ -50,7 +50,7 @@ export default function NavbarMovil() {
                     LINKS.map((link, index) => (
                       <li
                         key={index}
-                        style={{ '--i': index, animationDelay: `${index * 0.1}s` }}
+                        style={{ '--i': index, animationDelay: `${index * 0.1}s` } as React.CSSProperties}
                       >
                         <Link
                           className={`${pathname === link.href && activeClass}`}
@@ -62,12 +62,12 @@ export default function NavbarMovil() {
                   }
 
                   <li
-                    style={{ '--i': 5, animationDelay: `${5 * 0.1}s` }}
+                    style={{ '--i': 5, animationDelay: `${5 * 0.1}s` } as React.CSSProperties}
                   >
                     <NavbarLogoutModal setShowMenu={setShowMenu} />
                   </li>
                   <li
-                    style={{ '--i': 6, animationDelay: `${6 * 0.1}s` }}
+                    style={{ '--i': 6, animationDelay: `${6 * 0.1}s` } as React.CSSProperties}
                   >
                     <ThemeSwitcher />
                   </li>
