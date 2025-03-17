@@ -41,7 +41,7 @@ export default function NavbarMovil() {
       {
         showMenu && (
           <>
-            <div className="text-xl tracking-widest flex flex-col items-end justify-center p-6 bg-navbg" onClick={() => setShowMenu(false)}>
+            <div className="text-xl tracking-widest flex flex-col items-end justify-center p-6 bg-navbg" >
 
               <nav>
                 <ul className="flex flex-col gap-4 items-end w-full movil-navbar">
@@ -49,6 +49,7 @@ export default function NavbarMovil() {
                   {
                     LINKS.map((link, index) => (
                       <li
+                        className="border"
                         key={index}
                         style={{ '--i': index, animationDelay: `${index * 0.1}s` } as React.CSSProperties}
                       >

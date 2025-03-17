@@ -45,7 +45,7 @@ export default function EditForm({ pagoType, pago, sectoresReset, formState, for
   }
 
   return (
-    <div className="h-full w-full flex justify-center items-center">
+    <div className="h-full w-full flex justify-center items-center py-8">
 
       {
         showConfirm

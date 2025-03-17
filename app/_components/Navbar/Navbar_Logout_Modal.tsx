@@ -15,11 +15,6 @@ export default function NavbarLogoutModal({ setShowMenu }: { setShowMenu: React.
     setShowMenu(false)
   }
 
-  const handleLogout = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    logout()
-  }
-
   return (
     <>
       <button className="text-base text-foreground w-60 border-t border-foreground25 flex justify-end items-center gap-2 pt-4 hover:text-foreground80" onClick={() => dialogRef.current?.showModal()}>
@@ -30,7 +25,7 @@ export default function NavbarLogoutModal({ setShowMenu }: { setShowMenu: React.
         <div className="modal-container card p-10 fixed top-[50%] left-[50%]">
           <span className="font-bold text-lg text-[#222] tracking-widest text-left">¿ Seguro desea cerrar sesión ?</span>
           <div className="modal-action">
-            <form onSubmit={handleLogout} className="flex gap-1 w-1/2">
+            <form onSubmit={() => logout()} className="flex gap-1 w-1/2">
               <SubmitBtn isPending={false} text="Si" className="size-11" />
               <button onClick={handleClick} type="button" className="btn-main-error">No</button>
             </form>
