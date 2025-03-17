@@ -7,9 +7,14 @@ import { useActionState, useRef } from "react"
 import toast from "react-hot-toast"
 import SubmitBtn from "../../SubmitBtn"
 
-export const AdminRealizadoDeleteModal = ({ realizado }: { realizado: PagoType }) => {
+export const AdminRealizadoDeleteModal = ({ realizado, dialogRef2 }: { realizado: PagoType, dialogRef2?: React.RefObject<HTMLDialogElement | null> }) => {
 
   const dialogRef = useRef<HTMLDialogElement>(null)
+
+  const closeAllDialog = () => {
+    dialogRef.current?.close()
+    if (dialogRef2) dialogRef2.current?.close()
+  }
 
   const [, formAction, isPending] = useActionState(async () => {
 
@@ -18,7 +23,7 @@ export const AdminRealizadoDeleteModal = ({ realizado }: { realizado: PagoType }
       toast.error(res.message)
     }
     else toast.success(res.message)
-    dialogRef.current?.close()
+    closeAllDialog()
 
   }, null)
 
@@ -36,7 +41,7 @@ export const AdminRealizadoDeleteModal = ({ realizado }: { realizado: PagoType }
           <div className="modal-action">
             <form action={formAction} className="flex gap-1 w-1/2">
               <SubmitBtn isPending={isPending} text="Si" className="size-11" />
-              <button onClick={() => dialogRef.current?.close()} type="button" className="btn-main-error">No</button>
+              <button onClick={() => closeAllDialog()} type="button" className="btn-main-error">No</button>
             </form>
           </div>
         </div>

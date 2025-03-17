@@ -36,7 +36,7 @@ export default function AdminRealizadoMovilAction({ realizado }: { realizado: Pa
 
             <AdminRealizadoAction
               realizado={realizado}
-              dialogRef={dialogRef}
+              dialogRef2={dialogRef}
             />
 
           </div>

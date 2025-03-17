@@ -49,7 +49,7 @@ export default function NavbarMovil() {
                   {
                     LINKS.map((link, index) => (
                       <li
-                        className="border"
+                        onClick={() => setShowMenu(prev => !prev)}
                         key={index}
                         style={{ '--i': index, animationDelay: `${index * 0.1}s` } as React.CSSProperties}
                       >
