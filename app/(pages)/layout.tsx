@@ -48,9 +48,10 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         <ThemeProvider>
-          <Navbar />
+          {/* <Navbar /> */}
           <main>
             {children}
+            
 
             <Toaster
               position="top-right"
@@ -83,7 +84,7 @@ export default async function RootLayout({
 
           </main>
 
-          <Footer />
+          {/* <Footer /> */}
         </ThemeProvider>
       </body>
     </html>
