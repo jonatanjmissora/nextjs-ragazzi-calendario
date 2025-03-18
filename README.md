@@ -1,5 +1,22 @@
-FALTA:
+# ℹ️ About 
+Payment Dashboard:
+  - navbar and footer
+  - dark/light theme
+  - authorization
+  - database
+  - responsive
+  - admin
 
-conectar DB
+****************************
 
-cuando cancelo el EditForm, me refresca toda la pagina, probar si lo hace en produccion, porque en develop me lo hace, ver si tengo que cambiar a un router.push o push.replace o un history-1
+### <img src="/public/nextjs-icon.svg" alt="nextjs image" width="30px" height="30px" /> Nextjs 👈 👉 <img src="/public/typescript-icon.svg" alt="typescript image" width="30px" height="30px" /> TypeScript 👈 👉 <img src="/public/tailwindcss-icon.svg" alt="tailwind image" width="30px" height="30px" /> Tailwind  
+
+****************************
+
+![alt text](/public/preview-desktop1.webp "preview image repository")
+![alt text](/public/preview-desktop2.webp "preview image repository")
+![alt text](/public/preview-desktop3.webp "preview image repository")
+
+live demo [here](https://github.com/jonatanjmissora/nextjs15-navbar)
+
+This repository was built by [Jonatan Missora](https://github.com/jonatanjmissora).  👉  <img src="/public/avatar.png" width="70px" height="auto" alt="avatar image"/>

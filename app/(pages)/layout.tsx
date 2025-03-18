@@ -51,7 +51,7 @@ export default async function RootLayout({
           {/* <Navbar /> */}
           <main>
             {children}
-            
+
 
             <Toaster
               position="top-right"

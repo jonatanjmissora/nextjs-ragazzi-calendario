@@ -17,7 +17,7 @@ export default async function Footer() {
 
       {
         user &&
-        <div className='mr-auto flex gap-2 items-center w-8 overflow-hidden hover:w-[20rem]'>
+        <div className='mr-auto flex gap-2 items-center w-8 overflow-hidden hover:w-[70%] sm:hover:w-[20rem]'>
           <span className='w-8'><WebSVG className='size-7 text-slate-500' currentColor={"currentColor"} /></span>
           {weblinks.map(weblink => <Weblink key={weblink._id} weblink={weblink} />)}
         </div>
