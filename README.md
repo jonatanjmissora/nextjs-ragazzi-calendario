@@ -19,4 +19,4 @@ Payment Dashboard:
 
 live demo [here](https://github.com/jonatanjmissora/nextjs15-navbar)
 
-This repository was built by [Jonatan Missora](https://github.com/jonatanjmissora).  👉  <img src="/public/avatar.png" width="70px" height="auto" alt="avatar image"/>
+This repository was built by [Jonatan Missora](https://github.com/jonatanjmissora).  👉  <img src="/public/avatar.webp" width="70px" height="auto" alt="avatar image"/>
