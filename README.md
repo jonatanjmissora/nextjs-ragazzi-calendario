@@ -1,4 +1,7 @@
 # ℹ️ About 
+
+Dashboard that allows you to schedule due dates in chronological order. Filters, due date editing, history, calculator, authentication... 
+
 Payment Dashboard:
   - navbar and footer
   - dark/light theme
