@@ -7,7 +7,7 @@ const options = {}
 const URI = process.env.MONGODB_URI
 const DB = "Ragazzi"
 
-client = new MongoClient(URI, options)
+client = new MongoClient(URI!, options)
 clientPromise = client.connect()
 
 export async function DDBB() {
