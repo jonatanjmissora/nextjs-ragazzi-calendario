@@ -1,7 +1,6 @@
 "use server"
 
 import bcrypt from "bcryptjs"
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getErrorMessage } from "../utils/getErrorMessage";
 import { userSchema, UserType, UserWithIdType } from "../schema/user.type";
@@ -15,9 +14,14 @@ export type ResponseType = {
 } | null
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const getUserByName = async (name: string) => {
-  const usersCollection = await getCollection("users")
-  return await usersCollection.findOne({ username: name }) as UserWithIdType
+const getUserByName = async (name: string): Promise<UserWithIdType | null> => {
+  try {
+    const usersCollection = await getCollection("users")
+    return await usersCollection.findOne({ username: name }) as UserWithIdType
+  } catch (error) {
+    console.error("Error getting user:", error)
+    return null
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,9 +32,15 @@ const insertUser = async (newUser: UserType) => {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const logout = async function () {
-  const cookie = await cookies()
-  cookie.delete("usertoken")
-  redirect("/")
+  try {
+    const { cookies } = await import("next/headers")
+    const cookie = await cookies()
+    cookie.delete("usertoken")
+    return { success: true }
+  } catch (error) {
+    console.error("Error during logout:", error)
+    return { success: false, error: getErrorMessage(error) }
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,6 +124,11 @@ export const login = async function (loginUser: UserType) {
   }
 
   // si todo esta bien
-  await setUserToCookie(username, actualUser._id?.toString())
+  if (!actualUser._id) {
+    loginResponse.message = "Error en el ID de usuario"
+    return loginResponse
+  }
+
+  await setUserToCookie(username, actualUser._id.toString())
   redirect("/pendientes")
 }

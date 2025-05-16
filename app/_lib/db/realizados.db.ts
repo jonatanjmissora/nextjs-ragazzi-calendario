@@ -1,4 +1,4 @@
-import { PagoType, RubroType } from "../schema/pago.type"
+import { PagoType } from "../schema/pago.type"
 import { getErrorMessage } from "../utils/getErrorMessage"
 import getDatabase from "./connect"
 
