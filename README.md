@@ -20,6 +20,6 @@ Payment Dashboard:
 ![alt text](/public/preview-desktop2.webp "preview image repository")
 ![alt text](/public/preview-desktop3.webp "preview image repository")
 
-live demo [here](https://github.com/jonatanjmissora/nextjs15-navbar)
+live demo [here](https://nextjs-ragazzi-calendario-demo.vercel.app/)
 
 This repository was built by [Jonatan Missora](https://github.com/jonatanjmissora).  👉  <img src="/public/avatar.webp" width="70px" height="auto" alt="avatar image"/>
